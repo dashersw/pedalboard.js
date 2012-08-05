@@ -19,15 +19,16 @@
  */
 
 goog.provide('stomp.io.Input');
-goog.require('goog.events.EventHandler');
-goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventTarget');
+goog.require('stomp.ConnectableComponent');
+
 
 
 /**
  * The input wrapper for an audio context.
  *
  * @constructor
+ * @implements {stomp.ConnectableComponent}
  * @extends {goog.events.EventTarget}
  * @param {webkitAudioContext} context Audio context for this input.
  */
@@ -58,6 +59,29 @@ stomp.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
     this.source.buffer = sourceBuffer;
 };
 
-stomp.io.Input.prototype.connectOutputTo = function(destination) {
-    this.source.connect(destination);
+
+/**
+ * Connects this input to a destination pedal.
+ *
+ * @param {stomp.ConnectableComponent} destination Next pedal where this input will connect to.
+ */
+stomp.io.Input.prototype.connect = function(destination) {
+    this.source.connect(destination.getEffect());
 };
+
+
+/**
+ * Gets the source of this input.
+ *
+ * @return {AudioBufferSourceNode} The source of this input.
+ */
+stomp.io.Input.prototype.getEffect = function() {
+    return this.source;
+};
+
+
+/**
+ * Dummy method for the Connectable interface. It's meaningless for an input to be connected to the output of another
+ * thing.
+ */
+stomp.io.Input.prototype.setInput = function() {};
