@@ -27,8 +27,26 @@ goog.provide('stomp.Connectable');
  */
 stomp.Connectable = function() {};
 
+
 /**
- * Connects the output of this instance to a node.
- * @param {AudioDestinationNode} destination Destination node to connect to.
+ * Connects the output of this Connectable to a node.
+ *
+ * @param {AudioNode} destination Destination node to connect the output of this Connectable.
  */
-stomp.Connectable.prototype.connectOutputTo = function(destination) {};
+stomp.Connectable.prototype.connect = function(destination) {};
+
+
+/**
+ * Sets the input of this Connectable to a node.
+ *
+ * @param {AudioNode} input The node that will be connected to the input of this Connectable.
+ */
+stomp.Connectable.prototype.setInput = function(input) {};
+
+
+/**
+ * Gets the main effects unit of a Connectable, which is also the input node.
+ *
+ * @return {AudioNode} The effect node of the Connectable.
+ */
+stomp.Connectable.prototype.getEffect = function() {};
