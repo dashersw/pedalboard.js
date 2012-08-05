@@ -17,8 +17,13 @@
  */
 
 goog.provide('stomp.Bootstrapper');
+goog.require('goog.debug.ErrorHandler');
+goog.require('goog.events.EventHandler');
+goog.require('goog.events.EventTarget');
+goog.require('stomp.box.reverb.Component');
 goog.require('stomp.box.volume.Component');
 goog.require('stomp.io.FileInput');
+goog.require('stomp.io.Output');
 
 
 
