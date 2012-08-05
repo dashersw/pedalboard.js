@@ -16,7 +16,9 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Volume pedal.
+ * @fileoverview Input abstraction for an audio context. There can be many input sources in an audio context and this
+ * class is an abstraction of an input that also implements the pb.Connectable interface so that it can be chained
+ * before a pb.box.box.ComponentModel.
  */
 
 goog.provide('pb.io.Input');
@@ -26,6 +28,7 @@ goog.require('goog.events.EventTarget');
 
 
 /**
+ * The input wrapper for an audio context.
  *
  * @constructor
  * @extends {goog.events.EventTarget}
@@ -37,12 +40,23 @@ pb.io.Input = function(context) {
 goog.inherits(pb.io.Input, goog.events.EventTarget);
 
 
+/**
+ * Starts playing the input.
+ *
+ * @param {number} time Milliseconds after whom this input will start playing.
+ */
 pb.io.Input.prototype.play = function(time) {
     time = time || 0;
     this.source.noteOn(time);
 };
 
 
+/**
+ * Sets the source buffer of this input.
+ *
+ * @protected
+ * @param {AudioBuffer} sourceBuffer The new buffer.
+ */
 pb.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
     this.source.buffer = sourceBuffer;
 };

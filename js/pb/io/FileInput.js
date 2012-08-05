@@ -16,7 +16,7 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Volume pedal.
+ * @fileoverview File input reads a given file as an input buffer.
  */
 
 goog.provide('pb.io.FileInput');
@@ -25,6 +25,7 @@ goog.require('pb.io.Input');
 
 
 /**
+ * Reads a file at a given URL, converts it to a source buffer and makes it available for the context.
  *
  * @constructor
  * @extends {pb.io.Input}

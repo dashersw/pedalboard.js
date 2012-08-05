@@ -42,11 +42,19 @@ pb.Bootstrapper = function() {
 
 };
 
+
+/**
+ * Initializes the input, the output and the pedal components.
+ */
 pb.Bootstrapper.prototype.init = function() {
     this.input = new pb.io.FileInput(this.context, 'audio/sample.mp3');
     this.volumePedal = new pb.box.volume.Component(this.context);
 };
 
+
+/**
+ * Routes the signal.
+ */
 pb.Bootstrapper.prototype.route = function() {
     this.input.connectOutputTo(this.volumePedal.model.source);
     this.volumePedal.connectOutputTo(this.context.destination);
