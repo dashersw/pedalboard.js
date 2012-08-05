@@ -20,21 +20,21 @@
  */
 
 goog.provide('pb.box.volume.ComponentModel');
+goog.require('pb.box.box.ComponentModel');
 
 
 
 /**
  * Component model for volume pedal.
+ *
  * @constructor
+ * @extends {pb.box.box.ComponentModel}
+ * @param {webkitAudioContext} context The context this component model will operate on.
  */
 pb.box.volume.ComponentModel = function(context) {
-    this.context = context;
-    this.source = this.context.createGainNode();
+    goog.base(this, context);
 };
-
-pb.box.volume.ComponentModel.prototype.connectOutputTo = function(destination) {
-    this.source.connect(destination);
-};
+goog.inherits(pb.box.volume.ComponentModel, pb.box.box.ComponentModel);
 
 
 pb.box.volume.ComponentModel.prototype.setVolume = function(newVolume) {
