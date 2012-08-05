@@ -32,16 +32,9 @@ goog.require('stomp.io.Output');
  * @constructor
  */
 stomp.Bootstrapper = function() {
-    var that = this;
     this.context = new webkitAudioContext();
-
     this.init();
     this.route();
-
-    goog.events.listen(this.input, 'loaded', function() {
-        that.input.play();
-    });
-
 };
 
 
