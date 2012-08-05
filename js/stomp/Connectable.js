@@ -13,7 +13,8 @@
 // limitations under the License.
 
 /**
- * @fileoverview Volume pedal component model.
+ * @fileoverview Connectable interface for consistent routing. All the connectable component models should implement
+ * this interface.
  */
 
 goog.provide('stomp.Connectable');
@@ -21,7 +22,7 @@ goog.provide('stomp.Connectable');
 
 
 /**
- * Component model for volume pedal.
+ * Connectable interface. Sports connect method for output and setInput method for input.
  * @interface
  */
 stomp.Connectable = function() {};
