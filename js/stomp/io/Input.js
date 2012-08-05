@@ -50,6 +50,17 @@ stomp.io.Input.prototype.play = function(time) {
 
 
 /**
+ * Stops playing the input.
+ *
+ * @param {number} time Milliseconds after whom this input will stop playing.
+ */
+stomp.io.Input.prototype.stop = function(time) {
+    time = time || 0;
+    this.source.noteOff(time);
+};
+
+
+/**
  * Sets the source buffer of this input.
  *
  * @protected
