@@ -17,14 +17,12 @@
  */
 
 goog.provide('stomp.box.volume.ComponentModel');
-goog.require('stomp.Connectable');
 
 
 
 /**
  * Component model for volume pedal.
  * @constructor
- * @implements {stomp.Connectable}
  */
 stomp.box.volume.ComponentModel = function(context) {
     this.context = context;

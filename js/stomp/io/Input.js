@@ -20,7 +20,6 @@ goog.provide('stomp.io.Input');
 goog.require('goog.events.EventHandler');
 goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventTarget');
-goog.require('stomp.Connectable');
 
 
 /**
@@ -28,7 +27,6 @@ goog.require('stomp.Connectable');
  * @constructor
  * @extends {goog.events.EventTarget}
  * @param {webkitAudioContext} context Audio context for this input.
- * @implements {stomp.Connectable}
  */
 stomp.io.Input = function(context) {
     this.source = context.createBufferSource(); // creates a sound source
