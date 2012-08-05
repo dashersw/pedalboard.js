@@ -13,7 +13,9 @@
 // limitations under the License.
 
 /**
- * @fileoverview Volume pedal.
+ * @fileoverview Input abstraction for an audio context. There can be many input sources in an audio context and this
+ * class is an abstraction of an input that also implements the stomp.Connectable interface so that it can be chained
+ * before a stomp.box.box.ComponentModel.
  */
 
 goog.provide('stomp.io.Input');
@@ -23,6 +25,7 @@ goog.require('goog.events.EventTarget');
 
 
 /**
+ * The input wrapper for an audio context.
  *
  * @constructor
  * @extends {goog.events.EventTarget}
@@ -34,12 +37,23 @@ stomp.io.Input = function(context) {
 goog.inherits(stomp.io.Input, goog.events.EventTarget);
 
 
+/**
+ * Starts playing the input.
+ *
+ * @param {number} time Milliseconds after whom this input will start playing.
+ */
 stomp.io.Input.prototype.play = function(time) {
     time = time || 0;
     this.source.noteOn(time);
 };
 
 
+/**
+ * Sets the source buffer of this input.
+ *
+ * @protected
+ * @param {AudioBuffer} sourceBuffer The new buffer.
+ */
 stomp.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
     this.source.buffer = sourceBuffer;
 };

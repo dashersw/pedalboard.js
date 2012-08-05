@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @fileoverview Volume pedal.
+ * @fileoverview File input reads a given file as an input buffer.
  */
 
 goog.provide('stomp.io.FileInput');
@@ -22,6 +22,7 @@ goog.require('stomp.io.Input');
 
 
 /**
+ * Reads a file at a given URL, converts it to a source buffer and makes it available for the context.
  *
  * @constructor
  * @extends {stomp.io.Input}

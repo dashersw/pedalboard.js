@@ -39,11 +39,19 @@ stomp.Bootstrapper = function() {
 
 };
 
+
+/**
+ * Initializes the input, the output and the pedal components.
+ */
 stomp.Bootstrapper.prototype.init = function() {
     this.input = new stomp.io.FileInput(this.context, 'audio/sample.mp3');
     this.volumePedal = new stomp.box.volume.Component(this.context);
 };
 
+
+/**
+ * Routes the signal.
+ */
 stomp.Bootstrapper.prototype.route = function() {
     this.input.connectOutputTo(this.volumePedal.model.source);
     this.volumePedal.connectOutputTo(this.context.destination);
