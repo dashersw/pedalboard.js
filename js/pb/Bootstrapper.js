@@ -46,7 +46,9 @@ pb.Bootstrapper = function() {
  */
 pb.Bootstrapper.prototype.init = function() {
     this.input = new pb.io.FileInput(this.context, 'audio/sample.mp3');
+    this.output = new pb.io.Output(this.context);
     this.volumePedal = new pb.box.volume.Component(this.context);
+    this.reverbPedal = new pb.box.reverb.Component(this.context);
 };
 
 
