@@ -51,10 +51,12 @@ stomp.Bootstrapper.prototype.init = function() {
 
 /**
  * Routes the signal.
+ * Input -> volume pedal -> reverb pedal
  */
 stomp.Bootstrapper.prototype.route = function() {
-    this.input.connectOutputTo(this.volumePedal.model.source);
-    this.volumePedal.connectOutputTo(this.context.destination);
+    this.input.connect(this.volumePedal);
+    this.volumePedal.connect(this.reverbPedal);
+    this.reverbPedal.connect(this.output);
 };
 
 goog.exportSymbol('stomp', stomp.Bootstrapper);
