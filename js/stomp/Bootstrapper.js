@@ -59,4 +59,22 @@ stomp.Bootstrapper.prototype.route = function() {
     this.reverbPedal.connect(this.output);
 };
 
+
+/**
+ * Plays the input.
+ */
+stomp.Bootstrapper.prototype.play = function() {
+    this.input.play();
+};
+
+
+/**
+ * Stops the input.
+ */
+stomp.Bootstrapper.prototype.stop = function() {
+    this.input.stop();
+};
+
+goog.exportProperty(stomp.Bootstrapper.prototype, 'play', stomp.Bootstrapper.prototype.play);
+goog.exportProperty(stomp.Bootstrapper.prototype, 'stop', stomp.Bootstrapper.prototype.stop);
 goog.exportSymbol('stomp', stomp.Bootstrapper);
