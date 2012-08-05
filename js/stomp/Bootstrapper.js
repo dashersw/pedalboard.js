@@ -43,7 +43,9 @@ stomp.Bootstrapper = function() {
  */
 stomp.Bootstrapper.prototype.init = function() {
     this.input = new stomp.io.FileInput(this.context, 'audio/sample.mp3');
+    this.output = new stomp.io.Output(this.context);
     this.volumePedal = new stomp.box.volume.Component(this.context);
+    this.reverbPedal = new stomp.box.reverb.Component(this.context);
 };
 
 
