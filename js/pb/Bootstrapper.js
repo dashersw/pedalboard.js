@@ -35,16 +35,9 @@ goog.require('pb.io.Output');
  * @constructor
  */
 pb.Bootstrapper = function() {
-    var that = this;
     this.context = new webkitAudioContext();
-
     this.init();
     this.route();
-
-    goog.events.listen(this.input, 'loaded', function() {
-        that.input.play();
-    });
-
 };
 
 
