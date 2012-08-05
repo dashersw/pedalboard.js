@@ -16,7 +16,8 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Volume pedal component model.
+ * @fileoverview Connectable interface for consistent routing. All the connectable component models should implement
+ * this interface.
  */
 
 goog.provide('pb.Connectable');
@@ -24,7 +25,7 @@ goog.provide('pb.Connectable');
 
 
 /**
- * Component model for volume pedal.
+ * Connectable interface. Sports connect method for output and setInput method for input.
  * @interface
  */
 pb.Connectable = function() {};
