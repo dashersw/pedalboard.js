@@ -17,7 +17,7 @@ js/library/tartJS/tools/goog/build/closurebuilder.py \
 --compiler_flags="--warning_level=VERBOSE" \
 --compiler_flags="--externs=js/library/tartJS/tart/externs/jquery-1.4.4.externs.js" \
 --compiler_flags="--externs=js/library/tartJS/tart/externs/tart.externs.js" \
---compiler_flags="--externs=js/library/tartJS/tart/externs/w3c_audio.externs.js" \
+--compiler_flags="--externs=js/library/tartJS/tart/externs/w3c_audio.js" \
 --compiler_flags="--externs=js/library/tartJS/tart/externs/jasmine.externs.js" \
 --compiler_flags="--externs=js/stomp/externs/stomp.externs.js" \
 --compiler_flags="--jscomp_error=accessControls" \
