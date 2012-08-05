@@ -20,14 +20,12 @@
  */
 
 goog.provide('pb.box.volume.ComponentModel');
-goog.require('pb.Connectable');
 
 
 
 /**
  * Component model for volume pedal.
  * @constructor
- * @implements {pb.Connectable}
  */
 pb.box.volume.ComponentModel = function(context) {
     this.context = context;

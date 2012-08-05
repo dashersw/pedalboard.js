@@ -23,7 +23,6 @@ goog.provide('pb.io.Input');
 goog.require('goog.events.EventHandler');
 goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventTarget');
-goog.require('pb.Connectable');
 
 
 /**
@@ -31,7 +30,6 @@ goog.require('pb.Connectable');
  * @constructor
  * @extends {goog.events.EventTarget}
  * @param {webkitAudioContext} context Audio context for this input.
- * @implements {pb.Connectable}
  */
 pb.io.Input = function(context) {
     this.source = context.createBufferSource(); // creates a sound source
