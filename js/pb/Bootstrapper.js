@@ -20,8 +20,13 @@
  */
 
 goog.provide('pb.Bootstrapper');
+goog.require('goog.debug.ErrorHandler');
+goog.require('goog.events.EventHandler');
+goog.require('goog.events.EventTarget');
+goog.require('pb.box.reverb.Component');
 goog.require('pb.box.volume.Component');
 goog.require('pb.io.FileInput');
+goog.require('pb.io.Output');
 
 
 
