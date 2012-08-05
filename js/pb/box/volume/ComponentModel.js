@@ -37,6 +37,11 @@ pb.box.volume.ComponentModel = function(context) {
 goog.inherits(pb.box.volume.ComponentModel, pb.box.box.ComponentModel);
 
 
-pb.box.volume.ComponentModel.prototype.setVolume = function(newVolume) {
-    this.source.gain.value = newVolume;
+/**
+ * Sets the volume level.
+ *
+ * @param {number} newLevel The new volume level.
+ */
+pb.box.volume.ComponentModel.prototype.setLevel = function(newLevel) {
+    this.effect.gain.value = newLevel;
 };
