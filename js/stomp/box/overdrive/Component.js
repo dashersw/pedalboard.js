@@ -70,6 +70,7 @@ stomp.box.overdrive.Component.prototype.setDrive = function(newValue) {
     this.drivePot.setValue(newValue);
 };
 
+
 /**
  * @override
  */

@@ -45,7 +45,8 @@ goog.inherits(stomp.pot.PotComponent, tart.ui.DlgComponent);
 
 
 /**
- * @type {function(new: stomp.pot.PotComponentModel)} The component model this pot component will work with.
+ * @type {function(new: stomp.pot.PotComponentModel, AudioParam, string, number)}
+ *       The component model this pot component will work with.
  */
 stomp.pot.PotComponent.prototype.modelClass = stomp.pot.PotComponentModel;
 
@@ -82,7 +83,7 @@ stomp.pot.PotComponent.prototype.templates_base = function() {
 
 
 /**
- * @override
+ * Render method updates its knob.
  */
 stomp.pot.PotComponent.prototype.render = function() {
     this.updateUi();
