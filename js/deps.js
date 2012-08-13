@@ -86,7 +86,7 @@ goog.addDependency('../../../../../library/tartJS/tart/tart.js', ['tart'], []);
 goog.addDependency('../../../../../library/tartJS/tart/ui/Component.js', ['tart.ui.Component'], ['goog.events.EventTarget', 'tart', 'tart.dom']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/ComponentManager.js', ['tart.ui.ComponentManager'], ['goog.array', 'goog.events.EventType', 'tart.events']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/ComponentModel.js', ['tart.ui.ComponentModel'], ['goog.events.EventTarget']);
-goog.addDependency('../../../../../library/tartJS/tart/ui/DlgComponent.js', ['tart.ui.DlgComponent'], ['goog.dom.query', 'tart.ui.ComponentManager']);
+goog.addDependency('../../../../../library/tartJS/tart/ui/DlgComponent.js', ['tart.ui.DlgComponent'], ['goog.dom.query', 'tart', 'tart.ui.ComponentManager']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/tooltip/TooltipComponent.js', ['tart.ui.TooltipComponent'], ['goog.dom', 'goog.dom.query', 'goog.style', 'tart.ui.TooltipComponentModel']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/tooltip/TooltipComponentModel.js', ['tart.ui.TooltipComponentModel'], ['tart.ui.ComponentModel']);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/goog/array/array.js', ['goog.array', 'goog.array.ArrayLike'], ['goog.asserts']);
@@ -898,7 +898,7 @@ goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/c
 goog.addDependency('../../../../../stomp/Bootstrapper.js', ['stomp.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'stomp.box.conv.Component', 'stomp.box.overdrive.Component', 'stomp.box.reverb.Component', 'stomp.box.volume.Component', 'stomp.io.FileInput', 'stomp.io.Output']);
 goog.addDependency('../../../../../stomp/Connectable.js', ['stomp.Connectable'], []);
 goog.addDependency('../../../../../stomp/ConnectableComponent.js', ['stomp.ConnectableComponent'], []);
-goog.addDependency('../../../../../stomp/box/box/Component.js', ['stomp.box.box.Component'], ['stomp.ConnectableComponent', 'stomp.box.box.ComponentModel']);
+goog.addDependency('../../../../../stomp/box/box/Component.js', ['stomp.box.box.Component'], ['stomp.ConnectableComponent', 'stomp.box.box.ComponentModel', 'stomp.pot.PotComponent', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../stomp/box/box/ComponentModel.js', ['stomp.box.box.ComponentModel'], ['stomp.Connectable']);
 goog.addDependency('../../../../../stomp/box/conv/Component.js', ['stomp.box.conv.Component'], ['stomp.box.box.Component', 'stomp.box.conv.ComponentModel']);
 goog.addDependency('../../../../../stomp/box/conv/ComponentModel.js', ['stomp.box.conv.ComponentModel'], ['stomp.box.box.ComponentModel']);
@@ -911,3 +911,5 @@ goog.addDependency('../../../../../stomp/box/volume/ComponentModel.js', ['stomp.
 goog.addDependency('../../../../../stomp/io/FileInput.js', ['stomp.io.FileInput'], ['stomp.io.Input']);
 goog.addDependency('../../../../../stomp/io/Input.js', ['stomp.io.Input'], ['goog.events.EventTarget', 'stomp.ConnectableComponent']);
 goog.addDependency('../../../../../stomp/io/Output.js', ['stomp.io.Output'], ['stomp.ConnectableComponent']);
+goog.addDependency('../../../../../stomp/pot/pot/PotComponent.js', ['stomp.pot.PotComponent'], ['goog.events.MouseWheelHandler', 'stomp.pot.PotComponentModel', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../stomp/pot/pot/PotComponentModel.js', ['stomp.pot.PotComponentModel'], ['tart.ui.ComponentModel']);
