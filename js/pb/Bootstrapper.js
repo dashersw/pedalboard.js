@@ -53,14 +53,15 @@ pb.Bootstrapper.prototype.init = function() {
     this.reverbPedal = new pb.box.reverb.Component(this.context);
     this.volumePedal = new pb.box.volume.Component(this.context);
     this.speaker = new pb.box.conv.Component(this.context);
-    this.chain = [
-        this.input,
+
+    this.effects = [
         this.overdrivePedal,
         this.reverbPedal,
         this.volumePedal,
-        this.speaker,
-        this.output
+        this.speaker
     ];
+    this.chain = [].concat(this.input, this.effects, this.output);
+
 };
 
 
