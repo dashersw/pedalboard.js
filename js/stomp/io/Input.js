@@ -77,6 +77,7 @@ stomp.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
  * @param {stomp.ConnectableComponent} destination Next pedal where this input will connect to.
  */
 stomp.io.Input.prototype.connect = function(destination) {
+    destination.setInput(this);
     this.source.connect(destination.getEffect());
 };
 

@@ -30,7 +30,20 @@ goog.require('stomp.Connectable');
  */
 stomp.box.box.ComponentModel = function(context) {
     this.context = context;
-    this.effect = this.context.createGainNode();
+    this.inputBuffer = this.context.createGainNode();
+    this.outputBuffer = this.context.createGainNode();
+
+    /**
+ *
+ * @type {Array.<AudioNode>}
+ */
+    this.chain = [];
+
+    /**
+ *
+ * @type {Array.<AudioNode>}
+ */
+    this.effects = [];
 };
 
 
@@ -40,7 +53,9 @@ stomp.box.box.ComponentModel = function(context) {
  * @param {AudioNode} destination Next audio node where the output of this model's node will connect to.
  */
 stomp.box.box.ComponentModel.prototype.connect = function(destination) {
-    this.effect.connect(destination);
+    this.chain = [].concat(this.inputBuffer, this.effects, this.outputBuffer, destination);
+
+    this.routeInternal();
 };
 
 
@@ -50,7 +65,7 @@ stomp.box.box.ComponentModel.prototype.connect = function(destination) {
  * @return {AudioNode} The effect node of this component.
  */
 stomp.box.box.ComponentModel.prototype.getEffect = function() {
-    return this.effect;
+    return this.inputBuffer;
 };
 
 
@@ -61,4 +76,16 @@ stomp.box.box.ComponentModel.prototype.getEffect = function() {
  */
 stomp.box.box.ComponentModel.prototype.setInput = function(input) {
     this.input = input;
+};
+/**
+ * Routes the internal effects chain.
+ *
+ * @protected
+ */
+stomp.box.box.ComponentModel.prototype.routeInternal = function() {
+    var chain = this.chain;
+
+    for (var i = 0, len = chain.length - 1; i < len; i++) {
+        chain[i].connect(chain[i + 1]);
+    }
 };
