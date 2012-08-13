@@ -104,7 +104,6 @@ stomp.pot.PotComponent.prototype.mappings = {
  */
 stomp.pot.PotComponent.prototype.bindModelEvents = function() {
     goog.events.listen(this.model, stomp.pot.PotComponentModel.EventType.VALUE_CHANGED, function(e) {
-        console.log(e.newValue);
         this.rendered && this.updateUi();
     }, false, this);
 };
