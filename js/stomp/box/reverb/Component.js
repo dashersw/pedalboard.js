@@ -39,13 +39,3 @@ goog.inherits(stomp.box.reverb.Component, stomp.box.box.Component);
  * @override
  */
 stomp.box.reverb.Component.prototype.modelClass = stomp.box.reverb.ComponentModel;
-
-
-/**
- * Sets the level of the reverb effect.
- *
- * @param {number} newLevel The new level of the reverb effect.
- */
-stomp.box.reverb.Component.prototype.setLevel = function(newLevel) {
-    this.model.setLevel(newLevel);
-};

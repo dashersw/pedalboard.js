@@ -70,3 +70,13 @@ stomp.box.box.Component.prototype.connect = function(destination) {
     destination.setInput(this);
     this.model.connect(destination.getEffect());
 };
+
+
+/**
+ * Sets the level of the effect.
+ *
+ * @param {number} newLevel The new level of the effect.
+ */
+stomp.box.box.Component.prototype.setLevel = function(newLevel) {
+    this.model.setLevel(newLevel);
+};

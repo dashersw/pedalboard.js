@@ -32,13 +32,3 @@ stomp.box.volume.ComponentModel = function(context) {
     goog.base(this, context);
 };
 goog.inherits(stomp.box.volume.ComponentModel, stomp.box.box.ComponentModel);
-
-
-/**
- * Sets the volume level.
- *
- * @param {number} newLevel The new volume level.
- */
-stomp.box.volume.ComponentModel.prototype.setLevel = function(newLevel) {
-    this.effect.gain.value = newLevel;
-};

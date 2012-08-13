@@ -77,6 +77,20 @@ stomp.box.box.ComponentModel.prototype.getEffect = function() {
 stomp.box.box.ComponentModel.prototype.setInput = function(input) {
     this.input = input;
 };
+
+
+/**
+ * Sets the level of the effect.
+
+ * @param {number} newLevel The new level of the effect.
+ */
+stomp.box.box.ComponentModel.prototype.setLevel = function(newLevel) {
+    newLevel = Math.min(newLevel, 100);
+    newLevel = newLevel / 10;
+    this.outputBuffer.gain.value = newLevel;
+};
+
+
 /**
  * Routes the internal effects chain.
  *
