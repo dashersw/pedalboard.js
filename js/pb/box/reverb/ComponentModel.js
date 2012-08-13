@@ -60,16 +60,6 @@ goog.inherits(pb.box.reverb.ComponentModel, pb.box.box.ComponentModel);
 pb.box.reverb.ComponentModel.prototype.IRPath = 'audio/ir/reverb/pcm90cleanplate.wav';
 
 
-/**
- * Sets the level of the reverb effect.
-
- * @param {number} newLevel The new level of the reverb effect.
- */
-pb.box.reverb.ComponentModel.prototype.setLevel = function(newLevel) {
-    this.effect.gain.value = newLevel;
-};
-
-
 
 
 /**

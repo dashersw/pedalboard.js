@@ -42,13 +42,3 @@ goog.inherits(pb.box.reverb.Component, pb.box.box.Component);
  * @override
  */
 pb.box.reverb.Component.prototype.modelClass = pb.box.reverb.ComponentModel;
-
-
-/**
- * Sets the level of the reverb effect.
- *
- * @param {number} newLevel The new level of the reverb effect.
- */
-pb.box.reverb.Component.prototype.setLevel = function(newLevel) {
-    this.model.setLevel(newLevel);
-};
