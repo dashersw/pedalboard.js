@@ -54,6 +54,11 @@ stomp.box.overdrive.Component.prototype.createPots = function() {
 /**
  * @override
  */
+stomp.box.overdrive.Component.prototype.bindModelEvents = function() {
+    goog.events.listen(this.drivePot.model, stomp.pot.PotComponentModel.EventType.VALUE_CHANGED, function(e) {
+        this.model.setDrive(e.newValue);
+    }, false, this);
+};
 
 
 /**
@@ -63,9 +68,7 @@ stomp.box.overdrive.Component.prototype.createPots = function() {
  */
 stomp.box.overdrive.Component.prototype.setDrive = function(newValue) {
     this.drivePot.setValue(newValue);
-    this.model.setDrive(newValue);
 };
-
 
 /**
  * @override
