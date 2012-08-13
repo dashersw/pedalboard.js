@@ -33,7 +33,7 @@ goog.require('pb.box.box.ComponentModel');
  */
 pb.box.overdrive.ComponentModel = function(context) {
     goog.base(this, context);
-    this.lowPassFreq = 400;
+    this.lowPassFreq = 1600;
     this.secondLowPassFreq = 4000;
 
     this.lowPass = this.context.createBiquadFilter();
@@ -52,10 +52,11 @@ pb.box.overdrive.ComponentModel = function(context) {
     this.compressor.threshold.value = -10;
 
     this.effects = [
+//        this.gain,
+//        this.waveShaper2,
+        this.waveShaper,
+//        this.secondLowPass,
         this.lowPass,
-        this.gain,
-        //        this.waveShaper,
-        this.secondLowPass,
         this.compressor
     ];
 };
@@ -77,7 +78,7 @@ pb.box.overdrive.ComponentModel.prototype.createWSCurve = function(amount) {
         var x = i * 2 / n_samples - 1;
         this.wsCurve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
 
-        this.wsCurve2[i] = this.wsCurve[i] * 200;
+        this.wsCurve2[i] = this.wsCurve[i] * 10;
     }
 
     this.waveShaper.curve = this.wsCurve;
@@ -91,15 +92,14 @@ pb.box.overdrive.ComponentModel.prototype.createWSCurve = function(amount) {
  * @param {number} newDrive Drive level to set.
  */
 pb.box.overdrive.ComponentModel.prototype.setDrive = function(newDrive) {
-    var input = Math.min(newDrive, 10);
-
+    var input = newDrive / 100;
+    if (input < 1) input = 1;
     var curveInput = Math.min(Math.pow(input, 3) + 1, 1000);
-
     this.createWSCurve(curveInput);
 
-    this.lowPass.frequency.value = 20000 / ((input || 0.2) * 2.5);
+    this.lowPass.frequency.value = 20000 / ((input || 0.2)/1.4);
     this.secondLowPass.frequency.value = 20000 / ((input || 2) * 0.25);
-    this.gain.gain.value = input * 100 || 1;
+    //    this.gain.gain.value = input * 100 || 1;
 };
 
 
