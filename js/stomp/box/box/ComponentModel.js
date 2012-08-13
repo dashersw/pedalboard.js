@@ -85,7 +85,7 @@ stomp.box.box.ComponentModel.prototype.setInput = function(input) {
  * @param {number} newLevel The new level of the effect.
  */
 stomp.box.box.ComponentModel.prototype.setLevel = function(newLevel) {
-    newLevel = Math.min(newLevel, 100);
+    newLevel = Math.min(newLevel, 10);
     newLevel = newLevel / 10;
     this.outputBuffer.gain.value = newLevel;
 };
