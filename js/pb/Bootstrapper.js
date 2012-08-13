@@ -23,6 +23,8 @@ goog.provide('pb.Bootstrapper');
 goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventTarget');
+goog.require('pb.box.conv.Component');
+goog.require('pb.box.overdrive.Component');
 goog.require('pb.box.reverb.Component');
 goog.require('pb.box.volume.Component');
 goog.require('pb.io.FileInput');
@@ -45,10 +47,20 @@ pb.Bootstrapper = function() {
  * Initializes the input, the output and the pedal components.
  */
 pb.Bootstrapper.prototype.init = function() {
-    this.input = new pb.io.FileInput(this.context, 'audio/sample.mp3');
+    this.input = new pb.io.FileInput(this.context, 'audio/samples/sample.mp3');
     this.output = new pb.io.Output(this.context);
-    this.volumePedal = new pb.box.volume.Component(this.context);
+    this.overdrivePedal = new pb.box.overdrive.Component(this.context);
     this.reverbPedal = new pb.box.reverb.Component(this.context);
+    this.volumePedal = new pb.box.volume.Component(this.context);
+    this.speaker = new pb.box.conv.Component(this.context);
+    this.chain = [
+        this.input,
+        this.overdrivePedal,
+        this.reverbPedal,
+        this.volumePedal,
+        this.speaker,
+        this.output
+    ];
 };
 
 
@@ -57,9 +69,9 @@ pb.Bootstrapper.prototype.init = function() {
  * Input -> volume pedal -> reverb pedal
  */
 pb.Bootstrapper.prototype.route = function() {
-    this.input.connect(this.volumePedal);
-    this.volumePedal.connect(this.reverbPedal);
-    this.reverbPedal.connect(this.output);
+    for (var i = 0; i < this.chain.length - 1; i++) {
+        this.chain[i].connect(this.chain[i + 1]);
+    }
 };
 
 
