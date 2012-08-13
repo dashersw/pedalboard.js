@@ -57,6 +57,11 @@ pb.box.overdrive.Component.prototype.createPots = function() {
 /**
  * @override
  */
+pb.box.overdrive.Component.prototype.bindModelEvents = function() {
+    goog.events.listen(this.drivePot.model, pb.pot.PotComponentModel.EventType.VALUE_CHANGED, function(e) {
+        this.model.setDrive(e.newValue);
+    }, false, this);
+};
 
 
 /**
@@ -66,9 +71,7 @@ pb.box.overdrive.Component.prototype.createPots = function() {
  */
 pb.box.overdrive.Component.prototype.setDrive = function(newValue) {
     this.drivePot.setValue(newValue);
-    this.model.setDrive(newValue);
 };
-
 
 /**
  * @override
