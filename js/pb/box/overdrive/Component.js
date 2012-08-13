@@ -34,6 +34,9 @@ goog.require('pb.box.overdrive.ComponentModel');
  */
 pb.box.overdrive.Component = function(context) {
     goog.base(this, context);
+
+    this.drivePot = new pb.pot.PotComponent(this.model.gain.gain, 'Drive', 1000);
+    this.pots.push(this.drivePot);
 };
 goog.inherits(pb.box.overdrive.Component, pb.box.box.Component);
 
@@ -42,6 +45,17 @@ goog.inherits(pb.box.overdrive.Component, pb.box.box.Component);
  * @override
  */
 pb.box.overdrive.Component.prototype.modelClass = pb.box.overdrive.ComponentModel;
+
+
+/**
+ * Sets the drive pot.
+ *
+ * @param {number} newValue New drive value, ranges between 0-10.
+ */
+pb.box.overdrive.Component.prototype.setDrive = function(newValue) {
+    this.drivePot.setValue(newValue);
+    this.model.setDrive(newValue);
+};
 
 
 /**
