@@ -895,11 +895,15 @@ goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/c
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/clipboardbutton.js', ['goog.silverlight.ClipboardButton', 'goog.silverlight.ClipboardButtonType', 'goog.silverlight.ClipboardEvent', 'goog.silverlight.CopyButton', 'goog.silverlight.PasteButton', 'goog.silverlight.PasteButtonEvent'], ['goog.asserts', 'goog.events.Event', 'goog.math.Size', 'goog.silverlight', 'goog.ui.Component']);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/silverlight.js', ['goog.silverlight'], []);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/supporteduseragent.js', ['goog.silverlight.supportedUserAgent'], []);
-goog.addDependency('../../../../../stomp/Bootstrapper.js', ['stomp.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'stomp.box.reverb.Component', 'stomp.box.volume.Component', 'stomp.io.FileInput', 'stomp.io.Output']);
+goog.addDependency('../../../../../stomp/Bootstrapper.js', ['stomp.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'stomp.box.conv.Component', 'stomp.box.overdrive.Component', 'stomp.box.reverb.Component', 'stomp.box.volume.Component', 'stomp.io.FileInput', 'stomp.io.Output']);
 goog.addDependency('../../../../../stomp/Connectable.js', ['stomp.Connectable'], []);
 goog.addDependency('../../../../../stomp/ConnectableComponent.js', ['stomp.ConnectableComponent'], []);
 goog.addDependency('../../../../../stomp/box/box/Component.js', ['stomp.box.box.Component'], ['stomp.ConnectableComponent', 'stomp.box.box.ComponentModel']);
 goog.addDependency('../../../../../stomp/box/box/ComponentModel.js', ['stomp.box.box.ComponentModel'], ['stomp.Connectable']);
+goog.addDependency('../../../../../stomp/box/conv/Component.js', ['stomp.box.conv.Component'], ['stomp.box.box.Component', 'stomp.box.conv.ComponentModel']);
+goog.addDependency('../../../../../stomp/box/conv/ComponentModel.js', ['stomp.box.conv.ComponentModel'], ['stomp.box.box.ComponentModel']);
+goog.addDependency('../../../../../stomp/box/overdrive/Component.js', ['stomp.box.overdrive.Component'], ['stomp.box.box.Component', 'stomp.box.overdrive.ComponentModel']);
+goog.addDependency('../../../../../stomp/box/overdrive/ComponentModel.js', ['stomp.box.overdrive.ComponentModel'], ['stomp.box.box.ComponentModel']);
 goog.addDependency('../../../../../stomp/box/reverb/Component.js', ['stomp.box.reverb.Component'], ['stomp.box.box.Component', 'stomp.box.reverb.ComponentModel']);
 goog.addDependency('../../../../../stomp/box/reverb/ComponentModel.js', ['stomp.box.reverb.ComponentModel'], ['stomp.box.box.ComponentModel']);
 goog.addDependency('../../../../../stomp/box/volume/Component.js', ['stomp.box.volume.Component'], ['stomp.box.box.Component', 'stomp.box.volume.ComponentModel']);
