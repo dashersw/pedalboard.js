@@ -36,10 +36,9 @@ goog.require('tart.ui.DlgComponent');
  * @param {webkitAudioContext} context Audio context the pedal will work on.
  */
 pb.box.box.Component = function(context) {
-    goog.base(this);
     this.model = new this.modelClass(context);
-    this.volumePot = new pb.pot.PotComponent(this.model.outputBuffer.gain, 'Volume', 1);
-    this.pots = [].concat(this.volumePot);
+    this.createPots();
+    goog.base(this);
 };
 goog.inherits(pb.box.box.Component, tart.ui.DlgComponent);
 
@@ -49,6 +48,12 @@ goog.inherits(pb.box.box.Component, tart.ui.DlgComponent);
  *       work with.
  */
 pb.box.box.Component.prototype.modelClass = pb.box.box.ComponentModel;
+
+
+pb.box.box.Component.prototype.createPots = function() {
+    this.volumePot = new pb.pot.PotComponent(this.model.outputBuffer.gain, 'Volume', 1);
+    this.pots = [].concat(this.volumePot);
+};
 
 
 /**
