@@ -39,3 +39,9 @@ goog.inherits(stomp.box.volume.Component, stomp.box.box.Component);
  * @override
  */
 stomp.box.volume.Component.prototype.modelClass = stomp.box.volume.ComponentModel;
+
+
+/**
+ * @override
+ */
+stomp.box.volume.Component.prototype.name = 'volume';

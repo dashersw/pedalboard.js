@@ -39,3 +39,9 @@ goog.inherits(stomp.box.overdrive.Component, stomp.box.box.Component);
  * @override
  */
 stomp.box.overdrive.Component.prototype.modelClass = stomp.box.overdrive.ComponentModel;
+
+
+/**
+ * @override
+ */
+stomp.box.overdrive.Component.prototype.name = 'overdrive';

@@ -39,3 +39,9 @@ goog.inherits(stomp.box.reverb.Component, stomp.box.box.Component);
  * @override
  */
 stomp.box.reverb.Component.prototype.modelClass = stomp.box.reverb.ComponentModel;
+
+
+/**
+ * @override
+ */
+stomp.box.reverb.Component.prototype.name = 'reverb';

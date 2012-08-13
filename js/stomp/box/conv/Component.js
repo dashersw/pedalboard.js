@@ -39,3 +39,9 @@ goog.inherits(stomp.box.conv.Component, stomp.box.box.Component);
  * @override
  */
 stomp.box.conv.Component.prototype.modelClass = stomp.box.conv.ComponentModel;
+
+
+/**
+ * @override
+ */
+stomp.box.conv.Component.prototype.name = 'convo';
