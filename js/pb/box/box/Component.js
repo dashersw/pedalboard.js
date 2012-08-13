@@ -22,6 +22,8 @@
 goog.provide('pb.box.box.Component');
 goog.require('pb.ConnectableComponent');
 goog.require('pb.box.box.ComponentModel');
+goog.require('pb.pot.PotComponent');
+goog.require('tart.ui.DlgComponent');
 
 
 
@@ -29,12 +31,17 @@ goog.require('pb.box.box.ComponentModel');
  * Base pedal.
  *
  * @constructor
+ * @extends {tart.ui.DlgComponent}
  * @implements {pb.ConnectableComponent}
  * @param {webkitAudioContext} context Audio context the pedal will work on.
  */
 pb.box.box.Component = function(context) {
+    goog.base(this);
     this.model = new this.modelClass(context);
+    this.volumePot = new pb.pot.PotComponent(this.model.outputBuffer.gain, 'Volume', 1);
+    this.pots = [].concat(this.volumePot);
 };
+goog.inherits(pb.box.box.Component, tart.ui.DlgComponent);
 
 
 /**
@@ -81,7 +88,44 @@ pb.box.box.Component.prototype.connect = function(destination) {
  * @param {number} newLevel The new level of the effect.
  */
 pb.box.box.Component.prototype.setLevel = function(newLevel) {
-    this.model.setLevel(newLevel);
+    this.volumePot.setValue(newLevel);
+};
+
+
+/**
+ * @override
+ */
+pb.box.box.Component.prototype.templates_base = function() {
+    return '' +
+        '<div id="' + this.id + '" class="box ' + this.name + '">' +
+           '<div class="pots">' +
+                this.getPots() +
+           '</div>' +
+           '<div class="name">' + this.name + '</div>' +
+        '</div>';
+};
+
+
+/**
+ * @return {string} Pot placeholder templates.
+ */
+pb.box.box.Component.prototype.getPots = function() {
+    var rv = '';
+    goog.array.forEach(this.pots, function(pot) {
+        rv += pot.getPlaceholder();
+    });
+
+    return rv;
+};
+
+
+/**
+ * @override
+ */
+pb.box.box.Component.prototype.render = function() {
+    goog.array.forEach(this.pots, function(pot) {
+        pot.render();
+    });
 };
 
 
