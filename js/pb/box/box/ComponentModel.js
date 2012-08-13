@@ -33,7 +33,20 @@ goog.require('pb.Connectable');
  */
 pb.box.box.ComponentModel = function(context) {
     this.context = context;
-    this.effect = this.context.createGainNode();
+    this.inputBuffer = this.context.createGainNode();
+    this.outputBuffer = this.context.createGainNode();
+
+    /**
+ *
+ * @type {Array.<AudioNode>}
+ */
+    this.chain = [];
+
+    /**
+ *
+ * @type {Array.<AudioNode>}
+ */
+    this.effects = [];
 };
 
 
@@ -43,7 +56,9 @@ pb.box.box.ComponentModel = function(context) {
  * @param {AudioNode} destination Next audio node where the output of this model's node will connect to.
  */
 pb.box.box.ComponentModel.prototype.connect = function(destination) {
-    this.effect.connect(destination);
+    this.chain = [].concat(this.inputBuffer, this.effects, this.outputBuffer, destination);
+
+    this.routeInternal();
 };
 
 
@@ -53,7 +68,7 @@ pb.box.box.ComponentModel.prototype.connect = function(destination) {
  * @return {AudioNode} The effect node of this component.
  */
 pb.box.box.ComponentModel.prototype.getEffect = function() {
-    return this.effect;
+    return this.inputBuffer;
 };
 
 
@@ -64,4 +79,16 @@ pb.box.box.ComponentModel.prototype.getEffect = function() {
  */
 pb.box.box.ComponentModel.prototype.setInput = function(input) {
     this.input = input;
+};
+/**
+ * Routes the internal effects chain.
+ *
+ * @protected
+ */
+pb.box.box.ComponentModel.prototype.routeInternal = function() {
+    var chain = this.chain;
+
+    for (var i = 0, len = chain.length - 1; i < len; i++) {
+        chain[i].connect(chain[i + 1]);
+    }
 };

@@ -43,9 +43,11 @@ goog.require('pb.box.box.ComponentModel');
 pb.box.reverb.ComponentModel = function(context) {
     goog.base(this, context);
     this.conv = this.context.createConvolver();
-    this.conv.connect(this.effect);
+
+    this.effects = [this.conv];
 
     this.loadIR();
+
 };
 goog.inherits(pb.box.reverb.ComponentModel, pb.box.box.ComponentModel);
 
@@ -68,12 +70,6 @@ pb.box.reverb.ComponentModel.prototype.setLevel = function(newLevel) {
 };
 
 
-/**
- * @override
- */
-pb.box.reverb.ComponentModel.prototype.getEffect = function() {
-    return this.conv;
-};
 
 
 /**
@@ -81,7 +77,7 @@ pb.box.reverb.ComponentModel.prototype.getEffect = function() {
  */
 pb.box.reverb.ComponentModel.prototype.connect = function(destination) {
     goog.base(this, 'connect', destination);
-    this.input.connect(destination);
+    this.inputBuffer.connect(destination);
 };
 
 

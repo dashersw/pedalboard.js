@@ -80,6 +80,7 @@ pb.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
  * @param {pb.ConnectableComponent} destination Next pedal where this input will connect to.
  */
 pb.io.Input.prototype.connect = function(destination) {
+    destination.setInput(this);
     this.source.connect(destination.getEffect());
 };
 
