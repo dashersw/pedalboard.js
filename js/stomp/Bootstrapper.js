@@ -59,6 +59,16 @@ stomp.Bootstrapper.prototype.init = function() {
     ];
     this.chain = [].concat(this.input, this.effects, this.output);
 
+    goog.array.forEach(this.effects, function(effect) {
+        document.getElementsByTagName('body')[0].innerHTML += effect.getPlaceholder();
+    });
+    goog.array.forEach(this.effects, function(effect) {
+        effect.render();
+    });
+
+    this.overdrivePedal.setDrive(10);
+    this.volumePedal.setLevel(1);
+    this.reverbPedal.setLevel(3);
 };
 
 
