@@ -107,7 +107,6 @@ pb.pot.PotComponent.prototype.mappings = {
  */
 pb.pot.PotComponent.prototype.bindModelEvents = function() {
     goog.events.listen(this.model, pb.pot.PotComponentModel.EventType.VALUE_CHANGED, function(e) {
-        console.log(e.newValue);
         this.rendered && this.updateUi();
     }, false, this);
 };
