@@ -42,3 +42,9 @@ goog.inherits(pb.box.conv.Component, pb.box.box.Component);
  * @override
  */
 pb.box.conv.Component.prototype.modelClass = pb.box.conv.ComponentModel;
+
+
+/**
+ * @override
+ */
+pb.box.conv.Component.prototype.name = 'convo';

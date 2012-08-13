@@ -42,3 +42,9 @@ goog.inherits(pb.box.reverb.Component, pb.box.box.Component);
  * @override
  */
 pb.box.reverb.Component.prototype.modelClass = pb.box.reverb.ComponentModel;
+
+
+/**
+ * @override
+ */
+pb.box.reverb.Component.prototype.name = 'reverb';

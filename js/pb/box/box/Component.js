@@ -83,3 +83,11 @@ pb.box.box.Component.prototype.connect = function(destination) {
 pb.box.box.Component.prototype.setLevel = function(newLevel) {
     this.model.setLevel(newLevel);
 };
+
+
+/**
+ * Name of the pedal. It's written on top plate.
+ *
+ * @type {string}
+ */
+pb.box.box.Component.prototype.name = 'pb';

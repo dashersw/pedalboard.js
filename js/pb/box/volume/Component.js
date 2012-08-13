@@ -42,3 +42,9 @@ goog.inherits(pb.box.volume.Component, pb.box.box.Component);
  * @override
  */
 pb.box.volume.Component.prototype.modelClass = pb.box.volume.ComponentModel;
+
+
+/**
+ * @override
+ */
+pb.box.volume.Component.prototype.name = 'volume';

@@ -42,3 +42,9 @@ goog.inherits(pb.box.overdrive.Component, pb.box.box.Component);
  * @override
  */
 pb.box.overdrive.Component.prototype.modelClass = pb.box.overdrive.ComponentModel;
+
+
+/**
+ * @override
+ */
+pb.box.overdrive.Component.prototype.name = 'overdrive';
