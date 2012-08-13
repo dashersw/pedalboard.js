@@ -31,9 +31,6 @@ goog.require('stomp.box.overdrive.ComponentModel');
  */
 stomp.box.overdrive.Component = function(context) {
     goog.base(this, context);
-
-    this.drivePot = new stomp.pot.PotComponent(this.model.gain.gain, 'Drive', 1000);
-    this.pots.push(this.drivePot);
 };
 goog.inherits(stomp.box.overdrive.Component, stomp.box.box.Component);
 
@@ -42,6 +39,21 @@ goog.inherits(stomp.box.overdrive.Component, stomp.box.box.Component);
  * @override
  */
 stomp.box.overdrive.Component.prototype.modelClass = stomp.box.overdrive.ComponentModel;
+
+
+/**
+ * @override
+ */
+stomp.box.overdrive.Component.prototype.createPots = function() {
+    goog.base(this, 'createPots');
+    this.drivePot = new stomp.pot.PotComponent(this.model.gain.gain, 'Drive', 1000);
+    this.pots.push(this.drivePot);
+};
+
+
+/**
+ * @override
+ */
 
 
 /**
