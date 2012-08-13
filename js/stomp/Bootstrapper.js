@@ -50,14 +50,15 @@ stomp.Bootstrapper.prototype.init = function() {
     this.reverbPedal = new stomp.box.reverb.Component(this.context);
     this.volumePedal = new stomp.box.volume.Component(this.context);
     this.speaker = new stomp.box.conv.Component(this.context);
-    this.chain = [
-        this.input,
+
+    this.effects = [
         this.overdrivePedal,
         this.reverbPedal,
         this.volumePedal,
-        this.speaker,
-        this.output
+        this.speaker
     ];
+    this.chain = [].concat(this.input, this.effects, this.output);
+
 };
 
 
