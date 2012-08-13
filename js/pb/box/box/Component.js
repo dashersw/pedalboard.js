@@ -50,6 +50,9 @@ goog.inherits(pb.box.box.Component, tart.ui.DlgComponent);
 pb.box.box.Component.prototype.modelClass = pb.box.box.ComponentModel;
 
 
+/**
+ * Creates the potentiometers to control this pedals parameters.
+ */
 pb.box.box.Component.prototype.createPots = function() {
     this.volumePot = new pb.pot.PotComponent(this.model.outputBuffer.gain, 'Volume', 1);
     this.pots = [].concat(this.volumePot);
@@ -125,7 +128,7 @@ pb.box.box.Component.prototype.getPots = function() {
 
 
 /**
- * @override
+ * This method is called after the stomp box is appended to DOM. It then renders all its potentiometers.
  */
 pb.box.box.Component.prototype.render = function() {
     goog.array.forEach(this.pots, function(pot) {

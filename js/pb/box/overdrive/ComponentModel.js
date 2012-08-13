@@ -52,10 +52,10 @@ pb.box.overdrive.ComponentModel = function(context) {
     this.compressor.threshold.value = -10;
 
     this.effects = [
-//        this.gain,
-//        this.waveShaper2,
+        //        this.gain,
+        //        this.waveShaper2,
         this.waveShaper,
-//        this.secondLowPass,
+        //        this.secondLowPass,
         this.lowPass,
         this.compressor
     ];
@@ -97,7 +97,7 @@ pb.box.overdrive.ComponentModel.prototype.setDrive = function(newDrive) {
     var curveInput = Math.min(Math.pow(input, 3) + 1, 1000);
     this.createWSCurve(curveInput);
 
-    this.lowPass.frequency.value = 20000 / ((input || 0.2)/1.4);
+    this.lowPass.frequency.value = 20000 / ((input || 0.2) / 1.4);
     this.secondLowPass.frequency.value = 20000 / ((input || 2) * 0.25);
     //    this.gain.gain.value = input * 100 || 1;
 };
