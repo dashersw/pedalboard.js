@@ -57,9 +57,7 @@ goog.inherits(pb.box.reverb.ComponentModel, pb.box.box.ComponentModel);
  *
  * @type {string}
  */
-pb.box.reverb.ComponentModel.prototype.IRPath = 'audio/ir/reverb/pcm90cleanplate.wav';
-
-
+pb.box.reverb.ComponentModel.prototype.iRPath = 'audio/ir/reverb/pcm90cleanplate.wav';
 
 
 /**
@@ -78,14 +76,12 @@ pb.box.reverb.ComponentModel.prototype.loadIR = function() {
     var that = this,
         request = new XMLHttpRequest();
 
-    request.open('GET', this.IRPath, true);
+    request.open('GET', this.iRPath, true);
     request.responseType = 'arraybuffer';
 
 
     request.onload = function() {
         that.context.decodeAudioData(request.response, function(buffer) {
-            console.log(buffer);
-            window.buf = buffer;
             that.conv.buffer = buffer;
         });
     };
