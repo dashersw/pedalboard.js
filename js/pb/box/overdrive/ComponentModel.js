@@ -71,7 +71,7 @@ goog.inherits(pb.box.overdrive.ComponentModel, pb.box.box.ComponentModel);
  */
 pb.box.overdrive.ComponentModel.prototype.createWSCurve = function(amount) {
     var k = amount;
-    var n_samples = 44100;
+    var n_samples = 88200;
     this.wsCurve = new Float32Array(n_samples);
     //    this.wsCurve2 = new Float32Array(n_samples);
     var deg = Math.PI / 180;
