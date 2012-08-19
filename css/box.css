@@ -1,48 +1,22 @@
-body {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding-top: 100px
-}
 
 .box {
     height: 400px;
-    width: 300px;
+    width: 225px;
     border-radius: 10px;
     background: green;
     margin: 20px;
     padding: 20px;
-    float: left;
+    display: inline-block;
     color: white;
     font-family: 'Damion', cursive;
-    text-align: center
+    text-align: center;
 }
 
 .box>.name {
     clear: both;
     text-align: center;
-    font-size: 66px;
-    top: 120px
-}
-
-.pots {
-    display: inline-block
-}
-
-.pot {
-    float: left;
-    font-size: 28px;
-    text-align: center;
-    margin: 10px
-}
-
-.knob {
-    height: 126px;
-    width:127px;
-    background: url('../img/pot-small.png');
+    font-size: 60px;
+    top: 80px;
 }
 
 .reverb {

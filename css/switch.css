@@ -1,0 +1,32 @@
+.switch {
+    cursor: pointer;
+    margin: 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+.button {
+    height: 56px;
+    width: 64px;
+    background: url('../img/switch-smaller.png');
+}
+
+.switches {
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+    width: 100%;
+}
+
+.pot {
+    display: inline-block;
+    font-size: 28px;
+    text-align: center;
+    margin: 8px;
+}
+
+.knob {
+    height: 96px;
+    width:95px;
+    background: url('../img/pot-smaller.png');
+}
