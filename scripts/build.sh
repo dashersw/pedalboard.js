@@ -20,6 +20,7 @@ js/library/tartJS/tools/goog/build/closurebuilder.py \
 --compiler_flags="--externs=js/library/tartJS/tart/externs/w3c_audio.js" \
 --compiler_flags="--externs=js/library/tartJS/tart/externs/jasmine.externs.js" \
 --compiler_flags="--externs=js/pb/externs/pb.externs.js" \
+--compiler_flags="--externs=js/pb/externs/Microphone.externs.js" \
 --compiler_flags="--jscomp_error=accessControls" \
 --compiler_flags="--jscomp_error=checkRegExp" \
 --compiler_flags="--jscomp_error=checkTypes" \
