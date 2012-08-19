@@ -6,12 +6,6 @@ html {
 body {
     height: 100%;
     width: 100%;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     -webkit-transform-style: preserve-3d;
     -webkit-transform-origin: 50% 0%;
     -webkit-perspective: 600px;

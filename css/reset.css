@@ -48,4 +48,7 @@ table {
 }
 * {
     position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 }
