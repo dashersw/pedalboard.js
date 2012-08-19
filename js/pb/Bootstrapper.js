@@ -63,7 +63,7 @@ pb.Bootstrapper.prototype.init = function() {
     this.chain = [].concat(this.input, this.effects, this.output);
 
     goog.array.forEach(this.effects, function(effect) {
-        document.getElementsByTagName('body')[0].innerHTML += effect.getPlaceholder();
+        goog.dom.getElement('cont').innerHTML += effect.getPlaceholder();
     });
     goog.array.forEach(this.effects, function(effect) {
         effect.render();
