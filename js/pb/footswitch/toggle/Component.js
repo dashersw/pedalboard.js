@@ -31,9 +31,9 @@ goog.require('pb.footswitch.Component');
  * @constructor
  * @extends {pb.footswitch.Component}
  *
- * @param {string=} name Name of the switch. Will be written under it.
+ * @param {string=} opt_name Name of the switch. Will be written under it.
  */
-pb.footswitch.toggle.Component = function(name) {
-    goog.base(this, name);
+pb.footswitch.toggle.Component = function(opt_name) {
+    goog.base(this, opt_name);
 };
 goog.inherits(pb.footswitch.toggle.Component, pb.footswitch.Component);

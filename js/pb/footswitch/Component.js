@@ -33,10 +33,10 @@ goog.require('tart.ui.DlgComponent');
  * @constructor
  * @extends {tart.ui.DlgComponent}
  *
- * @param {string=} name Name of the switch. Will be written under it.
+ * @param {string=} opt_name Name of the switch. Will be written under it.
  */
-pb.footswitch.Component = function(name) {
-    this.model = new this.modelClass(name);
+pb.footswitch.Component = function(opt_name) {
+    this.model = new this.modelClass(opt_name);
     goog.base(this);
 };
 goog.inherits(pb.footswitch.Component, tart.ui.DlgComponent);

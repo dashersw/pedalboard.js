@@ -29,12 +29,12 @@ goog.require('tart.ui.ComponentModel');
  * @constructor
  * @extends {tart.ui.ComponentModel}
  *
- * @param {string=} name Name of the switch. Will be written under it.
+ * @param {string=} opt_name Name of the switch. Will be written under it.
  */
-pb.footswitch.ComponentModel = function(name) {
+pb.footswitch.ComponentModel = function(opt_name) {
     goog.base(this);
 
-    this.name = name;
+    this.name = opt_name;
     this.nodes = [[], [], []];
     this.state = true;
 };
