@@ -1,3 +1,7 @@
 [submodule "js/library/tartJS"]
 	path = js/library/tartJS
 	url = https://github.com/tart/tartJS.git
+
+[submodule "js/library/microphone.js"]
+	path = js/library/microphone.js
+	url = git://github.com/dashersw/microphone.js.git
