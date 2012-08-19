@@ -103,4 +103,7 @@ pb.io.Input.prototype.getOutput = function() {
 pb.io.Input.prototype.setPrev = function() {};
 
 
+/**
+ * Dummy method for the Connectable interface. It's meaningless for an input to have an input.
+ */
 pb.io.Input.prototype.getInput = function() {};

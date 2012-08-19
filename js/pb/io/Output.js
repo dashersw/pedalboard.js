@@ -65,4 +65,7 @@ pb.io.Output.prototype.setPrev = function(prev) {
 pb.io.Output.prototype.connect = function() {};
 
 
+/**
+ * Dummy method for the Connectable interface. It's meaningless for an output to have an output.
+ */
 pb.io.Output.prototype.getOutput = function() {};
