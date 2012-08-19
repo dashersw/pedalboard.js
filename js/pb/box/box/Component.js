@@ -22,8 +22,8 @@
 goog.provide('pb.box.box.Component');
 goog.require('pb.ConnectableComponent');
 goog.require('pb.box.box.ComponentModel');
-goog.require('pb.pot.Component');
 goog.require('pb.footswitch.toggle.Component');
+goog.require('pb.pot.Component');
 goog.require('tart.ui.DlgComponent');
 
 
