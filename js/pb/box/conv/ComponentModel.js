@@ -59,11 +59,9 @@ pb.box.conv.ComponentModel.prototype.iRPath = 'audio/ir/speaker/AK-SPKRS_VinUs_0
 /**
  * @override
  */
-pb.box.conv.ComponentModel.prototype.connect = function(destination) {
-    goog.base(this, 'connect', destination);
-    this.inputBuffer.connect(destination);
-    //    this.inputBuffer.gain.value = 0.1;
-    //    this.convGain.gain.value = 10;
+pb.box.conv.ComponentModel.prototype.routeInternal = function() {
+    goog.base(this, 'routeInternal');
+    this.inputBuffer.connect(this.outputBuffer);
 };
 
 

@@ -37,6 +37,7 @@ goog.require('pb.ConnectableComponent');
  */
 pb.io.Input = function(context) {
     this.source = context.createBufferSource(); // creates a sound source
+    this.source.loop = true;
 };
 goog.inherits(pb.io.Input, goog.events.EventTarget);
 
@@ -80,8 +81,8 @@ pb.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
  * @param {pb.ConnectableComponent} destination Next pedal where this input will connect to.
  */
 pb.io.Input.prototype.connect = function(destination) {
-    destination.setInput(this);
-    this.source.connect(destination.getEffect());
+    destination.setPrev(this);
+    this.source.connect(destination.getInput());
 };
 
 
@@ -90,7 +91,7 @@ pb.io.Input.prototype.connect = function(destination) {
  *
  * @return {AudioBufferSourceNode} The source of this input.
  */
-pb.io.Input.prototype.getEffect = function() {
+pb.io.Input.prototype.getOutput = function() {
     return this.source;
 };
 
@@ -99,4 +100,7 @@ pb.io.Input.prototype.getEffect = function() {
  * Dummy method for the Connectable interface. It's meaningless for an input to be connected to the output of another
  * thing.
  */
-pb.io.Input.prototype.setInput = function() {};
+pb.io.Input.prototype.setPrev = function() {};
+
+
+pb.io.Input.prototype.getInput = function() {};

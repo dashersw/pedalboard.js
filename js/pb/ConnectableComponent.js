@@ -42,9 +42,9 @@ pb.ConnectableComponent.prototype.connect = function(destination) {};
 /**
  * Sets the input of this ConnectableComponent to a node.
  *
- * @param {pb.ConnectableComponent} input The node that will be connected to the input of this ConnectableComponent.
+ * @param {pb.ConnectableComponent} prev The node that will be connected to the input of this ConnectableComponent.
  */
-pb.ConnectableComponent.prototype.setInput = function(input) {};
+pb.ConnectableComponent.prototype.setPrev = function(prev) {};
 
 
 /**
@@ -52,5 +52,5 @@ pb.ConnectableComponent.prototype.setInput = function(input) {};
  *
  * @return {AudioNode} The effect node of the Connectable.
  */
-pb.ConnectableComponent.prototype.getEffect = function() {};
+pb.ConnectableComponent.prototype.getInput = function() {};
 

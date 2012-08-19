@@ -43,8 +43,7 @@ goog.require('pb.box.box.ComponentModel');
 pb.box.reverb.ComponentModel = function(context) {
     goog.base(this, context);
     this.conv = this.context.createConvolver();
-
-    this.effects = [this.conv];
+    this.effects = [this.conv, this.level];
 
     this.loadIR();
 
@@ -63,9 +62,9 @@ pb.box.reverb.ComponentModel.prototype.iRPath = 'audio/ir/reverb/pcm90cleanplate
 /**
  * @override
  */
-pb.box.reverb.ComponentModel.prototype.connect = function(destination) {
-    goog.base(this, 'connect', destination);
-    this.inputBuffer.connect(destination);
+pb.box.reverb.ComponentModel.prototype.routeInternal = function() {
+    goog.base(this, 'routeInternal');
+    this.inputBuffer.connect(this.outputBuffer);
 };
 
 

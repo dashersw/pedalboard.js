@@ -33,7 +33,19 @@ goog.require('pb.Connectable');
  */
 pb.box.box.ComponentModel = function(context) {
     this.context = context;
+
+    /**
+     *
+     * @type {AudioGainNode}
+     * @protected
+     */
     this.inputBuffer = this.context.createGainNode();
+
+    /**
+     *
+     * @type {AudioGainNode}
+     * @protected
+     */
     this.outputBuffer = this.context.createGainNode();
 
     /**
@@ -42,11 +54,13 @@ pb.box.box.ComponentModel = function(context) {
  */
     this.chain = [];
 
+    this.level = this.context.createGainNode();
+
     /**
  *
  * @type {Array.<AudioNode>}
  */
-    this.effects = [];
+    this.effects = [this.level];
 };
 
 
@@ -56,29 +70,40 @@ pb.box.box.ComponentModel = function(context) {
  * @param {AudioNode} destination Next audio node where the output of this model's node will connect to.
  */
 pb.box.box.ComponentModel.prototype.connect = function(destination) {
-    this.chain = [].concat(this.inputBuffer, this.effects, this.outputBuffer, destination);
+    this.next = destination;
+    this.chain = [].concat(this.inputBuffer, this.effects, this.outputBuffer, this.next);
 
     this.routeInternal();
 };
 
 
 /**
- * Gets the main effects unit of a pedal, which is also the input node.
+ * Gets the input buffer of a pedal.
  *
- * @return {AudioNode} The effect node of this component.
+ * @return {AudioNode} The input buffer of this component.
  */
-pb.box.box.ComponentModel.prototype.getEffect = function() {
+pb.box.box.ComponentModel.prototype.getInput = function() {
     return this.inputBuffer;
+};
+
+
+/**
+ * Gets the output buffer of a pedal.
+ *
+ * @return {AudioNode} The output buffer of this component.
+ */
+pb.box.box.ComponentModel.prototype.getOutput = function() {
+    return this.outputBuffer;
 };
 
 
 /**
  * Lets the model know who is connected to its effects node.
  *
- * @param {AudioNode} input Previous node who is connected to this model's effects node.
+ * @param {AudioNode} prev Previous node who is connected to this model's effects node.
  */
-pb.box.box.ComponentModel.prototype.setInput = function(input) {
-    this.input = input;
+pb.box.box.ComponentModel.prototype.setPrev = function(prev) {
+    this.prev = prev;
 };
 
 
@@ -90,7 +115,7 @@ pb.box.box.ComponentModel.prototype.setInput = function(input) {
 pb.box.box.ComponentModel.prototype.setLevel = function(newLevel) {
     newLevel = Math.min(newLevel, 10);
     newLevel = newLevel / 10;
-    this.outputBuffer.gain.value = newLevel;
+    this.level.gain.value = newLevel;
 };
 
 
@@ -105,4 +130,9 @@ pb.box.box.ComponentModel.prototype.routeInternal = function() {
     for (var i = 0, len = chain.length - 1; i < len; i++) {
         chain[i].connect(chain[i + 1]);
     }
+
+    this.nodes = [
+        [this.effects[0], this.inputBuffer, this.outputBuffer],
+        [this.outputBuffer, goog.array.peek(this.effects), null]
+    ];
 };

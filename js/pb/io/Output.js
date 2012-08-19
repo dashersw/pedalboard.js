@@ -43,7 +43,7 @@ pb.io.Output = function(context) {
  *
  * @return {AudioDestinationNode} The final node in the signal chain.
  */
-pb.io.Output.prototype.getEffect = function() {
+pb.io.Output.prototype.getInput = function() {
     return this.source;
 };
 
@@ -51,10 +51,10 @@ pb.io.Output.prototype.getEffect = function() {
 /**
  * Lets the output know who is connected to it.
  *
- * @param {pb.ConnectableComponent} input Input node.
+ * @param {pb.ConnectableComponent} prev Input node.
  */
-pb.io.Output.prototype.setInput = function(input) {
-    this.input = input;
+pb.io.Output.prototype.setPrev = function(prev) {
+    this.prev = prev;
 };
 
 
@@ -63,3 +63,6 @@ pb.io.Output.prototype.setInput = function(input) {
  * It's already the final node in the signal chain.
  */
 pb.io.Output.prototype.connect = function() {};
+
+
+pb.io.Output.prototype.getOutput = function() {};

@@ -46,7 +46,7 @@ pb.box.overdrive.ComponentModel = function(context) {
 
     this.gain = this.context.createGainNode();
     this.waveShaper = this.context.createWaveShaper();
-    this.waveShaper2 = this.context.createWaveShaper();
+    //    this.waveShaper2 = this.context.createWaveShaper();
     this.setDrive(0);
     this.compressor = this.context.createDynamicsCompressor();
     this.compressor.threshold.value = -10;
@@ -55,9 +55,10 @@ pb.box.overdrive.ComponentModel = function(context) {
         //        this.gain,
         //        this.waveShaper2,
         this.waveShaper,
-        //        this.secondLowPass,
+        //                this.secondLowPass,
         this.lowPass,
-        this.compressor
+        this.compressor,
+        this.level
     ];
 };
 goog.inherits(pb.box.overdrive.ComponentModel, pb.box.box.ComponentModel);
@@ -72,17 +73,17 @@ pb.box.overdrive.ComponentModel.prototype.createWSCurve = function(amount) {
     var k = amount;
     var n_samples = 44100;
     this.wsCurve = new Float32Array(n_samples);
-    this.wsCurve2 = new Float32Array(n_samples);
+    //    this.wsCurve2 = new Float32Array(n_samples);
     var deg = Math.PI / 180;
     for (var i = 0; i < n_samples; i += 1) {
         var x = i * 2 / n_samples - 1;
         this.wsCurve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
 
-        this.wsCurve2[i] = this.wsCurve[i] * 10;
+        //        this.wsCurve2[i] = this.wsCurve[i] * 10;
     }
 
     this.waveShaper.curve = this.wsCurve;
-    this.waveShaper2.curve = this.wsCurve;
+    //    this.waveShaper2.curve = this.wsCurve;
 };
 
 
@@ -100,13 +101,4 @@ pb.box.overdrive.ComponentModel.prototype.setDrive = function(newDrive) {
     this.lowPass.frequency.value = 20000 / ((input || 0.2) / 1.4);
     this.secondLowPass.frequency.value = 20000 / ((input || 2) * 0.25);
     //    this.gain.gain.value = input * 100 || 1;
-};
-
-
-/**
- * @override
- */
-pb.box.overdrive.ComponentModel.prototype.connect = function(destination) {
-    goog.base(this, 'connect', destination);
-    //    this.inputBuffer.connect(destination);
 };

@@ -49,7 +49,7 @@ pb.box.overdrive.Component.prototype.modelClass = pb.box.overdrive.ComponentMode
  */
 pb.box.overdrive.Component.prototype.createPots = function() {
     goog.base(this, 'createPots');
-    this.drivePot = new pb.pot.PotComponent(this.model.gain.gain, 'Drive', 1000);
+    this.drivePot = new pb.pot.Component(this.model.gain.gain, 'Drive', 1000);
     this.pots.push(this.drivePot);
 };
 
@@ -58,7 +58,7 @@ pb.box.overdrive.Component.prototype.createPots = function() {
  * @override
  */
 pb.box.overdrive.Component.prototype.bindModelEvents = function() {
-    goog.events.listen(this.drivePot.model, pb.pot.PotComponentModel.EventType.VALUE_CHANGED, function(e) {
+    goog.events.listen(this.drivePot.model, pb.pot.ComponentModel.EventType.VALUE_CHANGED, function(e) {
         this.model.setDrive(e.newValue);
     }, false, this);
 };

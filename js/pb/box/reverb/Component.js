@@ -48,3 +48,12 @@ pb.box.reverb.Component.prototype.modelClass = pb.box.reverb.ComponentModel;
  * @override
  */
 pb.box.reverb.Component.prototype.name = 'reverb';
+
+
+/**
+ * @override
+ */
+pb.box.reverb.Component.prototype.createPots = function() {
+    this.volumePot = new pb.pot.Component(this.model.level.gain, 'Level', 1);
+    this.pots = [].concat(this.volumePot);
+};
