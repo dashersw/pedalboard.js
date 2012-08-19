@@ -24,9 +24,3 @@
     text-align: center;
     margin: 8px;
 }
-
-.knob {
-    height: 96px;
-    width:95px;
-    background: url('../img/pot-smaller.png');
-}
