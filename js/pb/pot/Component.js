@@ -20,9 +20,8 @@
  */
 
 
-goog.provide('pb.pot.PotComponent');
-goog.require('goog.events.MouseWheelHandler');
-goog.require('pb.pot.PotComponentModel');
+goog.provide('pb.pot.Component');
+goog.require('pb.pot.ComponentModel');
 goog.require('tart.ui.DlgComponent');
 
 
@@ -38,20 +37,20 @@ goog.require('tart.ui.DlgComponent');
  * @param {number} range The multiplier of the effect. Some effects (such as gain) need this to be on the order of
  *                       thousands.
  */
-pb.pot.PotComponent = function(param, name, range) {
+pb.pot.Component = function(param, name, range) {
     this.model = new this.modelClass(param, name, range || 1);
     this.setValue(10);
 
     goog.base(this);
 };
-goog.inherits(pb.pot.PotComponent, tart.ui.DlgComponent);
+goog.inherits(pb.pot.Component, tart.ui.DlgComponent);
 
 
 /**
- * @type {function(new: pb.pot.PotComponentModel, AudioParam, string, number)}
+ * @type {function(new: pb.pot.ComponentModel, AudioParam, string, number)}
  *       The component model this pot component will work with.
  */
-pb.pot.PotComponent.prototype.modelClass = pb.pot.PotComponentModel;
+pb.pot.Component.prototype.modelClass = pb.pot.ComponentModel;
 
 
 /**
@@ -59,7 +58,7 @@ pb.pot.PotComponent.prototype.modelClass = pb.pot.PotComponentModel;
  *
  * @param {number} newValue New value to be set.
  */
-pb.pot.PotComponent.prototype.setValue = function(newValue) {
+pb.pot.Component.prototype.setValue = function(newValue) {
     if (newValue < 0.1) newValue = 0.1;
     this.model.setValue(newValue);
 };
@@ -68,7 +67,7 @@ pb.pot.PotComponent.prototype.setValue = function(newValue) {
 /**
  * Updates the user interface - rotation - accordingly.
  */
-pb.pot.PotComponent.prototype.updateUi = function() {
+pb.pot.Component.prototype.updateUi = function() {
     var newStyle = 'rotate(' + (this.model.getNormalizedValue() * 260) + 'deg)';
     this.getChild(this.mappings.KNOB)[0].style['-webkit-transform'] = newStyle;
 };
@@ -77,7 +76,7 @@ pb.pot.PotComponent.prototype.updateUi = function() {
 /**
  * @override
  */
-pb.pot.PotComponent.prototype.templates_base = function() {
+pb.pot.Component.prototype.templates_base = function() {
     return '<div class="pot" id="' + this.id + '">' +
                '<div class="knob"></div>' +
                '<div class="name">' + this.model.name + '</div>' +
@@ -88,7 +87,7 @@ pb.pot.PotComponent.prototype.templates_base = function() {
 /**
  * Render method updates its knob.
  */
-pb.pot.PotComponent.prototype.render = function() {
+pb.pot.Component.prototype.render = function() {
     this.updateUi();
 
     this.rendered = true;
@@ -98,7 +97,7 @@ pb.pot.PotComponent.prototype.render = function() {
 /**
  * @enum {string} DOM mappings.
  */
-pb.pot.PotComponent.prototype.mappings = {
+pb.pot.Component.prototype.mappings = {
     KNOB: '.knob'
 };
 
@@ -106,8 +105,8 @@ pb.pot.PotComponent.prototype.mappings = {
 /**
  * @override
  */
-pb.pot.PotComponent.prototype.bindModelEvents = function() {
-    goog.events.listen(this.model, pb.pot.PotComponentModel.EventType.VALUE_CHANGED, function(e) {
+pb.pot.Component.prototype.bindModelEvents = function() {
+    goog.events.listen(this.model, pb.pot.ComponentModel.EventType.VALUE_CHANGED, function(e) {
         this.rendered && this.updateUi();
     }, false, this);
 };
@@ -133,4 +132,4 @@ pb.pot.PotComponent.prototype.bindModelEvents = function() {
             }
         }, false, this);
     };
-})(pb.pot.PotComponent.prototype);
+})(pb.pot.Component.prototype);

@@ -20,7 +20,7 @@
  */
 
 
-goog.provide('pb.pot.PotComponentModel');
+goog.provide('pb.pot.ComponentModel');
 goog.require('tart.ui.ComponentModel');
 
 
@@ -34,14 +34,14 @@ goog.require('tart.ui.ComponentModel');
  * @param {number} range The multiplier of the effect. Some effects (such as gain) need this to be on the order of
  *                       thousands.
  */
-pb.pot.PotComponentModel = function(param, name, range) {
+pb.pot.ComponentModel = function(param, name, range) {
     goog.base(this);
 
     this.param = param;
     this.name = name;
     this.range = range;
 };
-goog.inherits(pb.pot.PotComponentModel, tart.ui.ComponentModel);
+goog.inherits(pb.pot.ComponentModel, tart.ui.ComponentModel);
 
 
 /**
@@ -49,7 +49,7 @@ goog.inherits(pb.pot.PotComponentModel, tart.ui.ComponentModel);
  *
  * @param {number} newValue New value to be set.
  */
-pb.pot.PotComponentModel.prototype.setValue = function(newValue) {
+pb.pot.ComponentModel.prototype.setValue = function(newValue) {
     var oldValue = this.param.value;
     newValue = newValue * this.range;
     newValue = Math.min(newValue, 10 * this.range);
@@ -59,7 +59,7 @@ pb.pot.PotComponentModel.prototype.setValue = function(newValue) {
     this.param.value = newValue;
 
     this.dispatchEvent({
-        type: pb.pot.PotComponentModel.EventType.VALUE_CHANGED,
+        type: pb.pot.ComponentModel.EventType.VALUE_CHANGED,
         newValue: newValue,
         oldValue: oldValue
     });
@@ -69,7 +69,7 @@ pb.pot.PotComponentModel.prototype.setValue = function(newValue) {
 /**
  * @return {number} The normalized value of this pot's parameter (as calculated in value / range).
  */
-pb.pot.PotComponentModel.prototype.getNormalizedValue = function() {
+pb.pot.ComponentModel.prototype.getNormalizedValue = function() {
     return this.param.value / this.range;
 };
 
@@ -78,6 +78,6 @@ pb.pot.PotComponentModel.prototype.getNormalizedValue = function() {
  *
  * @enum {string}
  */
-pb.pot.PotComponentModel.EventType = {
+pb.pot.ComponentModel.EventType = {
     VALUE_CHANGED: 'valueChanged'
 };
