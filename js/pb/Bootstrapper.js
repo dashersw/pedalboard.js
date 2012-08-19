@@ -29,6 +29,7 @@ goog.require('pb.box.reverb.Component');
 goog.require('pb.box.volume.Component');
 goog.require('pb.io.FileInput');
 goog.require('pb.io.Output');
+goog.require('pb.io.StreamInput');
 
 
 
@@ -48,6 +49,8 @@ pb.Bootstrapper = function() {
  */
 pb.Bootstrapper.prototype.init = function() {
     this.input = new pb.io.FileInput(this.context, 'audio/samples/sample.mp3');
+    //        this.input = new pb.io.StreamInput(this.context);
+
     this.output = new pb.io.Output(this.context);
     this.overdrivePedal = new pb.box.overdrive.Component(this.context);
     this.reverbPedal = new pb.box.reverb.Component(this.context);
