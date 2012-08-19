@@ -59,7 +59,6 @@ pb.pot.Component.prototype.modelClass = pb.pot.ComponentModel;
  * @param {number} newValue New value to be set.
  */
 pb.pot.Component.prototype.setValue = function(newValue) {
-    if (newValue < 0.1) newValue = 0.1;
     this.model.setValue(newValue);
 };
 
