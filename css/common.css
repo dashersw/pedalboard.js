@@ -1,0 +1,34 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 0%;
+    -webkit-perspective: 600px;
+    overflow: hidden;
+}
+
+#bg {
+    height:300%;
+    width:300%;
+    top: -100%;
+    left:-100%;
+    z-index: -1;
+    position: fixed;
+    background: url('../img/floor.jpg');
+    -webkit-transform : translateZ(-50px) rotateX(10.5deg) rotateY(0deg) scale(0.5)
+}
+
+#cont {
+    text-align: center;
+}
