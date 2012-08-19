@@ -895,10 +895,10 @@ goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/c
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/clipboardbutton.js', ['goog.silverlight.ClipboardButton', 'goog.silverlight.ClipboardButtonType', 'goog.silverlight.ClipboardEvent', 'goog.silverlight.CopyButton', 'goog.silverlight.PasteButton', 'goog.silverlight.PasteButtonEvent'], ['goog.asserts', 'goog.events.Event', 'goog.math.Size', 'goog.silverlight', 'goog.ui.Component']);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/silverlight.js', ['goog.silverlight'], []);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/supporteduseragent.js', ['goog.silverlight.supportedUserAgent'], []);
-goog.addDependency('../../../../../pb/Bootstrapper.js', ['pb.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.box.conv.Component', 'pb.box.overdrive.Component', 'pb.box.reverb.Component', 'pb.box.volume.Component', 'pb.io.FileInput', 'pb.io.Output']);
+goog.addDependency('../../../../../pb/Bootstrapper.js', ['pb.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.box.conv.Component', 'pb.box.overdrive.Component', 'pb.box.reverb.Component', 'pb.box.volume.Component', 'pb.io.FileInput', 'pb.io.Output', 'pb.io.StreamInput']);
 goog.addDependency('../../../../../pb/Connectable.js', ['pb.Connectable'], []);
 goog.addDependency('../../../../../pb/ConnectableComponent.js', ['pb.ConnectableComponent'], []);
-goog.addDependency('../../../../../pb/box/box/Component.js', ['pb.box.box.Component'], ['pb.ConnectableComponent', 'pb.box.box.ComponentModel', 'pb.pot.PotComponent', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../pb/box/box/Component.js', ['pb.box.box.Component'], ['pb.ConnectableComponent', 'pb.box.box.ComponentModel', 'pb.footswitch.toggle.Component', 'pb.pot.Component', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../pb/box/box/ComponentModel.js', ['pb.box.box.ComponentModel'], ['pb.Connectable']);
 goog.addDependency('../../../../../pb/box/conv/Component.js', ['pb.box.conv.Component'], ['pb.box.box.Component', 'pb.box.conv.ComponentModel']);
 goog.addDependency('../../../../../pb/box/conv/ComponentModel.js', ['pb.box.conv.ComponentModel'], ['pb.box.box.ComponentModel']);
@@ -908,8 +908,13 @@ goog.addDependency('../../../../../pb/box/reverb/Component.js', ['pb.box.reverb.
 goog.addDependency('../../../../../pb/box/reverb/ComponentModel.js', ['pb.box.reverb.ComponentModel'], ['pb.box.box.ComponentModel']);
 goog.addDependency('../../../../../pb/box/volume/Component.js', ['pb.box.volume.Component'], ['pb.box.box.Component', 'pb.box.volume.ComponentModel']);
 goog.addDependency('../../../../../pb/box/volume/ComponentModel.js', ['pb.box.volume.ComponentModel'], ['pb.box.box.ComponentModel']);
+goog.addDependency('../../../../../pb/footswitch/Component.js', ['pb.footswitch.Component'], ['goog.events.MouseWheelHandler', 'pb.footswitch.ComponentModel', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../pb/footswitch/ComponentModel.js', ['pb.footswitch.ComponentModel'], ['tart.ui.ComponentModel']);
+goog.addDependency('../../../../../pb/footswitch/toggle/Component.js', ['pb.footswitch.toggle.Component'], ['pb.footswitch.Component']);
+goog.addDependency('../../../../../pb/footswitch/toggle/ComponentModel.js', ['pb.footswitch.toggle.ComponentModel'], ['pb.footswitch.ComponentModel']);
 goog.addDependency('../../../../../pb/io/FileInput.js', ['pb.io.FileInput'], ['pb.io.Input']);
 goog.addDependency('../../../../../pb/io/Input.js', ['pb.io.Input'], ['goog.events.EventTarget', 'pb.ConnectableComponent']);
 goog.addDependency('../../../../../pb/io/Output.js', ['pb.io.Output'], ['pb.ConnectableComponent']);
-goog.addDependency('../../../../../pb/pot/pot/PotComponent.js', ['pb.pot.PotComponent'], ['goog.events.MouseWheelHandler', 'pb.pot.PotComponentModel', 'tart.ui.DlgComponent']);
-goog.addDependency('../../../../../pb/pot/pot/PotComponentModel.js', ['pb.pot.PotComponentModel'], ['tart.ui.ComponentModel']);
+goog.addDependency('../../../../../pb/io/StreamInput.js', ['pb.io.StreamInput'], ['pb.io.Input']);
+goog.addDependency('../../../../../pb/pot/Component.js', ['pb.pot.Component'], ['pb.pot.ComponentModel', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../pb/pot/ComponentModel.js', ['pb.pot.ComponentModel'], ['tart.ui.ComponentModel']);
