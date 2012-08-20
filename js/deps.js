@@ -898,7 +898,7 @@ goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/c
 goog.addDependency('../../../../../pb/Bootstrapper.js', ['pb.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.box.conv.Component', 'pb.box.overdrive.Component', 'pb.box.reverb.Component', 'pb.box.volume.Component', 'pb.io.FileInput', 'pb.io.Output', 'pb.io.StreamInput']);
 goog.addDependency('../../../../../pb/Connectable.js', ['pb.Connectable'], []);
 goog.addDependency('../../../../../pb/ConnectableComponent.js', ['pb.ConnectableComponent'], []);
-goog.addDependency('../../../../../pb/ShadowMaker.js', ['pb.shadowMaker'], ['goog.color']);
+goog.addDependency('../../../../../pb/ShadowMaker.js', ['pb.shadowMaker'], ['goog.color', 'goog.style']);
 goog.addDependency('../../../../../pb/box/box/Component.js', ['pb.box.box.Component'], ['pb.ConnectableComponent', 'pb.box.box.ComponentModel', 'pb.footswitch.toggle.Component', 'pb.pot.Component', 'pb.shadowMaker', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../pb/box/box/ComponentModel.js', ['pb.box.box.ComponentModel'], ['pb.Connectable']);
 goog.addDependency('../../../../../pb/box/conv/Component.js', ['pb.box.conv.Component'], ['pb.box.box.Component', 'pb.box.conv.ComponentModel']);
