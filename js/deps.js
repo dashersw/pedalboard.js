@@ -86,7 +86,7 @@ goog.addDependency('../../../../../library/tartJS/tart/tart.js', ['tart'], []);
 goog.addDependency('../../../../../library/tartJS/tart/ui/Component.js', ['tart.ui.Component'], ['goog.events.EventTarget', 'tart', 'tart.dom']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/ComponentManager.js', ['tart.ui.ComponentManager'], ['goog.array', 'goog.events.EventType', 'tart.events']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/ComponentModel.js', ['tart.ui.ComponentModel'], ['goog.events.EventTarget']);
-goog.addDependency('../../../../../library/tartJS/tart/ui/DlgComponent.js', ['tart.ui.DlgComponent'], ['goog.dom.query', 'tart', 'tart.ui.ComponentManager']);
+goog.addDependency('../../../../../library/tartJS/tart/ui/DlgComponent.js', ['tart.ui.DlgComponent'], ['goog.dom.query', 'goog.events.EventTarget', 'tart', 'tart.ui.ComponentManager']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/tooltip/TooltipComponent.js', ['tart.ui.TooltipComponent'], ['goog.dom', 'goog.dom.query', 'goog.style', 'tart.ui.TooltipComponentModel']);
 goog.addDependency('../../../../../library/tartJS/tart/ui/tooltip/TooltipComponentModel.js', ['tart.ui.TooltipComponentModel'], ['tart.ui.ComponentModel']);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/goog/array/array.js', ['goog.array', 'goog.array.ArrayLike'], ['goog.asserts']);
@@ -898,7 +898,8 @@ goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/c
 goog.addDependency('../../../../../pb/Bootstrapper.js', ['pb.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.box.conv.Component', 'pb.box.overdrive.Component', 'pb.box.reverb.Component', 'pb.box.volume.Component', 'pb.io.FileInput', 'pb.io.Output', 'pb.io.StreamInput']);
 goog.addDependency('../../../../../pb/Connectable.js', ['pb.Connectable'], []);
 goog.addDependency('../../../../../pb/ConnectableComponent.js', ['pb.ConnectableComponent'], []);
-goog.addDependency('../../../../../pb/box/box/Component.js', ['pb.box.box.Component'], ['pb.ConnectableComponent', 'pb.box.box.ComponentModel', 'pb.footswitch.toggle.Component', 'pb.pot.Component', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../pb/ShadowMaker.js', ['pb.shadowMaker'], ['goog.color']);
+goog.addDependency('../../../../../pb/box/box/Component.js', ['pb.box.box.Component'], ['pb.ConnectableComponent', 'pb.box.box.ComponentModel', 'pb.footswitch.toggle.Component', 'pb.pot.Component', 'pb.shadowMaker', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../pb/box/box/ComponentModel.js', ['pb.box.box.ComponentModel'], ['pb.Connectable']);
 goog.addDependency('../../../../../pb/box/conv/Component.js', ['pb.box.conv.Component'], ['pb.box.box.Component', 'pb.box.conv.ComponentModel']);
 goog.addDependency('../../../../../pb/box/conv/ComponentModel.js', ['pb.box.conv.ComponentModel'], ['pb.box.box.ComponentModel']);
@@ -916,5 +917,5 @@ goog.addDependency('../../../../../pb/io/FileInput.js', ['pb.io.FileInput'], ['p
 goog.addDependency('../../../../../pb/io/Input.js', ['pb.io.Input'], ['goog.events.EventTarget', 'pb.ConnectableComponent']);
 goog.addDependency('../../../../../pb/io/Output.js', ['pb.io.Output'], ['pb.ConnectableComponent']);
 goog.addDependency('../../../../../pb/io/StreamInput.js', ['pb.io.StreamInput'], ['pb.io.Input']);
-goog.addDependency('../../../../../pb/pot/Component.js', ['pb.pot.Component'], ['pb.pot.ComponentModel', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../pb/pot/Component.js', ['pb.pot.Component'], ['pb.pot.ComponentModel', 'pb.shadowMaker', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../pb/pot/ComponentModel.js', ['pb.pot.ComponentModel'], ['tart.ui.ComponentModel']);
