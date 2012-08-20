@@ -24,8 +24,9 @@
 /**
  *
  * @constructor
+ * @param {Object} opts Options.
  */
-var Microphone = function() {};
+var Microphone = function(opts) {};
 
 var Mic = {};
 
