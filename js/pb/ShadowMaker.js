@@ -94,7 +94,7 @@ pb.shadowMaker = function(element, length, darkness, weight) {
 /**
  * Casts shadows on a text element.
  *
- * @param {Element} element Element to cast my shadows upon.
+ * @param {Node} element Element to cast my shadows upon.
  * @param {number} length Length of the shadow.
  * @param {Array.<string>} before Any shadows to cast before mine.
  * @param {Array.<string>} after Any shadows to cast after mine.
