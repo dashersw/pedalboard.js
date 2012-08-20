@@ -6,23 +6,48 @@ html {
 body {
     height: 100%;
     width: 100%;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transform-origin: 50% 0%;
-    -webkit-perspective: 600px;
+    -webkit-perspective: 1600px;
     overflow: hidden;
+    color: white;
+    background-color: #000000;
 }
 
-#bg {
-    height:300%;
-    width:300%;
-    top: -100%;
-    left:-100%;
+.floor {
+    height: 105%;
+    width: 108%;
+    top: -5%;
+    left: -4%;
     z-index: -1;
     position: fixed;
-    background: url('../img/floor.jpg');
-    -webkit-transform : translateZ(-50px) rotateX(10.5deg) rotateY(0deg) scale(0.5)
 }
 
-#cont {
+#floor {
+    -webkit-transform: rotateX(13deg);
+    background-image: -webkit-radial-gradient(50% 50%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
+}
+
+#blur {
+    background-image: -webkit-radial-gradient(50% 50%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor-blur.jpg');
+    -webkit-mask-image: -webkit-linear-gradient(bottom, #333 0%, #666 15%, transparent 50%);
+}
+
+#board {
+    top: 120px;
     text-align: center;
+    z-index: 2;
+    -webkit-transition-property: top;
+    -webkit-transition-duration: 1s;
+}
+
+footer {
+    color: transparent;
+    font-size: 11vw;
+    text-align: center;
+    top: 120px;
+    width: 100%;
+    z-index: 1;
+    text-shadow: 0px -2px 0px hsla(0, 0%, 0%, 0.6), 0px 1px 0px hsla(1095, 60%, 80%, 0.2);
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    letter-spacing: -20px;
+    font-weight: bold;
 }

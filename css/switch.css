@@ -24,3 +24,13 @@
     text-align: center;
     margin: 8px;
 }
+
+.pot .name {
+    top: 40px
+}
+
+.knobHolder {
+    border-radius: 50%;
+    background-color: #333;
+    height: 96px;
+}
