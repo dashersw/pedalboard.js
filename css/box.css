@@ -19,17 +19,17 @@
 }
 
 .reverb {
-    background-color: #244256;
+    background-color: hsl(204, 41%, 24%);
 }
 
 .overdrive {
-    background-color: #66ab22;
+    background-color: hsl(90, 67%, 40%);
 }
 
 .volume {
-    background-color: #333322;
+    background-color: hsl(50, 60%, 47%);
 }
 
 .convo {
-    background-color: #9a2266;
+    background-color: hsl(326, 64%, 37%);
 }
