@@ -13,22 +13,25 @@ body {
 }
 
 .floor {
-    height: 105%;
-    width: 108%;
-    top: -5%;
-    left: -4%;
-    z-index: -1;
     position: fixed;
 }
 
 #floor {
     -webkit-transform: rotateX(13deg);
     background-image: -webkit-radial-gradient(50% 50%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
+    height: 105%;
+    width: 108%;
+    top: -5%;
+    left: -4%;
 }
 
 #blur {
     background-image: -webkit-radial-gradient(50% 50%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor-blur.jpg');
     -webkit-mask-image: -webkit-linear-gradient(bottom, #333 0%, #666 15%, transparent 50%);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 #board {
