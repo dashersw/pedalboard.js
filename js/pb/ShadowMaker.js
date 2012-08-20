@@ -25,7 +25,15 @@ goog.require('goog.color');
 goog.require('goog.style');
 
 
-pb.shadowMaker = function (element, length, darkness, weight) {
+/**
+ * Casts shadows on a box element.
+ *
+ * @param {Element} element Element to cast my shadows upon.
+ * @param {number} length Length of the shadow.
+ * @param {number} darkness How dark the shadow will be.
+ * @param {number} weight How vast the shadow will be.
+ */
+pb.shadowMaker = function(element, length, darkness, weight) {
     var elStyle = document.defaultView.getComputedStyle(element, null);
     var colorText = elStyle.getPropertyValue('background-color');
     var hslArray = goog.color.hexToHsl(goog.color.parse(colorText).hex);
@@ -34,10 +42,21 @@ pb.shadowMaker = function (element, length, darkness, weight) {
 
     hslArray[2] = hslArray[2] * darkness;
 
-    var shadowTemplate = function (x, y, blur, a, d) {
-        d = d || 0;
-        d = d + 'px';
-        return x + 'px ' + y + 'px ' + blur + 'px ' + d + ' hsl(' + hslArray[0] + ', ' + (hslArray[1] * 100) + '%, ' + a + '%)';
+    /**
+     * Returns a shadow declaration.
+     *
+     * @param {number} x X distance.
+     * @param {number} y Y distance.
+     * @param {number} blur Blur amount.
+     * @param {number} a Alpha.
+     * @param {number=} opt_d Density.
+     * @return {string} The shadow CSS declaration.
+     */
+    var shadowTemplate = function(x, y, blur, a, opt_d) {
+        opt_d = opt_d || 0;
+        var d = opt_d + 'px';
+        return x + 'px ' + y + 'px ' + blur + 'px ' + d + ' hsl(' + hslArray[0] + ', ' +
+               (hslArray[1] * 100) + '%, ' + a + '%)';
     };
     var all = '';
     var shadows = [];
@@ -61,16 +80,27 @@ pb.shadowMaker = function (element, length, darkness, weight) {
     }
     shadows.splice(0, 0,
         shadowTemplate(xAngle, yConDist * 2, con * 4, 0, 0),
-//        shadowTemplate(xAngle / weight, yConDist * 2, con / 2, 0,  con / 4 / weight),
-        shadowTemplate(xAngle / weight / 8, yConDist * 3, con * 4, 30,  con / 12),
-        shadowTemplate(xAngle / weight / 8, yConDist * 2, con, 0,  con / 4 / weight),
-        shadowTemplate(xAngle / weight / 8, yConDist * 2.55, con * 2, 5,  con / 3 /  weight)
-);
+        //        shadowTemplate(xAngle / weight, yConDist * 2, con / 2, 0,  con / 4 / weight),
+        shadowTemplate(xAngle / weight / 8, yConDist * 3, con * 4, 30, con / 12),
+        shadowTemplate(xAngle / weight / 8, yConDist * 2, con, 0, con / 4 / weight),
+        shadowTemplate(xAngle / weight / 8, yConDist * 2.55, con * 2, 5, con / 3 / weight)
+    );
 
-    element.style.boxShadow = shadows.reverse().join(', ');
-    element.style.left = '-' + xAngle + 'px';
+    element.style['boxShadow'] = shadows.reverse().join(', ');
+    element.style['left'] = '-' + xAngle / 2 + 'px';
 };
 
+
+/**
+ * Casts shadows on a text element.
+ *
+ * @param {Element} element Element to cast my shadows upon.
+ * @param {number} length Length of the shadow.
+ * @param {Array.<string>} before Any shadows to cast before mine.
+ * @param {Array.<string>} after Any shadows to cast after mine.
+ * @param {boolean} invertY Whether I should invert the Y axis and casts shadows up instead of down.
+ * @param {number} invertX How I may invert the X axis.
+ */
 pb.textShadowMaker = function(element, length, before, after, invertY, invertX) {
     before = before || [];
     after = after || [];
@@ -78,7 +108,16 @@ pb.textShadowMaker = function(element, length, before, after, invertY, invertX) 
     var colorText = elStyle.getPropertyValue('color');
     var hslArray = goog.color.hexToHsl(goog.color.parse(colorText).hex);
 
-    var shadowTemplate = function (x, y, blur, a) {
+    /**
+     * Returns a shadow declaration.
+     *
+     * @param {number} x X distance.
+     * @param {number} y Y distance.
+     * @param {number} blur Blur amount.
+     * @param {number} a Alpha.
+     * @return {string} The shadow CSS declaration.
+     */
+    var shadowTemplate = function(x, y, blur, a) {
         return x + 'px ' + y + 'px ' + blur + 'px hsl(' + hslArray[0] + ', ' + (hslArray[1] * 100) + '%, ' + a + '%)';
     };
     var all = '';
@@ -107,7 +146,7 @@ pb.textShadowMaker = function(element, length, before, after, invertY, invertX) 
         shadowTemplate(xAngle, yConDist * 1.8, con / 2, 0),
         shadowTemplate(xAngle, yConDist * 2.5, con * 2, 0));
 
-    shadows = [].concat(before,shadows.reverse(),after);
+    shadows = [].concat(before, shadows.reverse(), after);
 
     element.style.textShadow = shadows.join(', ');
 };
