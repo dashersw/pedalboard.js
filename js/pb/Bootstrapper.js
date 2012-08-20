@@ -72,7 +72,7 @@ pb.Bootstrapper.prototype.init = function() {
         effect.render();
     });
 
-    this.overdrivePedal.setDrive(10);
+    this.overdrivePedal.setDrive(7);
     this.volumePedal.setLevel(10);
     this.reverbPedal.setLevel(3);
 };
