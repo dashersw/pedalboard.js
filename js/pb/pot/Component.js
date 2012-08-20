@@ -22,6 +22,7 @@
 
 goog.provide('pb.pot.Component');
 goog.require('pb.pot.ComponentModel');
+goog.require('pb.shadowMaker');
 goog.require('tart.ui.DlgComponent');
 
 
@@ -67,7 +68,7 @@ pb.pot.Component.prototype.setValue = function(newValue) {
  * Updates the user interface - rotation - accordingly.
  */
 pb.pot.Component.prototype.updateUi = function() {
-    var newStyle = 'rotate(' + (this.model.getNormalizedValue() * 260) + 'deg)';
+    var newStyle = 'rotateZ(' + (this.model.getNormalizedValue() * 260) + 'deg)';
     this.getChild(this.mappings.KNOB)[0].style['-webkit-transform'] = newStyle;
 };
 
@@ -77,7 +78,9 @@ pb.pot.Component.prototype.updateUi = function() {
  */
 pb.pot.Component.prototype.templates_base = function() {
     return '<div class="pot" id="' + this.id + '">' +
-               '<img class="knob" src="img/pot.png" height="96" width="95"/>' +
+               '<div class="knobHolder">' +
+                   '<img class="knob" src="img/pot.png" height="96" width="96"/>' +
+               '</div>' +
                '<div class="name">' + this.model.name + '</div>' +
            '</div>';
 };
@@ -90,6 +93,7 @@ pb.pot.Component.prototype.render = function() {
     this.updateUi();
 
     this.rendered = true;
+    pb.shadowMaker(this.getChild(this.mappings.KNOB_HOLDER)[0], 10, 0.5, 4);
 };
 
 
@@ -97,7 +101,8 @@ pb.pot.Component.prototype.render = function() {
  * @enum {string} DOM mappings.
  */
 pb.pot.Component.prototype.mappings = {
-    KNOB: '.knob'
+    KNOB: '.knob',
+    KNOB_HOLDER: '.knobHolder'
 };
 
 

@@ -24,6 +24,7 @@ goog.require('pb.ConnectableComponent');
 goog.require('pb.box.box.ComponentModel');
 goog.require('pb.footswitch.toggle.Component');
 goog.require('pb.pot.Component');
+goog.require('pb.shadowMaker');
 goog.require('tart.ui.DlgComponent');
 
 
@@ -186,6 +187,8 @@ pb.box.box.Component.prototype.render = function() {
     goog.array.forEach(this.components, function(cmp) {
         cmp.render();
     });
+
+    pb.shadowMaker(this.getElement(), 40, 0.5, 0.7);
 };
 
 
