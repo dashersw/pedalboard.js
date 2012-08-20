@@ -3,13 +3,12 @@
     height: 400px;
     width: 225px;
     border-radius: 10px;
-    background: green;
     margin: 20px;
     padding: 20px;
     display: inline-block;
-    color: white;
     font-family: 'Damion', cursive;
     text-align: center;
+    background-image: -webkit-radial-gradient(center, transparent 0%,rgba(0,0,0,0.2) 65%,rgba(0,0,0,0.4) 100%);
 }
 
 .box>.name {
@@ -20,17 +19,17 @@
 }
 
 .reverb {
-    background: #244256;
+    background-color: #244256;
 }
 
 .overdrive {
-    background: #66ab22;
+    background-color: #66ab22;
 }
 
 .volume {
-    background: #333322;
+    background-color: #333322;
 }
 
 .convo {
-    background: #9a2266;
+    background-color: #9a2266;
 }
