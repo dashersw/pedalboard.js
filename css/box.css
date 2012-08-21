@@ -1,6 +1,6 @@
 .box {
-    height: 40vh;
-    width: 23vh;
+    height: 30vh;
+    width: 18vh;
     border-radius: 10px;
     margin: 2vh;
     padding: 2vh;
@@ -14,12 +14,16 @@
 .box>.name {
     clear: both;
     text-align: center;
-    font-size: 6vh;
-    top: 10vh;
+    font-size: 5vh;
+    top: 20vh;
+    left: 0;
+    width: 100%;
+    position: absolute;
 }
 
 .reverb {
-    background-color: hsl(204, 41%, 24%);
+    background-color: hsl(194, 61%, 54%);
+    width: 25vh;
 }
 
 .overdrive {

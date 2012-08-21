@@ -61,8 +61,7 @@ pb.shadowMaker = function(element, length, darkness, weight) {
     var all = '';
     var shadows = [];
     var xAngle = (window.innerWidth / 2 - goog.style.getPageOffset(element).x - element.offsetWidth / 2) / 30;
-    var yAngle = (window.innerHeight / 2 - goog.style.getPageOffset(element).y - element.offsetHeight / 2) / 30;
-
+    var yAngle = (window.innerHeight - goog.style.getPageOffset(element).y - element.offsetHeight / 2) / 80;
     var yConDist = yAngle * length / 10;
 
     var con = length;

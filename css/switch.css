@@ -6,8 +6,8 @@
 }
 
 .button {
-    height: 8vh;
-    width: 8vh;
+    height: 6vh;
+    width: 6vh;
 }
 
 .switches {
@@ -19,14 +19,14 @@
 
 .pot {
     display: inline-block;
-    font-size: 3vh;
+    font-size: 2vh;
     text-align: center;
     margin: 1vh;
 }
 
 .knob {
-    height: 8vh;
-    width: 8vh;
+    height: 6vh;
+    width: 6vh;
 }
 
 .pot .name {
@@ -36,6 +36,6 @@
 .knobHolder {
     border-radius: 50%;
     background-color: #333;
-    height: 8vh;
-    widows: 8vh;
+    height: 6vh;
+    widows: 6vh;
 }
