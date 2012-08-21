@@ -41,31 +41,24 @@ goog.require('tart.ui.DlgComponent');
 pb.Board = function(context) {
     goog.base(this);
     this.context = context;
-    this.initPedals();
-    this.route();
+
+    /**
+     *
+     * @type {Array.<pb.box.box.Component>}
+     */
+    this.pedals = [];
 };
 goog.inherits(pb.Board, tart.ui.DlgComponent);
 
 
 /**
- * Initializes the pedal components.
+ * Pedals of this board.
+ *
+ * @protected
+ * @type {Array.<pb.box.box.Component>}
  */
-pb.Board.prototype.initPedals = function() {
-    this.overdrivePedal = new pb.box.overdrive.Component(this.context);
-    this.reverbPedal = new pb.box.reverb.Component(this.context);
-    this.volumePedal = new pb.box.volume.Component(this.context);
-    this.speaker = new pb.box.conv.Component(this.context);
-
-    this.pedals = [
-        this.overdrivePedal,
-        this.reverbPedal,
-        this.volumePedal,
-        this.speaker
-    ];
-
-    this.overdrivePedal.setDrive(7);
-    this.volumePedal.setLevel(10);
-    this.reverbPedal.setLevel(3);
+pb.Board.prototype.pedals = null;
+ */
 };
 
 
