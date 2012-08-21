@@ -30,7 +30,7 @@ goog.require('pb.ConnectableComponent');
  * The output wrapper for an audio context.
  *
  * @constructor
- * @param {webkitAudioContext} context Audio context for this output.
+ * @param {AudioContext} context Audio context for this output.
  * @implements {pb.ConnectableComponent}
  */
 pb.io.Output = function(context) {

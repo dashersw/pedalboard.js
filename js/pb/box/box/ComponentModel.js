@@ -29,7 +29,7 @@ goog.require('pb.Connectable');
  *
  * @constructor
  * @implements {pb.Connectable}
- * @param {webkitAudioContext} context The context this component model will operate on.
+ * @param {AudioContext} context The context this component model will operate on.
  */
 pb.box.box.ComponentModel = function(context) {
     this.context = context;

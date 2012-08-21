@@ -30,7 +30,7 @@ goog.require('pb.box.conv.ComponentModel');
  *
  * @constructor
  * @extends {pb.box.box.Component}
- * @param {webkitAudioContext} context Audio context the pedal will work on.
+ * @param {AudioContext} context Audio context the pedal will work on.
  */
 pb.box.conv.Component = function(context) {
     goog.base(this, context);

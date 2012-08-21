@@ -33,7 +33,7 @@ goog.require('pb.ConnectableComponent');
  * @constructor
  * @implements {pb.ConnectableComponent}
  * @extends {goog.events.EventTarget}
- * @param {webkitAudioContext} context Audio context for this input.
+ * @param {AudioContext} context Audio context for this input.
  */
 pb.io.Input = function(context) {
     this.source = context.createBufferSource(); // creates a sound source

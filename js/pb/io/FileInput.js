@@ -29,7 +29,7 @@ goog.require('pb.io.Input');
  *
  * @constructor
  * @extends {pb.io.Input}
- * @param {webkitAudioContext} context Context for this input.
+ * @param {AudioContext} context Context for this input.
  * @param {string} url URL for the input file.
  */
 pb.io.FileInput = function(context, url) {

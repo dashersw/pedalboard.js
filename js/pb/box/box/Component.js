@@ -35,7 +35,7 @@ goog.require('tart.ui.DlgComponent');
  * @constructor
  * @extends {tart.ui.DlgComponent}
  * @implements {pb.ConnectableComponent}
- * @param {webkitAudioContext} context Audio context the pedal will work on.
+ * @param {AudioContext} context Audio context the pedal will work on.
  */
 pb.box.box.Component = function(context) {
     this.model = new this.modelClass(context);
@@ -47,7 +47,7 @@ goog.inherits(pb.box.box.Component, tart.ui.DlgComponent);
 
 
 /**
- * @type {function(new: pb.box.box.ComponentModel, webkitAudioContext)} The component model this component will
+ * @type {function(new: pb.box.box.ComponentModel, AudioContext)} The component model this component will
  *       work with.
  */
 pb.box.box.Component.prototype.modelClass = pb.box.box.ComponentModel;

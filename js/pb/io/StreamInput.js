@@ -32,7 +32,7 @@ goog.require('pb.io.Input');
  * @constructor
  * @implements {pb.ConnectableComponent}
  * @extends {pb.io.Input}
- * @param {webkitAudioContext} context Audio context for this input.
+ * @param {AudioContext} context Audio context for this input.
  */
 pb.io.StreamInput = function(context) {
     this.source = context.createJavaScriptNode(1024, 0, 1);
