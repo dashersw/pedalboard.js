@@ -42,10 +42,6 @@ pb.Board = function(context) {
     goog.base(this);
     this.context = context;
 
-    /**
-     *
-     * @type {Array.<pb.box.box.Component>}
-     */
     this.pedals = [];
 };
 goog.inherits(pb.Board, tart.ui.DlgComponent);
