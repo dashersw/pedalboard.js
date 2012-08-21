@@ -29,14 +29,43 @@ goog.require('pb.Stage');
  * @constructor
  */
 pb.Bootstrapper = function() {
-    this.stage = new pb.Stage();
-    var board = new pb.Board(this.stage.getContext());
-    this.stage.setBoard(board);
+    this.initStage();
+    this.initBoard();
 
-    $('body').append(this.stage.getPlaceholder());
-    this.stage.render();
+    this.stage.render(document.body);
 
     this.stage.play();
+};
+
+
+/**
+ * Initializes a board with some pedals.
+ */
+pb.Bootstrapper.prototype.initBoard = function() {
+    var context = this.stage.getContext();
+
+    var board = new pb.Board(context);
+
+    var overdrive = new pb.box.overdrive.Component(context);
+    var reverb = new pb.box.reverb.Component(context);
+    var volume = new pb.box.volume.Component(context);
+    var speaker = new pb.box.conv.Component(context);
+
+    board.addPedals([overdrive, reverb, volume, speaker]);
+
+    overdrive.setDrive(7);
+    volume.setLevel(10);
+    reverb.setLevel(3);
+
+    this.stage.setBoard(board);
+};
+
+
+/**
+ * Initializes a stage.
+ */
+pb.Bootstrapper.prototype.initStage = function() {
+    this.stage = new pb.Stage();
 };
 
 goog.exportSymbol('pb', pb.Bootstrapper);
