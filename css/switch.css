@@ -1,36 +1,41 @@
 .switch {
     cursor: pointer;
-    margin: 10px;
+    margin: 1vh;
     text-align: center;
     display: inline-block;
 }
 
 .button {
-    height: 56px;
-    width: 64px;
-    background: url('../img/switch-smaller.png');
+    height: 8vh;
+    width: 8vh;
 }
 
 .switches {
     position: absolute;
-    bottom: 20px;
-    left: 0px;
+    bottom: 2vh;
+    left: 0;
     width: 100%;
 }
 
 .pot {
     display: inline-block;
-    font-size: 28px;
+    font-size: 3vh;
     text-align: center;
-    margin: 8px;
+    margin: 1vh;
+}
+
+.knob {
+    height: 8vh;
+    width: 8vh;
 }
 
 .pot .name {
-    top: 40px
+    top: 4vh
 }
 
 .knobHolder {
     border-radius: 50%;
     background-color: #333;
-    height: 96px;
+    height: 8vh;
+    widows: 8vh;
 }

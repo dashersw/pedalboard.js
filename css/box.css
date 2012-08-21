@@ -1,10 +1,9 @@
-
 .box {
-    height: 400px;
-    width: 225px;
+    height: 40vh;
+    width: 23vh;
     border-radius: 10px;
-    margin: 20px;
-    padding: 20px;
+    margin: 2vh;
+    padding: 2vh;
     display: inline-block;
     font-family: 'Damion', cursive;
     text-align: center;
@@ -15,8 +14,8 @@
 .box>.name {
     clear: both;
     text-align: center;
-    font-size: 60px;
-    top: 80px;
+    font-size: 6vh;
+    top: 10vh;
 }
 
 .reverb {

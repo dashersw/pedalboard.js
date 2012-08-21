@@ -78,7 +78,7 @@ pb.footswitch.Component.prototype.render = function() {};
  */
 pb.footswitch.Component.prototype.templates_base = function() {
     return '<div class="switch" id="' + this.id + '">' +
-               '<div class="button"></div>' +
+               '<img class="button" src="img/switch.png"/>' +
                this.templates_name() +
            '</div>';
 };
