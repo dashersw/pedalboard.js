@@ -40,6 +40,12 @@ pb.Connectable.prototype.connect = function(destination) {};
 
 
 /**
+ * Disconnects the output of this Connectable.
+ */
+pb.Connectable.prototype.disconnect = function() {};
+
+
+/**
  * Sets the previous node of this Connectable.
  *
  * @param {AudioNode} prev The node that will be connected to the input of this Connectable.

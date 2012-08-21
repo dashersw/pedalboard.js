@@ -193,6 +193,14 @@ pb.box.box.Component.prototype.render = function() {
 
 
 /**
+ * Disconnects the output of this pedal.
+ */
+pb.box.box.Component.prototype.disconnect = function() {
+    this.model.disconnect();
+};
+
+
+/**
  * Name of the pedal. It's written on top plate.
  *
  * @type {string}

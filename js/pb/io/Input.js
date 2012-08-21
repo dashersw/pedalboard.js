@@ -87,6 +87,14 @@ pb.io.Input.prototype.connect = function(destination) {
 
 
 /**
+ * Disconnects this input from wherever it's connected to.
+ */
+pb.io.Input.prototype.disconnect = function() {
+    this.source.disconnect();
+};
+
+
+/**
  * Gets the source of this input.
  *
  * @return {AudioBufferSourceNode} The source of this input.

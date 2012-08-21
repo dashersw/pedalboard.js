@@ -40,6 +40,12 @@ pb.ConnectableComponent.prototype.connect = function(destination) {};
 
 
 /**
+ * Disconnects the output of this ConnectableComponent.
+ */
+pb.ConnectableComponent.prototype.disconnect = function() {};
+
+
+/**
  * Sets the input of this ConnectableComponent to a node.
  *
  * @param {pb.ConnectableComponent} prev The node that will be connected to the input of this ConnectableComponent.

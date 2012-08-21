@@ -136,3 +136,11 @@ pb.box.box.ComponentModel.prototype.routeInternal = function() {
         [this.outputBuffer, goog.array.peek(this.effects), null]
     ];
 };
+
+
+/**
+ * Disconnects the output buffer of this pedal.
+ */
+pb.box.box.ComponentModel.prototype.disconnect = function() {
+    this.outputBuffer.disconnect();
+};

@@ -69,3 +69,9 @@ pb.io.Output.prototype.connect = function() {};
  * Dummy method for the Connectable interface. It's meaningless for an output to have an output.
  */
 pb.io.Output.prototype.getOutput = function() {};
+
+
+/**
+ * Dummy method for the Connectable interface. The output is never connected to anything else.
+ */
+pb.io.Output.prototype.disconnect = function() {};
