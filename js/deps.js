@@ -895,10 +895,12 @@ goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/c
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/clipboardbutton.js', ['goog.silverlight.ClipboardButton', 'goog.silverlight.ClipboardButtonType', 'goog.silverlight.ClipboardEvent', 'goog.silverlight.CopyButton', 'goog.silverlight.PasteButton', 'goog.silverlight.PasteButtonEvent'], ['goog.asserts', 'goog.events.Event', 'goog.math.Size', 'goog.silverlight', 'goog.ui.Component']);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/silverlight.js', ['goog.silverlight'], []);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/supporteduseragent.js', ['goog.silverlight.supportedUserAgent'], []);
-goog.addDependency('../../../../../pb/Bootstrapper.js', ['pb.Bootstrapper'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.box.conv.Component', 'pb.box.overdrive.Component', 'pb.box.reverb.Component', 'pb.box.volume.Component', 'pb.io.FileInput', 'pb.io.Output', 'pb.io.StreamInput']);
+goog.addDependency('../../../../../pb/Board.js', ['pb.Board'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.box.conv.Component', 'pb.box.overdrive.Component', 'pb.box.reverb.Component', 'pb.box.volume.Component', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../pb/Bootstrapper.js', ['pb.Bootstrapper'], ['pb.Stage']);
 goog.addDependency('../../../../../pb/Connectable.js', ['pb.Connectable'], []);
 goog.addDependency('../../../../../pb/ConnectableComponent.js', ['pb.ConnectableComponent'], []);
 goog.addDependency('../../../../../pb/ShadowMaker.js', ['pb.shadowMaker'], ['goog.color', 'goog.style']);
+goog.addDependency('../../../../../pb/Stage.js', ['pb.Stage'], ['pb.Board', 'pb.io.FileInput', 'pb.io.Output', 'pb.io.StreamInput', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../pb/box/box/Component.js', ['pb.box.box.Component'], ['pb.ConnectableComponent', 'pb.box.box.ComponentModel', 'pb.footswitch.toggle.Component', 'pb.pot.Component', 'pb.shadowMaker', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../pb/box/box/ComponentModel.js', ['pb.box.box.ComponentModel'], ['pb.Connectable']);
 goog.addDependency('../../../../../pb/box/conv/Component.js', ['pb.box.conv.Component'], ['pb.box.box.Component', 'pb.box.conv.ComponentModel']);
