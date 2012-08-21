@@ -58,7 +58,28 @@ goog.inherits(pb.Board, tart.ui.DlgComponent);
  * @type {Array.<pb.box.box.Component>}
  */
 pb.Board.prototype.pedals = null;
+
+
+/**
+ * Adds pedals to this pedal board. Reroutes the pedals accordingly.
+ *
+ * @param {pb.box.box.Component | Array.<pb.box.box.Component>} pedals Pedals to add to this board.
+ * @param {number=} opt_index Optional index. Useful for inserting pedals in between others.
  */
+pb.Board.prototype.addPedals = function(pedals, opt_index) {
+    opt_index = opt_index || 0;
+    this.pedals = this.pedals.slice(0, opt_index).concat(pedals).concat(this.pedals.slice(opt_index));
+    this.route();
+};
+
+
+/**
+ * Returns the pedals in this board.
+ *
+ * @return {Array.<pb.box.box.Component>} Pedals in this board.
+ */
+pb.Board.prototype.getPedals = function() {
+    return this.pedals;
 };
 
 
