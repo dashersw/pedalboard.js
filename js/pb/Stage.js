@@ -88,9 +88,11 @@ pb.Stage.prototype.setBoard = function(board) {
  * Input -> volume pedal -> reverb pedal
  */
 pb.Stage.prototype.route = function() {
-    this.input.disconnect();
-    this.input.connect(this.board.pedals[0]);
-    goog.array.peek(this.board.pedals).connect(this.output);
+    if (this.board.getPedals().length) {
+        this.input.disconnect();
+        this.input.connect(this.board.pedals[0]);
+        goog.array.peek(this.board.pedals).connect(this.output);
+    }
 };
 
 
@@ -125,6 +127,8 @@ pb.Stage.prototype.templates_base = function() {
 /**
  * @override
  */
-pb.Stage.prototype.render = function() {
+pb.Stage.prototype.render = function(opt_base) {
+    goog.base(this, 'render', opt_base);
+
     if (this.board) this.board.render();
 };
