@@ -12,11 +12,14 @@ body {
     background-color: #000000;
 }
 
-.floor {
+.stage {
     position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 #floor {
+    position: absolute;
     -webkit-transform: rotateX(13deg);
     background-image: -webkit-radial-gradient(50% 55%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
     height: 105%;
@@ -26,6 +29,7 @@ body {
 }
 
 #blur {
+    position: absolute;
     background-image: -webkit-radial-gradient(50% 50%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
     -webkit-mask-image: -webkit-linear-gradient(bottom, #333 13%, #444 16%, transparent 33%);
     height: 100%;
@@ -35,7 +39,7 @@ body {
     -webkit-filter: blur(6px);
 }
 
-#board {
+.board {
     top: 170px;
     text-align: center;
     z-index: 2;
@@ -47,11 +51,11 @@ footer {
     color: transparent;
     font-size: 11vw;
     text-align: center;
-    top: 40px;
+    top: 620px;
     position: absolute;
     width: 100%;
     z-index: 1;
-    text-shadow: 0px -2px 0 hsla(0, 0%, 0%, 0.6), 0px 1px 0px hsla(1095, 60%, 90%, 0.2);
+    text-shadow: 0px -2px 0 hsla(0, 0%, 0%, 0.4), 0px 1px 0px hsla(1095, 60%, 90%, 0.2);
     font-family: "Helvetica Neue", Helvetica, Arial;
     letter-spacing: -20px;
     font-weight: bold;
