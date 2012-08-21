@@ -18,9 +18,12 @@ body {
     width: 100%;
 }
 
+.stage, #floor {
+    -webkit-transform: rotateX(13deg);
+}
+
 #floor {
     position: absolute;
-    -webkit-transform: rotateX(13deg);
     background-image: -webkit-radial-gradient(50% 55%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
     height: 105%;
     width: 108%;
