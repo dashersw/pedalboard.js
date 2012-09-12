@@ -23,7 +23,7 @@
 goog.provide('pb.pot.Component');
 goog.require('pb.pot.ComponentModel');
 goog.require('pb.shadowMaker');
-goog.require('tart.ui.DlgComponent');
+goog.require('pb.ui.Component');
 
 
 
@@ -31,7 +31,7 @@ goog.require('tart.ui.DlgComponent');
  * Pot component models a virtual potentiometer. This base class is used to adjust audio parameter values of pedals.
  *
  * @constructor
- * @extends {tart.ui.DlgComponent}
+ * @extends {pb.ui.Component}
  *
  * @param {AudioParam} param Audio parameter this pot will adjust. Can be gain, etc.
  * @param {string} name Name of the pot. Will be written under it.
@@ -39,12 +39,12 @@ goog.require('tart.ui.DlgComponent');
  *                       thousands.
  */
 pb.pot.Component = function(param, name, range) {
-    this.model = new this.modelClass(param, name, range || 1);
+    this.setModel(new this.modelClass(param, name, range || 1));
+    this.bindModelEvents();
     this.setValue(10);
-
     goog.base(this);
 };
-goog.inherits(pb.pot.Component, tart.ui.DlgComponent);
+goog.inherits(pb.pot.Component, pb.ui.Component);
 
 
 /**
@@ -68,8 +68,10 @@ pb.pot.Component.prototype.setValue = function(newValue) {
  * Updates the user interface - rotation - accordingly.
  */
 pb.pot.Component.prototype.updateUi = function() {
-    var newStyle = 'rotateZ(' + (this.model.getNormalizedValue() * 260) + 'deg)';
-    this.getChild(this.mappings.KNOB)[0].style['-webkit-transform'] = newStyle;
+    if (this.isInDocument()) {
+        var newStyle = 'rotateZ(' + (this.model.getNormalizedValue() * 260) + 'deg)';
+        this.$(this.mappings.KNOB)[0].style['-webkit-transform'] = newStyle;
+    }
 };
 
 
@@ -77,7 +79,7 @@ pb.pot.Component.prototype.updateUi = function() {
  * @override
  */
 pb.pot.Component.prototype.templates_base = function() {
-    return '<div class="pot" id="' + this.id + '">' +
+    return '<div class="pot" id="' + this.getId() + '">' +
                '<div class="knobHolder">' +
                    '<img class="knob" src="img/pot.png"/>' +
                '</div>' +
@@ -89,11 +91,12 @@ pb.pot.Component.prototype.templates_base = function() {
 /**
  * Render method updates its knob.
  */
-pb.pot.Component.prototype.render = function() {
+pb.pot.Component.prototype.enterDocument = function() {
+    goog.base(this, 'enterDocument');
+
     this.updateUi();
 
-    this.rendered = true;
-    pb.shadowMaker(this.getChild(this.mappings.KNOB_HOLDER)[0], 10, 0.5, 4);
+    pb.shadowMaker(this.$(this.mappings.KNOB_HOLDER)[0], 10, 0.5, 4);
 };
 
 
@@ -110,9 +113,7 @@ pb.pot.Component.prototype.mappings = {
  * @override
  */
 pb.pot.Component.prototype.bindModelEvents = function() {
-    goog.events.listen(this.model, pb.pot.ComponentModel.EventType.VALUE_CHANGED, function(e) {
-        this.rendered && this.updateUi();
-    }, false, this);
+    goog.events.listen(this.model, pb.pot.ComponentModel.EventType.VALUE_CHANGED, this.updateUi, false, this);
 };
 
 (function(proto) {
