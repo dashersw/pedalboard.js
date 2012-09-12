@@ -43,7 +43,7 @@ pb.io.FileInput = function(context, url) {
 
 
     request.onload = function() {
-        context.decodeAudioData(request.response, function(buffer) {
+        context.decodeAudioData(/** @type {ArrayBuffer} */(request.response), function(buffer) {
             that.setSourceBuffer(buffer);
             that.dispatchEvent('loaded');
         });

@@ -29,7 +29,7 @@ goog.require('pb.box.box.ComponentModel');
  *
  * @constructor
  * @extends {pb.box.box.ComponentModel}
- * @param {webkitAudioContext} context The context this component model will operate on.
+ * @param {AudioContext} context The context this component model will operate on.
  */
 pb.box.volume.ComponentModel = function(context) {
     goog.base(this, context);

@@ -38,7 +38,7 @@ goog.require('pb.box.box.ComponentModel');
  *
  * @constructor
  * @extends {pb.box.box.ComponentModel}
- * @param {webkitAudioContext} context The context this component model will operate on.
+ * @param {AudioContext} context The context this component model will operate on.
  */
 pb.box.reverb.ComponentModel = function(context) {
     goog.base(this, context);
@@ -80,7 +80,7 @@ pb.box.reverb.ComponentModel.prototype.loadIR = function() {
 
 
     request.onload = function() {
-        that.context.decodeAudioData(request.response, function(buffer) {
+        that.context.decodeAudioData(/** @type {ArrayBuffer} */(request.response), function(buffer) {
             that.conv.buffer = buffer;
         });
     };
