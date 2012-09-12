@@ -20,12 +20,11 @@
  */
 
 goog.provide('pb.box.box.Component');
-goog.require('pb.ConnectableComponent');
+goog.require('pb.Connectable.Component');
 goog.require('pb.box.box.ComponentModel');
 goog.require('pb.footswitch.toggle.Component');
 goog.require('pb.pot.Component');
 goog.require('pb.shadowMaker');
-goog.require('tart.ui.DlgComponent');
 
 
 
@@ -33,17 +32,13 @@ goog.require('tart.ui.DlgComponent');
  * Base pedal.
  *
  * @constructor
- * @extends {tart.ui.DlgComponent}
- * @implements {pb.ConnectableComponent}
+ * @extends {pb.Connectable.Component}
  * @param {AudioContext} context Audio context the pedal will work on.
  */
 pb.box.box.Component = function(context) {
-    this.model = new this.modelClass(context);
-
-    this.createChildComponents();
-    goog.base(this);
+    goog.base(this, context);
 };
-goog.inherits(pb.box.box.Component, tart.ui.DlgComponent);
+goog.inherits(pb.box.box.Component, pb.Connectable.Component);
 
 
 /**
@@ -59,8 +54,6 @@ pb.box.box.Component.prototype.modelClass = pb.box.box.ComponentModel;
 pb.box.box.Component.prototype.createChildComponents = function() {
     this.createPots();
     this.createSwitches();
-
-    this.components = [].concat(this.pots, this.switches);
 };
 
 
@@ -91,43 +84,12 @@ pb.box.box.Component.prototype.createSwitches = function() {
 
 
 /**
- * Gets the input buffer of a pedal.
- *
- * @return {AudioNode} The input buffer of this component.
- */
-pb.box.box.Component.prototype.getInput = function() {
-    return this.model.getInput();
-};
-
-
-/**
- * Gets the output buffer of a pedal.
- *
- * @return {AudioNode} The output buffer of this component.
- */
-pb.box.box.Component.prototype.getOutput = function() {
-    return this.model.getOutput();
-};
-
-
-/**
- * Lets the pedal instance know who is connected to its input.
- *
- * @param {pb.ConnectableComponent} prev Previous pedal whose output will connect to this pedal's input.
- */
-pb.box.box.Component.prototype.setPrev = function(prev) {
-    this.model.setPrev(prev.getOutput());
-};
-
-
-/**
  * Connects the output of this pedal to another pedal.
  *
  * @param {pb.ConnectableComponent} destination Next pedal where the output of this pedal will connect to.
  */
 pb.box.box.Component.prototype.connect = function(destination) {
-    destination.setPrev(this);
-    this.model.connect(destination.getInput());
+    goog.base(this, 'connect', destination);
 
     this.bypassSwitch.setNodes(this.model.nodes);
 };
@@ -148,55 +110,39 @@ pb.box.box.Component.prototype.setLevel = function(newLevel) {
  */
 pb.box.box.Component.prototype.templates_base = function() {
     return '' +
-        '<div id="' + this.id + '" class="box ' + this.name + '">' +
-           '<div class="pots">' +
-                this.getPots() +
-           '</div>' +
+        '<div id="' + this.getId() + '" class="box ' + this.name + '">' +
+           '<div class="pots"></div>' +
            '<div class="name">' + this.name + '</div>' +
-           '<div class="switches">' +
-                this.getSwitches() +
-           '</div>' +
+           '<div class="switches"></div>' +
         '</div>';
-};
-
-
-/**
- * @return {string} Pot placeholders.
- */
-pb.box.box.Component.prototype.getPots = function() {
-    return goog.array.reduce(this.pots, function(r, v) {
-        return r += v.getPlaceholder();
-    }, '');
-};
-
-
-/**
- * @return {string} Switch placeholders.
- */
-pb.box.box.Component.prototype.getSwitches = function() {
-    return goog.array.reduce(this.switches, function(r, v) {
-        return r += v.getPlaceholder();
-    }, '');
 };
 
 
 /**
  * This method is called after the stomp box is appended to DOM. It then renders all its potentiometers.
  */
-pb.box.box.Component.prototype.render = function() {
-    goog.array.forEach(this.components, function(cmp) {
-        cmp.render();
-    });
-
+pb.box.box.Component.prototype.enterDocument = function() {
+    goog.base(this, 'enterDocument');
     pb.shadowMaker(this.getElement(), 40, 0.5, 0.7);
+
+    this.pots.forEach(function(pot) {
+        pot.render(this.$(this.mappings.POTS)[0]);
+    }, this);
+
+    this.switches.forEach(function(sw) {
+        sw.render(this.$(this.mappings.SWITCHES)[0]);
+    }, this);
 };
 
 
 /**
- * Disconnects the output of this pedal.
+ * DOM selector mappings.
+ *
+ * @enum {string}
  */
-pb.box.box.Component.prototype.disconnect = function() {
-    this.model.disconnect();
+pb.box.box.Component.prototype.mappings = {
+    POTS: '.pots',
+    SWITCHES: '.switches'
 };
 
 

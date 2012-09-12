@@ -20,7 +20,7 @@
  */
 
 goog.provide('pb.box.box.ComponentModel');
-goog.require('pb.Connectable');
+goog.require('pb.Connectable.ComponentModel');
 
 
 
@@ -28,40 +28,18 @@ goog.require('pb.Connectable');
  * Component model for base pedal.
  *
  * @constructor
- * @implements {pb.Connectable}
+ * @extends {pb.Connectable.ComponentModel}
+ *
  * @param {AudioContext} context The context this component model will operate on.
  */
 pb.box.box.ComponentModel = function(context) {
-    this.context = context;
-
-    /**
-     *
-     * @type {AudioGainNode}
-     * @protected
-     */
-    this.inputBuffer = this.context.createGainNode();
-
-    /**
-     *
-     * @type {AudioGainNode}
-     * @protected
-     */
-    this.outputBuffer = this.context.createGainNode();
-
-    /**
- *
- * @type {Array.<AudioNode>}
- */
-    this.chain = [];
+    goog.base(this, context);
 
     this.level = this.context.createGainNode();
 
-    /**
- *
- * @type {Array.<AudioNode>}
- */
-    this.effects = [this.level];
+    this.effects.push(this.level);
 };
+goog.inherits(pb.box.box.ComponentModel, pb.Connectable.ComponentModel);
 
 
 /**
