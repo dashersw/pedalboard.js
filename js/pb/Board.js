@@ -23,6 +23,7 @@ goog.provide('pb.Board');
 goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventTarget');
+goog.require('pb.Connectable.Component');
 goog.require('pb.box.conv.Component');
 goog.require('pb.box.overdrive.Component');
 goog.require('pb.box.reverb.Component');
@@ -35,16 +36,15 @@ goog.require('tart.ui.DlgComponent');
  * Board that hosts pedals.
  *
  * @constructor
- * @extends {tart.ui.DlgComponent}
+ * @extends {pb.Connectable.Component}
+ *
  * @param {AudioContext} context The audio context of this board.
  */
 pb.Board = function(context) {
-    goog.base(this);
+    goog.base(this, context);
     this.context = context;
-
-    this.pedals = [];
 };
-goog.inherits(pb.Board, tart.ui.DlgComponent);
+goog.inherits(pb.Board, pb.Connectable.Component);
 
 
 /**
@@ -57,35 +57,37 @@ pb.Board.prototype.pedals = null;
 
 
 /**
- * Adds pedals to this pedal board. Reroutes the pedals accordingly.
- *
- * @param {pb.box.box.Component | Array.<pb.box.box.Component>} pedals Pedals to add to this board.
- * @param {number=} opt_index Optional index. Useful for inserting pedals in between others.
+ * Adds pedals to this board. An alias method for addChildren.
+ * @param {Array.<pb.box.box.Component>} pedals Pedals.
  */
-pb.Board.prototype.addPedals = function(pedals, opt_index) {
-    opt_index = opt_index || 0;
-    this.pedals = this.pedals.slice(0, opt_index).concat(pedals).concat(this.pedals.slice(opt_index));
-    this.route();
+pb.Board.prototype.addPedals = function(pedals) {
+    pb.ui.Component.prototype.addChildren.call(this, pedals);
+}
+
+
+/**
+ * @override
+ *
+ * @param {pb.box.box.Component} child Child.
+ * @param {number} index Index.
+ * @param {boolean=} opt_render Render.
+ */
+pb.Board.prototype.addChildAt = function(child, index, opt_render) {
+    goog.base(this, 'addChildAt', child, index, opt_render);
+    this.routeInternal();
 };
+
+
+pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
 
 
 /**
  * Returns the pedals in this board.
  *
- * @return {Array.<pb.box.box.Component>} Pedals in this board.
+ * @return {*} Pedals in this board.
  */
 pb.Board.prototype.getPedals = function() {
-    return this.pedals;
-};
-
-
-/**
- * @override
- */
-pb.Board.prototype.render = function() {
-    goog.array.forEach(this.pedals, function(pedal) {
-        pedal.render();
-    });
+    return this.getChildren();
 };
 
 
@@ -93,27 +95,47 @@ pb.Board.prototype.render = function() {
  * @override
  */
 pb.Board.prototype.templates_base = function() {
-    var pedals = goog.array.reduce(this.pedals, function(r, v) {
-        return r += v.getPlaceholder();
-    }, '');
-
-    return '<div id="' + this.id + '" class="board">' + pedals + '</div>';
+    return '<div id="' + this.getId() + '" class="board"></div>';
 };
 
 
 /**
- * Routes the signal.
- * Input -> volume pedal -> reverb pedal
+ * @override
  */
-pb.Board.prototype.route = function() {
-    var fx = this.pedals;
+pb.Board.prototype.connect = function(destination) {
+    goog.base(this, 'connect', destination);
+    this.routeInternal();
+};
 
-    goog.array.forEach(fx, function(pedal, i) {
-        pedal.disconnect();
-        fx[i + 1] && pedal.connect(fx[i + 1]);
+
+/**
+ * Routes the pedals.
+ *
+ * @protected
+ */
+pb.Board.prototype.routeInternal = function() {
+    var fx = this.getChildren();
+    if (fx && fx.length > 0) {
+        fx.forEach(function(pedal, i) {
+            pedal.disconnect();
+            fx[i + 1] && pedal.connect(fx[i + 1]);
+        });
+
+        this.input && this.input.connect(this);
+        this.getInput().disconnect();
+        this.getInput().connect(fx[0].getInput());
+        this.output && fx[fx.length - 1].connect(this.output);
+    }
+};
+
+
+/**
+ * @override
+ */
+pb.Board.prototype.disposeInternal = function() {
+    this.pedals.forEach(function(pedal) {
+        pedal.disposeInternal();
     });
 
-    for (var i = 0; i < fx.length - 1; i++) {
-        fx[i].connect(fx[i + 1]);
-    }
+    goog.base(this, 'disposeInternal');
 };
