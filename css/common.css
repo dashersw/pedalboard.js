@@ -20,12 +20,13 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    -webkit-transform: rotateX(13deg) translateZ(10px);
+    -webkit-transform: rotateX(13deg) translateZ(100px);
 }
 
 #floor {
     position: absolute;
     background-image: -webkit-radial-gradient(50% 55%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
+    background-size: 100%, 100%;
     height: 105%;
     width: 108%;
     top: -5%;
@@ -36,11 +37,36 @@ body {
     position: absolute;
     background-image: -webkit-radial-gradient(50% 50%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
     -webkit-mask-image: -webkit-linear-gradient(bottom, #333 13%, #444 16%, transparent 33%);
+    background-size: 100%, 100%;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
     -webkit-filter: blur(6px);
+}
+
+@media only screen
+and (-webkit-min-device-pixel-ratio : 2)
+and (min-device-width: 320px) {
+    #blur {
+        background-size: 100%, 200%;
+    }
+
+    #floor {
+        background-size: 100%, 200%;
+    }
+}
+
+@media only screen
+and (-webkit-min-device-pixel-ratio : 2)
+and (min-device-width: 768px) {
+    #blur {
+        background-size: 100%, 50%;
+    }
+
+    #floor {
+        background-size: 100%, 50%;
+    }
 }
 
 .board {
