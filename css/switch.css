@@ -30,12 +30,14 @@
 }
 
 .pot .name {
-    top: 4vh
+    top: 130%;
+    font-size: 3vh;
+    position: absolute;
 }
 
 .knobHolder {
     border-radius: 50%;
     background-color: #333;
     height: 6vh;
-    widows: 6vh;
+    width: 6vh;
 }
