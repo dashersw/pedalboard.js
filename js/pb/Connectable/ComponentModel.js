@@ -16,7 +16,7 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Base pedal component model.
+ * @fileoverview Base connectable component model. Hosts input and output buffer, chain and effects base.
  */
 
 goog.provide('pb.Connectable.ComponentModel');
@@ -25,7 +25,7 @@ goog.require('pb.Connectable');
 
 
 /**
- * Component model for base pedal.
+ * Component model for base connectables.
  *
  * @constructor
  * @implements {pb.Connectable}

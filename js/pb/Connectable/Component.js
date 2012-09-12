@@ -16,7 +16,7 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Base pedal.
+ * @fileoverview Base Connectable component. It hosts other components as children, has a model and IO functionality.
  */
 
 goog.provide('pb.Connectable.Component');
@@ -31,7 +31,7 @@ goog.require('tart.ui.DlgComponent');
 
 
 /**
- * Base pedal.
+ * Base component.
  *
  * @constructor
  * @extends {pb.ui.Component}
