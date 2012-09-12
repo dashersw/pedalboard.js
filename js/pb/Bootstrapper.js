@@ -30,9 +30,8 @@ goog.require('pb.Stage');
  */
 pb.Bootstrapper = function() {
     this.initStage();
+    this.stage.render();
     this.initBoard();
-
-    this.stage.render(document.body);
 
     this.stage.play();
 };
@@ -46,6 +45,7 @@ pb.Bootstrapper.prototype.initBoard = function() {
 
     var board = new pb.Board(context);
 
+    this.stage.setBoard(board);
     var overdrive = new pb.box.overdrive.Component(context);
     var reverb = new pb.box.reverb.Component(context);
     var volume = new pb.box.volume.Component(context);
@@ -57,7 +57,6 @@ pb.Bootstrapper.prototype.initBoard = function() {
     volume.setLevel(10);
     reverb.setLevel(3);
 
-    this.stage.setBoard(board);
 };
 
 
