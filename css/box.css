@@ -5,7 +5,7 @@
     margin: 2vh;
     padding: 2vh;
     display: inline-block;
-    font-family: 'Damion', cursive;
+    font-family: 'Yellowtail', 'Damion', cursive;
     text-align: center;
     background-image: -webkit-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
         -webkit-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
