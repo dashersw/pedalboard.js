@@ -34,6 +34,8 @@ goog.require('pb.box.overdrive.ComponentModel');
  */
 pb.box.overdrive.Component = function(context) {
     goog.base(this, context);
+
+    this.setDrive(7);
 };
 goog.inherits(pb.box.overdrive.Component, pb.box.box.Component);
 
