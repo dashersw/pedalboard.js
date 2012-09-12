@@ -79,7 +79,7 @@ pb.ui.Component.prototype.addChildAt = function(child, index, opt_render) {
 /**
  * Adds the specified children to this component, appending at the end.
  *
- * @param {Array.<goog.ui.Component>} children The new child components.
+ * @param {Array.<pb.ui.Component>} children The new child components.
  * @param {boolean=} opt_render If false, the child component will not be rendered into the parent.
  */
 pb.ui.Component.prototype.addChildren = function(children, opt_render) {
@@ -92,7 +92,7 @@ pb.ui.Component.prototype.addChildren = function(children, opt_render) {
 
 /**
  * Returns the child components of this component (if any).
- * @return {*|Array} Child components.
+ * @return {Array.<pb.ui.Component>} Child components.
  */
 pb.ui.Component.prototype.getChildren = function() {
     var ids = this.getChildIds(), that = this;
