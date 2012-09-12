@@ -23,7 +23,7 @@
 goog.provide('pb.footswitch.Component');
 goog.require('goog.events.MouseWheelHandler');
 goog.require('pb.footswitch.ComponentModel');
-goog.require('tart.ui.DlgComponent');
+goog.require('pb.ui.Component');
 
 
 
@@ -31,7 +31,7 @@ goog.require('tart.ui.DlgComponent');
  * Footswitch component models a virtual switch. This base class is used to toggle stompbox nodes.
  *
  * @constructor
- * @extends {tart.ui.DlgComponent}
+ * @extends {pb.ui.Component}
  *
  * @param {string=} opt_name Name of the switch. Will be written under it.
  */
@@ -39,7 +39,7 @@ pb.footswitch.Component = function(opt_name) {
     this.model = new this.modelClass(opt_name);
     goog.base(this);
 };
-goog.inherits(pb.footswitch.Component, tart.ui.DlgComponent);
+goog.inherits(pb.footswitch.Component, pb.ui.Component);
 
 
 /**
@@ -68,16 +68,10 @@ pb.footswitch.Component.prototype.onClick = function() {
 
 
 /**
- * Nothing to do atm.
- */
-pb.footswitch.Component.prototype.render = function() {};
-
-
-/**
  * @override
  */
 pb.footswitch.Component.prototype.templates_base = function() {
-    return '<div class="switch" id="' + this.id + '">' +
+    return '<div class="switch" id="' + this.getId() + '">' +
                '<img class="button" src="img/switch.png"/>' +
                this.templates_name() +
            '</div>';
