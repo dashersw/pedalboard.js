@@ -25,7 +25,7 @@ goog.require('pb.Board');
 goog.require('pb.io.FileInput');
 goog.require('pb.io.Output');
 goog.require('pb.io.StreamInput');
-goog.require('tart.ui.DlgComponent');
+goog.require('pb.ui.Component');
 
 
 
@@ -33,7 +33,7 @@ goog.require('tart.ui.DlgComponent');
  * Stage hosts pedal boards, input and output.
  *
  * @constructor
- * @extends {tart.ui.DlgComponent}
+ * @extends {pb.ui.Component}
  */
 pb.Stage = function() {
     goog.base(this);
@@ -47,7 +47,7 @@ pb.Stage = function() {
 
     this.initIO();
 };
-goog.inherits(pb.Stage, tart.ui.DlgComponent);
+goog.inherits(pb.Stage, pb.ui.Component);
 
 
 /**
@@ -77,9 +77,14 @@ pb.Stage.prototype.initIO = function() {
  * @param {pb.Board} board Board component.
  */
 pb.Stage.prototype.setBoard = function(board) {
-    this.board = board;
+    this.board && this.board.dispose();
 
+    this.board = board;
+    this.board.input = this.input;
+    this.board.output = this.output;
     this.route();
+
+    this.addChild(this.board);
 };
 
 
@@ -88,11 +93,9 @@ pb.Stage.prototype.setBoard = function(board) {
  * Input -> volume pedal -> reverb pedal
  */
 pb.Stage.prototype.route = function() {
-    if (this.board.getPedals().length) {
-        this.input.disconnect();
-        this.input.connect(this.board.pedals[0]);
-        goog.array.peek(this.board.pedals).connect(this.output);
-    }
+    this.input.disconnect();
+    this.input.connect(this.board);
+    this.board.connect(this.output);
 };
 
 
@@ -116,19 +119,5 @@ pb.Stage.prototype.stop = function() {
  * @override
  */
 pb.Stage.prototype.templates_base = function() {
-    var boardTemplate = '';
-
-    if (this.board) boardTemplate = this.board.getPlaceholder();
-
-    return '<div id="' + this.id + '" class="stage">' + boardTemplate + '</div>';
-};
-
-
-/**
- * @override
- */
-pb.Stage.prototype.render = function(opt_base) {
-    goog.base(this, 'render', opt_base);
-
-    if (this.board) this.board.render();
+    return '<div id="' + this.getId() + '" class="stage"></div>';
 };
