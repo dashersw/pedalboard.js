@@ -36,9 +36,26 @@ body {
 
 #blur {
     position: absolute;
-    background-image: -webkit-radial-gradient(50% 50%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
-    -webkit-mask-image: -webkit-linear-gradient(bottom, #333 13%, #444 16%, transparent 33%);
-    background-size: 100%, 100%;
+    background-image:
+        -webkit-radial-gradient(50% 50%, ellipse farthest-corner,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 0, 0, 0.9) 80%,
+            rgba(0, 0, 0, 1) 90%),
+            url('../img/floor.jpg');
+    /*background-image: url('../img/floor.jpg');*/
+    /*background: black;*/
+    background-size: 100%, 50%;
+    -webkit-mask-image:
+        -webkit-radial-gradient(50% 50%, ellipse closest-side,
+            rgba(0, 0, 0, 0) 10%,
+            rgba(0, 0, 0, 0) 50%,
+            rgba(0, 0, 0, 0.9) 65%,
+            rgba(0, 0, 0, 0.9) 85%,
+            rgba(0, 0, 0, 1) 125%
+        );
+    background-position: 0 100%;
+    background-size: 100%, 50%;
+    background-repeat: repeat-x, repeat;
     height: 100%;
     width: 100%;
     top: 0;
