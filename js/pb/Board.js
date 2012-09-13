@@ -87,7 +87,8 @@ pb.Board.prototype.doShadows = function() {
 pb.Board.prototype.addChildAt = function(child, index, opt_render) {
     goog.base(this, 'addChildAt', child, index, opt_render);
     this.routeInternal();
-    this.doShadows();
+    if (this.isInDocument())
+        this.doShadows();
 };
 
 
@@ -95,6 +96,15 @@ pb.Board.prototype.addChildAt = function(child, index, opt_render) {
  * Convenience method for adding pedals at a given index.
  */
 pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
+
+
+/**
+ * @override
+ */
+pb.Board.prototype.enterDocument = function() {
+    goog.base(this, 'enterDocument');
+    this.doShadows();
+};
 
 
 /**
