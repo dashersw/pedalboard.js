@@ -123,7 +123,6 @@ pb.box.box.Component.prototype.templates_base = function() {
  */
 pb.box.box.Component.prototype.enterDocument = function() {
     goog.base(this, 'enterDocument');
-    pb.shadowMaker(this.getElement(), 40, 0.5, 0.7);
 
     this.pots.forEach(function(pot) {
         pot.render(this.$(this.mappings.POTS)[0]);

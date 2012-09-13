@@ -22,7 +22,6 @@
 
 goog.provide('pb.pot.Component');
 goog.require('pb.pot.ComponentModel');
-goog.require('pb.shadowMaker');
 goog.require('pb.ui.Component');
 
 
@@ -95,8 +94,6 @@ pb.pot.Component.prototype.enterDocument = function() {
     goog.base(this, 'enterDocument');
 
     this.updateUi();
-
-    pb.shadowMaker(this.$(this.mappings.KNOB_HOLDER)[0], 10, 0.5, 4);
 };
 
 

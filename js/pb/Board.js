@@ -62,7 +62,17 @@ pb.Board.prototype.pedals = null;
  */
 pb.Board.prototype.addPedals = function(pedals) {
     pb.ui.Component.prototype.addChildren.call(this, pedals);
-}
+};
+
+
+pb.Board.prototype.doShadows = function() {
+    this.getPedals().forEach(function(pedal) {
+        pb.shadowMaker(pedal.getElement(), 40, 0.5, 0.7);
+        pedal.pots.forEach(function(pot) {
+            pb.shadowMaker(pot.$(pot.mappings.KNOB_HOLDER)[0], 10, 0.5, 4);
+        });
+    });
+};
 
 
 /**
@@ -75,6 +85,7 @@ pb.Board.prototype.addPedals = function(pedals) {
 pb.Board.prototype.addChildAt = function(child, index, opt_render) {
     goog.base(this, 'addChildAt', child, index, opt_render);
     this.routeInternal();
+    this.doShadows();
 };
 
 
