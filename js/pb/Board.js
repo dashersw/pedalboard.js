@@ -84,7 +84,7 @@ pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
 /**
  * Returns the pedals in this board.
  *
- * @return {*} Pedals in this board.
+ * @return {pb.box.box.Component} Pedals in this board.
  */
 pb.Board.prototype.getPedals = function() {
     return this.getChildren();
