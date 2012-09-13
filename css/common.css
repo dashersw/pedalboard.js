@@ -26,41 +26,17 @@ body {
 
 #floor {
     position: absolute;
-    background-image:  url('../img/floor.jpg');
-    height: 105%;
-    width: 108%;
-    top: -5%;
-    left: -4%;
-    background-size: 50%;
-}
-
-#blur {
-    position: absolute;
     background-image:
         -webkit-radial-gradient(50% 50%, ellipse farthest-corner,
             rgba(0, 0, 0, 0) 60%,
             rgba(0, 0, 0, 0.9) 80%,
             rgba(0, 0, 0, 1) 90%),
-            url('../img/floor.jpg');
-    /*background-image: url('../img/floor.jpg');*/
-    /*background: black;*/
-    background-size: 100%, 50%;
-    -webkit-mask-image:
-        -webkit-radial-gradient(50% 50%, ellipse closest-side,
-            rgba(0, 0, 0, 0) 10%,
-            rgba(0, 0, 0, 0) 50%,
-            rgba(0, 0, 0, 0.9) 65%,
-            rgba(0, 0, 0, 0.9) 85%,
-            rgba(0, 0, 0, 1) 125%
-        );
-    background-position: 0 100%;
-    background-size: 100%, 50%;
-    background-repeat: repeat-x, repeat;
+            url('../img/floor.6.jpg');
+    background-size: 100%, 70%;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    /*-webkit-filter: blur(6px);*/
 }
 
 @media only screen
@@ -95,7 +71,7 @@ footer {
     position: absolute;
     width: 100%;
     z-index: 1;
-    text-shadow: 0px -2px 0 hsla(0, 0%, 0%, 0.4), 0px 1px 0px hsla(1095, 60%, 90%, 0.2);
+    text-shadow: 0px -4px 0 hsla(0, 0%, 0%,0.7), 0px 1px 0px hsla(1095, 60%, 90%, 0.6);
     font-family: "Helvetica Neue", Helvetica, Arial;
     letter-spacing: -15px;
     font-weight: bold;
