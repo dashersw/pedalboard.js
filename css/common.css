@@ -31,6 +31,7 @@ body {
     width: 108%;
     top: -5%;
     left: -4%;
+    background-size: 50%;
 }
 
 #blur {
@@ -48,24 +49,16 @@ body {
 @media only screen
 and (-webkit-min-device-pixel-ratio : 2)
 and (min-device-width: 320px) {
-    #blur {
-        background-size: 100%, 200%;
-    }
-
-    #floor {
-        background-size: 100%, 200%;
+    #blur, #floor {
+        /*background-size: 100%, 200%;*/
     }
 }
 
 @media only screen
 and (-webkit-min-device-pixel-ratio : 2)
 and (min-device-width: 768px) {
-    #blur {
-        background-size: 100%, 50%;
-    }
-
-    #floor {
-        background-size: 100%, 50%;
+    #blur, #floor {
+        /*background-size: 100%, 50%;*/
     }
 }
 
