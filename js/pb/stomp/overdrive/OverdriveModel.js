@@ -33,20 +33,13 @@ goog.require('pb.stomp.BoxModel');
  */
 pb.stomp.OverdriveModel = function(context) {
     goog.base(this, context);
-    this.lowPassFreq = 1600;
-    this.secondLowPassFreq = 4000;
+    this.lowPassFreq = 3000;
 
     this.lowPass = this.context.createBiquadFilter();
     this.lowPass.type = 0;
     this.lowPass.frequency.value = this.lowPassFreq;
 
-    this.secondLowPass = this.context.createBiquadFilter();
-    this.secondLowPass.type = 0;
-    this.secondLowPass.frequency.value = this.secondLowPassFreq;
-
-    this.gain = this.context.createGainNode();
     this.waveShaper = this.context.createWaveShaper();
-    this.setDrive(7);
 
     this.effects = [
         this.waveShaper,
@@ -64,14 +57,13 @@ goog.inherits(pb.stomp.OverdriveModel, pb.stomp.BoxModel);
  */
 pb.stomp.OverdriveModel.prototype.createWSCurve = function(amount) {
     var k = amount;
-    var n_samples = 88200;
+    var n_samples = 22050;
     this.wsCurve = new Float32Array(n_samples);
     var deg = Math.PI / 180;
     for (var i = 0; i < n_samples; i += 1) {
         var x = i * 2 / n_samples - 1;
         this.wsCurve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
     }
-
     this.waveShaper.curve = this.wsCurve;
 };
 
@@ -82,11 +74,5 @@ pb.stomp.OverdriveModel.prototype.createWSCurve = function(amount) {
  * @param {number} newDrive Drive level to set.
  */
 pb.stomp.OverdriveModel.prototype.setDrive = function(newDrive) {
-    var input = newDrive / 100;
-    if (input < 1) input = 1;
-    var curveInput = Math.min(Math.pow(input, 3) + 1, 1000);
-    this.createWSCurve(curveInput);
-
-    this.lowPass.frequency.value = 20000 / ((input || 0.2) / 1.4);
-    this.secondLowPass.frequency.value = 20000 / ((input || 2) * 0.25);
+    this.createWSCurve(newDrive);
 };
