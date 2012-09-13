@@ -42,7 +42,7 @@ body {
     width: 100%;
     top: 0;
     left: 0;
-    -webkit-filter: blur(6px);
+    /*-webkit-filter: blur(6px);*/
 }
 
 @media only screen
