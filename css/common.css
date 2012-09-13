@@ -25,8 +25,7 @@ body {
 
 #floor {
     position: absolute;
-    background-image: -webkit-radial-gradient(50% 55%, ellipse cover, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.3) 36%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.9) 75%), url('../img/floor.jpg');
-    background-size: 100%, 100%;
+    background-image:  url('../img/floor.jpg');
     height: 105%;
     width: 108%;
     top: -5%;
