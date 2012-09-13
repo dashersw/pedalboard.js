@@ -22,6 +22,12 @@
     font-size: 2vh;
     text-align: center;
     margin: 1vh;
+    width: 6vh;
+}
+
+.nameHolder {
+    right: 50%;
+    top: 3vh;
 }
 
 .knob {
@@ -30,9 +36,8 @@
 }
 
 .pot .name {
-    top: 130%;
     font-size: 3vh;
-    position: absolute;
+    margin-right: -100%;
 }
 
 .knobHolder {
@@ -40,4 +45,5 @@
     background-color: #333;
     height: 6vh;
     width: 6vh;
+    z-index: 2;
 }

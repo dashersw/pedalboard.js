@@ -80,9 +80,11 @@ pb.pot.Component.prototype.updateUi = function() {
 pb.pot.Component.prototype.templates_base = function() {
     return '<div class="pot" id="' + this.getId() + '">' +
                '<div class="knobHolder">' +
-                   '<img class="knob" src="img/pot.png"/>' +
+                   '<img class="knob" src="img/pot-small.png"/>' +
                '</div>' +
-               '<div class="name">' + this.model.name + '</div>' +
+               '<div class="nameHolder">' +
+                   '<div class="name">' + this.model.name + '</div>' +
+               '</div>'
            '</div>';
 };
 
