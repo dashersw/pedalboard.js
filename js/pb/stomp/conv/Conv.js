@@ -48,3 +48,12 @@ pb.stomp.Conv.prototype.modelClass = pb.stomp.ConvModel;
  * @override
  */
 pb.stomp.Conv.prototype.name = 'convo';
+
+
+/**
+ * @override
+ */
+pb.stomp.Conv.prototype.createPots = function() {
+    this.volumePot = new pb.pot.Pot(this.model.convGain.gain, 'effect', 1);
+    this.pots = [].concat(this.volumePot);
+};

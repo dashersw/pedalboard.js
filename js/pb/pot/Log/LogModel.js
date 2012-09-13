@@ -16,44 +16,40 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Reverb pedal.
+ * @fileoverview Linear pot component model.
  */
 
-goog.provide('pb.stomp.Reverb');
-goog.require('pb.stomp.Box');
-goog.require('pb.stomp.ReverbModel');
+
+goog.provide('pb.pot.LogModel');
+goog.require('pb.pot.PotModel');
 
 
 
 /**
- * Reverb pedal.
+ * Log model provides a potentiometer behavior similar to real world logarithmic potentiometers.
  *
  * @constructor
- * @extends {pb.stomp.Box}
- * @param {AudioContext} context Audio context the pedal will work on.
+ * @extends {pb.pot.PotModel}
+ * @inheritDoc
  */
-pb.stomp.Reverb = function(context) {
-    goog.base(this, context);
+pb.pot.LogModel = function(param, name, multiplier) {
+    goog.base(this, param, name, multiplier);
 };
-goog.inherits(pb.stomp.Reverb, pb.stomp.Box);
+goog.inherits(pb.pot.LogModel, pb.pot.PotModel);
 
 
 /**
  * @override
  */
-pb.stomp.Reverb.prototype.modelClass = pb.stomp.ReverbModel;
+pb.pot.LogModel.prototype.processValue = function(newValue, oldValue) {
+    newValue = Math.pow(newValue, 3) / 100;
+    this.value = newValue * this.multiplier;
+};
 
 
 /**
  * @override
  */
-pb.stomp.Reverb.prototype.name = 'reverb';
-
-
-/**
- * @override
- */
-pb.stomp.Reverb.prototype.createPots = function() {
-    this.volumePot = new pb.pot.Pot(this.model.level.gain, 'effect', 0.1);
-    this.pots = [].concat(this.volumePot);
+pb.pot.LogModel.prototype.getNormalizedValue = function() {
+    return Math.round(Math.pow(this.value * 100 / this.multiplier, 1 / 3) * 100) / 100;
 };

@@ -16,44 +16,32 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Reverb pedal.
+ * @fileoverview Base pot component.
  */
 
-goog.provide('pb.stomp.Reverb');
-goog.require('pb.stomp.Box');
-goog.require('pb.stomp.ReverbModel');
+
+goog.provide('pb.pot.Linear');
+goog.require('pb.pot.LinearModel');
+goog.require('pb.pot.Pot');
 
 
 
 /**
- * Reverb pedal.
+ * Linear pot component models a linear potentiometer.
  *
  * @constructor
- * @extends {pb.stomp.Box}
- * @param {AudioContext} context Audio context the pedal will work on.
+ * @extends {pb.pot.Pot}
+ * @inheritDoc
  */
-pb.stomp.Reverb = function(context) {
-    goog.base(this, context);
+pb.pot.Linear = function(param, name, multiplier) {
+    goog.base(this, param, name, multiplier);
 };
-goog.inherits(pb.stomp.Reverb, pb.stomp.Box);
+goog.inherits(pb.pot.Linear, pb.pot.Pot);
 
 
 /**
+ * @type {function(new: pb.pot.LinearModel, (AudioParam|Function), string, number)}
+ *       The component model this pot component will work with.
  * @override
  */
-pb.stomp.Reverb.prototype.modelClass = pb.stomp.ReverbModel;
-
-
-/**
- * @override
- */
-pb.stomp.Reverb.prototype.name = 'reverb';
-
-
-/**
- * @override
- */
-pb.stomp.Reverb.prototype.createPots = function() {
-    this.volumePot = new pb.pot.Pot(this.model.level.gain, 'effect', 0.1);
-    this.pots = [].concat(this.volumePot);
-};
+pb.pot.Linear.prototype.modelClass = pb.pot.LinearModel;

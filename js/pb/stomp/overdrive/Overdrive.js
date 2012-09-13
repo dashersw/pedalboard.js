@@ -20,6 +20,7 @@
  */
 
 goog.provide('pb.stomp.Overdrive');
+goog.require('pb.pot.Log');
 goog.require('pb.stomp.Box');
 goog.require('pb.stomp.OverdriveModel');
 
@@ -51,18 +52,10 @@ pb.stomp.Overdrive.prototype.modelClass = pb.stomp.OverdriveModel;
  */
 pb.stomp.Overdrive.prototype.createPots = function() {
     goog.base(this, 'createPots');
-    this.drivePot = new pb.pot.Component(this.model.gain.gain, 'drive', 1000);
+    var handler = goog.bind(this.model.setDrive, this.model);
+
+    this.drivePot = new pb.pot.Log(handler, 'drive', 200);
     this.pots.push(this.drivePot);
-};
-
-
-/**
- * @override
- */
-pb.stomp.Overdrive.prototype.bindModelEvents = function() {
-    goog.events.listen(this.drivePot.model, pb.pot.ComponentModel.EventType.VALUE_CHANGED, function(e) {
-        this.model.setDrive(e.newValue);
-    }, false, this);
 };
 
 

@@ -20,8 +20,8 @@
  */
 
 
-goog.provide('pb.pot.Component');
-goog.require('pb.pot.ComponentModel');
+goog.provide('pb.pot.Pot');
+goog.require('pb.pot.PotModel');
 goog.require('pb.ui.Component');
 
 
@@ -32,25 +32,34 @@ goog.require('pb.ui.Component');
  * @constructor
  * @extends {pb.ui.Component}
  *
- * @param {AudioParam} param Audio parameter this pot will adjust. Can be gain, etc.
+ * @param {AudioParam|Function} param Audio parameter this pot will adjust. Can be gain, etc. If more complex
+ *     calculation is desired, one can pass a callback function which will be triggered each time the value of this pot
+ *     changes.
  * @param {string} name Name of the pot. Will be written under it.
- * @param {number} range The multiplier of the effect. Some effects (such as gain) need this to be on the order of
+ * @param {number} multiplier The multiplier of the effect. Some effects (such as gain) need this to be on the order of
  *                       thousands.
  */
-pb.pot.Component = function(param, name, range) {
-    this.setModel(new this.modelClass(param, name, range || 1));
+pb.pot.Pot = function(param, name, multiplier) {
+    this.setModel(new this.modelClass(param, name, multiplier || 1));
     this.bindModelEvents();
     this.setValue(10);
     goog.base(this);
 };
-goog.inherits(pb.pot.Component, pb.ui.Component);
+goog.inherits(pb.pot.Pot, pb.ui.Component);
 
 
 /**
- * @type {function(new: pb.pot.ComponentModel, AudioParam, string, number)}
+ * @type {function(new: pb.pot.PotModel, (AudioParam|Function), string, number)}
  *       The component model this pot component will work with.
  */
-pb.pot.Component.prototype.modelClass = pb.pot.ComponentModel;
+pb.pot.Pot.prototype.modelClass = pb.pot.PotModel;
+
+
+/**
+ * @protected
+ * @type {number} Angle in degrees per one unit of rotation.
+ */
+pb.pot.Pot.prototype.angle = 26;
 
 
 /**
@@ -58,7 +67,7 @@ pb.pot.Component.prototype.modelClass = pb.pot.ComponentModel;
  *
  * @param {number} newValue New value to be set.
  */
-pb.pot.Component.prototype.setValue = function(newValue) {
+pb.pot.Pot.prototype.setValue = function(newValue) {
     this.model.setValue(newValue);
 };
 
@@ -66,9 +75,9 @@ pb.pot.Component.prototype.setValue = function(newValue) {
 /**
  * Updates the user interface - rotation - accordingly.
  */
-pb.pot.Component.prototype.updateUi = function() {
+pb.pot.Pot.prototype.updateUi = function() {
     if (this.isInDocument()) {
-        var newStyle = 'rotateZ(' + (this.model.getNormalizedValue() * 260) + 'deg)';
+        var newStyle = 'rotateZ(' + (this.model.getNormalizedValue() * this.angle) + 'deg)';
         this.$(this.mappings.KNOB)[0].style['-webkit-transform'] = newStyle;
     }
 };
@@ -77,14 +86,14 @@ pb.pot.Component.prototype.updateUi = function() {
 /**
  * @override
  */
-pb.pot.Component.prototype.templates_base = function() {
+pb.pot.Pot.prototype.templates_base = function() {
     return '<div class="pot" id="' + this.getId() + '">' +
                '<div class="knobHolder">' +
                    '<img class="knob" src="img/pot-small.png"/>' +
                '</div>' +
                '<div class="nameHolder">' +
                    '<div class="name">' + this.model.name + '</div>' +
-               '</div>'
+               '</div>' +
            '</div>';
 };
 
@@ -92,7 +101,7 @@ pb.pot.Component.prototype.templates_base = function() {
 /**
  * Render method updates its knob.
  */
-pb.pot.Component.prototype.enterDocument = function() {
+pb.pot.Pot.prototype.enterDocument = function() {
     goog.base(this, 'enterDocument');
 
     this.updateUi();
@@ -102,7 +111,7 @@ pb.pot.Component.prototype.enterDocument = function() {
 /**
  * @enum {string} DOM mappings.
  */
-pb.pot.Component.prototype.mappings = {
+pb.pot.Pot.prototype.mappings = {
     KNOB: '.knob',
     KNOB_HOLDER: '.knobHolder'
 };
@@ -111,8 +120,8 @@ pb.pot.Component.prototype.mappings = {
 /**
  * @override
  */
-pb.pot.Component.prototype.bindModelEvents = function() {
-    goog.events.listen(this.model, pb.pot.ComponentModel.EventType.VALUE_CHANGED, this.updateUi, false, this);
+pb.pot.Pot.prototype.bindModelEvents = function() {
+    goog.events.listen(this.model, pb.pot.PotModel.EventType.VALUE_CHANGED, this.updateUi, false, this);
 };
 
 (function(proto) {
@@ -131,9 +140,9 @@ pb.pot.Component.prototype.bindModelEvents = function() {
 
         var mousemove = goog.events.listen(document.body, 'mousemove', function(e) {
             if (this.flag) {
-                this.setValue(this.model.getNormalizedValue() * 10 - (e.clientY - this.oldY) * 0.05);
+                this.setValue(this.model.getNormalizedValue() - (e.clientY - this.oldY) * this.angle / 360);
                 this.oldY = e.clientY;
             }
         }, false, this);
     };
-})(pb.pot.Component.prototype);
+})(pb.pot.Pot.prototype);
