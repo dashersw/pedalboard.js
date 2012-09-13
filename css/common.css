@@ -63,7 +63,7 @@ and (min-device-width: 768px) {
 }
 
 .board {
-    top: 15%;
+    top: 30%;
     text-align: center;
     z-index: 2;
     -webkit-transition-property: top;
@@ -74,12 +74,12 @@ footer {
     color: transparent;
     font-size: 18vh;
     text-align: center;
-    top: 65vh;
+    top: 55vh;
     position: absolute;
     width: 100%;
     z-index: 1;
     text-shadow: 0px -2px 0 hsla(0, 0%, 0%, 0.4), 0px 1px 0px hsla(1095, 60%, 90%, 0.2);
     font-family: "Helvetica Neue", Helvetica, Arial;
-    letter-spacing: -20px;
+    letter-spacing: -15px;
     font-weight: bold;
 }
