@@ -30,7 +30,6 @@ goog.require('pb.io.Input');
  * The input wrapper for an audio context.
  *
  * @constructor
- * @implements {pb.Connectable}
  * @extends {pb.io.Input}
  * @param {AudioContext} context Audio context for this input.
  */

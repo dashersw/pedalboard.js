@@ -64,6 +64,9 @@ pb.Board.prototype.addPedals = function(pedals) {
 };
 
 
+/**
+ * Calculates and draws shadows for pedals and their pots.
+ */
 pb.Board.prototype.doShadows = function() {
     this.getPedals().forEach(function(pedal) {
         pb.shadowMaker(pedal.getElement(), 40, 0.5, 0.7);
@@ -88,13 +91,16 @@ pb.Board.prototype.addChildAt = function(child, index, opt_render) {
 };
 
 
+/**
+ * Convenience method for adding pedals at a given index.
+ */
 pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
 
 
 /**
  * Returns the pedals in this board.
  *
- * @return {pb.stomp.Box} Pedals in this board.
+ * @return {Array.<pb.stomp.Box>} Pedals in this board.
  */
 pb.Board.prototype.getPedals = function() {
     return this.getChildren();

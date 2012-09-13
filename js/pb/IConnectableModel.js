@@ -16,8 +16,8 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview IConnectableModel interface for consistent routing. All the connectable component models should implement
- * this interface.
+ * @fileoverview IConnectableModel interface for consistent routing. All the connectable component models should
+ * implement this interface.
  */
 
 goog.provide('pb.IConnectableModel');

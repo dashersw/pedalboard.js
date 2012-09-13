@@ -49,7 +49,7 @@ pb.stomp.Box.prototype.modelClass = pb.stomp.BoxModel;
 
 
 /**
- * Creates child components such as pots and switches.
+ * @override
  */
 pb.stomp.Box.prototype.createChildComponents = function() {
     this.createPots();
@@ -84,9 +84,7 @@ pb.stomp.Box.prototype.createSwitches = function() {
 
 
 /**
- * Connects the output of this pedal to another pedal.
- *
- * @param {pb.Connectable} destination Next pedal where the output of this pedal will connect to.
+ * @override
  */
 pb.stomp.Box.prototype.connect = function(destination) {
     goog.base(this, 'connect', destination);

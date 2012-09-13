@@ -22,7 +22,7 @@
  */
 
 goog.provide('pb.io.Output');
-goog.require('pb.Connectable');
+goog.require('pb.IConnectable');
 
 
 
@@ -31,7 +31,7 @@ goog.require('pb.Connectable');
  *
  * @constructor
  * @param {AudioContext} context Audio context for this output.
- * @implements {pb.Connectable}
+ * @implements {pb.IConnectable}
  */
 pb.io.Output = function(context) {
     this.source = context.destination; // creates a sound source
@@ -51,7 +51,7 @@ pb.io.Output.prototype.getInput = function() {
 /**
  * Lets the output know who is connected to it.
  *
- * @param {pb.Connectable} prev Input node.
+ * @param {pb.IConnectable} prev Input node.
  */
 pb.io.Output.prototype.setPrev = function(prev) {
     this.prev = prev;

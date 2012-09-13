@@ -22,11 +22,7 @@
 goog.provide('pb.Connectable');
 goog.require('pb.ConnectableModel');
 goog.require('pb.IConnectable');
-goog.require('pb.footswitch.toggle.Component');
-goog.require('pb.pot.Component');
-goog.require('pb.shadowMaker');
 goog.require('pb.ui.Component');
-goog.require('tart.ui.DlgComponent');
 
 
 
@@ -88,7 +84,7 @@ pb.Connectable.prototype.getOutput = function() {
 /**
  * Lets the pedal instance know who is connected to its input.
  *
- * @param {pb.Connectable} prev Previous pedal whose output will connect to this pedal's input.
+ * @param {pb.IConnectable} prev Previous pedal whose output will connect to this pedal's input.
  */
 pb.Connectable.prototype.setPrev = function(prev) {
     this.model.setPrev(prev.getOutput());
@@ -98,22 +94,12 @@ pb.Connectable.prototype.setPrev = function(prev) {
 /**
  * Connects the output of this pedal to another pedal.
  *
- * @param {pb.Connectable} destination Next pedal where the output of this pedal will connect to.
+ * @param {pb.IConnectable} destination Next pedal where the output of this pedal will connect to.
  */
 pb.Connectable.prototype.connect = function(destination) {
     destination.setPrev(this);
     this.model.connect(destination.getInput());
 };
-
-//
-///**
-// * This method is called after the stomp box is appended to DOM. It then renders all its potentiometers.
-// */
-//pb.Connectable.prototype.render = function() {
-//    goog.array.forEach(this.components, function(cmp) {
-//        cmp.render();
-//    });
-//};
 
 
 /**

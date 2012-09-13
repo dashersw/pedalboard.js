@@ -23,7 +23,7 @@
 
 goog.provide('pb.io.Input');
 goog.require('goog.events.EventTarget');
-goog.require('pb.Connectable');
+goog.require('pb.IConnectable');
 
 
 
@@ -31,7 +31,7 @@ goog.require('pb.Connectable');
  * The input wrapper for an audio context.
  *
  * @constructor
- * @implements {pb.Connectable}
+ * @implements {pb.IConnectable}
  * @extends {goog.events.EventTarget}
  * @param {AudioContext} context Audio context for this input.
  */
@@ -78,7 +78,7 @@ pb.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
 /**
  * Connects this input to a destination pedal.
  *
- * @param {pb.Connectable} destination Next pedal where this input will connect to.
+ * @param {pb.IConnectable} destination Next pedal where this input will connect to.
  */
 pb.io.Input.prototype.connect = function(destination) {
     destination.setPrev(this);

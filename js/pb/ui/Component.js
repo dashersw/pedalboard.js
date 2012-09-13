@@ -21,10 +21,11 @@
 
 goog.provide('pb.ui.Component');
 goog.require('goog.ui.Component');
-goog.require('tart.dom');
-goog.require('tart.ui.ComponentManager');
 goog.require('goog.ui.Container');
 goog.require('goog.ui.Control');
+goog.require('tart.dom');
+goog.require('tart.ui.ComponentManager');
+
 
 
 /**
