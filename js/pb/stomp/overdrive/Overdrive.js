@@ -35,8 +35,6 @@ goog.require('pb.stomp.OverdriveModel');
  */
 pb.stomp.Overdrive = function(context) {
     goog.base(this, context);
-
-    this.setDrive(7);
 };
 goog.inherits(pb.stomp.Overdrive, pb.stomp.Box);
 
