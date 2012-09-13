@@ -51,7 +51,7 @@ pb.box.overdrive.Component.prototype.modelClass = pb.box.overdrive.ComponentMode
  */
 pb.box.overdrive.Component.prototype.createPots = function() {
     goog.base(this, 'createPots');
-    this.drivePot = new pb.pot.Component(this.model.gain.gain, 'Drive', 1000);
+    this.drivePot = new pb.pot.Component(this.model.gain.gain, 'drive', 1000);
     this.pots.push(this.drivePot);
 };
 

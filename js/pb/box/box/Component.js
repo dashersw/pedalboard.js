@@ -61,7 +61,7 @@ pb.box.box.Component.prototype.createChildComponents = function() {
  * Creates the potentiometers of this stomp box.
  */
 pb.box.box.Component.prototype.createPots = function() {
-    this.volumePot = new pb.pot.Component(this.model.level.gain, 'Volume', 1);
+    this.volumePot = new pb.pot.Component(this.model.level.gain, 'volume', 1);
     this.pots = [].concat(this.volumePot);
 };
 
