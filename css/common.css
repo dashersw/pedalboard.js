@@ -14,7 +14,7 @@ body {
 }
 
 .stage, #floor {
-    -webkit-transform: rotateX(13deg);
+    -webkit-transform: rotateX(73deg) translateZ(-120px) translateX(0px) translateY(150px);
 }
 
 .stage {
