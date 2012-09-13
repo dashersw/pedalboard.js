@@ -28,8 +28,8 @@
  * http://www.adventurekid.se/akrt/free-reverb-impulse-responses/
  */
 
-goog.provide('pb.box.reverb.ComponentModel');
-goog.require('pb.box.box.ComponentModel');
+goog.provide('pb.stomp.ReverbModel');
+goog.require('pb.stomp.BoxModel');
 
 
 
@@ -37,10 +37,10 @@ goog.require('pb.box.box.ComponentModel');
  * Component model for reverb pedal.
  *
  * @constructor
- * @extends {pb.box.box.ComponentModel}
+ * @extends {pb.stomp.BoxModel}
  * @param {AudioContext} context The context this component model will operate on.
  */
-pb.box.reverb.ComponentModel = function(context) {
+pb.stomp.ReverbModel = function(context) {
     goog.base(this, context);
     this.conv = this.context.createConvolver();
     this.effects = [this.conv, this.level];
@@ -48,7 +48,7 @@ pb.box.reverb.ComponentModel = function(context) {
     this.loadIR();
 
 };
-goog.inherits(pb.box.reverb.ComponentModel, pb.box.box.ComponentModel);
+goog.inherits(pb.stomp.ReverbModel, pb.stomp.BoxModel);
 
 
 /**
@@ -56,13 +56,13 @@ goog.inherits(pb.box.reverb.ComponentModel, pb.box.box.ComponentModel);
  *
  * @type {string}
  */
-pb.box.reverb.ComponentModel.prototype.iRPath = 'audio/ir/reverb/pcm90cleanplate.wav';
+pb.stomp.ReverbModel.prototype.iRPath = 'audio/ir/reverb/pcm90cleanplate.wav';
 
 
 /**
  * @override
  */
-pb.box.reverb.ComponentModel.prototype.routeInternal = function() {
+pb.stomp.ReverbModel.prototype.routeInternal = function() {
     goog.base(this, 'routeInternal');
     this.inputBuffer.connect(this.outputBuffer);
 };
@@ -71,7 +71,7 @@ pb.box.reverb.ComponentModel.prototype.routeInternal = function() {
 /**
  * Loads the impulse response.
  */
-pb.box.reverb.ComponentModel.prototype.loadIR = function() {
+pb.stomp.ReverbModel.prototype.loadIR = function() {
     var that = this,
         request = new XMLHttpRequest();
 

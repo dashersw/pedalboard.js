@@ -19,8 +19,8 @@
  * @fileoverview Base connectable component model. Hosts input and output buffer, chain and effects base.
  */
 
-goog.provide('pb.Connectable.ComponentModel');
-goog.require('pb.Connectable');
+goog.provide('pb.ConnectableModel');
+goog.require('pb.IConnectableModel');
 
 
 
@@ -28,10 +28,10 @@ goog.require('pb.Connectable');
  * Component model for base connectables.
  *
  * @constructor
- * @implements {pb.Connectable}
+ * @implements {pb.IConnectableModel}
  * @param {AudioContext} context The context this component model will operate on.
  */
-pb.Connectable.ComponentModel = function(context) {
+pb.ConnectableModel = function(context) {
     this.context = context;
 
     /**
@@ -67,7 +67,7 @@ pb.Connectable.ComponentModel = function(context) {
  *
  * @param {AudioNode} destination Next audio node where the output of this model's node will connect to.
  */
-pb.Connectable.ComponentModel.prototype.connect = function(destination) {
+pb.ConnectableModel.prototype.connect = function(destination) {
     this.next = destination;
     this.chain = [].concat(this.inputBuffer, this.effects, this.outputBuffer, this.next);
 
@@ -80,7 +80,7 @@ pb.Connectable.ComponentModel.prototype.connect = function(destination) {
  *
  * @return {AudioNode} The input buffer of this component.
  */
-pb.Connectable.ComponentModel.prototype.getInput = function() {
+pb.ConnectableModel.prototype.getInput = function() {
     return this.inputBuffer;
 };
 
@@ -90,7 +90,7 @@ pb.Connectable.ComponentModel.prototype.getInput = function() {
  *
  * @return {AudioNode} The output buffer of this component.
  */
-pb.Connectable.ComponentModel.prototype.getOutput = function() {
+pb.ConnectableModel.prototype.getOutput = function() {
     return this.outputBuffer;
 };
 
@@ -100,7 +100,7 @@ pb.Connectable.ComponentModel.prototype.getOutput = function() {
  *
  * @param {AudioNode} prev Previous node who is connected to this model's effects node.
  */
-pb.Connectable.ComponentModel.prototype.setPrev = function(prev) {
+pb.ConnectableModel.prototype.setPrev = function(prev) {
     this.prev = prev;
 };
 
@@ -110,7 +110,7 @@ pb.Connectable.ComponentModel.prototype.setPrev = function(prev) {
  *
  * @protected
  */
-pb.Connectable.ComponentModel.prototype.routeInternal = function() {
+pb.ConnectableModel.prototype.routeInternal = function() {
     var chain = this.chain;
 
     for (var i = 0, len = chain.length - 1; i < len; i++) {
@@ -122,6 +122,6 @@ pb.Connectable.ComponentModel.prototype.routeInternal = function() {
 /**
  * Disconnects the output buffer of this pedal.
  */
-pb.Connectable.ComponentModel.prototype.disconnect = function() {
+pb.ConnectableModel.prototype.disconnect = function() {
     this.outputBuffer.disconnect();
 };

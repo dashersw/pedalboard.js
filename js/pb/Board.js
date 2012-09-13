@@ -23,11 +23,10 @@ goog.provide('pb.Board');
 goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventTarget');
-goog.require('pb.Connectable.Component');
-goog.require('pb.box.conv.Component');
-goog.require('pb.box.overdrive.Component');
-goog.require('pb.box.reverb.Component');
-goog.require('pb.box.volume.Component');
+goog.require('pb.stomp.Conv');
+goog.require('pb.stomp.Overdrive');
+goog.require('pb.stomp.Reverb');
+goog.require('pb.stomp.Volume');
 goog.require('tart.ui.DlgComponent');
 
 
@@ -36,7 +35,7 @@ goog.require('tart.ui.DlgComponent');
  * Board that hosts pedals.
  *
  * @constructor
- * @extends {pb.Connectable.Component}
+ * @extends {pb.Connectable}
  *
  * @param {AudioContext} context The audio context of this board.
  */
@@ -44,21 +43,21 @@ pb.Board = function(context) {
     goog.base(this, context);
     this.context = context;
 };
-goog.inherits(pb.Board, pb.Connectable.Component);
+goog.inherits(pb.Board, pb.Connectable);
 
 
 /**
  * Pedals of this board.
  *
  * @protected
- * @type {Array.<pb.box.box.Component>}
+ * @type {Array.<pb.stomp.Box>}
  */
 pb.Board.prototype.pedals = null;
 
 
 /**
  * Adds pedals to this board. An alias method for addChildren.
- * @param {Array.<pb.box.box.Component>} pedals Pedals.
+ * @param {Array.<pb.stomp.Box>} pedals Pedals.
  */
 pb.Board.prototype.addPedals = function(pedals) {
     pb.ui.Component.prototype.addChildren.call(this, pedals);
@@ -78,7 +77,7 @@ pb.Board.prototype.doShadows = function() {
 /**
  * @override
  *
- * @param {pb.box.box.Component} child Child.
+ * @param {pb.stomp.Box} child Child.
  * @param {number} index Index.
  * @param {boolean=} opt_render Render.
  */
@@ -95,7 +94,7 @@ pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
 /**
  * Returns the pedals in this board.
  *
- * @return {pb.box.box.Component} Pedals in this board.
+ * @return {pb.stomp.Box} Pedals in this board.
  */
 pb.Board.prototype.getPedals = function() {
     return this.getChildren();

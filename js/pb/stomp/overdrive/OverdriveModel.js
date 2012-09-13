@@ -19,8 +19,8 @@
  * @fileoverview Overdrive pedal component model.
  */
 
-goog.provide('pb.box.overdrive.ComponentModel');
-goog.require('pb.box.box.ComponentModel');
+goog.provide('pb.stomp.OverdriveModel');
+goog.require('pb.stomp.BoxModel');
 
 
 
@@ -28,10 +28,10 @@ goog.require('pb.box.box.ComponentModel');
  * Component model for overdrive pedal.
  *
  * @constructor
- * @extends {pb.box.box.ComponentModel}
+ * @extends {pb.stomp.BoxModel}
  * @param {AudioContext} context The context this component model will operate on.
  */
-pb.box.overdrive.ComponentModel = function(context) {
+pb.stomp.OverdriveModel = function(context) {
     goog.base(this, context);
     this.lowPassFreq = 1600;
     this.secondLowPassFreq = 4000;
@@ -54,7 +54,7 @@ pb.box.overdrive.ComponentModel = function(context) {
         this.level
     ];
 };
-goog.inherits(pb.box.overdrive.ComponentModel, pb.box.box.ComponentModel);
+goog.inherits(pb.stomp.OverdriveModel, pb.stomp.BoxModel);
 
 
 /**
@@ -62,7 +62,7 @@ goog.inherits(pb.box.overdrive.ComponentModel, pb.box.box.ComponentModel);
  *
  * @param {number} amount Amount of distortion to be applied.
  */
-pb.box.overdrive.ComponentModel.prototype.createWSCurve = function(amount) {
+pb.stomp.OverdriveModel.prototype.createWSCurve = function(amount) {
     var k = amount;
     var n_samples = 88200;
     this.wsCurve = new Float32Array(n_samples);
@@ -81,7 +81,7 @@ pb.box.overdrive.ComponentModel.prototype.createWSCurve = function(amount) {
  *
  * @param {number} newDrive Drive level to set.
  */
-pb.box.overdrive.ComponentModel.prototype.setDrive = function(newDrive) {
+pb.stomp.OverdriveModel.prototype.setDrive = function(newDrive) {
     var input = newDrive / 100;
     if (input < 1) input = 1;
     var curveInput = Math.min(Math.pow(input, 3) + 1, 1000);

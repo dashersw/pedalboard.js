@@ -19,9 +19,9 @@
  * @fileoverview Overdrive pedal.
  */
 
-goog.provide('pb.box.overdrive.Component');
-goog.require('pb.box.box.Component');
-goog.require('pb.box.overdrive.ComponentModel');
+goog.provide('pb.stomp.Overdrive');
+goog.require('pb.stomp.Box');
+goog.require('pb.stomp.OverdriveModel');
 
 
 
@@ -29,27 +29,27 @@ goog.require('pb.box.overdrive.ComponentModel');
  * Overdrive pedal.
  *
  * @constructor
- * @extends {pb.box.box.Component}
+ * @extends {pb.stomp.Box}
  * @param {AudioContext} context Audio context the pedal will work on.
  */
-pb.box.overdrive.Component = function(context) {
+pb.stomp.Overdrive = function(context) {
     goog.base(this, context);
 
     this.setDrive(7);
 };
-goog.inherits(pb.box.overdrive.Component, pb.box.box.Component);
+goog.inherits(pb.stomp.Overdrive, pb.stomp.Box);
 
 
 /**
  * @override
  */
-pb.box.overdrive.Component.prototype.modelClass = pb.box.overdrive.ComponentModel;
+pb.stomp.Overdrive.prototype.modelClass = pb.stomp.OverdriveModel;
 
 
 /**
  * @override
  */
-pb.box.overdrive.Component.prototype.createPots = function() {
+pb.stomp.Overdrive.prototype.createPots = function() {
     goog.base(this, 'createPots');
     this.drivePot = new pb.pot.Component(this.model.gain.gain, 'drive', 1000);
     this.pots.push(this.drivePot);
@@ -59,7 +59,7 @@ pb.box.overdrive.Component.prototype.createPots = function() {
 /**
  * @override
  */
-pb.box.overdrive.Component.prototype.bindModelEvents = function() {
+pb.stomp.Overdrive.prototype.bindModelEvents = function() {
     goog.events.listen(this.drivePot.model, pb.pot.ComponentModel.EventType.VALUE_CHANGED, function(e) {
         this.model.setDrive(e.newValue);
     }, false, this);
@@ -71,7 +71,7 @@ pb.box.overdrive.Component.prototype.bindModelEvents = function() {
  *
  * @param {number} newValue New drive value, ranges between 0-10.
  */
-pb.box.overdrive.Component.prototype.setDrive = function(newValue) {
+pb.stomp.Overdrive.prototype.setDrive = function(newValue) {
     this.drivePot.setValue(newValue);
 };
 
@@ -79,4 +79,4 @@ pb.box.overdrive.Component.prototype.setDrive = function(newValue) {
 /**
  * @override
  */
-pb.box.overdrive.Component.prototype.name = 'overdrive';
+pb.stomp.Overdrive.prototype.name = 'overdrive';

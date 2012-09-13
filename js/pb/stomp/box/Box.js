@@ -19,9 +19,9 @@
  * @fileoverview Base pedal.
  */
 
-goog.provide('pb.box.box.Component');
-goog.require('pb.Connectable.Component');
-goog.require('pb.box.box.ComponentModel');
+goog.provide('pb.stomp.Box');
+goog.require('pb.Connectable');
+goog.require('pb.stomp.BoxModel');
 goog.require('pb.footswitch.toggle.Component');
 goog.require('pb.pot.Component');
 goog.require('pb.shadowMaker');
@@ -32,26 +32,26 @@ goog.require('pb.shadowMaker');
  * Base pedal.
  *
  * @constructor
- * @extends {pb.Connectable.Component}
+ * @extends {pb.Connectable}
  * @param {AudioContext} context Audio context the pedal will work on.
  */
-pb.box.box.Component = function(context) {
+pb.stomp.Box = function(context) {
     goog.base(this, context);
 };
-goog.inherits(pb.box.box.Component, pb.Connectable.Component);
+goog.inherits(pb.stomp.Box, pb.Connectable);
 
 
 /**
- * @type {function(new: pb.box.box.ComponentModel, AudioContext)} The component model this component will
+ * @type {function(new: pb.stomp.BoxModel, AudioContext)} The component model this component will
  *       work with.
  */
-pb.box.box.Component.prototype.modelClass = pb.box.box.ComponentModel;
+pb.stomp.Box.prototype.modelClass = pb.stomp.BoxModel;
 
 
 /**
  * Creates child components such as pots and switches.
  */
-pb.box.box.Component.prototype.createChildComponents = function() {
+pb.stomp.Box.prototype.createChildComponents = function() {
     this.createPots();
     this.createSwitches();
 };
@@ -60,7 +60,7 @@ pb.box.box.Component.prototype.createChildComponents = function() {
 /**
  * Creates the potentiometers of this stomp box.
  */
-pb.box.box.Component.prototype.createPots = function() {
+pb.stomp.Box.prototype.createPots = function() {
     this.volumePot = new pb.pot.Component(this.model.level.gain, 'volume', 1);
     this.pots = [].concat(this.volumePot);
 };
@@ -69,7 +69,7 @@ pb.box.box.Component.prototype.createPots = function() {
 /**
  * Creates the switches of this stomp box.
  */
-pb.box.box.Component.prototype.createSwitches = function() {
+pb.stomp.Box.prototype.createSwitches = function() {
     this.bypassSwitch = new pb.footswitch.toggle.Component();
 
     this.switches = [].concat(this.bypassSwitch);
@@ -86,9 +86,9 @@ pb.box.box.Component.prototype.createSwitches = function() {
 /**
  * Connects the output of this pedal to another pedal.
  *
- * @param {pb.ConnectableComponent} destination Next pedal where the output of this pedal will connect to.
+ * @param {pb.Connectable} destination Next pedal where the output of this pedal will connect to.
  */
-pb.box.box.Component.prototype.connect = function(destination) {
+pb.stomp.Box.prototype.connect = function(destination) {
     goog.base(this, 'connect', destination);
 
     this.bypassSwitch.setNodes(this.model.nodes);
@@ -100,7 +100,7 @@ pb.box.box.Component.prototype.connect = function(destination) {
  *
  * @param {number} newLevel The new level of the effect.
  */
-pb.box.box.Component.prototype.setLevel = function(newLevel) {
+pb.stomp.Box.prototype.setLevel = function(newLevel) {
     this.volumePot.setValue(newLevel);
 };
 
@@ -108,7 +108,7 @@ pb.box.box.Component.prototype.setLevel = function(newLevel) {
 /**
  * @override
  */
-pb.box.box.Component.prototype.templates_base = function() {
+pb.stomp.Box.prototype.templates_base = function() {
     return '' +
         '<div id="' + this.getId() + '" class="box ' + this.name + '">' +
            '<div class="pots"></div>' +
@@ -121,7 +121,7 @@ pb.box.box.Component.prototype.templates_base = function() {
 /**
  * This method is called after the stomp box is appended to DOM. It then renders all its potentiometers.
  */
-pb.box.box.Component.prototype.enterDocument = function() {
+pb.stomp.Box.prototype.enterDocument = function() {
     goog.base(this, 'enterDocument');
 
     this.pots.forEach(function(pot) {
@@ -139,7 +139,7 @@ pb.box.box.Component.prototype.enterDocument = function() {
  *
  * @enum {string}
  */
-pb.box.box.Component.prototype.mappings = {
+pb.stomp.Box.prototype.mappings = {
     POTS: '.pots',
     SWITCHES: '.switches'
 };
@@ -150,4 +150,4 @@ pb.box.box.Component.prototype.mappings = {
  *
  * @type {string}
  */
-pb.box.box.Component.prototype.name = 'pb';
+pb.stomp.Box.prototype.name = 'pb';

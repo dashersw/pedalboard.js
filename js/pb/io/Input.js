@@ -18,12 +18,12 @@
 /**
  * @fileoverview Input abstraction for an audio context. There can be many input sources in an audio context and this
  * class is an abstraction of an input that also implements the pb.Connectable interface so that it can be chained
- * before a pb.box.box.ComponentModel.
+ * before a pb.stomp.BoxModel.
  */
 
 goog.provide('pb.io.Input');
 goog.require('goog.events.EventTarget');
-goog.require('pb.ConnectableComponent');
+goog.require('pb.Connectable');
 
 
 
@@ -31,7 +31,7 @@ goog.require('pb.ConnectableComponent');
  * The input wrapper for an audio context.
  *
  * @constructor
- * @implements {pb.ConnectableComponent}
+ * @implements {pb.Connectable}
  * @extends {goog.events.EventTarget}
  * @param {AudioContext} context Audio context for this input.
  */
@@ -78,7 +78,7 @@ pb.io.Input.prototype.setSourceBuffer = function(sourceBuffer) {
 /**
  * Connects this input to a destination pedal.
  *
- * @param {pb.ConnectableComponent} destination Next pedal where this input will connect to.
+ * @param {pb.Connectable} destination Next pedal where this input will connect to.
  */
 pb.io.Input.prototype.connect = function(destination) {
     destination.setPrev(this);

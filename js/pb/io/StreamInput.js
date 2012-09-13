@@ -18,7 +18,7 @@
 /**
  * @fileoverview Input abstraction for an audio context. There can be many input sources in an audio context and this
  * class is an abstraction of an input that also implements the pb.Connectable interface so that it can be chained
- * before a pb.box.box.ComponentModel.
+ * before a pb.stomp.BoxModel.
  */
 
 goog.provide('pb.io.StreamInput');
@@ -30,7 +30,7 @@ goog.require('pb.io.Input');
  * The input wrapper for an audio context.
  *
  * @constructor
- * @implements {pb.ConnectableComponent}
+ * @implements {pb.Connectable}
  * @extends {pb.io.Input}
  * @param {AudioContext} context Audio context for this input.
  */

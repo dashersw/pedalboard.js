@@ -16,35 +16,22 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Conv pedal.
+ * @fileoverview Volume pedal component model.
  */
 
-goog.provide('pb.box.conv.Component');
-goog.require('pb.box.box.Component');
-goog.require('pb.box.conv.ComponentModel');
+goog.provide('pb.stomp.VolumeModel');
+goog.require('pb.stomp.BoxModel');
 
 
 
 /**
- * Conv pedal.
+ * Component model for volume pedal.
  *
  * @constructor
- * @extends {pb.box.box.Component}
- * @param {AudioContext} context Audio context the pedal will work on.
+ * @extends {pb.stomp.BoxModel}
+ * @param {AudioContext} context The context this component model will operate on.
  */
-pb.box.conv.Component = function(context) {
+pb.stomp.VolumeModel = function(context) {
     goog.base(this, context);
 };
-goog.inherits(pb.box.conv.Component, pb.box.box.Component);
-
-
-/**
- * @override
- */
-pb.box.conv.Component.prototype.modelClass = pb.box.conv.ComponentModel;
-
-
-/**
- * @override
- */
-pb.box.conv.Component.prototype.name = 'convo';
+goog.inherits(pb.stomp.VolumeModel, pb.stomp.BoxModel);

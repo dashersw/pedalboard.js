@@ -18,11 +18,11 @@
 /**
  * @fileoverview Output abstraction for a given audio context. There can only be one output per audio context, and this
  * class is an abstraction of it that also implements the pb.Connectable interface so that it can be chained after
- * a pb.box.box.ComponentModel.
+ * a pb.stomp.BoxModel.
  */
 
 goog.provide('pb.io.Output');
-goog.require('pb.ConnectableComponent');
+goog.require('pb.Connectable');
 
 
 
@@ -31,7 +31,7 @@ goog.require('pb.ConnectableComponent');
  *
  * @constructor
  * @param {AudioContext} context Audio context for this output.
- * @implements {pb.ConnectableComponent}
+ * @implements {pb.Connectable}
  */
 pb.io.Output = function(context) {
     this.source = context.destination; // creates a sound source
@@ -51,7 +51,7 @@ pb.io.Output.prototype.getInput = function() {
 /**
  * Lets the output know who is connected to it.
  *
- * @param {pb.ConnectableComponent} prev Input node.
+ * @param {pb.Connectable} prev Input node.
  */
 pb.io.Output.prototype.setPrev = function(prev) {
     this.prev = prev;

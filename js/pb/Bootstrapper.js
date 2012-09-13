@@ -41,15 +41,15 @@ pb.Bootstrapper = function() {
  * Initializes a board with some pedals.
  */
 pb.Bootstrapper.prototype.initBoard = function() {
-    var context = this.stage.getContext();
+    var ctx = this.stage.getContext();
 
-    var board = new pb.Board(context);
+    var board = new pb.Board(ctx);
 
     this.stage.setBoard(board);
-    var overdrive = new pb.box.overdrive.Component(context);
-    var reverb = new pb.box.reverb.Component(context);
-    var volume = new pb.box.volume.Component(context);
-    var speaker = new pb.box.conv.Component(context);
+    var overdrive = new pb.stomp.Overdrive(ctx);
+    var reverb = new pb.stomp.Reverb(ctx);
+    var volume = new pb.stomp.Volume(ctx);
+    var speaker = new pb.stomp.Conv(ctx);
 
     board.addPedals([overdrive, reverb, volume, speaker]);
 

@@ -16,44 +16,35 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Reverb pedal.
+ * @fileoverview Volume pedal.
  */
 
-goog.provide('pb.box.reverb.Component');
-goog.require('pb.box.box.Component');
-goog.require('pb.box.reverb.ComponentModel');
+goog.provide('pb.stomp.Volume');
+goog.require('pb.stomp.Box');
+goog.require('pb.stomp.VolumeModel');
 
 
 
 /**
- * Reverb pedal.
+ * Volume pedal.
  *
  * @constructor
- * @extends {pb.box.box.Component}
+ * @extends {pb.stomp.Box}
  * @param {AudioContext} context Audio context the pedal will work on.
  */
-pb.box.reverb.Component = function(context) {
+pb.stomp.Volume = function(context) {
     goog.base(this, context);
 };
-goog.inherits(pb.box.reverb.Component, pb.box.box.Component);
+goog.inherits(pb.stomp.Volume, pb.stomp.Box);
 
 
 /**
  * @override
  */
-pb.box.reverb.Component.prototype.modelClass = pb.box.reverb.ComponentModel;
+pb.stomp.Volume.prototype.modelClass = pb.stomp.VolumeModel;
 
 
 /**
  * @override
  */
-pb.box.reverb.Component.prototype.name = 'reverb';
-
-
-/**
- * @override
- */
-pb.box.reverb.Component.prototype.createPots = function() {
-    this.volumePot = new pb.pot.Component(this.model.level.gain, 'level', 1);
-    this.pots = [].concat(this.volumePot);
-};
+pb.stomp.Volume.prototype.name = 'volume';

@@ -23,8 +23,8 @@
  * http://www.adventurekid.se/akrt/free-conv-impulse-responses/
  */
 
-goog.provide('pb.box.conv.ComponentModel');
-goog.require('pb.box.box.ComponentModel');
+goog.provide('pb.stomp.ConvModel');
+goog.require('pb.stomp.BoxModel');
 
 
 
@@ -32,20 +32,19 @@ goog.require('pb.box.box.ComponentModel');
  * Component model for conv pedal.
  *
  * @constructor
- * @extends {pb.box.box.ComponentModel}
+ * @extends {pb.stomp.BoxModel}
  * @param {AudioContext} context The context this component model will operate on.
  */
-pb.box.conv.ComponentModel = function(context) {
+pb.stomp.ConvModel = function(context) {
     goog.base(this, context);
     this.conv = this.context.createConvolver();
     this.convGain = this.context.createGainNode();
-
     this.effects = [this.conv, this.convGain];
 
     this.loadIR();
 
 };
-goog.inherits(pb.box.conv.ComponentModel, pb.box.box.ComponentModel);
+goog.inherits(pb.stomp.ConvModel, pb.stomp.BoxModel);
 
 
 /**
@@ -53,13 +52,13 @@ goog.inherits(pb.box.conv.ComponentModel, pb.box.box.ComponentModel);
  *
  * @type {string}
  */
-pb.box.conv.ComponentModel.prototype.iRPath = 'audio/ir/speaker/AK-SPKRS_VinUs_002.wav';
+pb.stomp.ConvModel.prototype.iRPath = 'audio/ir/speaker/AK-SPKRS_VinUs_002.wav';
 
 
 /**
  * @override
  */
-pb.box.conv.ComponentModel.prototype.routeInternal = function() {
+pb.stomp.ConvModel.prototype.routeInternal = function() {
     goog.base(this, 'routeInternal');
     this.inputBuffer.connect(this.outputBuffer);
 };
@@ -68,7 +67,7 @@ pb.box.conv.ComponentModel.prototype.routeInternal = function() {
 /**
  * Loads the impulse response.
  */
-pb.box.conv.ComponentModel.prototype.loadIR = function() {
+pb.stomp.ConvModel.prototype.loadIR = function() {
     var that = this,
         request = new XMLHttpRequest();
 
