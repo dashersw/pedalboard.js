@@ -20,33 +20,32 @@
  */
 
 
-goog.provide('pb.footswitch.Component');
-goog.require('goog.events.MouseWheelHandler');
-goog.require('pb.footswitch.ComponentModel');
+goog.provide('pb.footswitch.Switch');
+goog.require('pb.footswitch.SwitchModel');
 goog.require('pb.ui.Component');
 
 
 
 /**
- * Footswitch component models a virtual switch. This base class is used to toggle stompbox nodes.
+ * Switch component models a footswitch. This base class is used to toggle stompbox nodes.
  *
  * @constructor
  * @extends {pb.ui.Component}
  *
  * @param {string=} opt_name Name of the switch. Will be written under it.
  */
-pb.footswitch.Component = function(opt_name) {
+pb.footswitch.Switch = function(opt_name) {
     this.model = new this.modelClass(opt_name);
     goog.base(this);
 };
-goog.inherits(pb.footswitch.Component, pb.ui.Component);
+goog.inherits(pb.footswitch.Switch, pb.ui.Component);
 
 
 /**
- * @type {function(new: pb.footswitch.ComponentModel, string=)}
+ * @type {function(new: pb.footswitch.SwitchModel, string=)}
  *       The component model this switch component will work with.
  */
-pb.footswitch.Component.prototype.modelClass = pb.footswitch.ComponentModel;
+pb.footswitch.Switch.prototype.modelClass = pb.footswitch.SwitchModel;
 
 
 /**
@@ -54,7 +53,7 @@ pb.footswitch.Component.prototype.modelClass = pb.footswitch.ComponentModel;
  *
  * @param {Array.<Array.<AudioNode>>} nodes Nodes of this switch.
  */
-pb.footswitch.Component.prototype.setNodes = function(nodes) {
+pb.footswitch.Switch.prototype.setNodes = function(nodes) {
     this.model.setNodes(nodes);
 };
 
@@ -62,7 +61,7 @@ pb.footswitch.Component.prototype.setNodes = function(nodes) {
 /**
  * Switch click handler.
  */
-pb.footswitch.Component.prototype.onClick = function() {
+pb.footswitch.Switch.prototype.onClick = function() {
     this.model.toggle();
 };
 
@@ -70,7 +69,7 @@ pb.footswitch.Component.prototype.onClick = function() {
 /**
  * @override
  */
-pb.footswitch.Component.prototype.templates_base = function() {
+pb.footswitch.Switch.prototype.templates_base = function() {
     return '<div class="switch" id="' + this.getId() + '">' +
                '<img class="button" src="img/switch.png"/>' +
                this.templates_name() +
@@ -81,7 +80,7 @@ pb.footswitch.Component.prototype.templates_base = function() {
 /**
  * @return {string} Name template. Returns empty string if no name is given.
  */
-pb.footswitch.Component.prototype.templates_name = function() {
+pb.footswitch.Switch.prototype.templates_name = function() {
     return this.model.name ? ('<div class="name">' + this.model.name + '</div>') : '';
 };
 
@@ -89,7 +88,7 @@ pb.footswitch.Component.prototype.templates_name = function() {
 /**
  * @enum {string} DOM mappings.
  */
-pb.footswitch.Component.prototype.mappings = {
+pb.footswitch.Switch.prototype.mappings = {
     BUTTON: '.button'
 };
 
@@ -99,4 +98,4 @@ pb.footswitch.Component.prototype.mappings = {
     var click = proto.events[goog.events.EventType.CLICK] = {};
 
     click[proto.mappings.BUTTON] = proto.onClick;
-})(pb.footswitch.Component.prototype);
+})(pb.footswitch.Switch.prototype);

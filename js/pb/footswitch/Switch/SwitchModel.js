@@ -19,9 +19,8 @@
  * @fileoverview Base switch component model.
  */
 
-
-goog.provide('pb.footswitch.ComponentModel');
 goog.require('tart.ui.ComponentModel');
+goog.provide('pb.footswitch.SwitchModel');
 
 
 
@@ -31,20 +30,20 @@ goog.require('tart.ui.ComponentModel');
  *
  * @param {string=} opt_name Name of the switch. Will be written under it.
  */
-pb.footswitch.ComponentModel = function(opt_name) {
+pb.footswitch.SwitchModel = function(opt_name) {
     goog.base(this);
 
     this.name = opt_name;
     this.nodes = [[], [], []];
-    this.state = true;
+    this.state = false;
 };
-goog.inherits(pb.footswitch.ComponentModel, tart.ui.ComponentModel);
+goog.inherits(pb.footswitch.SwitchModel, tart.ui.ComponentModel);
 
 
 /**
  * Toggles the switch and fires an event accordingly.
  */
-pb.footswitch.ComponentModel.prototype.toggle = function() {
+pb.footswitch.SwitchModel.prototype.toggle = function() {
     var oldState = this.state,
         eventType;
 
@@ -53,8 +52,8 @@ pb.footswitch.ComponentModel.prototype.toggle = function() {
     if (this.state) this.turnOn();
     else this.turnOff();
 
-    eventType = this.state ? pb.footswitch.ComponentModel.EventType.ON :
-        pb.footswitch.ComponentModel.EventType.OFF;
+    eventType = this.state ? pb.footswitch.SwitchModel.EventType.ON :
+        pb.footswitch.SwitchModel.EventType.OFF;
 
     this.dispatchEvent({
         type: eventType,
@@ -67,7 +66,7 @@ pb.footswitch.ComponentModel.prototype.toggle = function() {
 /**
  * Fired when the switch should be toggled on. Togges internal nodes; middle nodes are connected to the first.
  */
-pb.footswitch.ComponentModel.prototype.turnOn = function() {
+pb.footswitch.SwitchModel.prototype.turnOn = function() {
     var work = function(nodes) {
         nodes[1].disconnect();
         if (nodes[0]) nodes[1].connect(nodes[0]);
@@ -89,7 +88,7 @@ pb.footswitch.ComponentModel.prototype.turnOn = function() {
 /**
  * Fired when the switch should be toggled off. Toggles internal nodes; middle nodes are connected to the third.
  */
-pb.footswitch.ComponentModel.prototype.turnOff = function() {
+pb.footswitch.SwitchModel.prototype.turnOff = function() {
     var work = function(nodes) {
         nodes[1].disconnect();
         if (nodes[2]) nodes[1].connect(nodes[2]);
@@ -111,8 +110,13 @@ pb.footswitch.ComponentModel.prototype.turnOff = function() {
  *
  * @param {Array.<Array.<AudioNode>>} nodes Nodes of this switch.
  */
-pb.footswitch.ComponentModel.prototype.setNodes = function(nodes) {
+pb.footswitch.SwitchModel.prototype.setNodes = function(nodes) {
     this.nodes = nodes;
+
+    // Kick off toggling. Since this.toggle will invert the state and we just want to make an initial event dispatch,
+    // we invert the state; so that toggle will correct it and dispatch the correct event.
+    this.state = !this.state;
+    this.toggle();
 };
 
 
@@ -120,7 +124,7 @@ pb.footswitch.ComponentModel.prototype.setNodes = function(nodes) {
  *
  * @enum {string}
  */
-pb.footswitch.ComponentModel.EventType = {
+pb.footswitch.SwitchModel.EventType = {
     ON: 'on',
     OFF: 'off'
 };

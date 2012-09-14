@@ -21,10 +21,11 @@
 
 goog.provide('pb.stomp.Box');
 goog.require('pb.Connectable');
-goog.require('pb.stomp.BoxModel');
-goog.require('pb.footswitch.toggle.Component');
+goog.require('pb.footswitch.Momentary');
+goog.require('pb.footswitch.Toggle');
 goog.require('pb.pot.Linear');
 goog.require('pb.shadowMaker');
+goog.require('pb.stomp.BoxModel');
 
 
 
@@ -70,11 +71,11 @@ pb.stomp.Box.prototype.createPots = function() {
  * Creates the switches of this stomp box.
  */
 pb.stomp.Box.prototype.createSwitches = function() {
-    this.bypassSwitch = new pb.footswitch.toggle.Component();
+    this.bypassSwitch = new pb.footswitch.Toggle();
 
     this.switches = [].concat(this.bypassSwitch);
     var that = this;
-    goog.events.listen(this.bypassSwitch.model, pb.footswitch.ComponentModel.EventType.ON, function() {
+    goog.events.listen(this.bypassSwitch.model, pb.footswitch.SwitchModel.EventType.ON, function() {
         this.model.routeInternal();
         setTimeout(function() {
             that.model.routeInternal();

@@ -16,24 +16,23 @@
 // along with Pedalboard.js.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @fileoverview Base switch component.
+ * @fileoverview Base switch component model.
  */
 
 
-goog.provide('pb.footswitch.toggle.Component');
-goog.require('pb.footswitch.Component');
+goog.provide('pb.footswitch.MomentaryModel');
+goog.require('pb.footswitch.SwitchModel');
 
 
 
 /**
- * Pot component models a virtual switchentiometer. This base class is used to adjust audio parameter values of pedals.
- *
  * @constructor
- * @extends {pb.footswitch.Component}
+ * @extends {pb.footswitch.SwitchModel}
  *
  * @param {string=} opt_name Name of the switch. Will be written under it.
  */
-pb.footswitch.toggle.Component = function(opt_name) {
+pb.footswitch.MomentaryModel = function(opt_name) {
     goog.base(this, opt_name);
+    this.state = false;
 };
-goog.inherits(pb.footswitch.toggle.Component, pb.footswitch.Component);
+goog.inherits(pb.footswitch.MomentaryModel, pb.footswitch.SwitchModel);
