@@ -129,10 +129,8 @@ pb.Board.prototype.templates_base = function() {
  */
 pb.Board.prototype.connect = function(destination) {
     goog.base(this, 'connect', destination);
+    this.output = destination;
     this.routeInternal();
-
-    var fx = this.getChildren();
-    fx.length && fx[fx.length - 1].connect(destination);
 };
 
 
@@ -151,6 +149,7 @@ pb.Board.prototype.routeInternal = function() {
 
         this.getInput().disconnect();
         this.getInput().connect(fx[0].getInput());
+        fx.length && this.output && fx[fx.length - 1].connect(this.output);
     }
 };
 
