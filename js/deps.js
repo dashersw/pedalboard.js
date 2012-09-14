@@ -902,14 +902,15 @@ goog.addDependency('../../../../../pb/Connectable/Connectable.js', ['pb.Connecta
 goog.addDependency('../../../../../pb/Connectable/ConnectableModel.js', ['pb.ConnectableModel'], ['pb.IConnectableModel']);
 goog.addDependency('../../../../../pb/IConnectable.js', ['pb.IConnectable'], []);
 goog.addDependency('../../../../../pb/IConnectableModel.js', ['pb.IConnectableModel'], []);
+goog.addDependency('../../../../../pb/Led.js', ['pb.Led'], ['pb.ui.Component']);
 goog.addDependency('../../../../../pb/ShadowMaker.js', ['pb.shadowMaker'], ['goog.color', 'goog.style']);
 goog.addDependency('../../../../../pb/Stage.js', ['pb.Stage'], ['pb.Board', 'pb.io.FileInput', 'pb.io.Output', 'pb.io.StreamInput', 'pb.ui.Component']);
 goog.addDependency('../../../../../pb/footswitch/Momentary/Momentary.js', ['pb.footswitch.Momentary'], ['pb.footswitch.MomentaryModel', 'pb.footswitch.Switch']);
 goog.addDependency('../../../../../pb/footswitch/Momentary/MomentaryModel.js', ['pb.footswitch.MomentaryModel'], ['pb.footswitch.SwitchModel']);
 goog.addDependency('../../../../../pb/footswitch/Switch/Switch.js', ['pb.footswitch.Switch'], ['pb.footswitch.SwitchModel', 'pb.ui.Component']);
 goog.addDependency('../../../../../pb/footswitch/Switch/SwitchModel.js', ['pb.footswitch.SwitchModel'], ['tart.ui.ComponentModel']);
-goog.addDependency('../../../../../pb/footswitch/toggle/Toggle.js', ['pb.footswitch.Toggle'], ['pb.footswitch.Switch', 'pb.footswitch.ToggleModel']);
-goog.addDependency('../../../../../pb/footswitch/toggle/ToggleModel.js', ['pb.footswitch.ToggleModel'], ['pb.footswitch.SwitchModel']);
+goog.addDependency('../../../../../pb/footswitch/Toggle/Toggle.js', ['pb.footswitch.Toggle'], ['pb.footswitch.Switch', 'pb.footswitch.ToggleModel']);
+goog.addDependency('../../../../../pb/footswitch/Toggle/ToggleModel.js', ['pb.footswitch.ToggleModel'], ['pb.footswitch.SwitchModel']);
 goog.addDependency('../../../../../pb/io/FileInput.js', ['pb.io.FileInput'], ['pb.io.Input']);
 goog.addDependency('../../../../../pb/io/Input.js', ['pb.io.Input'], ['goog.events.EventTarget', 'pb.IConnectable']);
 goog.addDependency('../../../../../pb/io/Output.js', ['pb.io.Output'], ['pb.IConnectable']);
@@ -920,8 +921,8 @@ goog.addDependency('../../../../../pb/pot/Log/Log.js', ['pb.pot.Log'], ['pb.pot.
 goog.addDependency('../../../../../pb/pot/Log/LogModel.js', ['pb.pot.LogModel'], ['pb.pot.PotModel']);
 goog.addDependency('../../../../../pb/pot/Pot/Pot.js', ['pb.pot.Pot'], ['pb.pot.PotModel', 'pb.ui.Component']);
 goog.addDependency('../../../../../pb/pot/Pot/PotModel.js', ['pb.pot.PotModel'], ['tart.ui.ComponentModel']);
-goog.addDependency('../../../../../pb/stomp/box/Box.js', ['pb.stomp.Box'], ['pb.Connectable', 'pb.footswitch.Momentary', 'pb.footswitch.Toggle', 'pb.pot.Linear', 'pb.shadowMaker', 'pb.stomp.BoxModel']);
-goog.addDependency('../../../../../pb/stomp/box/BoxModel.js', ['pb.stomp.BoxModel'], ['pb.ConnectableModel']);
+goog.addDependency('../../../../../pb/stomp/Box/Box.js', ['pb.stomp.Box'], ['pb.Connectable', 'pb.Led', 'pb.footswitch.Momentary', 'pb.footswitch.Toggle', 'pb.pot.Linear', 'pb.shadowMaker', 'pb.stomp.BoxModel']);
+goog.addDependency('../../../../../pb/stomp/Box/BoxModel.js', ['pb.stomp.BoxModel'], ['pb.ConnectableModel']);
 goog.addDependency('../../../../../pb/stomp/conv/Conv.js', ['pb.stomp.Conv'], ['pb.stomp.Box', 'pb.stomp.ConvModel']);
 goog.addDependency('../../../../../pb/stomp/conv/ConvModel.js', ['pb.stomp.ConvModel'], ['pb.stomp.BoxModel']);
 goog.addDependency('../../../../../pb/stomp/overdrive/Overdrive.js', ['pb.stomp.Overdrive'], ['pb.pot.Log', 'pb.stomp.Box', 'pb.stomp.OverdriveModel']);
