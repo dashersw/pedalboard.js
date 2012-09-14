@@ -32,12 +32,12 @@ goog.require('goog.style');
  * @param {number} length Length of the shadow.
  * @param {number} darkness How dark the shadow will be.
  * @param {number} weight How vast the shadow will be.
- * @param {Array.<string>} before Any shadows to cast before mine.
- * @param {Array.<string>} after Any shadows to cast after mine.
+ * @param {Array.<string>=} opt_before Any shadows to cast before mine.
+ * @param {Array.<string>=} opt_after Any shadows to cast after mine.
  */
-pb.shadowMaker = function(element, length, darkness, weight, before, after) {
-    before = before || [];
-    after = after || [];
+pb.shadowMaker = function(element, length, darkness, weight, opt_before, opt_after) {
+    opt_before = opt_before || [];
+    opt_after = opt_after || [];
 
     var elStyle = document.defaultView.getComputedStyle(element, null);
     var colorText = elStyle.getPropertyValue('background-color');
@@ -90,7 +90,7 @@ pb.shadowMaker = function(element, length, darkness, weight, before, after) {
         shadowTemplate(xAngle / weight / 8, yConDist * 2.55, con * 2, 5, con / 3 / weight)
     );
 
-    shadows = [].concat(before, shadows.reverse(), after);
+    shadows = [].concat(opt_before, shadows.reverse(), opt_after);
     element.style['boxShadow'] = shadows.join(', ');
     element.style['left'] = '-' + xAngle / 2 + 'px';
 };
