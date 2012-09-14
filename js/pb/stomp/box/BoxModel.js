@@ -43,49 +43,6 @@ goog.inherits(pb.stomp.BoxModel, pb.ConnectableModel);
 
 
 /**
- * Connects the output of the audio node of this model to another audio node.
- *
- * @param {AudioNode} destination Next audio node where the output of this model's node will connect to.
- */
-pb.stomp.BoxModel.prototype.connect = function(destination) {
-    this.next = destination;
-    this.chain = [].concat(this.inputBuffer, this.effects, this.outputBuffer, this.next);
-
-    this.routeInternal();
-};
-
-
-/**
- * Gets the input buffer of a pedal.
- *
- * @return {AudioNode} The input buffer of this component.
- */
-pb.stomp.BoxModel.prototype.getInput = function() {
-    return this.inputBuffer;
-};
-
-
-/**
- * Gets the output buffer of a pedal.
- *
- * @return {AudioNode} The output buffer of this component.
- */
-pb.stomp.BoxModel.prototype.getOutput = function() {
-    return this.outputBuffer;
-};
-
-
-/**
- * Lets the model know who is connected to its effects node.
- *
- * @param {AudioNode} prev Previous node who is connected to this model's effects node.
- */
-pb.stomp.BoxModel.prototype.setPrev = function(prev) {
-    this.prev = prev;
-};
-
-
-/**
  * Sets the level of the effect.
 
  * @param {number} newLevel The new level of the effect.
@@ -113,12 +70,4 @@ pb.stomp.BoxModel.prototype.routeInternal = function() {
         [this.effects[0], this.inputBuffer, this.outputBuffer],
         [this.outputBuffer, goog.array.peek(this.effects), null]
     ];
-};
-
-
-/**
- * Disconnects the output buffer of this pedal.
- */
-pb.stomp.BoxModel.prototype.disconnect = function() {
-    this.outputBuffer.disconnect();
 };
