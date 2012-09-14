@@ -44,19 +44,19 @@ pb.Bootstrapper.prototype.initBoard = function() {
     var ctx = this.stage.getContext();
 
     var board = new pb.Board(ctx);
-
     this.stage.setBoard(board);
-    var overdrive = new pb.stomp.Overdrive(ctx);
-    var reverb = new pb.stomp.Reverb(ctx);
-    var volume = new pb.stomp.Volume(ctx);
-    var speaker = new pb.stomp.Conv(ctx);
 
-    board.addPedals([overdrive, reverb, volume, speaker]);
+    this.overdrive = new pb.stomp.Overdrive(ctx);
+    this.reverb = new pb.stomp.Reverb(ctx);
+    this.volume = new pb.stomp.Volume(ctx);
+    this.speaker = new pb.stomp.Conv(ctx);
 
-    overdrive.setDrive(7);
-    volume.setLevel(10);
-    reverb.setLevel(3);
+    board.addPedals([this.overdrive, this.reverb, this.volume, this.speaker]);
 
+    this.overdrive.setDrive(4);
+    this.overdrive.setLevel(6);
+    this.volume.setLevel(10);
+    this.reverb.setLevel(3);
 };
 
 
