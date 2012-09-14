@@ -10,7 +10,14 @@ body {
     -webkit-perspective: 1600px;
     overflow: hidden;
     color: white;
+    background-image:
+        -webkit-radial-gradient(48% 175%, ellipse cover,
+            transparent 80%,
+            rgba(0, 0, 0, 1) 90%),
+            -webkit-linear-gradient(rgba(0,0,0,0.4) 0%, rgba(0,0,0,1) 50%),
+        url('../img/floor.6.jpg');
     background-color: #000000;
+    background-size: 100%, 100%, 60%;
 }
 
 .stage, #floor {
