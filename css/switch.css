@@ -25,6 +25,34 @@
     width: 6vh;
 }
 
+.leds {
+    position: absolute;
+    bottom: 14vh;
+    left: 0;
+    width: 100%;
+}
+
+.led {
+    text-align: center;
+    display: inline-block;
+    height: 1.6vh;
+    width: 1.6vh;
+    border-radius: 50%;
+    box-shadow:
+        0px 2px 12px 1px rgba(0,0,0,1),
+        inset 0px -3px 6px 1px rgba(255,255,255,0.6);
+    background-color: hsla(100, 20%, 50%, 0.4);
+}
+
+.led.on {
+    background-color: hsla(100, 60%, 60%, 1);
+    box-shadow:
+        0px 0px 60px 16px hsla(100, 65%, 65%, 1),
+        0px 2px 8px 1px rgba(0,0,0,1),
+        inset 0px -2px 7px 2px rgba(255,255,255,0.5),
+        inset 2px 0px 4px 1px hsla(100,50%,55%,0.9);
+}
+
 .nameHolder {
     right: 50%;
     top: 3vh;

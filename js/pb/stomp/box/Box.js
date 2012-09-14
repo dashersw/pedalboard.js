@@ -21,6 +21,7 @@
 
 goog.provide('pb.stomp.Box');
 goog.require('pb.Connectable');
+goog.require('pb.Led');
 goog.require('pb.footswitch.Momentary');
 goog.require('pb.footswitch.Toggle');
 goog.require('pb.pot.Linear');
@@ -63,7 +64,7 @@ pb.stomp.Box.prototype.createChildComponents = function() {
  */
 pb.stomp.Box.prototype.createPots = function() {
     this.volumePot = new pb.pot.Linear(this.model.level.gain, 'volume', 0.1);
-    this.pots = [].concat(this.volumePot);
+    this.pots = [this.volumePot];
 };
 
 
@@ -72,8 +73,10 @@ pb.stomp.Box.prototype.createPots = function() {
  */
 pb.stomp.Box.prototype.createSwitches = function() {
     this.bypassSwitch = new pb.footswitch.Toggle();
+    this.led = new pb.Led(this.bypassSwitch);
+    this.leds = [this.led];
+    this.switches = [this.bypassSwitch];
 
-    this.switches = [].concat(this.bypassSwitch);
     var that = this;
     goog.events.listen(this.bypassSwitch.model, pb.footswitch.SwitchModel.EventType.ON, function() {
         this.model.routeInternal();
@@ -112,6 +115,7 @@ pb.stomp.Box.prototype.templates_base = function() {
         '<div id="' + this.getId() + '" class="box ' + this.name + '">' +
            '<div class="pots"></div>' +
            '<div class="name">' + this.name + '</div>' +
+           '<div class="leds"></div>' +
            '<div class="switches"></div>' +
         '</div>';
 };
@@ -130,6 +134,10 @@ pb.stomp.Box.prototype.enterDocument = function() {
     this.switches.forEach(function(sw) {
         sw.render(this.$(this.mappings.SWITCHES)[0]);
     }, this);
+
+    this.leds.forEach(function(led) {
+        led.render(this.$(this.mappings.LEDS)[0]);
+    }, this);
 };
 
 
@@ -140,7 +148,8 @@ pb.stomp.Box.prototype.enterDocument = function() {
  */
 pb.stomp.Box.prototype.mappings = {
     POTS: '.pots',
-    SWITCHES: '.switches'
+    SWITCHES: '.switches',
+    LEDS: '.leds'
 };
 
 
