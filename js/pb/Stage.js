@@ -80,8 +80,6 @@ pb.Stage.prototype.setBoard = function(board) {
     this.board && this.board.dispose();
 
     this.board = board;
-    this.board.input = this.input;
-    this.board.output = this.output;
     this.route();
 
     this.addChild(this.board);

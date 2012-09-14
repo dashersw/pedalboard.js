@@ -87,8 +87,7 @@ pb.Board.prototype.doShadows = function() {
 pb.Board.prototype.addChildAt = function(child, index, opt_render) {
     goog.base(this, 'addChildAt', child, index, opt_render);
     this.routeInternal();
-    if (this.isInDocument())
-        this.doShadows();
+    if (this.isInDocument()) this.doShadows();
 };
 
 
@@ -131,6 +130,9 @@ pb.Board.prototype.templates_base = function() {
 pb.Board.prototype.connect = function(destination) {
     goog.base(this, 'connect', destination);
     this.routeInternal();
+
+    var fx = this.getChildren();
+    fx.length && fx[fx.length - 1].connect(destination);
 };
 
 
@@ -141,16 +143,14 @@ pb.Board.prototype.connect = function(destination) {
  */
 pb.Board.prototype.routeInternal = function() {
     var fx = this.getChildren();
-    if (fx && fx.length > 0) {
+    if (fx.length) {
         fx.forEach(function(pedal, i) {
             pedal.disconnect();
             fx[i + 1] && pedal.connect(fx[i + 1]);
         });
 
-        this.input && this.input.connect(this);
         this.getInput().disconnect();
         this.getInput().connect(fx[0].getInput());
-        this.output && fx[fx.length - 1].connect(this.output);
     }
 };
 
@@ -159,7 +159,7 @@ pb.Board.prototype.routeInternal = function() {
  * @override
  */
 pb.Board.prototype.disposeInternal = function() {
-    this.pedals.forEach(function(pedal) {
+    this.getChildren().forEach(function(pedal) {
         pedal.disposeInternal();
     });
 
