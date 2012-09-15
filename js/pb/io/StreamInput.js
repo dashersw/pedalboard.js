@@ -34,7 +34,7 @@ goog.require('pb.io.Input');
  * @param {AudioContext} context Audio context for this input.
  */
 pb.io.StreamInput = function(context) {
-    this.source = context.createJavaScriptNode(1024, 0, 1);
+    this.source = context.createJavaScriptNode(this.bufferSize, 0, 1);
     window.ownBuffer = [];
     var that = this;
 
@@ -46,8 +46,8 @@ pb.io.StreamInput = function(context) {
             var buffer = e.outputBuffer;
             var buf = buffer.getChannelData(0);
             var data = window.ownBuffer;
-            data = data.splice(0, 1024);
-            for (var i = 0; i < 1024; ++i) {
+            data = data.splice(0, this.bufferSize);
+            for (var i = 0; i < this.bufferSize; ++i) {
                 buf[i] = data[i];
             }
 
@@ -58,18 +58,28 @@ goog.inherits(pb.io.StreamInput, pb.io.Input);
 
 
 /**
+ * The amount of samples in this streams buffer. Longer buffer will undoubtedly provide cleaner, glitch-free sound but
+ * will increase latency.
+ *
+ * @type {number} Buffer size.
+ */
+pb.io.StreamInput.prototype.bufferSize = 1024;
+
+
+/**
  * Creates the stream, from microphone.js library for the moment.
  */
 pb.io.StreamInput.prototype.createStream = function() {
     var mic = new Microphone({
-        swfPath: 'js/library/microphone.js/src/microphone.swf'
+        swfPath: 'js/library/microphone.js/microphone.swf'
     });
     Mic.loaded = function(id) {
         var micl = Mic.mics[id];
         mic.start();
+        mic.sampleRate = 44100;
         mic.onSamplesAvailable = function(data, channelCount) {
-            if (window.ownBuffer.length >= 2048)
-                window.ownBuffer = [];
+            if (window.ownBuffer.length > 4096)
+                window.ownBuffer = window.ownBuffer.slice(0, 4096);
             window.ownBuffer = window.ownBuffer.concat(data);
         }
     }
