@@ -65,7 +65,7 @@ pb.Stage.prototype.getContext = function() {
  * Initializes the input and the output.
  */
 pb.Stage.prototype.initIO = function() {
-    this.input = new pb.io.FileInput(this.context, 'audio/samples/sample.mp3');
+    this.input = new pb.io.FileInput(this.context, 'audio/samples/sample5.mp3');
     //        this.input = new pb.io.StreamInput(this.context);
 
     this.output = new pb.io.Output(this.context);
