@@ -1,0 +1,85 @@
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    -webkit-perspective: 1600px;
+    overflow: hidden;
+    color: white;
+    background-image:
+        -webkit-radial-gradient(48% 175%, ellipse cover,
+            transparent 80%,
+            rgba(0, 0, 0, 1) 90%),
+            -webkit-linear-gradient(rgba(0,0,0,0.4) 0%, rgba(0,0,0,1) 50%),
+        url('../img/floor.6.jpg');
+    background-color: #000000;
+    background-size: 100%, 100%, 60%;
+}
+
+.stage, #floor {
+    -webkit-transform: rotateX(73deg) translateZ(-120px) translateX(0px) translateY(150px);
+}
+
+.stage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-transform: rotateX(13deg) translateZ(100px);
+}
+
+#floor {
+    position: absolute;
+    background-image:
+        -webkit-radial-gradient(50% 50%, ellipse farthest-corner,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 0, 0, 0.9) 80%,
+            rgba(0, 0, 0, 1) 90%),
+            url('../img/floor.6.jpg');
+    background-size: 100%, 70%;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+@media only screen
+and (-webkit-min-device-pixel-ratio : 2)
+and (min-device-width: 320px) {
+    #blur, #floor {
+        /*background-size: 100%, 200%;*/
+    }
+}
+
+@media only screen
+and (-webkit-min-device-pixel-ratio : 2)
+and (min-device-width: 768px) {
+    #blur, #floor {
+        /*background-size: 100%, 50%;*/
+    }
+}
+
+.board {
+    top: 30%;
+    text-align: center;
+    z-index: 2;
+    -webkit-transition-property: top;
+    -webkit-transition-duration: 1s;
+}
+
+footer {
+    color: transparent;
+    font-size: 18vh;
+    text-align: center;
+    top: 55vh;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    text-shadow: 0px -4px 0 hsla(0, 0%, 0%,0.7), 0px 1px 0px hsla(1095, 60%, 90%, 0.6);
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    letter-spacing: -15px;
+    font-weight: bold;
+}

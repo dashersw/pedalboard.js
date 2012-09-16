@@ -1,0 +1,63 @@
+.box {
+    height: 30vh;
+    width: 18vh;
+    border-radius: 10px;
+    margin: 2vh;
+    padding: 2vh;
+    display: inline-block;
+    font-family: 'Yellowtail', 'Damion', cursive;
+    text-align: center;
+    background-image: -webkit-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
+        -webkit-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
+}
+
+.box>.name {
+    clear: both;
+    text-align: center;
+    font-size: 5vh;
+    top: 20vh;
+    left: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.reverb {
+    background-color: hsl(194, 61%, 54%);
+    width: 25vh;
+}
+
+.reverb .led.on {
+    background-color: hsl(194, 64%, 67%);
+    box-shadow:
+        inset 0px -2px 7px 2px rgba(255,255,255,0.8),
+        0px 0px 60px 30px hsla(194, 75%, 75%, 1),
+        inset 2px 0px 4px 1px hsla(194,50%,55%,0.9);
+}
+
+.overdrive {
+    background-color: hsl(90, 67%, 40%);
+}
+
+.volume {
+    background-color: hsl(50, 60%, 47%);
+}
+
+.volume .led.on {
+    background-color: hsl(194, 90%, 97%);
+    box-shadow:
+        inset 0px -2px 7px 2px rgba(255,255,255,0.8),
+        0px 0px 60px 30px hsla(0, 0%, 95%, 1),
+        inset 2px 0px 4px 1px hsla(0,0%,95%,0.9);
+}
+
+.convo {
+    background-color: hsl(326, 64%, 37%);
+}
+
+.convo .led.on {
+    background-color: hsl(326, 64%, 67%);
+    box-shadow:
+        inset 0px -2px 7px 2px rgba(255,255,255,0.8),
+        0px 0px 60px 20px hsla(326, 65%, 65%, 1),
+        inset 2px 0px 4px 1px hsla(326,50%,55%,0.9);
+}

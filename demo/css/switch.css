@@ -1,0 +1,87 @@
+.switch {
+    cursor: pointer;
+    margin: 1vh;
+    text-align: center;
+    display: inline-block;
+}
+
+.button {
+    height: 6vh;
+    width: 6vh;
+}
+
+.switches {
+    position: absolute;
+    bottom: 2vh;
+    left: 0;
+    width: 100%;
+}
+
+.pot {
+    display: inline-block;
+    font-size: 2vh;
+    text-align: center;
+    margin: 1vh;
+    width: 6vh;
+}
+
+.leds {
+    position: absolute;
+    bottom: 14vh;
+    left: 0;
+    width: 100%;
+}
+
+.led {
+    text-align: center;
+    display: inline-block;
+    height: 1.6vh;
+    width: 1.6vh;
+    border-radius: 50%;
+    box-shadow: inset 0px -3px 6px 1px rgba(255,255,255,0.6);
+    background-color: hsla(100, 20%, 50%, 0.4);
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 100ms;
+}
+
+.led:before {
+    content: '';
+    display: block;
+    height: 1.6vh;
+    width: 1.6vh;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0px 2px 12px 1px rgba(0,0,0,1);
+}
+
+.led.on {
+    background-color: hsla(100, 60%, 70%, 1);
+    box-shadow:
+        /*0px 2px 8px 1px rgba(0,0,0,1),*/
+        inset 0px -2px 7px 2px rgba(255,255,255,0.7),
+        0px 0px 60px 30px hsla(100, 75%, 75%, 0.9),
+        inset 2px 0px 4px 1px hsla(100,50%,55%,0.9);
+}
+
+.nameHolder {
+    right: 50%;
+    top: 3vh;
+}
+
+.knob {
+    height: 6vh;
+    width: 6vh;
+}
+
+.pot .name {
+    font-size: 3vh;
+    margin-right: -100%;
+}
+
+.knobHolder {
+    border-radius: 50%;
+    background-color: #333;
+    height: 6vh;
+    width: 6vh;
+    z-index: 2;
+}
