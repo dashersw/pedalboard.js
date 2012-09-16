@@ -147,7 +147,7 @@ Usage:
 pb.stomp.Overdrive.prototype.createPots = function() {
     var handler = goog.bind(this.model.setDrive, this.model);
 
-  this.volumePot = new pb.pot.Linear(this.model.gain.gain, 'volume', 0.1); // this will automatically set the gain on change.
+    this.volumePot = new pb.pot.Linear(this.model.gain.gain, 'volume', 0.1); // this will automatically set the gain on change.
 	this.drivePot = new pb.pot.Log(handler, 'drive', 200); // called with a function as the argument, this will call that function with its new value.
 	this.pots = [this.drivePot, this.volumePot];
 
