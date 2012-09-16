@@ -76,3 +76,8 @@ pb.stomp.OverdriveModel.prototype.createWSCurve = function(amount) {
 pb.stomp.OverdriveModel.prototype.setDrive = function(newDrive) {
     this.createWSCurve(newDrive);
 };
+
+
+pb.stomp.OverdriveModel.prototype.setTone = function(newTone) {
+    this.lowPass.frequency.value = 2000 + newTone;
+};

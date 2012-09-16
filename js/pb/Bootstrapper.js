@@ -53,7 +53,8 @@ pb.Bootstrapper.prototype.initBoard = function() {
 
     board.addPedals([this.overdrive, this.reverb, this.volume, this.speaker]);
 
-    this.overdrive.setDrive(4);
+    this.overdrive.setDrive(8);
+    this.overdrive.setTone(4);
     this.overdrive.setLevel(6);
     this.volume.setLevel(10);
     this.reverb.setLevel(3);
