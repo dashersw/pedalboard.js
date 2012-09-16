@@ -21,7 +21,7 @@ body {
 }
 
 .stage, #floor {
-    -webkit-transform: rotateX(73deg) translateZ(-120px) translateX(0px) translateY(150px);
+    -webkit-transform: rotateX(73deg) translateZ(-130px) translateX(0px) translateY(150px);
 }
 
 .stage {
@@ -44,6 +44,21 @@ body {
     width: 100%;
     top: 0;
     left: 0;
+}
+
+#world {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.github-badge {
+    display: block;
+    z-index: 9000;
+    position: absolute;
+    height: 200px;
+    width: 100%;
 }
 
 @media only screen
