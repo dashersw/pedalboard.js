@@ -27,7 +27,7 @@
 }
 
 .reverb .led.on {
-    background-color: hsl(194, 64%, 67%);
+    background-color: hsl(194, 64%, 77%);
     box-shadow:
         inset 0px -2px 7px 2px rgba(255,255,255,0.8),
         0px 0px 60px 30px hsla(194, 75%, 75%, 1),
@@ -36,6 +36,17 @@
 
 .overdrive {
     background-color: hsl(90, 67%, 40%);
+}
+
+.overdrive .pot.small {
+    top: -5vh;
+}
+
+.overdrive .pot:nth-child(1) .name {
+    left: -2.5vh;
+}
+.overdrive .pot:nth-child(2) .name {
+    left: 2vh;
 }
 
 .volume {
@@ -55,7 +66,7 @@
 }
 
 .convo .led.on {
-    background-color: hsl(326, 64%, 67%);
+    background-color: hsl(326, 64%, 77%);
     box-shadow:
         inset 0px -2px 7px 2px rgba(255,255,255,0.8),
         0px 0px 60px 20px hsla(326, 65%, 65%, 1),
