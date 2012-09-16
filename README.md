@@ -16,6 +16,8 @@ Bring multiple pedals together to create a pedalboard, easily adjust their setti
 
 Finally, a complete guitar effects stack, completely customizable, in your hands.
 
+**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo).**
+
 ###Motivation
 
 Guitar effects software on the market are very nice indeed, but they somehow lack few important concepts — ease of use, portability, sharing stuff, customization, extensibility, etc.
