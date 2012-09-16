@@ -142,13 +142,15 @@ The only difference between a LinearPot and a LogPot is their algorithm of sweep
 Usage:
 
 ```js
-pb.pedal.Overdrive.prototype.createPots = function() {
-  this.volumePot = new pb.pot.Linear(this.model.gain.gain); // this will automatically set the gain on change.
-	this.drivePot = new pb.pot.Log(this.model.setDrive, this); // called with a function as the argument, this will call that function with its new value.
+pb.stomp.Overdrive.prototype.createPots = function() {
+    var handler = goog.bind(this.model.setDrive, this.model);
+
+  this.volumePot = new pb.pot.Linear(this.model.gain.gain, 'volume', 0.1); // this will automatically set the gain on change.
+	this.drivePot = new pb.pot.Log(handler, 'drive', 200); // called with a function as the argument, this will call that function with its new value.
 	this.pots = [this.drivePot, this.volumePot];
 
-	this.drivePot.on('value change', function(e) {
-		this.model.setDrive(e.value); // we can explicitly listen to the change event and do things after a change.
+	this.drivePot.addEventListener('valueChanged', function(e) {
+		this.model.setDrive(e.newValue); // we can explicitly listen to the change event and do things after a change.
 	}, this);
 };
 
