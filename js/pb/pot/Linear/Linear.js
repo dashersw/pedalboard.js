@@ -33,8 +33,8 @@ goog.require('pb.pot.Pot');
  * @extends {pb.pot.Pot}
  * @inheritDoc
  */
-pb.pot.Linear = function(param, name, multiplier) {
-    goog.base(this, param, name, multiplier);
+pb.pot.Linear = function(param, name, multiplier, opt_size) {
+    goog.base(this, param, name, multiplier, opt_size);
 };
 goog.inherits(pb.pot.Linear, pb.pot.Pot);
 

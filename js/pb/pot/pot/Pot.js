@@ -38,9 +38,12 @@ goog.require('pb.ui.Component');
  * @param {string} name Name of the pot. Will be written under it.
  * @param {number} multiplier The multiplier of the effect. Some effects (such as gain) need this to be on the order of
  *                       thousands.
+ * @param {string=} opt_size Size of the pot. Might be one of the values in pb.pot.Pot.Size enum. Default is REGULAR.
+ *     This size is added to the pot's class names for easier styling.
  */
-pb.pot.Pot = function(param, name, multiplier) {
+pb.pot.Pot = function(param, name, multiplier, opt_size) {
     this.setModel(new this.modelClass(param, name, multiplier || 1));
+    this.size = opt_size || pb.pot.Pot.Size.REGULAR;
     this.bindModelEvents();
     this.setValue(10);
     goog.base(this);
@@ -87,7 +90,7 @@ pb.pot.Pot.prototype.updateUi = function() {
  * @override
  */
 pb.pot.Pot.prototype.templates_base = function() {
-    return '<div class="pot" id="' + this.getId() + '">' +
+    return '<div class="pot ' + this.size + '" id="' + this.getId() + '">' +
                '<div class="knobHolder">' +
                    '<img class="knob" src="img/pot-small.png"/>' +
                '</div>' +
@@ -114,6 +117,15 @@ pb.pot.Pot.prototype.enterDocument = function() {
 pb.pot.Pot.prototype.mappings = {
     KNOB: '.knob',
     KNOB_HOLDER: '.knobHolder'
+};
+
+
+/**
+ * @enum {string} Pot size.
+ */
+pb.pot.Pot.Size = {
+    SMALL: 'small',
+    REGULAR: 'regular'
 };
 
 
