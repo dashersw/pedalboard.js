@@ -7,58 +7,11 @@ html {
 body {
     height: 100%;
     width: 100%;
-    -webkit-perspective: 1600px;
     overflow: hidden;
     color: white;
-    background-image:
-        -webkit-radial-gradient(48% 175%, ellipse cover,
-            transparent 80%,
-            rgba(0, 0, 0, 1) 90%),
-            -webkit-linear-gradient(rgba(0,0,0,0.4) 0%, rgba(0,0,0,1) 50%),
-        url('../img/floor.6.jpg');
-    background-color: #000000;
-    background-size: 100%, 100%, 60%;
-}
-
-.stage, #floor {
-    -webkit-transform: rotateX(73deg) translateZ(-130px) translateX(0px) translateY(150px);
-}
-
-.stage {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    -webkit-transform: rotateX(13deg) translateZ(100px);
-}
-
-#floor {
-    position: absolute;
-    background-image:
-        -webkit-radial-gradient(50% 50%, ellipse farthest-corner,
-            rgba(0, 0, 0, 0) 60%,
-            rgba(0, 0, 0, 0.9) 80%,
-            rgba(0, 0, 0, 1) 90%),
-            url('../img/floor.6.jpg');
-    background-size: 100%, 70%;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
-#world {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-}
-
-.github-badge {
-    display: block;
-    z-index: 9000;
-    position: absolute;
-    height: 200px;
-    width: 100%;
+    background: black;
+    min-width: 800px;
+    min-height: 640px;
 }
 
 @media only screen
@@ -78,23 +31,122 @@ and (min-device-width: 768px) {
 }
 
 .board {
-    top: 30%;
+    /*top: 30%;*/
     text-align: center;
-    z-index: 2;
-    -webkit-transition-property: top;
-    -webkit-transition-duration: 1s;
+    /*z-index: 2;*/
+    /*-webkit-transition-property: all;*/
+    /*-webkit-transition-duration: 1s;*/
 }
 
 footer {
     color: transparent;
-    font-size: 18vh;
+    font-size: 12vh;
     text-align: center;
-    top: 55vh;
     position: absolute;
     width: 100%;
+    bottom: 60%;
     z-index: 1;
     text-shadow: 0px -4px 0 hsla(0, 0%, 0%,0.7), 0px 1px 0px hsla(1095, 60%, 90%, 0.6);
     font-family: "Helvetica Neue", Helvetica, Arial;
     letter-spacing: -15px;
     font-weight: bold;
+    -webkit-transform: rotateX(180deg) translateZ(1px);
+    -webkit-transform-origin: 100% 100%;
+}
+
+#controlPanel {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 30vh;
+    -webkit-transform: translateZ(10px);
+}
+
+#world {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-perspective: 1500px
+}
+
+#box {
+    -webkit-transform: translateZ(0px) translateY(-50%) rotateY(0deg) rotateX(-0deg);
+    -webkit-transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.stage {
+    -webkit-transform: rotateX(130deg) translateY(-60%) scale(0.6);
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 0%;
+    bottom: 90px;
+    width: 100%;
+    position: absolute;
+}
+
+#floor, #wall {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    -webkit-transform-origin: 0 0;
+    /*background: red!important;*/
+}
+
+#floor {
+    -webkit-transform: rotateX(-110deg);
+    -webkit-transform-origin: 0 100%;
+    background-image:
+        -webkit-radial-gradient(50% 50%, ellipse farthest-corner,
+            rgba(0, 0, 0, 0) 30%,
+            rgba(0, 0, 0, 0.9) 65%,
+            rgba(0, 0, 0, 1) 80%),
+            url('../img/floor.6.jpg');
+    background-size: 100%, 50%;
+    background-position: center bottom;
+    -webkit-transform-style: preserve-3d;
+}
+
+#wall {
+    background-image:
+        -webkit-radial-gradient(50% 75%, circle closest-corner,
+            transparent 60%,
+            rgba(0, 0, 0, 0.8) 80%),
+            -webkit-linear-gradient(rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,1) 100%),
+        url('../img/floor.6.jpg');
+    background-color: #000000;
+    background-position: center, center, bottom;
+    background-size: 100%, 100%, 50%;
+}
+
+#controlButton {
+    cursor: pointer;
+    font-size: 6vh;
+    color: rgba(255,255,255,0.6);
+}
+
+#controlButton:hover {
+    color: rgba(255,255,255,0.8)
+}
+
+.sample {
+    display: inline-block;
+    font-family: Radley;
+    font-size: 30px;
+    margin: 0 1vh;
+    cursor: pointer;
+    color: rgba(255,255,255,0.6);
+}
+
+.sample:hover {
+    color: rgba(255,255,255,0.8)
+}
+
+.sample.on {
+    color: rgba(255,255,255,0.9);
 }

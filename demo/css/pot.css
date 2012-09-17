@@ -1,0 +1,58 @@
+.pots {
+    position: absolute;
+    width: 100%;
+    top: 1vh;
+    left: 0;
+    -webkit-transform: translateZ(1px)
+}
+
+.pot {
+    display: inline-block;
+    font-size: 2vh;
+    text-align: center;
+    margin: 1vh;
+    width: 6vh;
+}
+
+.pot.small {
+    height: 5vh;
+    width: 5vh
+}
+
+.pot.small .knobHolder {
+    height: 5vh;
+    width: 5vh;
+}
+
+.pot.small .knob {
+    height: 5vh;
+    width: 5vh;
+}
+
+.pot.small .nameHolder {
+    top: 1.5vh;
+}
+
+.nameHolder {
+    right: 50%;
+    top: 3vh;
+}
+
+.knob {
+    height: 6vh;
+    width: 6vh;
+}
+
+.pot .name {
+    font-size: 3vh;
+    margin-right: -100%;
+}
+
+.knobHolder {
+    border-radius: 50%;
+    background-color: #333;
+    height: 6vh;
+    width: 6vh;
+    z-index: 2;
+    cursor: pointer;
+}

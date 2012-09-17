@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pedalboard.js - Novel open source JavaScript framework for developing audio effects for guitars</title>
+    <title>pedalboard.js - Novel open source JavaScript framework for developing audio effects for guitars</title>
     <meta name='viewport' content='user-scalable=no'/>
     <meta name='apple-mobile-web-app-capable' content='yes'/>
     <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'/>
@@ -10,33 +10,121 @@
     <link rel="stylesheet" href="css/common.css"/>
     <link rel="stylesheet" href="css/box.css"/>
     <link rel="stylesheet" href="css/switch.css"/>
+    <link rel="stylesheet" href="css/pot.css"/>
     <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Mrs+Sheppards' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="js/compiled/compiled.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Radley:400,400italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="js/library/microphone.js/microphone.js"></script>
+    <script type="text/javascript" src="js/library/tartJS/third_party/goog/goog/base.js"></script>
+    <script type="text/javascript" src="js/deps.js"></script>
+    <script type="text/javascript" src="js/pb/Bootstrapper.js"></script>
+    <!--<script type="text/javascript" src="js/compiled/compiled.js"></script>-->
 </head>
 <body>
+<a href="https://github.com/dashersw/pedalboard.js" style="display:block; z-index: 3;"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
 <div id="world">
-    <div id="floor" class="floor">
-    <footer>&nbsp;PEDALBOARD.JS&nbsp;</footer>
+    <div id="box">
+        <div id="floor">
+            <footer>&nbsp;PEDALBOARD.JS&nbsp;</footer>
+        </div>
+        <div id="wall">
+            <div id="controlPanel">
+                <div id="controlButton">&#9654;</div>
+                <div id="samples">
+                    <div class="sample">Sample 1</div>
+                    <div class="sample">Sample 2</div>
+                    <div class="sample">Sample 3</div>
+                    <div class="sample">Sample 4</div>
+                    <div class="sample">Sample 5</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-<a href="https://github.com/dashersw/pedalboard.js" style="position: absolute; right: 0"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
 <script type="text/javascript">
     var pedalboard = new pb();
-</script>
 
-<script type="text/javascript">
+    var state = false;
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-34850785-1']);
-  _gaq.push(['_trackPageview']);
+    var cb = document.getElementById('controlButton');
+    var samples = document.getElementsByClassName('sample');
+    var sampleNo = 1;
+    samples = Array.prototype.slice.call(samples);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    var settings = [];
+
+    var cBDraw = function() {
+        cb.innerHTML = state ? "&#9724;" : "&#9654;";
+        samples.forEach(function(sample) {
+            sample.className = 'sample';
+        });
+        samples[sampleNo - 1].className = 'sample on';
+    };
+
+    var play = function() {
+        settings[sampleNo - 1] && settings[sampleNo - 1]();
+        pedalboard.stage.play("audio/samples/sample" + sampleNo + ".mp3");
+    }
+
+    var cBHandler = function() {
+        state = !state;
+        cBDraw();
+        pedalboard.stage.stop();
+        if (state) play();
+    };
+
+    cb.addEventListener('click', cBHandler);
+
+    samples.forEach(function(sample) {
+        sample.addEventListener('click', function() {
+            sampleNo = Array.prototype.slice.call(sample.parentNode.children).indexOf(sample) + 1;
+            state = true;
+            cBDraw();
+            play();
+        });
+    });
+
+    settings.push(function() {
+        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
+        pedalboard.overdrive.setLevel(10);
+        pedalboard.overdrive.setDrive(2);
+        pedalboard.overdrive.setTone(7);
+        pedalboard.reverb.setLevel(10);
+    });
+
+    settings.push(function() {
+        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
+        pedalboard.overdrive.setLevel(6);
+        pedalboard.overdrive.setDrive(6);
+        pedalboard.overdrive.setTone(3);
+        pedalboard.reverb.setLevel(3);
+    });
+
+    settings.push(function() {
+        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
+        pedalboard.overdrive.setLevel(6);
+        pedalboard.overdrive.setDrive(10);
+        pedalboard.overdrive.setTone(5);
+        pedalboard.reverb.setLevel(10);
+    });
+
+    settings.push(function () {
+        pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
+        pedalboard.overdrive.setLevel(10);
+        pedalboard.overdrive.setDrive(0);
+        pedalboard.overdrive.setTone(10);
+        pedalboard.reverb.setLevel(10);
+    });
+
+    settings.push(function() {
+        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
+        pedalboard.overdrive.setLevel(10);
+        pedalboard.overdrive.setDrive(10);
+        pedalboard.overdrive.setTone(3);
+        pedalboard.reverb.setLevel(7);
+    });
 
 </script>
 </body>
