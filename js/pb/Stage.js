@@ -100,7 +100,10 @@ pb.Stage.prototype.route = function() {
 /**
  * Plays the input.
  */
-pb.Stage.prototype.play = function() {
+pb.Stage.prototype.play = function(url) {
+    this.input.disconnect();
+    this.input = new pb.io.FileInput(this.context, url);
+    this.route();
     this.input.play();
 };
 
