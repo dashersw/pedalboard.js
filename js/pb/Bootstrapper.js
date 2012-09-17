@@ -30,10 +30,8 @@ goog.require('pb.Stage');
  */
 pb.Bootstrapper = function() {
     this.initStage();
-    this.stage.render();
+    this.stage.render(document.getElementById('floor'));
     this.initBoard();
-
-    this.stage.play();
 };
 
 
