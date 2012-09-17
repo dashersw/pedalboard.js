@@ -14,11 +14,7 @@
     <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Radley:400,400italic' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="js/library/microphone.js/microphone.js"></script>
-    <script type="text/javascript" src="js/library/tartJS/third_party/goog/goog/base.js"></script>
-    <script type="text/javascript" src="js/deps.js"></script>
-    <script type="text/javascript" src="js/pb/Bootstrapper.js"></script>
-    <!--<script type="text/javascript" src="js/compiled/compiled.js"></script>-->
+    <script type="text/javascript" src="js/compiled/compiled.js"></script>
 </head>
 <body>
 <a href="https://github.com/dashersw/pedalboard.js" style="display:block; z-index: 3;"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
@@ -45,87 +41,6 @@
 
 <script type="text/javascript">
     var pedalboard = new pb();
-
-    var state = false;
-
-    var cb = document.getElementById('controlButton');
-    var samples = document.getElementsByClassName('sample');
-    var sampleNo = 1;
-    samples = Array.prototype.slice.call(samples);
-
-    var settings = [];
-
-    var cBDraw = function() {
-        cb.innerHTML = state ? "&#9724;" : "&#9654;";
-        samples.forEach(function(sample) {
-            sample.className = 'sample';
-        });
-        samples[sampleNo - 1].className = 'sample on';
-    };
-
-    var play = function() {
-        settings[sampleNo - 1] && settings[sampleNo - 1]();
-        pedalboard.stage.play("audio/samples/sample" + sampleNo + ".mp3");
-    }
-
-    var cBHandler = function() {
-        state = !state;
-        cBDraw();
-        pedalboard.stage.stop();
-        if (state) play();
-    };
-
-    cb.addEventListener('click', cBHandler);
-
-    samples.forEach(function(sample) {
-        sample.addEventListener('click', function() {
-            sampleNo = Array.prototype.slice.call(sample.parentNode.children).indexOf(sample) + 1;
-            state = true;
-            cBDraw();
-            play();
-        });
-    });
-
-    settings.push(function() {
-        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
-        pedalboard.overdrive.setLevel(10);
-        pedalboard.overdrive.setDrive(2);
-        pedalboard.overdrive.setTone(7);
-        pedalboard.reverb.setLevel(10);
-    });
-
-    settings.push(function() {
-        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
-        pedalboard.overdrive.setLevel(6);
-        pedalboard.overdrive.setDrive(6);
-        pedalboard.overdrive.setTone(3);
-        pedalboard.reverb.setLevel(3);
-    });
-
-    settings.push(function() {
-        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
-        pedalboard.overdrive.setLevel(6);
-        pedalboard.overdrive.setDrive(10);
-        pedalboard.overdrive.setTone(5);
-        pedalboard.reverb.setLevel(10);
-    });
-
-    settings.push(function () {
-        pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
-        pedalboard.overdrive.setLevel(10);
-        pedalboard.overdrive.setDrive(0);
-        pedalboard.overdrive.setTone(10);
-        pedalboard.reverb.setLevel(10);
-    });
-
-    settings.push(function() {
-        !pedalboard.overdrive.bypassSwitch.getState() && pedalboard.overdrive.bypassSwitch.toggle();
-        pedalboard.overdrive.setLevel(10);
-        pedalboard.overdrive.setDrive(10);
-        pedalboard.overdrive.setTone(3);
-        pedalboard.reverb.setLevel(7);
-    });
-
 </script>
 </body>
 </html>
