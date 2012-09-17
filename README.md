@@ -6,7 +6,7 @@ Introduction
 
 Ever wanted to have your pedal stack in the cloud, available anywhere you go without any hardware? Ever wanted to manage your sound as easily as browsing a web site? Ever wanted to share the perfect sound you created with your friends without the hassle? You loved the overdrive on that effects software but wanted to tweak its EQ a little bit?
 
-Pedalboard.js is a ground-breaking, first of its kind, novel open source JavaScript framework for developing audio effects and applying them to sound sources, and it's particularly good at guitar effects.
+Pedalboard.js is a ground-breaking, first of its kind, novel open-source JavaScript framework for developing audio effects and applying them to sound sources, and it's particularly good at guitar effects.
 
 The API and all the abstraction is built around the concept of guitar effects — pedals and stomp boxes, pots and switches.
 
