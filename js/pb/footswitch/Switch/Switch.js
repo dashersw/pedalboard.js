@@ -68,9 +68,12 @@ pb.footswitch.Switch.prototype.getState = function() {
 };
 
 
+/**
+ * Toggles the switch.
+ */
 pb.footswitch.Switch.prototype.toggle = function() {
     this.model.toggle();
-}
+};
 
 
 /**

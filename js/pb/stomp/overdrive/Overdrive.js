@@ -76,7 +76,7 @@ pb.stomp.Overdrive.prototype.setDrive = function(newValue) {
  */
 pb.stomp.Overdrive.prototype.setTone = function(newValue) {
     this.tonePot.setValue(newValue);
-}
+};
 
 
 /**

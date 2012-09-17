@@ -78,6 +78,10 @@ pb.stomp.OverdriveModel.prototype.setDrive = function(newDrive) {
 };
 
 
+/**
+ * Sets the tone level.
+ * @param {number} newTone Tone level to set.
+ */
 pb.stomp.OverdriveModel.prototype.setTone = function(newTone) {
     this.lowPass.frequency.value = 2000 + newTone;
 };
