@@ -3,6 +3,7 @@
     width: 100%;
     top: 1vh;
     left: 0;
+    -webkit-transform: translateZ(1px)
 }
 
 .pot {
@@ -53,4 +54,5 @@
     height: 6vh;
     width: 6vh;
     z-index: 2;
+    cursor: pointer;
 }

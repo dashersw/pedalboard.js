@@ -19,6 +19,7 @@
     left: 0;
     width: 100%;
     position: absolute;
+    -webkit-transform: translateZ(1px);
 }
 
 .reverb {
