@@ -53,6 +53,6 @@ pb.footswitch.Momentary.prototype.modelClass = pb.footswitch.MomentaryModel;
     var mousedown = proto.events[goog.events.EventType.MOUSEDOWN] = {};
     var mouseup = proto.events[goog.events.EventType.MOUSEUP] = {};
 
-    mousedown[proto.mappings.BUTTON] = proto.onClick;
-    mouseup[proto.mappings.BUTTON] = proto.onClick;
+    mousedown[proto.mappings.BUTTON] = proto.toggle;
+    mouseup[proto.mappings.BUTTON] = proto.toggle;
 })(pb.footswitch.Momentary.prototype);

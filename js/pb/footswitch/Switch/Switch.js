@@ -59,11 +59,18 @@ pb.footswitch.Switch.prototype.setNodes = function(nodes) {
 
 
 /**
- * Switch click handler.
+ * Returns the current state of the switch. Return value is true if the switch is on, and false if otherwise.
+ *
+ * @return {boolean} Whether the switch is on or off.
  */
-pb.footswitch.Switch.prototype.onClick = function() {
-    this.model.toggle();
+pb.footswitch.Switch.prototype.getState = function() {
+    return this.model.state;
 };
+
+
+pb.footswitch.Switch.prototype.toggle = function() {
+    this.model.toggle();
+}
 
 
 /**
@@ -97,5 +104,5 @@ pb.footswitch.Switch.prototype.mappings = {
     proto.events = {};
     var click = proto.events[goog.events.EventType.CLICK] = {};
 
-    click[proto.mappings.BUTTON] = proto.onClick;
+    click[proto.mappings.BUTTON] = proto.toggle;
 })(pb.footswitch.Switch.prototype);
