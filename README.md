@@ -16,7 +16,7 @@ Bring multiple pedals together to create a pedalboard, easily adjust their setti
 
 Finally, a complete guitar effects stack, completely customizable, in your hands.
 
-**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo).**
+**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo). Works best with the latest Safari, but Chrome is also OK.**
 
 ###Motivation
 
