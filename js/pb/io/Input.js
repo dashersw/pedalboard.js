@@ -45,12 +45,11 @@ goog.inherits(pb.io.Input, goog.events.EventTarget);
 /**
  * Starts playing the input.
  *
- * @param {number} time Milliseconds after whom this input will start playing.
+ * @param {number=} opt_time Milliseconds after whom this input will start playing.
  */
-pb.io.Input.prototype.play = function(time) {
+pb.io.Input.prototype.play = function(opt_time) {
     if (this.source.playbackState != 2) {
-        time = time || 0;
-        this.source.noteOn(time);
+        this.source.noteOn(opt_time || 0);
     }
 };
 
@@ -58,12 +57,11 @@ pb.io.Input.prototype.play = function(time) {
 /**
  * Stops playing the input.
  *
- * @param {number} time Milliseconds after whom this input will stop playing.
+ * @param {number=} opt_time Milliseconds after whom this input will stop playing.
  */
-pb.io.Input.prototype.stop = function(time) {
+pb.io.Input.prototype.stop = function(opt_time) {
     if (this.source.playbackState == 2) {
-        time = time || 0;
-        this.source.noteOff(time);
+        this.source.noteOff(opt_time || 0);
     }
 };
 

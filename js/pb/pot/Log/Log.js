@@ -31,7 +31,15 @@ goog.require('pb.pot.Pot');
  *
  * @constructor
  * @extends {pb.pot.Pot}
- * @inheritDoc
+ *
+ * @param {AudioParam|Function} param Audio parameter this pot will adjust. Can be gain, etc. If more complex
+ *     calculation is desired, one can pass a callback function which will be triggered each time the value of this pot
+ *     changes.
+ * @param {string} name Name of the pot. Will be written under it.
+ * @param {number} multiplier The multiplier of the effect. Some effects (such as gain) need this to be on the order of
+ *                       thousands.
+ * @param {string=} opt_size Size of the pot. Might be one of the values in pb.pot.Pot.Size enum. Default is REGULAR.
+ *     This size is added to the pot's class names for easier styling.
  */
 pb.pot.Log = function(param, name, multiplier, opt_size) {
     goog.base(this, param, name, multiplier, opt_size);

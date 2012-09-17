@@ -99,6 +99,9 @@ pb.Stage.prototype.route = function() {
 
 /**
  * Plays the input.
+ *
+ * @param {string} url The url of the external sample. Since it will be interpreted as a relative path, it should
+ * reside at the domain where the application runs.
  */
 pb.Stage.prototype.play = function(url) {
     this.input.disconnect();
