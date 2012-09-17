@@ -32,6 +32,94 @@ pb.Bootstrapper = function() {
     this.initStage();
     this.stage.render(document.getElementById('floor'));
     this.initBoard();
+    this.initSamples();
+};
+
+
+/**
+ * Initializes the setting, the sample player and their settings.
+ */
+pb.Bootstrapper.prototype.initSamples = function() {
+    var that = this;
+    var state = false;
+
+    var cb = document.getElementById('controlButton');
+    var samples = document.getElementsByClassName('sample');
+    var sampleNo = 1;
+    samples = Array.prototype.slice.call(samples);
+
+    var settings = [];
+
+    var cBDraw = function() {
+        cb.innerHTML = state ? '&#9724;' : '&#9654;';
+        samples.forEach(function(sample) {
+            sample.className = 'sample';
+        });
+        samples[sampleNo - 1].className = 'sample on';
+    };
+
+    var play = function() {
+        settings[sampleNo - 1] && settings[sampleNo - 1]();
+        that.stage.play('audio/samples/sample' + sampleNo + '.mp3');
+    }
+
+    var cBHandler = function() {
+        state = !state;
+        cBDraw();
+        that.stage.stop();
+        if (state) play();
+    };
+
+    cb.addEventListener('click', cBHandler, false);
+
+    samples.forEach(function(sample) {
+        sample.addEventListener('click', function() {
+            sampleNo = Array.prototype.slice.call(sample.parentNode.children).indexOf(sample) + 1;
+            state = true;
+            cBDraw();
+            play();
+        });
+    });
+
+    settings.push(function() {
+        !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
+        that.overdrive.setLevel(10);
+        that.overdrive.setDrive(2);
+        that.overdrive.setTone(7);
+        that.reverb.setLevel(10);
+    });
+
+    settings.push(function() {
+        !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
+        that.overdrive.setLevel(6);
+        that.overdrive.setDrive(6);
+        that.overdrive.setTone(3);
+        that.reverb.setLevel(3);
+    });
+
+    settings.push(function() {
+        !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
+        that.overdrive.setLevel(6);
+        that.overdrive.setDrive(10);
+        that.overdrive.setTone(5);
+        that.reverb.setLevel(10);
+    });
+
+    settings.push(function() {
+        that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
+        that.overdrive.setLevel(10);
+        that.overdrive.setDrive(0);
+        that.overdrive.setTone(10);
+        that.reverb.setLevel(10);
+    });
+
+    settings.push(function() {
+        !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
+        that.overdrive.setLevel(10);
+        that.overdrive.setDrive(10);
+        that.overdrive.setTone(3);
+        that.reverb.setLevel(7);
+    });
 };
 
 
