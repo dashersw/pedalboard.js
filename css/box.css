@@ -9,6 +9,7 @@
     text-align: center;
     background-image: -webkit-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
         -webkit-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
+    -webkit-transform: translateZ(50px)
 }
 
 .box>.name {
@@ -70,6 +71,84 @@
     background-color: hsl(326, 64%, 77%);
     box-shadow:
         inset 0px -2px 7px 2px rgba(255,255,255,0.8),
-        0px 0px 60px 20px hsla(326, 65%, 65%, 1),
+        0px 0px 60px 30px hsla(326, 65%, 75%, 1),
         inset 2px 0px 4px 1px hsla(326,50%,55%,0.9);
+}
+
+.box {
+    -webkit-transform-style: preserve-3d;
+}
+
+.box .bgs {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.box .bg, .box .obg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0px;
+    border-radius: 10px;
+}
+
+.box .bg:nth-child(1) {
+    background: black;
+    -webkit-transform: translateZ(-3px);
+}
+.box .bg:nth-child(2) {
+    background: black;
+    -webkit-transform: translateZ(-6px);
+}
+.box .bg:nth-child(3) {
+    background: black;
+    -webkit-transform: translateZ(-10px);
+}
+.box .bg:nth-child(4) {
+    background: black;
+    -webkit-transform: translateZ(-14px);
+}
+.box .bg:nth-child(5) {
+    background: black;
+    -webkit-transform: translateZ(-19px);
+}
+.box .bg:nth-child(6) {
+    background: black;
+    -webkit-transform: translateZ(-24px);
+}
+.box .bg:nth-child(7) {
+    background: black;
+    -webkit-transform: translateZ(-30px);
+}
+.box .bg:nth-child(8) {
+    background: black;
+    -webkit-transform: translateZ(-30px);
+}
+.box .bg:nth-child(9) {
+    background: black;
+    -webkit-transform: translateZ(-37px);
+}
+.box .bg:nth-child(10) {
+    background: black;
+    -webkit-transform: translateZ(-44px);
+}
+.box .bg:nth-child(11) {
+    background: black;
+    -webkit-transform: translateZ(-50px);
+}
+.box .bg:nth-child(12) {
+    background: black;
+    -webkit-transform: translateZ(-57px);
+}
+.box .bg:nth-child(13) {
+    background: black;
+    -webkit-transform: translateZ(-64px);
+}
+.box .bg:nth-child(14) {
+    background: black;
+    -webkit-transform: translateZ(-75px);
 }
