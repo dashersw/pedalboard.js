@@ -34,78 +34,18 @@ goog.require('pb.io.Input');
  * @param {AudioContext} context Audio context for this input.
  */
 pb.io.StreamInput = function(context) {
-    this.source = context.createJavaScriptNode(this.bufferSize, 0, 1);
-    window.ownBuffer = [];
+    goog.base(this, context);
     var that = this;
 
-    this.createStream();
-
-    this.source.onaudioprocess = function(e) {
-        if (that.state == 'play') {
-
-            var buffer = e.outputBuffer;
-            var buf = buffer.getChannelData(0);
-            var data = window.ownBuffer;
-            data = data.splice(0, this.bufferSize);
-            for (var i = 0; i < this.bufferSize; ++i) {
-                buf[i] = data[i];
-            }
-
-        }
-    };
+    navigator.webkitGetUserMedia({audio:true}, function(stream) {
+        that.disconnect();
+        that.source = context.createMediaStreamSource(stream);
+        that.dispatchEvent('loaded');
+    });
 };
 goog.inherits(pb.io.StreamInput, pb.io.Input);
 
 
-/**
- * The amount of samples in this streams buffer. Longer buffer will undoubtedly provide cleaner, glitch-free sound but
- * will increase latency.
- *
- * @type {number} Buffer size.
- */
-pb.io.StreamInput.prototype.bufferSize = 1024;
-
-
-/**
- * Creates the stream, from microphone.js library for the moment.
- */
-pb.io.StreamInput.prototype.createStream = function() {
-    var mic = new Microphone({
-        swfPath: 'js/library/microphone.js/microphone.swf'
-    });
-    Mic.loaded = function(id) {
-        var micl = Mic.mics[id];
-        mic.start();
-        mic.sampleRate = 44100;
-        mic.onSamplesAvailable = function(data, channelCount) {
-            if (window.ownBuffer.length > 4096)
-                window.ownBuffer = window.ownBuffer.slice(0, 4096);
-            window.ownBuffer = window.ownBuffer.concat(data);
-        }
-    }
+pb.io.StreamInput.prototype.stop = function() {
+    this.source.disconnect();
 };
-
-
-/**
- * Starts playing the input.
- *
- * @param {number} time Milliseconds after whom this input will start playing.
- */
-pb.io.StreamInput.prototype.play = function(time) {
-    time = time || 0;
-    this.state = 'play';
-    //    this.source.noteOn(time);
-};
-
-
-/**
- * Stops playing the input.
- *
- * @param {number} time Milliseconds after whom this input will stop playing.
- */
-pb.io.StreamInput.prototype.stop = function(time) {
-    time = time || 0;
-    this.state = 'stop';
-    //    this.source.noteOff(time);
-};
-
