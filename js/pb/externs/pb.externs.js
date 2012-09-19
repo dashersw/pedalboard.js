@@ -18,3 +18,5 @@
 /**
  * @fileoverview Externs declarations for pb.
  */
+
+navigator.webkitGetUserMedia = function(a,b){};
