@@ -134,7 +134,7 @@ footer {
     color: rgba(255,255,255,0.8)
 }
 
-.sample {
+.sample, .linein {
     display: inline-block;
     font-family: Radley;
     font-size: 30px;
@@ -150,3 +150,7 @@ footer {
 .sample.on {
     color: rgba(255,255,255,0.9);
 }
+
+.linein { color: rgba(236,64,64,0.6); }
+.linein:hover { color: rgba(236,64,64,0.8); }
+.linein.on { color: rgba(236,64,64,0.9); }
