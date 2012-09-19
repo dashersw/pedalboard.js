@@ -47,7 +47,23 @@ pb.Bootstrapper.prototype.initSamples = function() {
     var samples = document.getElementsByClassName('sample');
     var sampleNo = 1;
     samples = Array.prototype.slice.call(samples);
+    var lb = document.getElementsByClassName('linein')[0];
 
+    var playLineIn = function() {
+        that.stage.stop();
+        that.stage.input = new pb.io.StreamInput(that.stage.getContext());
+        goog.events.listen(that.stage.input, 'loaded', function() {
+            that.stage.route();
+        });
+    }
+
+    lb.addEventListener('click', function() {
+        state = true;
+        sampleNo = 6;
+        cBDraw();
+        settings[sampleNo - 1]();
+        playLineIn();
+    }, false);
     var settings = [];
 
     var cBDraw = function() {
@@ -55,10 +71,16 @@ pb.Bootstrapper.prototype.initSamples = function() {
         samples.forEach(function(sample) {
             sample.className = 'sample';
         });
-        samples[sampleNo - 1].className = 'sample on';
+        samples[sampleNo] && (samples[sampleNo - 1].className = 'sample on');
+
+        sampleNo == 6 ? lb.className = 'linein on' : lb.className = 'linein';
     };
 
     var play = function() {
+        if (sampleNo == 6) {
+            playLineIn();
+            return;
+        }
         settings[sampleNo - 1] && settings[sampleNo - 1]();
         that.stage.play('audio/samples/sample' + sampleNo + '.mp3');
     }
@@ -115,6 +137,14 @@ pb.Bootstrapper.prototype.initSamples = function() {
 
     settings.push(function() {
         !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
+        that.overdrive.setLevel(10);
+        that.overdrive.setDrive(10);
+        that.overdrive.setTone(3);
+        that.reverb.setLevel(7);
+    });
+
+    settings.push(function() {
+        that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
         that.overdrive.setLevel(10);
         that.overdrive.setDrive(10);
         that.overdrive.setTone(3);
