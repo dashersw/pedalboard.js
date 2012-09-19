@@ -18,10 +18,22 @@
     <script type="text/javascript" src="js/library/tartJS/third_party/goog/goog/base.js"></script>
     <script type="text/javascript" src="js/deps.js"></script>
     <script type="text/javascript" src="js/pb/Bootstrapper.js"></script>
+    <script type="text/javascript" src="js/library/socialite.min.js"></script>
     <!--<script type="text/javascript" src="js/compiled/compiled.js"></script>-->
 </head>
 <body>
 <a href="https://github.com/dashersw/pedalboard.js" style="display:block; z-index: 3;"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+<div class="social">
+    <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://dashersw.github.com/pedalboard.js/demo">
+        Share on Twitter
+    </a>
+    <a class="socialite googleplus-one" href="https://plusone.google.com/_/+1/confirm?hl=en&url=http://dashersw.github.com/pedalboard.js/demo" data-href="http://dashersw.github.com/pedalboard.js/demo">
+        Share on Google Plus
+    </a>
+    <a class="socialite facebook-like" href="http://www.facebook.com/sharer.php?u=http://dashersw.github.com/pedalboard.js/demo&t=Pedalboard.js" data-href="http://dashersw.github.com/pedalboard.js/demo">
+        Share on Facebook
+    </a>
+</div>
 
 <div id="world">
     <div id="box">
@@ -46,6 +58,7 @@
 
 <script type="text/javascript">
     var pedalboard = new pb();
+    Socialite.load();
 </script>
 </body>
 </html>
