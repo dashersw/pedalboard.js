@@ -156,12 +156,12 @@ footer {
 .linein.on { color: rgba(236,64,64,0.9); }
 
 .social {
-    z-index: 10;
+    z-index: 12;
     position: absolute;
     left: 20px;
     height: 100px;
     width: 200px;
     text-align: left;
     top: 130px;
-    -webkit-transform: translateZ(10px);
+    -webkit-transform: translateZ(12px);
 }
