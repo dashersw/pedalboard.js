@@ -16,7 +16,7 @@ Bring multiple pedals together to create a pedalboard, easily adjust their setti
 
 Finally, a complete guitar effects stack, completely customizable, in your hands.
 
-**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo). Works best with the latest Safari, but Chrome is also OK.**
+**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo). Works best with the latest Safari, but Chrome is also OK. Real-time line-in support is only available in Chrome Canary.**
 
 ###Motivation
 
@@ -44,7 +44,7 @@ Effects are the most versatile offering of the API. You can create *gain*, *wave
 
 ###State of the art
 
-Currently, the AudioContext implementation in Webkit doesn't support streaming audio from the inputs of your computer—line-in or microphone; but the idea is mature and development is about to be planned. In this context, the native implementation supports pre-recorded or generated sound buffers. Experimentally, Pedalboard.js implements streaming from your input through a Flash (yeah, I know, but) proxy. This enables Pedalboard.js to fully function as a guitar effects stack. Due to the hard-coded buffer size of 2048 samples in Flash, there's a latency of about 50ms, an audible delay. Unfortunately, there are no other workarounds right now; but as the native implementation is completed we hope to have a reasonable buffer size (256 samples at most, which would deliver a ~4ms delay which is acceptable).
+Currently, the AudioContext implementation in Webkit supports streaming audio from the inputs of your computer—line-in or microphone in only the nightly builds of Chrome Canary and soon will be a part of everyday Chrome and later Safari. In this context, the native implementation supports pre-recorded or generated sound buffers, as well as real-time input on Chrome Canary. This enables Pedalboard.js to fully function as a guitar effects stack. Experimentally, Pedalboard.js implements streaming from your input through a Flash proxy, too; but that's deprecated as of now, since the native version is already on the stage. Due to the hard-coded buffer size of 2048 samples in Flash, there's a latency of about 50ms, an audible delay. Unfortunately, there are no other workarounds to increase Flash stream quality; but as the native implementation rolls out to a browser near you, expect a reasonable buffer size and 0-latency input.
 
 JavaScript
 ------
