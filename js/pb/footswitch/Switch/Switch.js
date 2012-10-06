@@ -81,7 +81,7 @@ pb.footswitch.Switch.prototype.toggle = function() {
  */
 pb.footswitch.Switch.prototype.templates_base = function() {
     return '<div class="switch" id="' + this.getId() + '">' +
-               '<img class="button" src="img/switch.png"/>' +
+               '<div class="button"></div>' +
                this.templates_name() +
            '</div>';
 };
