@@ -165,15 +165,20 @@ pb.Board.prototype.connect = function(destination) {
  */
 pb.Board.prototype.routeInternal = function() {
     var fx = this.getChildren();
+
+    this.getInput().disconnect();
+
     if (fx.length) {
+        this.getInput().connect(fx[0].getInput());
+        this.output && fx[fx.length - 1].connect(this.output);
+
         fx.forEach(function(pedal, i) {
             pedal.disconnect();
             fx[i + 1] && pedal.connect(fx[i + 1]);
         });
-
-        this.getInput().disconnect();
-        this.getInput().connect(fx[0].getInput());
-        fx.length && this.output && fx[fx.length - 1].connect(this.output);
+    }
+    else {
+        this.getInput().connect(this.getOutput());
     }
 };
 
