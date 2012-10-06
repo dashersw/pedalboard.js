@@ -86,6 +86,10 @@ pb.Board.prototype.doShadows = function() {
  */
 pb.Board.prototype.addChildAt = function(child, index, opt_render) {
     goog.base(this, 'addChildAt', child, index, opt_render);
+
+    if (this.getChildren().length)
+        goog.dom.removeNode(this.$(this.mappings.EMPTY)[0]);
+
     this.routeInternal();
     if (this.isInDocument()) this.doShadows();
 };
@@ -95,6 +99,19 @@ pb.Board.prototype.addChildAt = function(child, index, opt_render) {
  * Convenience method for adding pedals at a given index.
  */
 pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
+
+
+/**
+ * @override
+ */
+pb.Board.prototype.removeChild = function(child, opt_unrender) {
+    goog.base(this, 'removeChild', child, opt_unrender);
+
+    if (this.getChildren().length == 0)
+        this.getElement().innerHTML = this.templates_empty();
+
+    this.routeInternal();
+};
 
 
 /**
@@ -120,7 +137,14 @@ pb.Board.prototype.getPedals = function() {
  * @override
  */
 pb.Board.prototype.templates_base = function() {
-    return '<div id="' + this.getId() + '" class="board"></div>';
+    return '<div id="' + this.getId() + '" class="board">' +
+               this.templates_empty() +
+           '</div>';
+};
+
+
+pb.Board.prototype.templates_empty = function() {
+    return '<div class="empty">your pedalboard is empty</div>';
 };
 
 
@@ -163,4 +187,12 @@ pb.Board.prototype.disposeInternal = function() {
     });
 
     goog.base(this, 'disposeInternal');
+};
+
+
+/**
+ * @enum {string} DOM mappings.
+ */
+pb.Board.prototype.mappings = {
+    EMPTY: '.empty'
 };
