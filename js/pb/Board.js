@@ -144,7 +144,7 @@ pb.Board.prototype.templates_base = function() {
 
 
 pb.Board.prototype.templates_empty = function() {
-    return '<div class="empty">your pedalboard is empty</div>';
+    return '<div class="empty"><div class="text">your pedalboard is empty</div></div>';
 };
 
 
