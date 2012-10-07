@@ -23,6 +23,7 @@
 goog.provide('pb.shadowMaker');
 goog.require('goog.color');
 goog.require('goog.style');
+goog.require('goog.dom');
 
 
 /**
@@ -154,4 +155,25 @@ pb.textShadowMaker = function(element, length, before, after, invertY, invertX) 
     shadows = [].concat(before, shadows.reverse(), after);
 
     element.style.textShadow = shadows.join(', ');
+};
+
+pb.textShadowMakerDom = function(element, length) {
+    element.style.position = 'absolute';
+
+    var elStyle = document.defaultView.getComputedStyle(element, null);
+    var colorText = elStyle.getPropertyValue('color');
+    var rgbArray = goog.color.hexToRgb(goog.color.parse(colorText).hex);
+
+    for (var i = 0; i < length; i++) {
+        var el = element.cloneNode(true);
+        el.style.position = 'absolute';
+        el.style.webkitTransform = 'translateZ(-' + i + 'px)';
+
+        el.style.color = goog.color.rgbArrayToHex(goog.color.darken(rgbArray, (i / length * 0.8) + 0.2));
+        goog.dom.insertSiblingBefore(el, element);
+
+        if (i == length - 1) {
+            el.style.textShadow = '0 0 10px black,0 0 20px black,0 0 30px black,0 0 40px black,0 0 50px black';
+        }
+    }
 };
