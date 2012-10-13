@@ -184,18 +184,6 @@ pb.Board.prototype.routeInternal = function() {
 
 
 /**
- * @override
- */
-pb.Board.prototype.disposeInternal = function() {
-    this.getChildren().forEach(function(pedal) {
-        pedal.disposeInternal();
-    });
-
-    goog.base(this, 'disposeInternal');
-};
-
-
-/**
  * @enum {string} DOM mappings.
  */
 pb.Board.prototype.mappings = {
