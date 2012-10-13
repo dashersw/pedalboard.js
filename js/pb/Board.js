@@ -87,7 +87,7 @@ pb.Board.prototype.doShadows = function() {
 pb.Board.prototype.addChildAt = function(child, index, opt_render) {
     goog.base(this, 'addChildAt', child, index, opt_render);
 
-    if (this.getChildren().length)
+    if (this.getPedals().length)
         goog.dom.removeNode(this.$(this.mappings.EMPTY)[0]);
 
     this.routeInternal();
@@ -107,7 +107,7 @@ pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
 pb.Board.prototype.removeChild = function(child, opt_unrender) {
     goog.base(this, 'removeChild', child, opt_unrender);
 
-    if (this.getChildren().length == 0)
+    if (this.getPedals().length == 0)
         this.getElement().innerHTML = this.templates_empty();
 
     this.routeInternal();
@@ -164,7 +164,7 @@ pb.Board.prototype.connect = function(destination) {
  * @protected
  */
 pb.Board.prototype.routeInternal = function() {
-    var fx = this.getChildren();
+    var fx = this.getPedals();
 
     this.getInput().disconnect();
 
