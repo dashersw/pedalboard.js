@@ -80,9 +80,9 @@ pb.Board.prototype.doShadows = function() {
 /**
  * @override
  *
- * @param {pb.stomp.Box} child Child.
- * @param {number} index Index.
- * @param {boolean=} opt_render Render.
+ * @param {pb.stomp.Box} child Child pedal to add to this board.
+ * @param {number} index Where the child pedal should be put at.
+ * @param {boolean=} opt_render Whether the pedal should be rendered after the call to this function.
  */
 pb.Board.prototype.addChildAt = function(child, index, opt_render) {
     goog.base(this, 'addChildAt', child, index, opt_render);
@@ -97,8 +97,14 @@ pb.Board.prototype.addChildAt = function(child, index, opt_render) {
 
 /**
  * Convenience method for adding pedals at a given index.
+ *
+ * @param {pb.stomp.Box} child Child pedal to add to this board.
+ * @param {number} index Where the child pedal should be put at.
+ * @param {boolean=} opt_render Whether the pedal should be rendered after the call to this function.
  */
-pb.Board.prototype.addPedalAt = pb.Board.prototype.addChildAt;
+pb.Board.prototype.addPedalAt = function (child, index, opt_render) {
+    this.addChildAt(child, index, opt_render);
+};
 
 
 /**
