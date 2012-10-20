@@ -22,8 +22,8 @@
 
 goog.provide('pb.shadowMaker');
 goog.require('goog.color');
-goog.require('goog.style');
 goog.require('goog.dom');
+goog.require('goog.style');
 
 
 /**

@@ -102,7 +102,7 @@ pb.Board.prototype.addChildAt = function(child, index, opt_render) {
  * @param {number} index Where the child pedal should be put at.
  * @param {boolean=} opt_render Whether the pedal should be rendered after the call to this function.
  */
-pb.Board.prototype.addPedalAt = function (child, index, opt_render) {
+pb.Board.prototype.addPedalAt = function(child, index, opt_render) {
     this.addChildAt(child, index, opt_render);
 };
 
@@ -111,12 +111,13 @@ pb.Board.prototype.addPedalAt = function (child, index, opt_render) {
  * @override
  */
 pb.Board.prototype.removeChild = function(child, opt_unrender) {
-    goog.base(this, 'removeChild', child, opt_unrender);
+    var el = goog.base(this, 'removeChild', child, opt_unrender);
 
     if (this.getPedals().length == 0)
         this.getElement().innerHTML = this.templates_empty();
 
     this.routeInternal();
+    return el;
 };
 
 
