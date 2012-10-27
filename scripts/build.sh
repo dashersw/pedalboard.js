@@ -30,4 +30,5 @@ js/library/tartJS/tools/goog/build/closurebuilder.py \
 --compiler_flags="--jscomp_error=strictModuleDepCheck" \
 --compiler_flags="--jscomp_error=undefinedVars" \
 --compiler_flags="--jscomp_error=unknownDefines" \
+--compiler_flags="--jscomp_off=liskov" \
 --compiler_flags="--jscomp_error=visibility"
