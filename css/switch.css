@@ -6,8 +6,11 @@
 }
 
 .button {
-    height: 6vh;
+    height: 5vh;
     width: 6vh;
+    right: 3vh;
+    background-size: 100%;
+    background-image: url("../img/switch.png");
 }
 
 .switches {
