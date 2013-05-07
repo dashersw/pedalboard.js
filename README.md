@@ -16,7 +16,7 @@ Bring multiple pedals together to create a pedalboard, easily adjust their setti
 
 Finally, a complete guitar effects stack, completely customizable, in your hands.
 
-**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo). Works best with the latest Safari, but Chrome is also OK. Real-time line-in support is only available in Chrome Canary.**
+**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo). Works best with the latest Chrome and Safari. Make sure to try the real-time line-in feature**
 
 ###Motivation
 
@@ -24,7 +24,7 @@ Guitar effects software on the market are very nice indeed, but they somehow lac
 
 What's worse, now that the freemium model is very popular, what looks like an easy initial buy turns into a small fortune when you'd like to buy the effects you wanted.
 
-Pedalboard.js is an attempt to address these issues. With the help of the powerful audio API in Webkit, Pedalboard.js gives you a fairly-easy-to-build-upon abstraction and foundation.
+Pedalboard.js is an attempt to address these issues. With the help of the powerful audio API in WebKit, Pedalboard.js gives you a fairly-easy-to-build-upon abstraction and foundation.
 
 ------
 Technology
@@ -34,7 +34,7 @@ Audio
 
 The technology that made Pedalboard.js available is Webkit's implementation of the W3C audio API. Although in its final draft version (which means it's more or less stable — at least in concept and context, but subject to change) the API is quite extensive, easy to use, extendable and has very nice approaches.
 
-Right now, the audio API is only available in the latest builds of Webkit-based browsers — Chrome and Safari. Mozilla is said to support it, with IE to follow suit.
+Right now, the audio API is only available in the latest builds of WebKit-based browsers — Chrome and Safari. Mozilla is said to support it, with IE to follow suit.
 
 ###Nodes
 
@@ -135,7 +135,7 @@ Pot
 
 Pot component serves as a means to tweak a Pedal's parameters, such as gain, level, distortion, delay feedback, etc. It's analogous to a potentiometer, i.e. variable resistor.
 
-LinearPot and LogPot are two classes that inherit from the Pot class, and provide two different potentiometer implementations. A pot has a value, and a multiplier. Value reflects a pedal's parameter value, such as gain. Multiplier is kind of like the resistance of a resistor. 
+LinearPot and LogPot are two classes that inherit from the Pot class, and provide two different potentiometer implementations. A pot has a value, and a multiplier. Value reflects a pedal's parameter value, such as gain. Multiplier is kind of like the resistance of a resistor.
 
 One never accesses the value directly but through the getter method getValue. The Pot's setValue method requires a windowed range between 0 and 10, representing pot rotation. Values larger than 10 will be interpreted as 10 and lower than 0 will be interpreted as 0.
 
