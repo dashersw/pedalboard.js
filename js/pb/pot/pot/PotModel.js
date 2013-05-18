@@ -29,7 +29,7 @@ goog.require('tart.ui.ComponentModel');
  * @constructor
  * @extends {tart.ui.ComponentModel}
  *
- * @param {AudioParam} param Audio parameter this pot will adjust. Can be gain, etc.
+ * @param {AudioParam|Function} param Audio parameter this pot will adjust. Can be gain, etc.
  * @param {string} name Name of the pot. Will be written under it.
  * @param {number} multiplier The multiplier of the effect. Some effects (such as gain) need this to be on the order of
  *                       thousands.

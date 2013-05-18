@@ -18,3 +18,22 @@
 /**
  * @fileoverview Externs declarations for pb.
  */
+
+
+
+/**
+ * @return {MediaStreamDestination}
+ */
+AudioContext.prototype.createMediaStreamDestination = function() {};
+
+
+/**
+ *
+ * @constructor
+ */
+var MediaStreamDestination = function() {};
+
+/**
+ * @type {MediaStream}
+ */
+MediaStreamDestination.prototype.stream;
