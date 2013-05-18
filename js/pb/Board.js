@@ -183,10 +183,22 @@ pb.Board.prototype.routeInternal = function() {
             pedal.disconnect();
             fx[i + 1] && pedal.connect(fx[i + 1]);
         });
+        this.output && this.mediaStreamDestination && fx[fx.length - 1].model.getOutput().connect(this.mediaStreamDestination);
     }
     else {
         this.getInput().connect(this.getOutput());
+        this.mediaStreamDestination && this.getInput().connect(this.mediaStreamDestination);
     }
+};
+
+
+/**
+ * Sets the media stream destination for this board. The output will be sent to the media stream destination, too.
+ *
+ * @param {MediaStreamDestination} destination Media stream destination for RTC peer connections.
+ */
+pb.Board.prototype.setMediaStreamDestination = function(destination) {
+    this.mediaStreamDestination = destination;
 };
 
 

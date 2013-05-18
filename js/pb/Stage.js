@@ -83,6 +83,8 @@ pb.Stage.prototype.setBoard = function(board) {
     this.board && this.board.dispose();
 
     this.board = board;
+    this.mediaStreamDestination && this.board.setMediaStreamDestination(this.mediaStreamDestination);
+
     this.route();
 
     this.addChild(this.board);
@@ -97,6 +99,17 @@ pb.Stage.prototype.route = function() {
     this.input.disconnect();
     this.input.connect(this.board);
     this.board.connect(this.output);
+};
+
+
+/**
+ * Sets the media stream destination for this stage. It will be forwarded to this stage's board.
+ *
+ * @param {MediaStreamDestination} destination Media stream destination for RTC peer connections.
+ */
+pb.Stage.prototype.setMediaStreamDestination = function(destination) {
+    this.mediaStreamDestination = destination;
+    this.board.setMediaStreamDestination(this.mediaStreamDestination);
 };
 
 
