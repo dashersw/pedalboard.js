@@ -23,7 +23,7 @@ goog.provide('pb.ui.Component');
 goog.require('goog.ui.Component');
 goog.require('goog.ui.Container');
 goog.require('goog.ui.Control');
-goog.require('pb.ui.ComponentManager');
+goog.require('tart.ui.ComponentManager');
 goog.require('tart.dom');
 
 
@@ -37,7 +37,7 @@ goog.require('tart.dom');
 pb.ui.Component = function() {
     goog.base(this);
 
-    pb.ui.ComponentManager.getInstance().set(this);
+    tart.ui.ComponentManager.getInstance().set(this);
 };
 goog.inherits(pb.ui.Component, goog.ui.Component);
 
