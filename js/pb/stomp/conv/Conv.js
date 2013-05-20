@@ -51,9 +51,16 @@ pb.stomp.Conv.prototype.name = 'convo';
 
 
 /**
+ * @type {number} The gain multiplier for the level pot. Some IR responses are too high on volume and they need
+ * to be tamed.
+ */
+pb.stomp.Conv.prototype.gainMultiplier = 1;
+
+
+/**
  * @override
  */
 pb.stomp.Conv.prototype.createPots = function() {
-    this.volumePot = new pb.pot.Pot(this.model.convGain.gain, 'effect', 1);
+    this.volumePot = new pb.pot.Pot(this.model.convGain.gain, 'effect', this.gainMultiplier);
     this.pots = [].concat(this.volumePot);
 };

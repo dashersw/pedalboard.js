@@ -29,7 +29,7 @@
  */
 
 goog.provide('pb.stomp.ReverbModel');
-goog.require('pb.stomp.BoxModel');
+goog.require('pb.stomp.ConvModel');
 
 
 
@@ -37,18 +37,13 @@ goog.require('pb.stomp.BoxModel');
  * Component model for reverb pedal.
  *
  * @constructor
- * @extends {pb.stomp.BoxModel}
+ * @extends {pb.stomp.ConvModel}
  * @param {AudioContext} context The context this component model will operate on.
  */
 pb.stomp.ReverbModel = function(context) {
     goog.base(this, context);
-    this.conv = this.context.createConvolver();
-    this.effects = [this.conv, this.level];
-
-    this.loadIR();
-
 };
-goog.inherits(pb.stomp.ReverbModel, pb.stomp.BoxModel);
+goog.inherits(pb.stomp.ReverbModel, pb.stomp.ConvModel);
 
 
 /**
@@ -57,32 +52,3 @@ goog.inherits(pb.stomp.ReverbModel, pb.stomp.BoxModel);
  * @type {string}
  */
 pb.stomp.ReverbModel.prototype.iRPath = 'audio/ir/reverb/pcm90cleanplate.wav';
-
-
-/**
- * @override
- */
-pb.stomp.ReverbModel.prototype.routeInternal = function() {
-    goog.base(this, 'routeInternal');
-    this.inputBuffer.connect(this.outputBuffer);
-};
-
-
-/**
- * Loads the impulse response.
- */
-pb.stomp.ReverbModel.prototype.loadIR = function() {
-    var that = this,
-        request = new XMLHttpRequest();
-
-    request.open('GET', this.iRPath, true);
-    request.responseType = 'arraybuffer';
-
-
-    request.onload = function() {
-        that.context.decodeAudioData(/** @type {ArrayBuffer} */(request.response), function(buffer) {
-            that.conv.buffer = buffer;
-        });
-    };
-    request.send();
-};

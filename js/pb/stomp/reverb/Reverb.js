@@ -20,7 +20,7 @@
  */
 
 goog.provide('pb.stomp.Reverb');
-goog.require('pb.stomp.Box');
+goog.require('pb.stomp.Conv');
 goog.require('pb.stomp.ReverbModel');
 
 
@@ -29,13 +29,13 @@ goog.require('pb.stomp.ReverbModel');
  * Reverb pedal.
  *
  * @constructor
- * @extends {pb.stomp.Box}
+ * @extends {pb.stomp.Conv}
  * @param {AudioContext} context Audio context the pedal will work on.
  */
 pb.stomp.Reverb = function(context) {
     goog.base(this, context);
 };
-goog.inherits(pb.stomp.Reverb, pb.stomp.Box);
+goog.inherits(pb.stomp.Reverb, pb.stomp.Conv);
 
 
 /**
@@ -53,7 +53,4 @@ pb.stomp.Reverb.prototype.name = 'reverb';
 /**
  * @override
  */
-pb.stomp.Reverb.prototype.createPots = function() {
-    this.volumePot = new pb.pot.Pot(this.model.level.gain, 'effect', 0.1);
-    this.pots = [].concat(this.volumePot);
-};
+pb.stomp.Reverb.prototype.gainMultiplier = 0.1;
