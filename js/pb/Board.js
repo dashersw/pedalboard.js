@@ -23,7 +23,7 @@ goog.provide('pb.Board');
 goog.require('goog.debug.ErrorHandler');
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventTarget');
-goog.require('pb.stomp.Conv');
+goog.require('pb.stomp.Cabinet');
 goog.require('pb.stomp.Overdrive');
 goog.require('pb.stomp.Reverb');
 goog.require('pb.stomp.Volume');

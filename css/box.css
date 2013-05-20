@@ -63,11 +63,11 @@
         inset 2px 0px 4px 1px hsla(0,0%,95%,0.9);
 }
 
-.convo {
+.cabinet {
     background-color: hsl(326, 64%, 37%);
 }
 
-.convo .led.on {
+.cabinet .led.on {
     background-color: hsl(326, 64%, 77%);
     box-shadow:
         inset 0px -2px 7px 2px rgba(255,255,255,0.8),

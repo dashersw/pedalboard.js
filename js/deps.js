@@ -938,7 +938,7 @@ goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/c
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/clipboardbutton.js', ['goog.silverlight.ClipboardButton', 'goog.silverlight.ClipboardButtonType', 'goog.silverlight.ClipboardEvent', 'goog.silverlight.CopyButton', 'goog.silverlight.PasteButton', 'goog.silverlight.PasteButtonEvent'], ['goog.asserts', 'goog.events.Event', 'goog.math.Size', 'goog.silverlight', 'goog.ui.Component']);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/silverlight.js', ['goog.silverlight'], []);
 goog.addDependency('../../../../../library/tartJS/third_party/goog/third_party/closure/goog/silverlight/supporteduseragent.js', ['goog.silverlight.supportedUserAgent'], []);
-goog.addDependency('../../../../../pb/Board.js', ['pb.Board'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.stomp.Conv', 'pb.stomp.Overdrive', 'pb.stomp.Reverb', 'pb.stomp.Volume', 'tart.ui.DlgComponent']);
+goog.addDependency('../../../../../pb/Board.js', ['pb.Board'], ['goog.debug.ErrorHandler', 'goog.events.EventHandler', 'goog.events.EventTarget', 'pb.stomp.Cabinet', 'pb.stomp.Overdrive', 'pb.stomp.Reverb', 'pb.stomp.Volume', 'tart.ui.DlgComponent']);
 goog.addDependency('../../../../../pb/Bootstrapper.js', ['pb.Bootstrapper'], ['pb.Stage']);
 goog.addDependency('../../../../../pb/ComponentManager.js', ['pb.ui.ComponentManager'], ['tart.ui.ComponentManager']);
 goog.addDependency('../../../../../pb/Connectable/Connectable.js', ['pb.Connectable'], ['pb.ConnectableModel', 'pb.IConnectable', 'pb.ui.Component']);
@@ -967,12 +967,14 @@ goog.addDependency('../../../../../pb/pot/pot/Pot.js', ['pb.pot.Pot'], ['pb.pot.
 goog.addDependency('../../../../../pb/pot/pot/PotModel.js', ['pb.pot.PotModel'], ['tart.ui.ComponentModel']);
 goog.addDependency('../../../../../pb/stomp/box/Box.js', ['pb.stomp.Box'], ['pb.Connectable', 'pb.Led', 'pb.footswitch.Momentary', 'pb.footswitch.Toggle', 'pb.pot.Linear', 'pb.shadowMaker', 'pb.stomp.BoxModel']);
 goog.addDependency('../../../../../pb/stomp/box/BoxModel.js', ['pb.stomp.BoxModel'], ['pb.ConnectableModel']);
+goog.addDependency('../../../../../pb/stomp/cabinet/Cabinet.js', ['pb.stomp.Cabinet'], ['pb.stomp.CabinetModel', 'pb.stomp.Conv']);
+goog.addDependency('../../../../../pb/stomp/cabinet/CabinetModel.js', ['pb.stomp.CabinetModel'], ['pb.stomp.ConvModel']);
 goog.addDependency('../../../../../pb/stomp/conv/Conv.js', ['pb.stomp.Conv'], ['pb.stomp.Box', 'pb.stomp.ConvModel']);
 goog.addDependency('../../../../../pb/stomp/conv/ConvModel.js', ['pb.stomp.ConvModel'], ['pb.stomp.BoxModel']);
 goog.addDependency('../../../../../pb/stomp/overdrive/Overdrive.js', ['pb.stomp.Overdrive'], ['pb.pot.Log', 'pb.stomp.Box', 'pb.stomp.OverdriveModel']);
 goog.addDependency('../../../../../pb/stomp/overdrive/OverdriveModel.js', ['pb.stomp.OverdriveModel'], ['pb.stomp.BoxModel']);
-goog.addDependency('../../../../../pb/stomp/reverb/Reverb.js', ['pb.stomp.Reverb'], ['pb.stomp.Box', 'pb.stomp.ReverbModel']);
-goog.addDependency('../../../../../pb/stomp/reverb/ReverbModel.js', ['pb.stomp.ReverbModel'], ['pb.stomp.BoxModel']);
+goog.addDependency('../../../../../pb/stomp/reverb/Reverb.js', ['pb.stomp.Reverb'], ['pb.stomp.Conv', 'pb.stomp.ReverbModel']);
+goog.addDependency('../../../../../pb/stomp/reverb/ReverbModel.js', ['pb.stomp.ReverbModel'], ['pb.stomp.ConvModel']);
 goog.addDependency('../../../../../pb/stomp/volume/Volume.js', ['pb.stomp.Volume'], ['pb.stomp.Box', 'pb.stomp.VolumeModel']);
 goog.addDependency('../../../../../pb/stomp/volume/VolumeModel.js', ['pb.stomp.VolumeModel'], ['pb.stomp.BoxModel']);
 goog.addDependency('../../../../../pb/ui/Component.js', ['pb.ui.Component'], ['goog.ui.Component', 'goog.ui.Container', 'goog.ui.Control', 'pb.ui.ComponentManager', 'tart.dom']);

@@ -165,9 +165,9 @@ pb.Bootstrapper.prototype.initBoard = function() {
     this.overdrive = new pb.stomp.Overdrive(ctx);
     this.reverb = new pb.stomp.Reverb(ctx);
     this.volume = new pb.stomp.Volume(ctx);
-    this.speaker = new pb.stomp.Conv(ctx);
+    this.cabinet = new pb.stomp.Cabinet(ctx);
 
-    board.addPedals([this.overdrive, this.reverb, this.volume, this.speaker]);
+    board.addPedals([this.overdrive, this.reverb, this.volume, this.cabinet]);
 
     this.overdrive.setDrive(8);
     this.overdrive.setTone(4);
