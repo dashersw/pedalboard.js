@@ -74,7 +74,7 @@ pb.stomp.OverdriveModel.prototype.createWSCurve = function(amount) {
  * @param {number} newDrive Drive level to set.
  */
 pb.stomp.OverdriveModel.prototype.setDrive = function(newDrive) {
-    this.createWSCurve(newDrive);
+    this.createWSCurve(10 * newDrive);
 };
 
 

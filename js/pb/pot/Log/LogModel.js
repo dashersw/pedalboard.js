@@ -48,8 +48,9 @@ goog.inherits(pb.pot.LogModel, pb.pot.PotModel);
  * @override
  */
 pb.pot.LogModel.prototype.processValue = function(newValue, oldValue) {
-    newValue = Math.pow(newValue, 3) / 100;
-    this.value = newValue * this.multiplier;
+    newValue = Math.pow(newValue, 3.3);
+
+    goog.base(this, 'processValue', newValue, oldValue);
 };
 
 
@@ -57,5 +58,8 @@ pb.pot.LogModel.prototype.processValue = function(newValue, oldValue) {
  * @override
  */
 pb.pot.LogModel.prototype.getNormalizedValue = function() {
-    return Math.round(Math.pow(this.value * 100 / this.multiplier, 1 / 3) * 100) / 100;
+    var rv = goog.base(this, 'getNormalizedValue');
+    rv = Math.pow(rv, 1/3.3);
+
+    return rv;
 };

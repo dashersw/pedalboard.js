@@ -64,9 +64,7 @@ goog.inherits(pb.pot.PotModel, tart.ui.ComponentModel);
 pb.pot.PotModel.prototype.setValue = function(newValue) {
     var oldValue = this.value;
 
-    newValue = Math.min(newValue, 10);
-    newValue = Math.max(newValue, 0);
-
+    newValue = goog.math.clamp(newValue, 0, 1);
     this.processValue(newValue, oldValue);
 
     var event = {
@@ -93,7 +91,7 @@ pb.pot.PotModel.prototype.setValue = function(newValue) {
  * @param {number} oldValue The old value of this PotModel.
  */
 pb.pot.PotModel.prototype.processValue = function(newValue, oldValue) {
-    this.value = newValue * this.multiplier;
+    this.value = goog.math.lerp(this.minValue, this.maxValue, newValue) * this.multiplier;
 };
 
 
@@ -109,7 +107,10 @@ pb.pot.PotModel.prototype.getValue = function() {
  * @return {number} The normalized value of this pot's parameter (as calculated in value / range).
  */
 pb.pot.PotModel.prototype.getNormalizedValue = function() {
-    return this.value / this.multiplier;
+    var rv = this.value / this.multiplier;
+    rv = (rv - this.minValue) / (this.maxValue - this.minValue);
+
+    return rv;
 };
 
 

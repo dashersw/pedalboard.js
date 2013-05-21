@@ -53,4 +53,4 @@ pb.stomp.Reverb.prototype.name = 'reverb';
 /**
  * @override
  */
-pb.stomp.Reverb.prototype.gainMultiplier = 0.1;
+pb.stomp.Reverb.prototype.gainMultiplier = 1;

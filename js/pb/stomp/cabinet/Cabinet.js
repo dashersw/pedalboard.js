@@ -34,6 +34,8 @@ goog.require('pb.stomp.CabinetModel');
  */
 pb.stomp.Cabinet = function(context) {
     goog.base(this, context);
+
+    this.volumePot.setValue(1);
 };
 goog.inherits(pb.stomp.Cabinet, pb.stomp.Conv);
 
@@ -48,3 +50,9 @@ pb.stomp.Cabinet.prototype.modelClass = pb.stomp.CabinetModel;
  * @override
  */
 pb.stomp.Cabinet.prototype.name = 'cabinet';
+
+
+/**
+ * @override
+ */
+pb.stomp.Cabinet.prototype.gainMultiplier = 10;

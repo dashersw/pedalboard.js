@@ -34,6 +34,8 @@ goog.require('pb.stomp.VolumeModel');
  */
 pb.stomp.Volume = function(context) {
     goog.base(this, context);
+
+    this.volumePot.setValue(1);
 };
 goog.inherits(pb.stomp.Volume, pb.stomp.Box);
 

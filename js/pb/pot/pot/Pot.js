@@ -48,7 +48,7 @@ pb.pot.Pot = function(param, name, multiplier, opt_size, opt_min, opt_max) {
     this.setModel(new this.modelClass(param, name, multiplier || 1, opt_min, opt_max));
     this.size = opt_size || pb.pot.Pot.Size.REGULAR;
     this.bindModelEvents();
-    this.setValue(10);
+    this.setValue(0.5);
     goog.base(this);
 };
 goog.inherits(pb.pot.Pot, pb.ui.Component);
@@ -65,7 +65,7 @@ pb.pot.Pot.prototype.modelClass = pb.pot.PotModel;
  * @protected
  * @type {number} Angle in degrees per one unit of rotation.
  */
-pb.pot.Pot.prototype.angle = 26;
+pb.pot.Pot.prototype.angle = 260;
 
 
 /**
@@ -155,7 +155,7 @@ pb.pot.Pot.prototype.bindModelEvents = function() {
 
         var mousemove = goog.events.listen(document.body, 'mousemove', function(e) {
             if (this.flag) {
-                this.setValue(this.model.getNormalizedValue() - (e.clientY - this.oldY) * this.angle / 360);
+                this.setValue(this.model.getNormalizedValue() - (e.clientY - this.oldY) / 100);
                 this.oldY = e.clientY;
             }
         }, false, this);
