@@ -33,8 +33,10 @@ goog.require('tart.ui.ComponentModel');
  * @param {string} name Name of the pot. Will be written under it.
  * @param {number} multiplier The multiplier of the effect. Some effects (such as gain) need this to be on the order of
  *                       thousands.
+ * @param {number=} opt_max Optional minimum value for the pot. Default value is 0.
+ * @param {number=} opt_min Optional maximum value for the pot. Default value is 1.
  */
-pb.pot.PotModel = function(param, name, multiplier) {
+pb.pot.PotModel = function(param, name, multiplier, opt_min, opt_max) {
     goog.base(this);
 
     if (param instanceof Function)
@@ -42,9 +44,12 @@ pb.pot.PotModel = function(param, name, multiplier) {
     else
         this.param = param;
 
+    this.minValue = opt_min || 0;
+    this.maxValue = opt_max || 1;
+
     this.name = name;
     this.multiplier = multiplier;
-    this.value = 0;
+    this.value = this.minValue;
 };
 goog.inherits(pb.pot.PotModel, tart.ui.ComponentModel);
 

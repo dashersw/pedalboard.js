@@ -30,10 +30,16 @@ goog.require('pb.pot.PotModel');
  *
  * @constructor
  * @extends {pb.pot.PotModel}
- * @inheritDoc
+ *
+ * @param {AudioParam|Function} param Audio parameter this pot will adjust. Can be gain, etc.
+ * @param {string} name Name of the pot. Will be written under it.
+ * @param {number} multiplier The multiplier of the effect. Some effects (such as gain) need this to be on the order of
+ *                       thousands.
+ * @param {number=} opt_max Optional minimum value for the pot. Default value is 0.
+ * @param {number=} opt_min Optional maximum value for the pot. Default value is 1.
  */
-pb.pot.LogModel = function(param, name, multiplier) {
-    goog.base(this, param, name, multiplier);
+pb.pot.LogModel = function(param, name, multiplier, opt_min, opt_max) {
+    goog.base(this, param, name, multiplier, opt_min, opt_max);
 };
 goog.inherits(pb.pot.LogModel, pb.pot.PotModel);
 
