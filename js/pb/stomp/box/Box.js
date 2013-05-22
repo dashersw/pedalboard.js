@@ -64,6 +64,8 @@ pb.stomp.Box.prototype.createChildComponents = function() {
  */
 pb.stomp.Box.prototype.createPots = function() {
     this.volumePot = new pb.pot.Linear(this.model.level.gain, 'volume', 1);
+    this.volumePot.setValue(1);
+
     this.pots = [this.volumePot];
 };
 
