@@ -37,8 +37,9 @@ goog.require('pb.pot.PotModel');
  *                       thousands.
  * @param {number=} opt_max Optional minimum value for the pot. Default value is 0.
  * @param {number=} opt_min Optional maximum value for the pot. Default value is 1.
+ * @param {number=} opt_default Optional default value for the pot. Default value is 0.5.
  */
-pb.pot.LinearModel = function(param, name, multiplier, opt_min, opt_max) {
-    goog.base(this, param, name, multiplier, opt_min, opt_max);
+pb.pot.LinearModel = function(param, name, multiplier, opt_min, opt_max, opt_default) {
+    goog.base(this, param, name, multiplier, opt_min, opt_max, opt_default);
 };
 goog.inherits(pb.pot.LinearModel, pb.pot.PotModel);

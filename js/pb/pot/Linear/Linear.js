@@ -42,15 +42,16 @@ goog.require('pb.pot.Pot');
  *     This size is added to the pot's class names for easier styling.
  * @param {number=} opt_max Optional minimum value for the pot. Default value is 0.
  * @param {number=} opt_min Optional maximum value for the pot. Default value is 1.
+ * @param {number=} opt_default Optional default value for the pot. Default value is 0.5.
  */
-pb.pot.Linear = function(param, name, multiplier, opt_size, opt_min, opt_max) {
-    goog.base(this, param, name, multiplier, opt_size, opt_min, opt_max);
+pb.pot.Linear = function(param, name, multiplier, opt_size, opt_min, opt_max, opt_default) {
+    goog.base(this, param, name, multiplier, opt_size, opt_min, opt_max, opt_default);
 };
 goog.inherits(pb.pot.Linear, pb.pot.Pot);
 
 
 /**
- * @type {function(new: pb.pot.LinearModel, (AudioParam|Function), string, number, number=, number=)}
+ * @type {function(new: pb.pot.LinearModel, (AudioParam|Function), string, number, number=, number=, number=)}
  *       The component model this pot component will work with.
  * @override
  */

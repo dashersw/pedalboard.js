@@ -35,8 +35,9 @@ goog.require('tart.ui.ComponentModel');
  *                       thousands.
  * @param {number=} opt_max Optional minimum value for the pot. Default value is 0.
  * @param {number=} opt_min Optional maximum value for the pot. Default value is 1.
+ * @param {number=} opt_default Optional default value for the pot. Default value is 0.5.
  */
-pb.pot.PotModel = function(param, name, multiplier, opt_min, opt_max) {
+pb.pot.PotModel = function(param, name, multiplier, opt_min, opt_max, opt_default) {
     goog.base(this);
 
     if (param instanceof Function)
@@ -46,10 +47,13 @@ pb.pot.PotModel = function(param, name, multiplier, opt_min, opt_max) {
 
     this.minValue = opt_min || 0;
     this.maxValue = opt_max || 1;
+    this.defaultValue = opt_default || 0.5;
 
     this.name = name;
     this.multiplier = multiplier;
     this.value = this.minValue;
+
+    this.setValue(this.defaultValue);
 };
 goog.inherits(pb.pot.PotModel, tart.ui.ComponentModel);
 
