@@ -1,5 +1,6 @@
 Pedalboard.js
 ====
+Checkout [pedals.io](http://pedals.io)! It's pedalboard.js packaged as a product you can really use.
 ------
 Introduction
 ------
