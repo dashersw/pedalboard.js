@@ -184,4 +184,4 @@ pb.Bootstrapper.prototype.initStage = function() {
     this.stage = new pb.Stage();
 };
 
-goog.exportSymbol('pb', pb.Bootstrapper);
+goog.exportSymbol('pb', pb);
