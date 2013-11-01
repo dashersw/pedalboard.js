@@ -2,24 +2,23 @@
 
 #usage : scripts/build.sh
 
-js/library/tartJS/tools/goog/build/closurebuilder.py \
---root=js/ \
+src/library/tartJS/tools/goog/build/closurebuilder.py \
+--root=src/ \
 --namespace="pb.Bootstrapper" \
 --output_mode=compiled \
---output_file=js/compiled/compiled.js \
---compiler_jar=js/library/tartJS/tools/goog/compiler/compiler.jar \
+--output_file=dist/compiled.js \
+--compiler_jar=src/library/tartJS/tools/goog/compiler/compiler.jar \
 --compiler_flags="--compilation_level=SIMPLE_OPTIMIZATIONS" \
 --compiler_flags="--output_wrapper='(function(){%output%})()'" \
---compiler_flags="--create_source_map='js/compiled/source_map.js'" \
---compiler_flags="--property_map_output_file='js/compiled/properties.out'" \
---compiler_flags="--variable_map_output_file='js/compiled/variables.out'" \
+--compiler_flags="--create_source_map='dist/source_map.js'" \
+--compiler_flags="--property_map_output_file='dist/properties.out'" \
+--compiler_flags="--variable_map_output_file='dist/variables.out'" \
 --compiler_flags="--warning_level=VERBOSE" \
---compiler_flags="--externs=js/library/tartJS/tart/externs/jquery-1.4.4.externs.js" \
---compiler_flags="--externs=js/library/tartJS/tart/externs/tart.externs.js" \
---compiler_flags="--externs=js/library/tartJS/tart/externs/w3c_audio.js" \
---compiler_flags="--externs=js/library/tartJS/tart/externs/jasmine.externs.js" \
---compiler_flags="--externs=js/pb/externs/pb.externs.js" \
---compiler_flags="--externs=js/pb/externs/Microphone.externs.js" \
+--compiler_flags="--externs=src/library/tartJS/tart/externs/jquery-1.4.4.externs.js" \
+--compiler_flags="--externs=src/library/tartJS/tart/externs/tart.externs.js" \
+--compiler_flags="--externs=src/library/tartJS/tart/externs/w3c_audio.js" \
+--compiler_flags="--externs=src/library/tartJS/tart/externs/jasmine.externs.js" \
+--compiler_flags="--externs=src/pb/externs/pb.externs.js" \
 --compiler_flags="--jscomp_error=accessControls" \
 --compiler_flags="--jscomp_error=checkRegExp" \
 --compiler_flags="--jscomp_error=checkTypes" \
