@@ -122,10 +122,10 @@ board.addPedals([od, reverb]);
 board.addPedalsAt(1, vol);
 
 // tweak pedal settings
-od.setDrive(7);
-od.setLevel(7);
-reverb.setLevel(3);
-vol.setLevel(2);
+od.setDrive(0.7);
+od.setLevel(0.7);
+reverb.setLevel(0.3);
+vol.setLevel(0.2);
 
 // set the board on stage and start playing!
 stage.setBoard(board);
@@ -136,11 +136,11 @@ Pot
 
 Pot component serves as a means to tweak a Pedal's parameters, such as gain, level, distortion, delay feedback, etc. It's analogous to a potentiometer, i.e. variable resistor.
 
-LinearPot and LogPot are two classes that inherit from the Pot class, and provide two different potentiometer implementations. A pot has a value, and a multiplier. Value reflects a pedal's parameter value, such as gain. Multiplier is kind of like the resistance of a resistor.
+LinearPot and LogPot are two classes that inherit from the Pot class, and provide two different potentiometer implementations. A pot has a value, and a multiplier. Value reflects a pedal's parameter value, such as gain. Multiplier is kind of like the resistance of a resistor. Optionally, you can define minimum, maximum and default values.
 
-One never accesses the value directly but through the getter method getValue. The Pot's setValue method requires a windowed range between 0 and 10, representing pot rotation. Values larger than 10 will be interpreted as 10 and lower than 0 will be interpreted as 0.
+The Pot's setValue method requires a windowed range between 0 and 1, representing pot rotation. Values larger than 1 will be interpreted as 1 and lower than 0 will be interpreted as 0.
 
-In an application where your parameter is required to be between 0 and 1, multiplier should be 0.1. When you need your parameter to have a range between 0 and 1000, your multiplier should be 100.
+In an application where your parameter is required to be between 0 and 10, multiplier should be 10. When you need your parameter to have a range between 0 and 1000, your multiplier should be 1000. Optionally, you can just leave the multiplier as 1 and play with minimum and maximum values to achieve the same effect.
 
 The only difference between a LinearPot and a LogPot is their algorithm of sweeping through their values. While LinearPot will just reflect setValue input times the multiplier, LogPot will calculate as log(setValue input) times 10 times multiplier.
 
@@ -160,7 +160,7 @@ pb.stomp.Overdrive.prototype.createPots = function() {
 };
 
 // Later on, you can manually set a pot's value like
-drivePot.setValue(3);
+drivePot.setValue(0.3);
 ```
 
 Switch
