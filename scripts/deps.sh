@@ -2,6 +2,7 @@
 
 #usage : scripts/deps.sh
 
-src/library/tartJS/tools/goog/build/depswriter.py \
---root_with_prefix='src/ ../../../../../' \
---output_file='src/deps.js'
+lib/tartJS/tools/goog/build/depswriter.py \
+--root_with_prefix='src/ ../../../../../src/' \
+--root_with_prefix='lib/ ../../../../../lib/' \
+--output_file='example/deps.js'
