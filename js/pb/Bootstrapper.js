@@ -105,50 +105,50 @@ pb.Bootstrapper.prototype.initSamples = function() {
 
     settings.push(function() {
         !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
-        that.overdrive.setLevel(10);
-        that.overdrive.setDrive(2);
-        that.overdrive.setTone(7);
-        that.reverb.setLevel(10);
+        that.overdrive.setLevel(1);
+        that.overdrive.setDrive(.1);
+        that.overdrive.setTone(1);
+        that.reverb.setLevel(1);
     });
 
     settings.push(function() {
         !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
-        that.overdrive.setLevel(6);
-        that.overdrive.setDrive(6);
-        that.overdrive.setTone(3);
-        that.reverb.setLevel(3);
+        that.overdrive.setLevel(.6);
+        that.overdrive.setDrive(.7);
+        that.overdrive.setTone(.3);
+        that.reverb.setLevel(.3);
     });
 
     settings.push(function() {
         !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
-        that.overdrive.setLevel(6);
-        that.overdrive.setDrive(10);
-        that.overdrive.setTone(5);
-        that.reverb.setLevel(10);
+        that.overdrive.setLevel(.6);
+        that.overdrive.setDrive(1);
+        that.overdrive.setTone(.5);
+        that.reverb.setLevel(1);
     });
 
     settings.push(function() {
         that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
-        that.overdrive.setLevel(10);
+        that.overdrive.setLevel(1);
         that.overdrive.setDrive(0);
-        that.overdrive.setTone(10);
-        that.reverb.setLevel(10);
+        that.overdrive.setTone(.1);
+        that.reverb.setLevel(1);
     });
 
     settings.push(function() {
         !that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
-        that.overdrive.setLevel(10);
-        that.overdrive.setDrive(10);
-        that.overdrive.setTone(3);
-        that.reverb.setLevel(7);
+        that.overdrive.setLevel(1);
+        that.overdrive.setDrive(1);
+        that.overdrive.setTone(.3);
+        that.reverb.setLevel(.7);
     });
 
     settings.push(function() {
         that.overdrive.bypassSwitch.getState() && that.overdrive.bypassSwitch.toggle();
-        that.overdrive.setLevel(10);
-        that.overdrive.setDrive(10);
-        that.overdrive.setTone(3);
-        that.reverb.setLevel(7);
+        that.overdrive.setLevel(1);
+        that.overdrive.setDrive(.1);
+        that.overdrive.setTone(.3);
+        that.reverb.setLevel(.7);
     });
 };
 
