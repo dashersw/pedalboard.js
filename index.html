@@ -14,27 +14,9 @@
     <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Radley:400,400italic' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="js/library/microphone.js/microphone.js"></script>
-    <script type="text/javascript" src="js/library/tartJS/third_party/goog/goog/base.js"></script>
-    <script type="text/javascript" src="js/deps.js"></script>
-    <script type="text/javascript" src="js/pb/Bootstrapper.js"></script>
-    <script type="text/javascript" src="js/library/socialite.min.js"></script>
-    <!--<script type="text/javascript" src="js/compiled/compiled.js"></script>-->
+    <script type="text/javascript" src="js/compiled/compiled.js"></script>
 </head>
 <body>
-<a href="https://github.com/dashersw/pedalboard.js" style="display:block; z-index: 3;"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
-<div class="social">
-    <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://dashersw.github.com/pedalboard.js/demo">
-        Share on Twitter
-    </a>
-    <a class="socialite googleplus-one" href="https://plusone.google.com/_/+1/confirm?hl=en&url=http://dashersw.github.com/pedalboard.js/demo" data-href="http://dashersw.github.com/pedalboard.js/demo">
-        Share on Google Plus
-    </a>
-    <a class="socialite facebook-like" href="http://www.facebook.com/sharer.php?u=http://dashersw.github.com/pedalboard.js/demo&t=Pedalboard.js" data-href="http://dashersw.github.com/pedalboard.js/demo">
-        Share on Facebook
-    </a>
-</div>
-
 <div id="world">
     <div id="box">
         <div id="floor">
@@ -57,8 +39,143 @@
 </div>
 
 <script type="text/javascript">
-    var pedalboard = new pb.Bootstrapper();
-    Socialite.load();
+    var stage = new pb.Stage();
+    var ctx = stage.getContext();
+
+    var board = new pb.Board(ctx);
+    stage.setBoard(board);
+
+    var overdrive = new pb.stomp.Overdrive(ctx);
+    var reverb = new pb.stomp.Reverb(ctx);
+    var volume = new pb.stomp.Volume(ctx);
+    var cabinet = new pb.stomp.Cabinet(ctx);
+
+    board.addPedals([overdrive, reverb, volume, cabinet]);
+
+    overdrive.setDrive(.1);
+    overdrive.setTone(.4);
+    overdrive.setLevel(.6);
+    volume.setLevel(1);
+    reverb.setLevel(.3);
+
+    stage.render(document.getElementById('floor'));
+
+
+
+    /*
+
+        Sample controls
+
+     */
+    var state = false;
+
+    var cb = document.getElementById('controlButton');
+    var samples = document.getElementsByClassName('sample');
+    var sampleNo = 1;
+    samples = Array.prototype.slice.call(samples);
+    var lb = document.getElementsByClassName('linein')[0];
+
+    var playLineIn = function() {
+        stage.stop();
+        stage.input = new pb.io.StreamInput(stage.getContext());
+        stage.input.addEventListener('loaded', function() {
+            stage.route();
+        });
+    }
+
+    lb.addEventListener('click', function() {
+        state = true;
+        sampleNo = 6;
+        cBDraw();
+        settings[sampleNo - 1]();
+        playLineIn();
+    }, false);
+    var settings = [];
+
+    var cBDraw = function() {
+        cb.innerHTML = state ? '&#9724;' : '&#9654;';
+        samples.forEach(function(sample) {
+            sample.className = 'sample';
+        });
+        samples[sampleNo] && (samples[sampleNo - 1].className = 'sample on');
+
+        sampleNo == 6 ? lb.className = 'linein on' : lb.className = 'linein';
+    };
+
+    var play = function() {
+        if (sampleNo == 6) {
+            playLineIn();
+            return;
+        }
+        settings[sampleNo - 1] && settings[sampleNo - 1]();
+        stage.play('audio/samples/sample' + sampleNo + '.mp3');
+    }
+
+    var cBHandler = function() {
+        state = !state;
+        cBDraw();
+        stage.stop();
+        if (state) play();
+    };
+
+    cb.addEventListener('click', cBHandler, false);
+
+    samples.forEach(function(sample) {
+        sample.addEventListener('click', function() {
+            sampleNo = Array.prototype.slice.call(sample.parentNode.children).indexOf(sample) + 1;
+            state = true;
+            cBDraw();
+            play();
+        });
+    });
+
+    settings.push(function() {
+        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+        overdrive.setLevel(1);
+        overdrive.setDrive(.1);
+        overdrive.setTone(1);
+        reverb.setLevel(1);
+    });
+
+    settings.push(function() {
+        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+        overdrive.setLevel(.6);
+        overdrive.setDrive(.7);
+        overdrive.setTone(.3);
+        reverb.setLevel(.3);
+    });
+
+    settings.push(function() {
+        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+        overdrive.setLevel(.6);
+        overdrive.setDrive(1);
+        overdrive.setTone(.5);
+        reverb.setLevel(1);
+    });
+
+    settings.push(function() {
+        overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+        overdrive.setLevel(1);
+        overdrive.setDrive(0);
+        overdrive.setTone(.1);
+        reverb.setLevel(1);
+    });
+
+    settings.push(function() {
+        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+        overdrive.setLevel(1);
+        overdrive.setDrive(1);
+        overdrive.setTone(.3);
+        reverb.setLevel(.7);
+    });
+
+    settings.push(function() {
+        overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+        overdrive.setLevel(1);
+        overdrive.setDrive(.1);
+        overdrive.setTone(.3);
+        reverb.setLevel(.7);
+    });
 </script>
 </body>
 </html>
