@@ -8,7 +8,7 @@ js/library/tartJS/tools/goog/build/closurebuilder.py \
 --output_mode=compiled \
 --output_file=js/compiled/compiled.js \
 --compiler_jar=js/library/tartJS/tools/goog/compiler/compiler.jar \
---compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" \
+--compiler_flags="--compilation_level=SIMPLE_OPTIMIZATIONS" \
 --compiler_flags="--output_wrapper='(function(){%output%})()'" \
 --compiler_flags="--create_source_map='js/compiled/source_map.js'" \
 --compiler_flags="--property_map_output_file='js/compiled/properties.out'" \
