@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="js/compiled/compiled.js"></script>
+    <script src="js/library/angular/angular.min.js"></script>
+    <script src="js/ng-pb/app.js"></script>
+    <script src="js/ng-pb/ngpb.js"></script>
+    <script src="js/ng-pb/directives/stomp/box/box.js"></script>
+    <script src="js/ng-pb/directives/stomp/overdrive/overdrive.js"></script>
+    <script src="js/ng-pb/directives/board.js"></script>
+    <script src="js/ng-pb/directives/stage.js"></script>
+    <script src="js/ng-pb/directives/pot/pot.js"></script>
+    <script src="js/ng-pb/directives/pot/log.js"></script>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/box.css"/>
+    <link rel="stylesheet" href="css/switch.css"/>
+    <link rel="stylesheet" href="css/pot.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Radley:400,400italic' rel='stylesheet' type='text/css'>
+</head>
+<body ng-app="pedalboard-angular-demo">
+    <div id="world">
+        <div id="box">
+            <div id="floor">
+                <pb-stage>
+                    <pb-board>
+                        <pb-overdrive></pb-overdrive>
+                    </pb-board>
+                </pb-stage>
+            </div>
+            <div id="wall"></div>
+        </div>
+    </div>
+</body>
+</html>
