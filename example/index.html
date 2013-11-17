@@ -103,7 +103,7 @@
         samples.forEach(function(sample) {
             sample.className = 'sample';
         });
-        samples[sampleNo] && (samples[sampleNo - 1].className = 'sample on');
+        samples[sampleNo - 1] && (samples[sampleNo - 1].className = 'sample on');
 
         sampleNo == 6 ? lb.className = 'linein on' : lb.className = 'linein';
     };
