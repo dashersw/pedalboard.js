@@ -171,3 +171,17 @@ Switch class models a foot switch, used to toggle pedals or individual effects o
 The input should always be the middle node in a 3-node array. When *on*, a switch will connect the input to the first node. When *off*, a switch will connect the input to the last node. This is in fact modeled after a 3PDT switch, and functions the same.
 
 Two classes, Toggle and Momentary, extend Switch and implement two different toggle mechanisms. Toggle is the standard switch, you press it once to turn it on, and it stays on until you press it again; it then turns off. Momentary is a little bit different, it's on as long as you press it and turns off as soon as you release it.
+
+Led
+------
+
+Led component models an LED light commonly used in pedals to signal if it's on. A Box can have many LEDs, but one LED is standard in the Box component, that is connected to the Switch and signals if the pedal is bypassed.
+
+The Led component requires a Switch instance to operate on and binds its events automatically. It will be on as long as the Switch is active.
+
+Usage:
+
+```js
+var bypassSwitch = new pb.footswitch.Toggle();
+var led = new pb.Led(this.bypassSwitch);
+```
