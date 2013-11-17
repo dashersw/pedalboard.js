@@ -183,9 +183,8 @@ Usage:
 ```js
 var bypassSwitch = new pb.footswitch.Toggle();
 
-var that = this;
-goog.events.listen(bypassSwitch.model, pb.footswitch.SwitchModel.EventType.ON, connectSomeCoolEffects, false, this);
-goog.events.listen(bypassSwitch.model, pb.footswitch.SwitchModel.EventType.OFF, disconnectSomeCoolEffects, false, this);
+goog.events.listen(bypassSwitch.model, pb.footswitch.SwitchModel.EventType.ON, connectSomeCoolEffects);
+goog.events.listen(bypassSwitch.model, pb.footswitch.SwitchModel.EventType.OFF, disconnectSomeCoolEffects);
 ```
 
 Led
@@ -199,5 +198,5 @@ Usage:
 
 ```js
 var bypassSwitch = new pb.footswitch.Toggle();
-var led = new pb.Led(this.bypassSwitch);
+var led = new pb.Led(bypassSwitch);
 ```
