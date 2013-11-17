@@ -43,7 +43,7 @@ pb.Stage = function() {
      * @protected
      * @type {AudioContext}
      */
-    this.context = new webkitAudioContext();
+    this.context = new pb.AudioContext();
 
     this.initIO();
 };
