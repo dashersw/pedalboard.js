@@ -33,9 +33,9 @@ Technology
 Audio
 ------
 
-The technology that made Pedalboard.js available is Webkit's implementation of the W3C audio API. Although in its final draft version (which means it's more or less stable — at least in concept and context, but subject to change) the API is quite extensive, easy to use, extendable and has very nice approaches.
+The technology that made Pedalboard.js available is W3C's Web Audio API. Although in a working draft version (which means it's more or less stable — at least in concept and context, but subject to change) the API is quite extensive, easy to use, extendable and has very nice approaches.
 
-Right now, the audio API is only available in the latest builds of WebKit-based browsers — Chrome and Safari. Mozilla is said to support it, with IE to follow suit.
+Right now, the Audio API is available in all the major browsers other than Internet Explorer although they have [plans](http://connect.microsoft.com/IE/feedback/details/799529/web-audio-api-support) for implementing it in future versions.
 
 ###Nodes
 
@@ -52,21 +52,23 @@ Mobile Safari doesn't have audio input via microphone / line-in and only support
 JavaScript
 ------
 
-At its core, Pedalboard.js uses tartJS, an open source JavaScript framework developed at Tart New Media. tartJS is a library built upon Google Closure Library, which is another great library developed  by Google, Inc. Besides a great approach to object oriented programming and a vast amount of classes, Closure has a set of build tools that perfectly analyzes (read: lints) your code, and compiles and builds it.
+At its core, Pedalboard.js uses tartJS, an open source JavaScript framework developed at Tart New Media. tartJS is a library built upon Google Closure Library, which is another great library developed by Google, Inc. Besides a great approach to object oriented programming and a vast amount of classes, Closure has a set of build tools that perfectly analyzes (read: lints) your code, and compiles and builds it.
 
 Closure Library allows modular, object oriented JavaScript at its best, with tons of utility classes for DOM manipulation, visual effects, components, mathematics, arrays, objects, etc.
 
 Closure Compiler not only minifies your code, but obfuscates it maximally, rewrites it to the letter to squeeze out the last bit of performance and file size. An entire web application can be under 30kb gzipped, which is quite insane.
 
+The pre-compiled version in the repository is compiled with "simple optimizations" setting on the Closure Compiler for easy use as a drop-in library. Its size is about 64KB gzipped. Pedalboard.js is fully compatible with "advanced optimizations", though, so when you compile it alongside your application in "advanced" mode, pedalboard.js goes down to 17KB gzipped in size.
+
 ------
 Concepts
 ======
 
-Pedalboard.js follows an object oriented coding style, with an analogy to the real world objects and concepts.
+Pedalboard.js follows an object oriented coding style, with an analogy to the real world guitar objects and concepts.
 
 Classes are modeled after real components of pedals and pedal boards. You configure each component as you configure a real pedal stack.
 
-You use your pedal board on stage, connect your guitar to it, and connect it to an output, like an amp or a mixer. Pedalboard.js follows the same basic ideas.
+Normally, you use your pedal board on stage, connect your guitar to it, and connect the board to an output, like an amp or a mixer. Pedalboard.js follows the same basic ideas.
 
 Stage
 ------
@@ -84,7 +86,7 @@ var stage = new pb.Stage();
 Board
 ------
 
-Board is analogous to a pedal board, where you put and organize your pedals. It has an InputBuffer instance, an OutputBuffer instance and as many Pedal instances as you'd like. A Stage can hold only one Board at a single given time, but you can have many Boards and can swap them at your leisure. A stage connects its Input to the InputBuffer of the Board and its Output to the OutputBuffer of the Board.
+Board is analogous to a pedal board, where you put and organize your pedals. It has an InputBuffer instance, an OutputBuffer instance and as many Box instances as you'd like. A Stage can hold only one Board at a single given time, but you can have many Boards and can swap them at your leisure. A Stage connects its Input to the InputBuffer of the Board and its Output to the OutputBuffer of the Board.
 
 Usage:
 
@@ -97,12 +99,12 @@ stage.setBoard(board1);
 stage.setBoard(board2);
 ```
 
-Pedal
+Box (pedal)
 ------
 
-Pedal component is where the magic happens. Given an AudioContext, Pedal implements its effects in an effects chain. Pedal instances also have an InputBuffer and an OutputBuffer for brevity. The effects lie in between these two, so when two pedals are cascaded, the output buffer of the first will be connected to the input buffer of the latter. This lets a pedal provide a clean and expectable interface to the outer world — the other pedals or the pedal board.
+Box is the abstract class for all pedals. Any pedal implementation should extend Box. Box is where the magic happens. Given an AudioContext, Box implements its effects in an effects chain. Box instances also have an InputBuffer and an OutputBuffer for brevity. The effects lie in between these two, so when two pedals are cascaded, the output buffer of the first will be connected to the input buffer of the latter. This lets a box to provide a clean and expectable interface to the outer world — the other pedals or the pedal board.
 
-One should be able to tweak a pedals parameters easily, and may want to turn it off at some point.
+One should be able to tweak a pedal's parameters easily, and may want to turn it off at some point.
 
 Pedalboard.js offers two abstractions for this; Pot and Switch.
 
@@ -136,7 +138,7 @@ stage.setBoard(board);
 Pot
 ------
 
-Pot component serves as a means to tweak a Pedal's parameters, such as gain, level, distortion, delay feedback, etc. It's analogous to a potentiometer, i.e. variable resistor.
+Pot component serves as a means to tweak a Box's parameters, such as gain, level, distortion, delay feedback, etc. It's analogous to a potentiometer, i.e. variable resistor.
 
 LinearPot and LogPot are two classes that inherit from the Pot class, and provide two different potentiometer implementations. A pot has a value, and a multiplier. Value reflects a pedal's parameter value, such as gain. Multiplier is kind of like the resistance of a resistor. Optionally, you can define minimum, maximum and default values.
 
