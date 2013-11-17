@@ -41,6 +41,8 @@ pb.io.StreamInput = function(context) {
         that.disconnect();
         that.source = context.createMediaStreamSource(stream);
         that.dispatchEvent('loaded');
+    }, function(err) {
+        throw new Error(err);
     });
 };
 goog.inherits(pb.io.StreamInput, pb.io.Input);
