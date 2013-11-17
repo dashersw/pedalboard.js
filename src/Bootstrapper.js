@@ -30,6 +30,6 @@ goog.require('pb.Stage');
  */
 pb.Bootstrapper = function() {};
 
-pb.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+pb.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 goog.exportSymbol('pb', pb);
