@@ -1,6 +1,7 @@
 Pedalboard.js
 ====
-####Checkout [pedals.io](http://pedals.io)! It's pedalboard.js packaged as a product you can really use.
+####Check out [pedals.io](http://pedals.io)! It's pedalboard.js packaged as a product you can really use.
+**Or check out the [demo](http://dashersw.github.com/pedalboard.js/demo). Make sure to try the real-time line-in feature by plugging in a guitar or a microphone.**
 
 Introduction
 ------
@@ -16,8 +17,6 @@ You design your pedal with the powerful Web Audio API, attach pots and switches 
 Bring multiple pedals together to create a pedal board, easily adjust their settings and routing. Prepare as many pedal boards as you'd like, e.g. for your favorite styles. Easily switch pedal boards for a completely different sound.
 
 Finally, a complete guitar effects stack, completely customizable, in your hands.
-
-**Checkout the [demo](http://dashersw.github.com/pedalboard.js/demo). Works best with the latest Chrome, Safari or Firefox. Make sure to try the real-time line-in feature**
 
 ###Motivation
 
