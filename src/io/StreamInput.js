@@ -37,7 +37,7 @@ pb.io.StreamInput = function(context) {
     goog.base(this, context);
     var that = this;
 
-    navigator.webkitGetUserMedia({'audio': true}, function(stream) {
+    navigator.getUserMedia({'audio': true}, function(stream) {
         that.disconnect();
         that.source = context.createMediaStreamSource(stream);
         that.dispatchEvent('loaded');
