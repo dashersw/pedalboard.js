@@ -5,44 +5,57 @@ body { color: white; background: black; min-width: 800px; min-height: 640px; }
 .board { text-align: center; }
 
 footer {
-    color: transparent; font-size: 12vh; text-align: center; position: absolute; width: 100%; bottom: 60%; z-index: 1; font-family: "Helvetica Neue", Helvetica, Arial; letter-spacing: -15px; font-weight: bold;
+    color: transparent; font-size: 12vh; text-align: center; position: absolute; width: 100%; bottom: 60%; z-index: 1; font-family: "Helvetica Neue", Helvetica, Arial; letter-spacing: -5px; font-weight: bold;
 
     text-shadow: 0px -4px 0 hsla(0, 0%, 0%,0.7), 0px 1px 0px hsla(1095, 60%, 90%, 0.6);
     -webkit-transform: rotateX(180deg) translateZ(1px);
+    -moz-transform: rotateX(180deg) translateZ(1px);
     -webkit-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
 }
 
 #controlPanel {
     z-index: 1; position: absolute; width: 100%; text-align: center; bottom: 30vh;
 
     -webkit-transform: translateZ(10px);
+    -moz-transform: translateZ(10px);
 }
 
 #world {
     position: absolute; height: 100%; width: 100%;
 
-    -webkit-perspective: 1500px
+    -webkit-perspective: 1500px;
+    -moz-perspective: 1500px
 }
 
 #box {
     height: 100%; width: 100%; top: 0; left: 0;
 
     -webkit-transform: translateZ(0px) translateY(-50%) rotateY(0deg) rotateX(-0deg);
+    -moz-transform: translateZ(0px) translateY(-50%) rotateY(0deg) rotateX(-0deg);
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
 }
 
 .stage {
     bottom: 90px; width: 100%; position: absolute;
 
-    -webkit-transform: rotateX(130deg) translateY(-60%) scale(0.6);
+    -webkit-transform: rotateX(130deg) translateY(-60%) translateZ(80px) scale(0.6);
+    -moz-transform: rotateX(130deg) translateY(-60%) translateZ(80px) scale(0.6);
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
     -webkit-transform-origin: 50% 0%;
+    -moz-transform-origin: 50% 0%;
 }
 
 #floor, #wall {
     position: absolute; height: 100%; width: 100%; top: 0; left: 0;
 
     -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
 }
 
 #floor {
@@ -55,9 +68,19 @@ footer {
             rgba(0, 0, 0, 1) 80%),
             url('../img/floor.6.jpg');
 
+    background-image:
+        -moz-radial-gradient(50% 50%, ellipse farthest-corner,
+            rgba(0, 0, 0, 0) 30%,
+            rgba(0, 0, 0, 0.9) 65%,
+            rgba(0, 0, 0, 1) 80%),
+            url('../img/floor.6.jpg');
+
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
     -webkit-transform: rotateX(-110deg);
+    -moz-transform: rotateX(-110deg);
     -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
 }
 
 #wall {
@@ -68,6 +91,13 @@ footer {
             transparent 60%,
             rgba(0, 0, 0, 0.8) 80%),
             -webkit-linear-gradient(rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,1) 100%),
+        url('../img/floor.6.jpg');
+
+    background-image:
+        -moz-radial-gradient(50% 75%, circle closest-corner,
+            transparent 60%,
+            rgba(0, 0, 0, 0.8) 80%),
+            -moz-linear-gradient(rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,1) 100%),
         url('../img/floor.6.jpg');
 }
 
@@ -86,4 +116,5 @@ footer {
     z-index: 12; position: absolute; left: 20px; height: 100px; width: 200px; text-align: left; top: 130px;
 
     -webkit-transform: translateZ(12px);
+    -moz-transform: translateZ(12px);
 }

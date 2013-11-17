@@ -9,7 +9,10 @@
     text-align: center;
     background-image: -webkit-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
         -webkit-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
+    background-image: -moz-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
+        -moz-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
     -webkit-transform: translateZ(50px)
+    -moz-transform: translateZ(50px)
 }
 
 .box>.name {
@@ -21,6 +24,7 @@
     width: 100%;
     position: absolute;
     -webkit-transform: translateZ(1px);
+    -moz-transform: translateZ(1px);
 }
 
 .reverb {
@@ -77,6 +81,7 @@
 
 .box {
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
 }
 
 .box .bgs {
