@@ -38,7 +38,7 @@ goog.require('pb.stomp.BoxModel');
 pb.stomp.ConvModel = function(context) {
     goog.base(this, context);
     this.conv = this.context.createConvolver();
-    this.convGain = this.context.createGainNode();
+    this.convGain = this.context.createGain();
     this.effects = [this.conv, this.convGain];
 
     this.loadIR();

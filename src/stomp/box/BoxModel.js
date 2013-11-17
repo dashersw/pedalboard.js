@@ -35,7 +35,7 @@ goog.require('pb.ConnectableModel');
 pb.stomp.BoxModel = function(context) {
     goog.base(this, context);
 
-    this.level = this.context.createGainNode();
+    this.level = this.context.createGain();
 
     this.effects.push(this.level);
 };
