@@ -36,14 +36,14 @@ pb.ConnectableModel = function(context) {
 
     /**
      *
-     * @type {AudioGainNode}
+     * @type {GainNode}
      * @protected
      */
     this.inputBuffer = this.context.createGain();
 
     /**
      *
-     * @type {AudioGainNode}
+     * @type {GainNode}
      * @protected
      */
     this.outputBuffer = this.context.createGain();
