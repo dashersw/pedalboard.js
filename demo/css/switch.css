@@ -3,11 +3,14 @@
     margin: 1vh;
     text-align: center;
     display: inline-block;
+    width: 6vh;
 }
 
 .button {
-    height: 6vh;
+    height: 5vh;
     width: 6vh;
+    background-size: 100%;
+    background-image: url("../img/switch.png");
 }
 
 .switches {
@@ -16,6 +19,7 @@
     left: 0;
     width: 100%;
     -webkit-transform: translateZ(1px);
+    -moz-transform: translateZ(1px);
 }
 
 .leds {
@@ -33,10 +37,11 @@
     border-radius: 50%;
     box-shadow: inset 0px -3px 6px 1px rgba(255,255,255,0.5);
     background-color: hsla(100, 20%, 50%, 0.4);
-    -webkit-transition-property: box-shadow;
-    -webkit-transition-duration: 100ms;
+    -webkit-transition: box-shadow 100ms;
+    -moz-transition: box-shadow 100ms;
     opacity: 0.6;
     -webkit-transform: translateZ(1px);
+    -moz-transform: translateZ(1px);
 }
 
 .led:after {
@@ -60,5 +65,5 @@
 }
 
 .led.on:after {
-    box-shadow: 0px 2px 12px 1px rgba(0,0,0,0.2);;
+    box-shadow: 0px 2px 12px 1px rgba(0,0,0,0.2);
 }

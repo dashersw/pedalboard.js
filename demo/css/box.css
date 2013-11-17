@@ -9,7 +9,10 @@
     text-align: center;
     background-image: -webkit-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
         -webkit-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
+    background-image: -moz-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
+        -moz-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
     -webkit-transform: translateZ(50px)
+    -moz-transform: translateZ(50px)
 }
 
 .box>.name {
@@ -21,6 +24,7 @@
     width: 100%;
     position: absolute;
     -webkit-transform: translateZ(1px);
+    -moz-transform: translateZ(1px);
 }
 
 .reverb {
@@ -63,11 +67,11 @@
         inset 2px 0px 4px 1px hsla(0,0%,95%,0.9);
 }
 
-.convo {
+.cabinet {
     background-color: hsl(326, 64%, 37%);
 }
 
-.convo .led.on {
+.cabinet .led.on {
     background-color: hsl(326, 64%, 77%);
     box-shadow:
         inset 0px -2px 7px 2px rgba(255,255,255,0.8),
@@ -77,6 +81,7 @@
 
 .box {
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
 }
 
 .box .bgs {

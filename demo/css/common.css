@@ -1,167 +1,120 @@
-html {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
+html, body { height: 100%; width: 100%; overflow: hidden; }
 
-body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    color: white;
-    background: black;
-    min-width: 800px;
-    min-height: 640px;
-}
+body { color: white; background: black; min-width: 800px; min-height: 640px; }
 
-@media only screen
-and (-webkit-min-device-pixel-ratio : 2)
-and (min-device-width: 320px) {
-    #blur, #floor {
-        /*background-size: 100%, 200%;*/
-    }
-}
-
-@media only screen
-and (-webkit-min-device-pixel-ratio : 2)
-and (min-device-width: 768px) {
-    #blur, #floor {
-        /*background-size: 100%, 50%;*/
-    }
-}
-
-.board {
-    /*top: 30%;*/
-    text-align: center;
-    /*z-index: 2;*/
-    /*-webkit-transition-property: all;*/
-    /*-webkit-transition-duration: 1s;*/
-}
+.board { text-align: center; }
 
 footer {
-    color: transparent;
-    font-size: 12vh;
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    bottom: 60%;
-    z-index: 1;
-    text-shadow: 0px -4px 0 hsla(0, 0%, 0%,0.7), 0px 1px 0px hsla(1095, 60%, 90%, 0.6);
-    font-family: "Helvetica Neue", Helvetica, Arial;
-    letter-spacing: -15px;
-    font-weight: bold;
+    color: transparent; font-size: 12vh; text-align: center; position: absolute; width: 100%; bottom: 60%; z-index: 1; font-family: "Helvetica Neue", Helvetica, Arial; letter-spacing: -5px; font-weight: bold;
+
+    text-shadow: 0px -2px 0 hsla(0, 0%, 0%,0.7), -1px 1px 0px hsla(0, 0%, 100%, 0.4), 0 -4px 0px rgba(0,0,0,0.4);
     -webkit-transform: rotateX(180deg) translateZ(1px);
+    -moz-transform: rotateX(180deg) translateZ(1px);
     -webkit-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
 }
 
 #controlPanel {
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    bottom: 30vh;
+    z-index: 1; position: absolute; width: 100%; text-align: center; bottom: 30vh;
+
     -webkit-transform: translateZ(10px);
+    -moz-transform: translateZ(10px);
 }
 
 #world {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    -webkit-perspective: 1500px
+    position: absolute; height: 100%; width: 100%;
+
+    -webkit-perspective: 1500px;
+    -moz-perspective: 1500px
 }
 
 #box {
+    height: 100%; width: 100%; top: 0; left: 0;
+
     -webkit-transform: translateZ(0px) translateY(-50%) rotateY(0deg) rotateX(-0deg);
+    -moz-transform: translateZ(0px) translateY(-50%) rotateY(0deg) rotateX(-0deg);
     -webkit-transform-style: preserve-3d;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+    -moz-transform-style: preserve-3d;
 }
 
 .stage {
-    -webkit-transform: rotateX(130deg) translateY(-60%) scale(0.6);
+    bottom: 90px; width: 100%; position: absolute;
+
+    -webkit-transform: rotateX(130deg) translateY(-60%) translateZ(80px) scale(0.6);
+    -moz-transform: rotateX(130deg) translateY(-60%) translateZ(80px) scale(0.6);
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
     -webkit-transform-origin: 50% 0%;
-    bottom: 90px;
-    width: 100%;
-    position: absolute;
+    -moz-transform-origin: 50% 0%;
 }
 
 #floor, #wall {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+    position: absolute; height: 100%; width: 100%; top: 0; left: 0;
+
     -webkit-transform-origin: 0 0;
-    /*background: red!important;*/
+    -moz-transform-origin: 0 0;
+
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
 }
 
 #floor {
-    -webkit-transform: rotateX(-110deg);
-    -webkit-transform-origin: 0 100%;
+    background-size: 100%, 50%; background-position: center bottom;
+
     background-image:
         -webkit-radial-gradient(50% 50%, ellipse farthest-corner,
             rgba(0, 0, 0, 0) 30%,
             rgba(0, 0, 0, 0.9) 65%,
             rgba(0, 0, 0, 1) 80%),
             url('../img/floor.6.jpg');
-    background-size: 100%, 50%;
-    background-position: center bottom;
+
+    background-image:
+        -moz-radial-gradient(50% 50%, ellipse farthest-corner,
+            rgba(0, 0, 0, 0) 30%,
+            rgba(0, 0, 0, 0.9) 65%,
+            rgba(0, 0, 0, 1) 80%),
+            url('../img/floor.6.jpg');
+
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform: rotateX(-110deg);
+    -moz-transform: rotateX(-110deg);
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
 }
 
 #wall {
+    background-color: #000000; background-position: center, center, bottom; background-size: 100%, 100%, 50%;
+
     background-image:
         -webkit-radial-gradient(50% 75%, circle closest-corner,
             transparent 60%,
             rgba(0, 0, 0, 0.8) 80%),
             -webkit-linear-gradient(rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,1) 100%),
         url('../img/floor.6.jpg');
-    background-color: #000000;
-    background-position: center, center, bottom;
-    background-size: 100%, 100%, 50%;
+
+    background-image:
+        -moz-radial-gradient(50% 75%, circle closest-corner,
+            transparent 60%,
+            rgba(0, 0, 0, 0.8) 80%),
+            -moz-linear-gradient(rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,1) 100%),
+        url('../img/floor.6.jpg');
 }
 
-#controlButton {
-    cursor: pointer;
-    font-size: 6vh;
-    color: rgba(255,255,255,0.6);
-}
+#controlButton { cursor: pointer; font-size: 6vh; color: rgba(255,255,255,0.6); }
+#controlButton:hover { color: rgba(255,255,255,0.8); }
 
-#controlButton:hover {
-    color: rgba(255,255,255,0.8)
-}
-
-.sample, .linein {
-    display: inline-block;
-    font-family: Radley;
-    font-size: 30px;
-    margin: 0 1vh;
-    cursor: pointer;
-    color: rgba(255,255,255,0.6);
-}
-
-.sample:hover {
-    color: rgba(255,255,255,0.8)
-}
-
-.sample.on {
-    color: rgba(255,255,255,0.9);
-}
+.sample, .linein { display: inline-block; font-family: Radley; font-size: 30px; margin: 0 1vh; cursor: pointer; color: rgba(255,255,255,0.6); }
+.sample:hover { color: rgba(255,255,255,0.8); }
+.sample.on { color: rgba(255,255,255,0.9); }
 
 .linein { color: rgba(236,64,64,0.6); }
 .linein:hover { color: rgba(236,64,64,0.8); }
 .linein.on { color: rgba(236,64,64,0.9); }
 
 .social {
-    z-index: 12;
-    position: absolute;
-    left: 20px;
-    height: 100px;
-    width: 200px;
-    text-align: left;
-    top: 130px;
+    z-index: 12; position: absolute; left: 20px; height: 100px; width: 200px; text-align: left; top: 130px;
+
     -webkit-transform: translateZ(12px);
+    -moz-transform: translateZ(12px);
 }

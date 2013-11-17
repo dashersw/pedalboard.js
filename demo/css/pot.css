@@ -4,6 +4,7 @@
     top: 1vh;
     left: 0;
     -webkit-transform: translateZ(1px)
+    -moz-transform: translateZ(1px)
 }
 
 .pot {
@@ -27,6 +28,7 @@
 .pot.small .knob {
     height: 5vh;
     width: 5vh;
+    background-size: 5vh 5vh;
 }
 
 .pot.small .nameHolder {
@@ -41,6 +43,9 @@
 .knob {
     height: 6vh;
     width: 6vh;
+    background-image: url("../img/pot-small.png");
+    background-size: 6vh;
+    border-radius: 50%;
 }
 
 .pot .name {
