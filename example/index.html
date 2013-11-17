@@ -146,17 +146,17 @@
     settings.push(function() {
         !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
         overdrive.setLevel(.6);
-        overdrive.setDrive(.7);
-        overdrive.setTone(.3);
+        overdrive.setDrive(.25);
+        overdrive.setTone(.5);
         reverb.setLevel(.3);
     });
 
     settings.push(function() {
         !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
         overdrive.setLevel(.6);
-        overdrive.setDrive(1);
+        overdrive.setDrive(.4);
         overdrive.setTone(.5);
-        reverb.setLevel(1);
+        reverb.setLevel(0.6);
     });
 
     settings.push(function() {
@@ -170,7 +170,7 @@
     settings.push(function() {
         !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
         overdrive.setLevel(1);
-        overdrive.setDrive(1);
+        overdrive.setDrive(0.4);
         overdrive.setTone(.3);
         reverb.setLevel(.7);
     });
