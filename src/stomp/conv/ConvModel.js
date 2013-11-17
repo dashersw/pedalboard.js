@@ -41,8 +41,7 @@ pb.stomp.ConvModel = function(context) {
     this.convGain = this.context.createGain();
     this.effects = [this.conv, this.convGain];
 
-    this.loadIR();
-
+    this.iRPath && this.loadIR();
 };
 goog.inherits(pb.stomp.ConvModel, pb.stomp.BoxModel);
 
@@ -52,7 +51,7 @@ goog.inherits(pb.stomp.ConvModel, pb.stomp.BoxModel);
  *
  * @type {string}
  */
-pb.stomp.ConvModel.prototype.iRPath = 'audio/ir/speaker/AK-SPKRS_VinUs_002.wav';
+pb.stomp.ConvModel.prototype.iRPath;
 
 
 /**
