@@ -166,11 +166,23 @@ drivePot.setValue(0.3);
 Switch
 ------
 
-Switch class models a foot switch, used to toggle pedals or individual effects of pedals. A switch has an array of 3-node arrays and toggles between them when pressed. In Pedalboard.js, one defines any number of 3-node arrays and the connection will be handled by the switch.
+Switch component models a foot switch, used to toggle pedals or individual effects of pedals. A switch has an array of 3-node arrays and toggles between them when pressed. In Pedalboard.js, one defines any number of 3-node arrays and the connection will be handled by the Switch.
 
 The input should always be the middle node in a 3-node array. When *on*, a switch will connect the input to the first node. When *off*, a switch will connect the input to the last node. This is in fact modeled after a 3PDT switch, and functions the same.
 
 Two classes, Toggle and Momentary, extend Switch and implement two different toggle mechanisms. Toggle is the standard switch, you press it once to turn it on, and it stays on until you press it again; it then turns off. Momentary is a little bit different, it's on as long as you press it and turns off as soon as you release it.
+
+A Box can have many switches but the bypass switch is built-in in and standard in the abstract class. So extending the Box component to implement a new pedal automatically provides a bypass Switch.
+
+Usage:
+
+```js
+var bypassSwitch = new pb.footswitch.Toggle();
+
+var that = this;
+goog.events.listen(bypassSwitch.model, pb.footswitch.SwitchModel.EventType.ON, connectSomeCoolEffects, false, this);
+goog.events.listen(bypassSwitch.model, pb.footswitch.SwitchModel.EventType.OFF, disconnectSomeCoolEffects, false, this);
+```
 
 Led
 ------
