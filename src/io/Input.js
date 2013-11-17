@@ -38,8 +38,24 @@ goog.require('pb.IConnectable');
 pb.io.Input = function(context) {
     this.source = context.createBufferSource(); // creates a sound source
     this.source.loop = true;
+
+    this.state = pb.io.Input.State.NOT_STARTED;
+    this.source.addEventListener('ended', this.onEnded.bind(this));
 };
 goog.inherits(pb.io.Input, goog.events.EventTarget);
+
+
+/**
+ * Playback states that partially fulfills the deprecated playbackState in Web Audio API. Basically it helps to avoid
+ * exceptions when start or stop is called inappropriately.
+ *
+ * @enum {string}
+ */
+pb.io.Input.State = {
+    NOT_STARTED: 'notStarted',
+    PLAYING: 'playing',
+    FINISHED: 'finished'
+};
 
 
 /**
@@ -48,7 +64,10 @@ goog.inherits(pb.io.Input, goog.events.EventTarget);
  * @param {number=} opt_time Milliseconds after whom this input will start playing.
  */
 pb.io.Input.prototype.play = function(opt_time) {
-    this.source.start(opt_time || 0);
+    if (this.state == pb.io.Input.State.NOT_STARTED) {
+        this.source.start(opt_time || 0);
+        this.state = pb.io.Input.State.PLAYING;
+    }
 };
 
 
@@ -58,7 +77,10 @@ pb.io.Input.prototype.play = function(opt_time) {
  * @param {number=} opt_time Milliseconds after whom this input will stop playing.
  */
 pb.io.Input.prototype.stop = function(opt_time) {
-    this.source.stop(opt_time || 0);
+    if (this.state == pb.io.Input.State.PLAYING) {
+        this.source.stop(opt_time || 0);
+        this.state = pb.io.Input.State.FINISHED;
+    }
 };
 
 
@@ -99,6 +121,14 @@ pb.io.Input.prototype.disconnect = function() {
  */
 pb.io.Input.prototype.getOutput = function() {
     return this.source;
+};
+
+
+/**
+ * Handler for the end event. When the playback of the input ends, this method correctly sets the State to FINISHED.
+ */
+pb.io.Input.prototype.onEnded = function() {
+    this.state = pb.io.Input.State.FINISHED;
 };
 
 
