@@ -47,8 +47,6 @@ goog.inherits(pb.stomp.ReverbModel, pb.stomp.ConvModel);
 
 
 /**
- * The path of the impulse response of this reverb.
- *
- * @type {string}
+ * @override
  */
 pb.stomp.ReverbModel.prototype.iRPath = 'audio/ir/reverb/pcm90cleanplate.wav';
