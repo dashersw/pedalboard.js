@@ -32,10 +32,11 @@ goog.require('pb.ui.Component');
 /**
  * Stage hosts pedal boards, input and output.
  *
+ * @param {AudioContext=} opt_context
  * @constructor
  * @extends {pb.ui.Component}
  */
-pb.Stage = function() {
+pb.Stage = function(opt_context) {
     goog.base(this);
     /**
      * The audio context for this stage.
@@ -43,7 +44,7 @@ pb.Stage = function() {
      * @protected
      * @type {AudioContext}
      */
-    this.context = new AudioContext();
+    this.context = opt_context ? opt_context : new AudioContext();
 
     this.initIO();
 };
