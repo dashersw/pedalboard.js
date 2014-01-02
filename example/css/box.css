@@ -1,18 +1,12 @@
 .box {
     height: 30vh;
     width: 18vh;
-    border-radius: 10px;
+    border-radius: 2px;
     margin: 2vh;
     padding: 2vh;
     display: inline-block;
     font-family: 'Yellowtail', 'Damion', cursive;
     text-align: center;
-    background-image: -webkit-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
-        -webkit-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
-    background-image: -moz-radial-gradient(center, transparent 0%,hsla(0, 0%, 0%, 0.2) 65%,hsla(0, 0%, 0%, 0.4) 100%),
-        -moz-linear-gradient(transparent 40%,hsla(0, 0%, 0%, 0.3) 75%,hsla(0, 0%, 0%, 0.3) 100%);
-    -webkit-transform: translateZ(50px)
-    -moz-transform: translateZ(50px)
 }
 
 .box>.name {
@@ -23,8 +17,6 @@
     left: 0;
     width: 100%;
     position: absolute;
-    -webkit-transform: translateZ(1px);
-    -moz-transform: translateZ(1px);
 }
 
 .reverb {
@@ -34,10 +26,6 @@
 
 .reverb .led.on {
     background-color: hsl(194, 64%, 77%);
-    box-shadow:
-        inset 0px -2px 7px 2px rgba(255,255,255,0.8),
-        0px 0px 60px 30px hsla(194, 75%, 75%, 1),
-        inset 2px 0px 4px 1px hsla(194,50%,55%,0.9);
 }
 
 .overdrive {
@@ -61,10 +49,6 @@
 
 .volume .led.on {
     background-color: hsl(194, 90%, 97%);
-    box-shadow:
-        inset 0px -2px 7px 2px rgba(255,255,255,0.8),
-        0px 0px 60px 30px hsla(0, 0%, 95%, 1),
-        inset 2px 0px 4px 1px hsla(0,0%,95%,0.9);
 }
 
 .cabinet {
@@ -73,15 +57,10 @@
 
 .cabinet .led.on {
     background-color: hsl(326, 64%, 77%);
-    box-shadow:
-        inset 0px -2px 7px 2px rgba(255,255,255,0.8),
-        0px 0px 60px 30px hsla(326, 65%, 75%, 1),
-        inset 2px 0px 4px 1px hsla(326,50%,55%,0.9);
 }
 
 .box {
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
+
 }
 
 .box .bgs {
@@ -103,57 +82,43 @@
 
 .box .bg:nth-child(1) {
     background: black;
-    -webkit-transform: translateZ(-3px);
 }
 .box .bg:nth-child(2) {
     background: black;
-    -webkit-transform: translateZ(-6px);
 }
 .box .bg:nth-child(3) {
     background: black;
-    -webkit-transform: translateZ(-10px);
 }
 .box .bg:nth-child(4) {
     background: black;
-    -webkit-transform: translateZ(-14px);
 }
 .box .bg:nth-child(5) {
     background: black;
-    -webkit-transform: translateZ(-19px);
 }
 .box .bg:nth-child(6) {
     background: black;
-    -webkit-transform: translateZ(-24px);
 }
 .box .bg:nth-child(7) {
     background: black;
-    -webkit-transform: translateZ(-30px);
 }
 .box .bg:nth-child(8) {
     background: black;
-    -webkit-transform: translateZ(-30px);
 }
 .box .bg:nth-child(9) {
     background: black;
-    -webkit-transform: translateZ(-37px);
 }
 .box .bg:nth-child(10) {
     background: black;
-    -webkit-transform: translateZ(-44px);
 }
 .box .bg:nth-child(11) {
     background: black;
-    -webkit-transform: translateZ(-50px);
 }
 .box .bg:nth-child(12) {
     background: black;
-    -webkit-transform: translateZ(-57px);
 }
 .box .bg:nth-child(13) {
     background: black;
-    -webkit-transform: translateZ(-64px);
 }
 .box .bg:nth-child(14) {
     background: black;
-    -webkit-transform: translateZ(-75px);
 }

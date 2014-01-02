@@ -25,21 +25,9 @@
 <body>
 <div id="world">
     <div id="box">
-        <div id="floor">
-            <footer>&nbsp;PEDALBOARD.JS&nbsp;</footer>
+        <div id="floor1" class="floor">
         </div>
-        <div id="wall">
-            <div id="controlPanel">
-                <div id="controlButton">&#9654;</div>
-                <div class="linein">Line-in (careful, it's too hot!)</div>
-                <div id="samples">
-                    <div class="sample">Sample 1</div>
-                    <div class="sample">Sample 2</div>
-                    <div class="sample">Sample 3</div>
-                    <div class="sample">Sample 4</div>
-                    <div class="sample">Sample 5</div>
-                </div>
-            </div>
+        <div id="floor2" class="floor">
         </div>
     </div>
 </div>
@@ -64,7 +52,6 @@
     volume.setLevel(1);
     reverb.setLevel(.3);
 
-    stage.render(document.getElementById('floor'));
 
 
 
@@ -182,6 +169,7 @@
         overdrive.setTone(.3);
         reverb.setLevel(.7);
     });
+    stage.render(document.getElementById('floor1'));
 </script>
 </body>
 </html>

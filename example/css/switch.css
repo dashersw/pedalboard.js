@@ -18,8 +18,6 @@
     bottom: 2vh;
     left: 0;
     width: 100%;
-    -webkit-transform: translateZ(1px);
-    -moz-transform: translateZ(1px);
 }
 
 .leds {
@@ -37,11 +35,7 @@
     border-radius: 50%;
     box-shadow: inset 0px -3px 6px 1px rgba(255,255,255,0.5);
     background-color: hsla(100, 20%, 50%, 0.4);
-    -webkit-transition: box-shadow 100ms;
-    -moz-transition: box-shadow 100ms;
     opacity: 0.6;
-    -webkit-transform: translateZ(1px);
-    -moz-transform: translateZ(1px);
 }
 
 .led:after {

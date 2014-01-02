@@ -91,7 +91,7 @@ pb.Board.prototype.addChildAt = function(child, index, opt_render) {
         goog.dom.removeNode(this.$(this.mappings.EMPTY)[0]);
 
     this.routeInternal();
-    if (this.isInDocument()) this.doShadows();
+    //if (this.isInDocument()) this.doShadows();
 };
 
 
@@ -126,7 +126,7 @@ pb.Board.prototype.removeChild = function(child, opt_unrender) {
  */
 pb.Board.prototype.enterDocument = function() {
     goog.base(this, 'enterDocument');
-    this.doShadows();
+    //this.doShadows();
 };
 
 
