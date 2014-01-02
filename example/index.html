@@ -33,8 +33,9 @@
 </div>
 
 <script type="text/javascript">
-    var stage = new pb.Stage();
-    var ctx = stage.getContext();
+    var ctx = new AudioContext();
+
+    var stage = new pb.Stage(ctx);
 
     var board = new pb.Board(ctx);
     stage.setBoard(board);
@@ -52,124 +53,34 @@
     volume.setLevel(1);
     reverb.setLevel(.3);
 
-
-
-
-    /*
-
-        Sample controls
-
-     */
-    var state = false;
-
-    var cb = document.getElementById('controlButton');
-    var samples = document.getElementsByClassName('sample');
-    var sampleNo = 1;
-    samples = Array.prototype.slice.call(samples);
-    var lb = document.getElementsByClassName('linein')[0];
-
-    var playLineIn = function() {
-        stage.stop();
-        stage.input = new pb.io.StreamInput(stage.getContext());
-        stage.input.addEventListener('loaded', function() {
-            stage.route();
-        });
-    }
-
-    lb.addEventListener('click', function() {
-        state = true;
-        sampleNo = 6;
-        cBDraw();
-        settings[sampleNo - 1]();
-        playLineIn();
-    }, false);
-    var settings = [];
-
-    var cBDraw = function() {
-        cb.innerHTML = state ? '&#9724;' : '&#9654;';
-        samples.forEach(function(sample) {
-            sample.className = 'sample';
-        });
-        samples[sampleNo - 1] && (samples[sampleNo - 1].className = 'sample on');
-
-        sampleNo == 6 ? lb.className = 'linein on' : lb.className = 'linein';
-    };
-
-    var play = function() {
-        if (sampleNo == 6) {
-            playLineIn();
-            return;
-        }
-        settings[sampleNo - 1] && settings[sampleNo - 1]();
-        stage.play('audio/samples/sample' + sampleNo + '.mp3');
-    }
-
-    var cBHandler = function() {
-        state = !state;
-        cBDraw();
-        stage.stop();
-        if (state) play();
-    };
-
-    cb.addEventListener('click', cBHandler, false);
-
-    samples.forEach(function(sample) {
-        sample.addEventListener('click', function() {
-            sampleNo = Array.prototype.slice.call(sample.parentNode.children).indexOf(sample) + 1;
-            state = true;
-            cBDraw();
-            play();
-        });
-    });
-
-    settings.push(function() {
-        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
-        overdrive.setLevel(1);
-        overdrive.setDrive(.1);
-        overdrive.setTone(1);
-        reverb.setLevel(1);
-    });
-
-    settings.push(function() {
-        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
-        overdrive.setLevel(.6);
-        overdrive.setDrive(.25);
-        overdrive.setTone(.5);
-        reverb.setLevel(.3);
-    });
-
-    settings.push(function() {
-        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
-        overdrive.setLevel(.6);
-        overdrive.setDrive(.4);
-        overdrive.setTone(.5);
-        reverb.setLevel(0.6);
-    });
-
-    settings.push(function() {
-        overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
-        overdrive.setLevel(1);
-        overdrive.setDrive(0);
-        overdrive.setTone(.1);
-        reverb.setLevel(1);
-    });
-
-    settings.push(function() {
-        !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
-        overdrive.setLevel(1);
-        overdrive.setDrive(0.4);
-        overdrive.setTone(.3);
-        reverb.setLevel(.7);
-    });
-
-    settings.push(function() {
-        overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
-        overdrive.setLevel(1);
-        overdrive.setDrive(.1);
-        overdrive.setTone(.3);
-        reverb.setLevel(.7);
-    });
     stage.render(document.getElementById('floor1'));
+
+
+    var stage2 = new pb.Stage(ctx);
+
+    var board2 = new pb.Board(ctx);
+    stage2.setBoard(board2);
+
+    var overdrive2 = new pb.stomp.Overdrive(ctx);
+    var cabinet2 = new pb.stomp.Cabinet(ctx);
+    var volume2 = new pb.stomp.Volume(ctx);
+
+    board2.addPedals([overdrive2, cabinet2, volume2]);
+
+    overdrive2.setDrive(.1);
+    overdrive2.setTone(.4);
+    overdrive2.setLevel(.6);
+
+    stage2.render(document.getElementById('floor2'));
+
+    var input = new pb.io.FileInput(ctx, 'audio/samples/sample1.mp3');
+    input.play();
+
+    stage.input = new pb.io.GainInput(ctx, input);
+    stage2.input = new pb.io.GainInput(ctx, input);
+    stage.route();
+    stage2.route();
+
 </script>
 </body>
 </html>

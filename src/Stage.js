@@ -25,6 +25,7 @@ goog.require('pb.Board');
 goog.require('pb.io.FileInput');
 goog.require('pb.io.Output');
 goog.require('pb.io.StreamInput');
+goog.require('pb.io.GainInput');
 goog.require('pb.ui.Component');
 
 

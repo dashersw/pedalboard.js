@@ -62,10 +62,10 @@ goog.addDependency('../../../../../lib/tartJS/tart/money/CurrencyTL.js', ['tart.
 goog.addDependency('../../../../../lib/tartJS/tart/money/CurrencyUSD.js', ['tart.CurrencyUSD'], ['tart.Currency']);
 goog.addDependency('../../../../../lib/tartJS/tart/money/Money.js', ['tart.Money'], ['tart.CurrencyTL', 'tart.CurrencyUSD']);
 goog.addDependency('../../../../../lib/tartJS/tart/mvc/Action.js', ['tart.mvc.Action'], []);
-goog.addDependency('../../../../../lib/tartJS/tart/mvc/Application.js', ['tart.mvc.Application'], ['goog.History', 'goog.debug.ErrorHandler', 'goog.events', 'tart.mvc.Action', 'tart.mvc.Controller', 'tart.mvc.IApplication', 'tart.mvc.Layout', 'tart.mvc.Model', 'tart.mvc.Renderer', 'tart.mvc.uri.Route', 'tart.mvc.uri.Router']);
+goog.addDependency('../../../../../lib/tartJS/tart/mvc/Application.js', ['tart.mvc.Application'], ['goog.History', 'goog.debug.ErrorHandler', 'goog.events', 'tart.dom', 'tart.mvc.Action', 'tart.mvc.Controller', 'tart.mvc.IApplication', 'tart.mvc.Layout', 'tart.mvc.Model', 'tart.mvc.Renderer', 'tart.mvc.uri.Route', 'tart.mvc.uri.Router']);
 goog.addDependency('../../../../../lib/tartJS/tart/mvc/Controller.js', ['tart.mvc.Controller'], []);
 goog.addDependency('../../../../../lib/tartJS/tart/mvc/IApplication.js', ['tart.mvc.IApplication'], []);
-goog.addDependency('../../../../../lib/tartJS/tart/mvc/Layout.js', ['tart.mvc.Layout'], ['tart.mvc.View']);
+goog.addDependency('../../../../../lib/tartJS/tart/mvc/Layout.js', ['tart.mvc.Layout'], ['goog.dom.query', 'tart.mvc.View']);
 goog.addDependency('../../../../../lib/tartJS/tart/mvc/MobileAction.js', ['tart.mvc.MobileAction'], []);
 goog.addDependency('../../../../../lib/tartJS/tart/mvc/MobileRenderer.js', ['tart.mvc.MobileRenderer'], ['tart.mvc.MobileAction', 'tart.mvc.Renderer']);
 goog.addDependency('../../../../../lib/tartJS/tart/mvc/Model.js', ['tart.mvc.Model'], []);
@@ -947,7 +947,7 @@ goog.addDependency('../../../../../src/IConnectable.js', ['pb.IConnectable'], []
 goog.addDependency('../../../../../src/IConnectableModel.js', ['pb.IConnectableModel'], []);
 goog.addDependency('../../../../../src/Led.js', ['pb.Led'], ['pb.ui.Component']);
 goog.addDependency('../../../../../src/ShadowMaker.js', ['pb.shadowMaker'], ['goog.color', 'goog.dom', 'goog.style']);
-goog.addDependency('../../../../../src/Stage.js', ['pb.Stage'], ['pb.Board', 'pb.io.FileInput', 'pb.io.Output', 'pb.io.StreamInput', 'pb.ui.Component']);
+goog.addDependency('../../../../../src/Stage.js', ['pb.Stage'], ['pb.Board', 'pb.io.FileInput', 'pb.io.GainInput', 'pb.io.Output', 'pb.io.StreamInput', 'pb.ui.Component']);
 goog.addDependency('../../../../../src/footswitch/Momentary/Momentary.js', ['pb.footswitch.Momentary'], ['pb.footswitch.MomentaryModel', 'pb.footswitch.Switch']);
 goog.addDependency('../../../../../src/footswitch/Momentary/MomentaryModel.js', ['pb.footswitch.MomentaryModel'], ['pb.footswitch.SwitchModel']);
 goog.addDependency('../../../../../src/footswitch/Switch/Switch.js', ['pb.footswitch.Switch'], ['pb.footswitch.SwitchModel', 'pb.ui.Component']);
@@ -955,6 +955,7 @@ goog.addDependency('../../../../../src/footswitch/Switch/SwitchModel.js', ['pb.f
 goog.addDependency('../../../../../src/footswitch/toggle/Toggle.js', ['pb.footswitch.Toggle'], ['pb.footswitch.Switch', 'pb.footswitch.ToggleModel']);
 goog.addDependency('../../../../../src/footswitch/toggle/ToggleModel.js', ['pb.footswitch.ToggleModel'], ['pb.footswitch.SwitchModel']);
 goog.addDependency('../../../../../src/io/FileInput.js', ['pb.io.FileInput'], ['pb.io.Input']);
+goog.addDependency('../../../../../src/io/GainInput.js', ['pb.io.GainInput'], ['pb.io.Input']);
 goog.addDependency('../../../../../src/io/Input.js', ['pb.io.Input'], ['goog.events.EventTarget', 'pb.IConnectable']);
 goog.addDependency('../../../../../src/io/Output.js', ['pb.io.Output'], ['pb.IConnectable']);
 goog.addDependency('../../../../../src/io/StreamInput.js', ['pb.io.StreamInput'], ['pb.io.Input']);
