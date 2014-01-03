@@ -76,8 +76,10 @@
     var input = new pb.io.FileInput(ctx, 'audio/samples/sample1.mp3');
     input.play();
 
-    stage.input = new pb.io.GainInput(ctx, input);
-    stage2.input = new pb.io.GainInput(ctx, input);
+
+
+    stage.input = new pb.io.GainInput(ctx, input.source);
+    stage2.input = new pb.io.GainInput(ctx, input.source);
     stage.route();
     stage2.route();
 

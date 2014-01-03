@@ -32,7 +32,7 @@ goog.require('pb.io.Input');
  * @constructor
  * @extends {pb.io.Input}
  * @param {AudioContext} context Audio context for this input.
- * @param {pb.io.Input=} opt_in
+ * @param {AudioNode=} opt_in
  */
 pb.io.GainInput = function(context, opt_in) {
     goog.base(this, context);
@@ -41,7 +41,9 @@ pb.io.GainInput = function(context, opt_in) {
     that.disconnect();
     that.source = context.createGain();
 
-    opt_in && opt_in.source.connect(that.source);
+    that.input = opt_in;
+
+    opt_in && opt_in.connect(that.source);
 };
 goog.inherits(pb.io.GainInput, pb.io.Input);
 
