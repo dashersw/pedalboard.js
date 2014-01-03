@@ -31,17 +31,18 @@ goog.require('pb.IConnectable');
  *
  * @constructor
  * @param {AudioContext} context Audio context for this output.
+ * @param {AudioNode=} opt_dst optional destination node.
  * @implements {pb.IConnectable}
  */
-pb.io.Output = function(context) {
-    this.source = context.destination; // creates a sound source
+pb.io.Output = function(context, opt_dst) {
+    this.source = opt_dst || context.destination;
 };
 
 
 /**
  * Gets the destination node.
  *
- * @return {AudioDestinationNode} The final node in the signal chain.
+ * @return {AudioDestinationNode|AudioNode} The final node in the signal chain.
  */
 pb.io.Output.prototype.getInput = function() {
     return this.source;

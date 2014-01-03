@@ -33,11 +33,12 @@ goog.require('pb.ui.Component');
 /**
  * Stage hosts pedal boards, input and output.
  *
- * @param {AudioContext=} opt_context
+ * @param {AudioContext=} opt_context optinal AudioContext.
+ * @param {AudioNode=} opt_dst optional destination node.
  * @constructor
  * @extends {pb.ui.Component}
  */
-pb.Stage = function(opt_context) {
+pb.Stage = function(opt_context, opt_dst) {
     goog.base(this);
     /**
      * The audio context for this stage.
@@ -47,7 +48,7 @@ pb.Stage = function(opt_context) {
      */
     this.context = opt_context ? opt_context : new AudioContext();
 
-    this.initIO();
+    this.initIO(opt_dst);
 };
 goog.inherits(pb.Stage, pb.ui.Component);
 
@@ -65,8 +66,9 @@ pb.Stage.prototype.getContext = function() {
 
 /**
  * Initializes the input and the output.
+ * @param {AudioNode=} opt_dst optional output destination node.
  */
-pb.Stage.prototype.initIO = function() {
+pb.Stage.prototype.initIO = function(opt_dst) {
     /*
         Example for FileInput:
            this.input = new pb.io.FileInput(this.context, 'audio/samples/sample1.mp3');
@@ -77,7 +79,7 @@ pb.Stage.prototype.initIO = function() {
      */
 
     this.input = new pb.io.Input(this.context);
-    this.output = new pb.io.Output(this.context);
+    this.output = new pb.io.Output(this.context, opt_dst);
 };
 
 
