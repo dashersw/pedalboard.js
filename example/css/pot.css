@@ -1,11 +1,11 @@
-.pots {
+.pedalboard .pots {
     position: absolute;
     width: 100%;
     top: 1vh;
     left: 0;
 }
 
-.pot {
+.pedalboard .pot {
     display: inline-block;
     font-size: 2vh;
     text-align: center;
@@ -13,32 +13,32 @@
     width: 6vh;
 }
 
-.pot.small {
+.pedalboard .pot.small {
     height: 5vh;
     width: 5vh
 }
 
-.pot.small .knobHolder {
+.pedalboard .pot.small .knobHolder {
     height: 5vh;
     width: 5vh;
 }
 
-.pot.small .knob {
+.pedalboard .pot.small .knob {
     height: 5vh;
     width: 5vh;
     background-size: 5vh 5vh;
 }
 
-.pot.small .nameHolder {
+.pedalboard .pot.small .nameHolder {
     top: 1.5vh;
 }
 
-.nameHolder {
+.pedalboard .nameHolder {
     right: 50%;
     top: 3vh;
 }
 
-.knob {
+.pedalboard .knob {
     height: 6vh;
     width: 6vh;
     background-image: url("../img/pot-small.png");
@@ -46,12 +46,12 @@
     border-radius: 50%;
 }
 
-.pot .name {
+.pedalboard .pot .name {
     font-size: 3vh;
     margin-right: -100%;
 }
 
-.knobHolder {
+.pedalboard .knobHolder {
     border-radius: 50%;
     background-color: #333;
     height: 6vh;

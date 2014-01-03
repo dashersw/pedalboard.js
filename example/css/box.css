@@ -1,4 +1,4 @@
-.box {
+.pedalboard .box {
     height: 30vh;
     width: 18vh;
     border-radius: 2px;
@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-.box>.name {
+.pedalboard .box>.name {
     clear: both;
     text-align: center;
     font-size: 5vh;
@@ -19,51 +19,51 @@
     position: absolute;
 }
 
-.reverb {
+.pedalboard .reverb {
     background-color: hsl(194, 61%, 54%);
     width: 25vh;
 }
 
-.reverb .led.on {
+.pedalboard .reverb .led.on {
     background-color: hsl(194, 64%, 77%);
 }
 
-.overdrive {
+.pedalboard .overdrive {
     background-color: hsl(90, 67%, 40%);
 }
 
-.overdrive .pot.small {
+.pedalboard .overdrive .pot.small {
     top: -5vh;
 }
 
-.overdrive .pot:nth-child(1) .name {
+.pedalboard .overdrive .pot:nth-child(1) .name {
     left: -2.5vh;
 }
-.overdrive .pot:nth-child(2) .name {
+.pedalboard .overdrive .pot:nth-child(2) .name {
     left: 2vh;
 }
 
-.volume {
+.pedalboard .volume {
     background-color: hsl(50, 60%, 47%);
 }
 
-.volume .led.on {
+.pedalboard .volume .led.on {
     background-color: hsl(194, 90%, 97%);
 }
 
-.cabinet {
+.pedalboard .cabinet {
     background-color: hsl(326, 64%, 37%);
 }
 
-.cabinet .led.on {
+.pedalboard .cabinet .led.on {
     background-color: hsl(326, 64%, 77%);
 }
 
-.box {
+.pedalboard .box {
 
 }
 
-.box .bgs {
+.pedalboard .box .bgs {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -71,7 +71,7 @@
     left: 0;
 }
 
-.box .bg, .box .obg {
+.pedalboard .box .bg, .box .obg {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -80,45 +80,45 @@
     border-radius: 10px;
 }
 
-.box .bg:nth-child(1) {
+.pedalboard .box .bg:nth-child(1) {
     background: black;
 }
-.box .bg:nth-child(2) {
+.pedalboard .box .bg:nth-child(2) {
     background: black;
 }
-.box .bg:nth-child(3) {
+.pedalboard .box .bg:nth-child(3) {
     background: black;
 }
-.box .bg:nth-child(4) {
+.pedalboard .box .bg:nth-child(4) {
     background: black;
 }
-.box .bg:nth-child(5) {
+.pedalboard .box .bg:nth-child(5) {
     background: black;
 }
-.box .bg:nth-child(6) {
+.pedalboard .box .bg:nth-child(6) {
     background: black;
 }
-.box .bg:nth-child(7) {
+.pedalboard .box .bg:nth-child(7) {
     background: black;
 }
-.box .bg:nth-child(8) {
+.pedalboard .box .bg:nth-child(8) {
     background: black;
 }
-.box .bg:nth-child(9) {
+.pedalboard .box .bg:nth-child(9) {
     background: black;
 }
-.box .bg:nth-child(10) {
+.pedalboard .box .bg:nth-child(10) {
     background: black;
 }
-.box .bg:nth-child(11) {
+.pedalboard .box .bg:nth-child(11) {
     background: black;
 }
-.box .bg:nth-child(12) {
+.pedalboard .box .bg:nth-child(12) {
     background: black;
 }
-.box .bg:nth-child(13) {
+.pedalboard .box .bg:nth-child(13) {
     background: black;
 }
-.box .bg:nth-child(14) {
+.pedalboard .box .bg:nth-child(14) {
     background: black;
 }

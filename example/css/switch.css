@@ -1,4 +1,4 @@
-.switch {
+.pedalboard .switch {
     cursor: pointer;
     margin: 1vh;
     text-align: center;
@@ -6,28 +6,28 @@
     width: 6vh;
 }
 
-.button {
+.pedalboard .button {
     height: 5vh;
     width: 6vh;
     background-size: 100%;
     background-image: url("../img/switch.png");
 }
 
-.switches {
+.pedalboard .switches {
     position: absolute;
     bottom: 2vh;
     left: 0;
     width: 100%;
 }
 
-.leds {
+.pedalboard .leds {
     position: absolute;
     bottom: 14vh;
     left: 0;
     width: 100%;
 }
 
-.led {
+.pedalboard .led {
     text-align: center;
     display: inline-block;
     height: 1.6vh;
@@ -38,7 +38,7 @@
     opacity: 0.6;
 }
 
-.led:after {
+.pedalboard .led:after {
     content: '';
     display: block;
     height: 1.6vh;
@@ -48,7 +48,7 @@
     box-shadow: 0px 2px 12px 1px rgba(0,0,0,1);
 }
 
-.led.on {
+.pedalboard .led.on {
     opacity: 1;
     background-color: hsla(100, 60%, 80%, 1);
     box-shadow:
@@ -58,6 +58,6 @@
         inset 2px 0px 4px 1px hsla(100,50%,55%,0.9);
 }
 
-.led.on:after {
+.pedalboard .led.on:after {
     box-shadow: 0px 2px 12px 1px rgba(0,0,0,0.2);
 }

@@ -2,58 +2,6 @@ html, body { height: 100%; width: 100%; overflow: hidden; }
 
 body { color: white; background: black; min-width: 800px; min-height: 640px; }
 
-.board { text-align: center; }
-
-footer {
-    color: transparent; font-size: 12vh; text-align: center; position: absolute; width: 100%; bottom: 60%; z-index: 1; font-family: "Helvetica Neue", Helvetica, Arial; letter-spacing: -5px; font-weight: bold;
-
-    text-shadow: 0px -2px 0 hsla(0, 0%, 0%,0.7), -1px 1px 0px hsla(0, 0%, 100%, 0.4), 0 -4px 0px rgba(0,0,0,0.4);
-}
-
-#controlPanel {
-    z-index: 1; position: absolute; width: 100%; text-align: center; bottom: 30vh;
-}
-
-#world {
-    position: absolute; height: 100%; width: 100%;
-}
-
-#box {
-    height: 100%; width: 100%; top: 0; left: 0;
-}
-
-.stage {
-    bottom: 0px; width: 100%; position: absolute;
-}
-
-.floor {
-    position: relative; height: 250px; width: 100%; top: 0; left: 0;
-}
-
-#wall {
-    position: absolute; height: 400px; width: 100%; top: 0; left: 0;
-}
-
-.floor {
-    background-size: 100%, 50%; background-position: center bottom;
-}
-
-#wall {
-    background-color: #000000; background-position: center, center, bottom; background-size: 100%, 100%, 50%;
-}
-
-#controlButton { cursor: pointer; font-size: 6vh; color: rgba(255,255,255,0.6); }
-#controlButton:hover { color: rgba(255,255,255,0.8); }
-
-.sample, .linein { display: inline-block; font-family: Radley; font-size: 30px; margin: 0 1vh; cursor: pointer; color: rgba(255,255,255,0.6); }
-.sample:hover { color: rgba(255,255,255,0.8); }
-.sample.on { color: rgba(255,255,255,0.9); }
-
-.linein { color: rgba(236,64,64,0.6); }
-.linein:hover { color: rgba(236,64,64,0.8); }
-.linein.on { color: rgba(236,64,64,0.9); }
-
-.social {
-    z-index: 12; position: absolute; left: 20px; height: 100px; width: 200px; text-align: left; top: 130px;
-
+.pedalboard {
+    position: relative; height: 250px; width: 100%; top: 0; left: 0; text-align: center;
 }
