@@ -23,19 +23,19 @@
     <!--<script type="text/javascript" src="../src/Bootstrapper.js"></script>-->
 </head>
 <body>
-<div id="world">
-    <div id="box">
-        <div id="floor1" class="floor">
+        <div id="floor1" class="pedalboard">
         </div>
-        <div id="floor2" class="floor">
+        <div id="floor2" class="pedalboard">
         </div>
-    </div>
-</div>
 
 <script type="text/javascript">
     var ctx = new AudioContext();
 
-    var stage = new pb.Stage(ctx);
+    var outputDst = ctx.createGain();
+    outputDst.connect(ctx.destination);
+
+
+    var stage = new pb.Stage(ctx, outputDst);
 
     var board = new pb.Board(ctx);
     stage.setBoard(board);
@@ -56,7 +56,22 @@
     stage.render(document.getElementById('floor1'));
 
 
-    var stage2 = new pb.Stage(ctx);
+    window.setTimeout(function(){
+        var board3 = new pb.Board(ctx);
+        stage.setBoard(board3);
+
+        var overdrive3 = new pb.stomp.Overdrive(ctx);
+
+        board3.addPedals([overdrive3]);
+
+        overdrive3.setDrive(.1);
+        overdrive3.setTone(.4);
+        overdrive3.setLevel(.6);
+
+    }, 5000);
+
+
+    var stage2 = new pb.Stage(ctx, outputDst);
 
     var board2 = new pb.Board(ctx);
     stage2.setBoard(board2);
