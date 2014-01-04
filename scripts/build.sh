@@ -10,7 +10,7 @@ lib/tartJS/tools/goog/build/closurebuilder.py \
 --output_file=dist/compiled.js \
 --compiler_jar=lib/tartJS/tools/goog/compiler/compiler.jar \
 --compiler_flags="--compilation_level=SIMPLE_OPTIMIZATIONS" \
---compiler_flags="--output_wrapper='(function(){%output%})()'" \
+--compiler_flags="--output_wrapper='(function(){%output%;window.pb=pb;})()'" \
 --compiler_flags="--create_source_map='dist/source_map.js'" \
 --compiler_flags="--property_map_output_file='dist/properties.out'" \
 --compiler_flags="--variable_map_output_file='dist/variables.out'" \
