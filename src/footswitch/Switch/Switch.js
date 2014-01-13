@@ -72,6 +72,7 @@ pb.footswitch.Switch.prototype.getState = function() {
  * Toggles the switch.
  */
 pb.footswitch.Switch.prototype.toggle = function() {
+    this.getElement().classList.toggle('on');
     this.model.toggle();
 };
 
@@ -80,7 +81,7 @@ pb.footswitch.Switch.prototype.toggle = function() {
  * @override
  */
 pb.footswitch.Switch.prototype.templates_base = function() {
-    return '<div class="switch" id="' + this.getId() + '">' +
+    return '<div class="switch on" id="' + this.getId() + '">' +
                '<div class="button"></div>' +
                this.templates_name() +
            '</div>';
