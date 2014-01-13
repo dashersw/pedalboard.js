@@ -82,9 +82,7 @@ pb.pot.Pot.prototype.setValue = function(newValue) {
  */
 pb.pot.Pot.prototype.updateUi = function() {
     if (this.isInDocument()) {
-        var newStyle = 'rotateZ(' + (this.model.getNormalizedValue() * this.angle) + 'deg)';
-        this.$(this.mappings.KNOB)[0].style['-webkit-transform'] = newStyle;
-        this.$(this.mappings.KNOB)[0].style['transform'] = newStyle;
+        this.gauge.set(this.model.getNormalizedValue());
     }
 };
 
@@ -95,7 +93,7 @@ pb.pot.Pot.prototype.updateUi = function() {
 pb.pot.Pot.prototype.templates_base = function() {
     return '<div class="pot ' + this.size + '" id="' + this.getId() + '">' +
                '<div class="knobHolder">' +
-                   '<div class="knob"></div>' +
+                   '<canvas height="25" width="25"></canvas>' +
                '</div>' +
                '<div class="nameHolder">' +
                    '<div class="name">' + this.model.name + '</div>' +
@@ -110,6 +108,22 @@ pb.pot.Pot.prototype.templates_base = function() {
 pb.pot.Pot.prototype.enterDocument = function() {
     goog.base(this, 'enterDocument');
 
+    var opts = {
+        angle: 0.25, // The length of each line
+        lineWidth: 0.08, // The line thickness
+        limitMax: 'true',   // If true, the pointer will not go past the end of the gauge
+
+        colorStart: 'hsla(10,0%,100%, 0.9)',   // Colors
+//                colorStart: 'hsla(10,0%,90%, 0.6)',   // Colors
+        colorStop: 'hsla(10,0%,50%, 0.3)',    // just experiment with them
+        strokeColor: 'red',   // to see which ones work best for you
+        generateGradient: false
+    };
+
+    this.gauge = new Donut(this.$(this.mappings.KNOB)[0]).setOptions(opts); // create sexy gauge!
+    this.gauge.maxValue = 1; // set max gauge value
+    this.gauge.animationSpeed = 1; // set animation speed (32 is default value)
+
     this.updateUi();
 };
 
@@ -118,7 +132,7 @@ pb.pot.Pot.prototype.enterDocument = function() {
  * @enum {string} DOM mappings.
  */
 pb.pot.Pot.prototype.mappings = {
-    KNOB: '.knob',
+    KNOB: 'canvas',
     KNOB_HOLDER: '.knobHolder'
 };
 
