@@ -55,14 +55,17 @@
     var reverb = new pb.stomp.Reverb(ctx);
     var volume = new pb.stomp.Volume(ctx);
     var cabinet = new pb.stomp.Cabinet(ctx);
+    var delay = new pb.stomp.Delay(ctx);
 
-    board.addPedals([overdrive, reverb, volume, cabinet]);
+    board.addPedals([overdrive, delay, reverb, volume, cabinet]);
 
     overdrive.setDrive(.1);
     overdrive.setTone(.4);
     overdrive.setLevel(.6);
     volume.setLevel(1);
     reverb.setLevel(.3);
+    delay.setDelayTimer(.2);
+    delay.setFeedbackGain(.7);
 
     stage.render(document.getElementById('floor'));
 
@@ -141,6 +144,10 @@
         overdrive.setDrive(.1);
         overdrive.setTone(1);
         reverb.setLevel(1);
+        !delay.bypassSwitch.getState() && delay.bypassSwitch.toggle();
+        delay.setDelayTimer(0.6);
+        delay.setFeedbackGain(.5);
+        delay.setLevel(0.7);
     });
 
     settings.push(function() {
@@ -149,6 +156,10 @@
         overdrive.setDrive(.25);
         overdrive.setTone(.5);
         reverb.setLevel(.3);
+        delay.bypassSwitch.getState() && delay.bypassSwitch.toggle();
+        delay.setDelayTimer(0);
+        delay.setFeedbackGain(0);
+        delay.setLevel(0);
     });
 
     settings.push(function() {
@@ -157,6 +168,10 @@
         overdrive.setDrive(.4);
         overdrive.setTone(.5);
         reverb.setLevel(0.6);
+        delay.bypassSwitch.getState() && delay.bypassSwitch.toggle();
+        delay.setDelayTimer(0);
+        delay.setFeedbackGain(0);
+        delay.setLevel(0);
     });
 
     settings.push(function() {
@@ -165,6 +180,10 @@
         overdrive.setDrive(0);
         overdrive.setTone(.1);
         reverb.setLevel(1);
+        !delay.bypassSwitch.getState() && delay.bypassSwitch.toggle();
+        delay.setDelayTimer(0.8);
+        delay.setFeedbackGain(0.6);
+        delay.setLevel(0.55);
     });
 
     settings.push(function() {
@@ -173,6 +192,10 @@
         overdrive.setDrive(0.4);
         overdrive.setTone(.3);
         reverb.setLevel(.7);
+        !delay.bypassSwitch.getState() && delay.bypassSwitch.toggle();
+        delay.setDelayTimer(0.77);
+        delay.setFeedbackGain(0.4);
+        delay.setLevel(1);
     });
 
     settings.push(function() {
