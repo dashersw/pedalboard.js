@@ -27,6 +27,32 @@
     -moz-transform: translateZ(1px);
 }
 
+.delay {
+    background-color: hsl(34, 21%, 14%);
+    width: 25vh;
+}
+
+.delay .led.on {
+    background-color: hsl(50, 35%, 25%);
+    box-shadow:
+        inset 0px -2px 7px 2px rgba(255,255,255,0.8),
+        0px 0px 60px 30px hsla(45, 28%, 28%, 1),
+        inset 2px 0px 4px 1px hsla(34,20%,15%,0.9);
+}
+
+.delay .pot:nth-child(1) {
+    top: 0vh;
+    left: -0.5vh;
+}
+.delay .pot:nth-child(2) {
+    top: -4vh;
+    left: 0vh;
+}
+.delay .pot:nth-child(3) {
+    top: 3vh;
+    left: 1vh;
+}
+
 .reverb {
     background-color: hsl(194, 61%, 54%);
     width: 25vh;
