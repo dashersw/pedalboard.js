@@ -113,8 +113,10 @@ pb.stomp.Box.prototype.setLevel = function(newLevel) {
  * @override
  */
 pb.stomp.Box.prototype.templates_base = function() {
+    var className = this.name.replace(/\s/g, '-').toLowerCase();
+
     return '' +
-        '<div id="' + this.getId() + '" class="box ' + this.name + '">' +
+        '<div id="' + this.getId() + '" class="box ' + className + '">' +
            '<div class="pots"></div>' +
            '<div class="name">' + this.name + '</div>' +
            '<div class="leds"></div>' +
