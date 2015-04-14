@@ -25,7 +25,6 @@ goog.provide('pb.io.StreamInput');
 goog.require('pb.io.Input');
 
 
-
 /**
  * The input wrapper for an audio context.
  *
@@ -37,7 +36,20 @@ pb.io.StreamInput = function(context) {
     goog.base(this, context);
     var that = this;
 
-    navigator.getUserMedia({'audio': true}, function(stream) {
+    navigator.getUserMedia({
+        'audio': {
+            mandatory: {
+                echoCancellation: false,
+                googEchoCancellation: false,
+                googEchoCancellation2: false,
+                googAutoGainControl: false,
+                googNoiseSuppression: false,
+                googNoiseSuppression2: false
+                //googHighpassFilter: false // this is currently buggy.
+            }
+        }
+    }, function(stream) {
+
         that.disconnect();
         that.source = context.createMediaStreamSource(stream);
         that.dispatchEvent('loaded');
