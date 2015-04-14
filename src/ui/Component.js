@@ -108,6 +108,8 @@ pb.ui.Component.prototype.getChildren = function() {
  */
 pb.ui.Component.prototype.disposeInternal = function() {
     goog.base(this, 'disposeInternal');
+
+    this.model && this.model.dispose && this.model.dispose();
     this.model = null;
 };
 

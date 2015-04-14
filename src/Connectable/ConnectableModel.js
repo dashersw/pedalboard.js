@@ -20,6 +20,7 @@
  */
 
 goog.provide('pb.ConnectableModel');
+goog.require('goog.Disposable');
 goog.require('pb.IConnectableModel');
 
 
@@ -29,9 +30,13 @@ goog.require('pb.IConnectableModel');
  *
  * @constructor
  * @implements {pb.IConnectableModel}
+ * @extends {goog.Disposable}
+ *
  * @param {AudioContext} context The context this component model will operate on.
  */
 pb.ConnectableModel = function(context) {
+    goog.base(this);
+
     this.context = context;
 
     /**
@@ -60,6 +65,7 @@ pb.ConnectableModel = function(context) {
  */
     this.effects = [];
 };
+goog.inherits(pb.ConnectableModel, goog.Disposable);
 
 
 /**
@@ -124,4 +130,14 @@ pb.ConnectableModel.prototype.routeInternal = function() {
  */
 pb.ConnectableModel.prototype.disconnect = function() {
     this.outputBuffer.disconnect();
+};
+
+
+/**
+ * @override
+ */
+pb.ConnectableModel.prototype.disposeInternal = function() {
+    goog.base(this, 'disposeInternal');
+
+    this.disconnect();
 };
