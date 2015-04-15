@@ -38,14 +38,14 @@ pb.io.StreamInput = function(context) {
 
     navigator.getUserMedia({
         'audio': {
-            mandatory: {
-                echoCancellation: false,
-                googEchoCancellation: false,
-                googEchoCancellation2: false,
-                googAutoGainControl: false,
-                googNoiseSuppression: false,
-                googNoiseSuppression2: false
-                //googHighpassFilter: false // this is currently buggy.
+            'mandatory': {
+                'echoCancellation': false,
+                'googEchoCancellation': false,
+                'googEchoCancellation2': false,
+                'googAutoGainControl': false,
+                'googNoiseSuppression': false,
+                'googNoiseSuppression2': false
+                //'googHighpassFilter': false // this is currently buggy.
             }
         }
     }, function(stream) {
