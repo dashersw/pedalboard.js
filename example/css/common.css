@@ -59,7 +59,7 @@ footer {
 }
 
 #floor {
-    background-size: 100%, 50%; background-position: center bottom;
+    z-index: 1; background-size: 100%, 50%; background-position: center bottom;
 
     background-image:
         -webkit-radial-gradient(50% 50%, ellipse farthest-corner,
