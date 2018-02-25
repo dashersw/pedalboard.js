@@ -36,7 +36,7 @@ pb.stomp.OverdriveModel = function(context) {
     this.lowPassFreq = 3000;
 
     this.lowPass = this.context.createBiquadFilter();
-    this.lowPass.type = 0;
+    this.lowPass.type = 'lowpass';
     this.lowPass.frequency.value = this.lowPassFreq;
 
     this.waveShaper = this.context.createWaveShaper();
