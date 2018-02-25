@@ -35,8 +35,8 @@ goog.require('pb.io.Input');
 pb.io.StreamInput = function(context) {
     goog.base(this, context);
     var that = this;
-
-    navigator.getUserMedia({
+    var getUserMedia = navigator.mediaDevices.getUserMedia || navigator.getUserMedia;
+    getUserMedia({
         'audio': {
             'mandatory': {
                 'echoCancellation': false,
