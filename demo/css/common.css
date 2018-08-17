@@ -59,6 +59,7 @@ footer {
 }
 
 #floor {
+    z-index: 1;
     background-size: 100%, 50%; background-position: center bottom;
 
     background-image:
