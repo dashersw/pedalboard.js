@@ -1,7 +1,7 @@
 Pedalboard.js
 ====
-#### Check out [pedals.io](http://pedals.io)! It's pedalboard.js packaged as a product you can really use.
-**Or check out the [demo](http://dashersw.github.com/pedalboard.js/demo). Make sure to try the real-time line-in feature by plugging in a guitar or a microphone.**
+#### Check out [pedals.io](https://pedals.io)! It's pedalboard.js packaged as a product you can really use.
+**Or check out the [demo](https://dashersw.github.com/pedalboard.js/demo). Make sure to try the real-time line-in feature by plugging in a guitar or a microphone.**
 
 Introduction
 ------
@@ -34,7 +34,7 @@ Audio
 
 The technology that made Pedalboard.js available is W3C's Web Audio API. Although in a working draft version (which means it's more or less stable — at least in concept and context, but subject to change) the API is quite extensive, easy to use, extendable and has very nice approaches.
 
-Right now, the Audio API is available in all the major browsers other than Internet Explorer although they have [plans](http://connect.microsoft.com/IE/feedback/details/799529/web-audio-api-support) for implementing it in future versions.
+Right now, the Audio API is available in all the major browsers other than Internet Explorer.
 
 ### Nodes
 
