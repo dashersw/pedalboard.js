@@ -37,3 +37,6 @@ var MediaStreamDestination = function() {};
  * @type {MediaStream}
  */
 MediaStreamDestination.prototype.stream;
+
+/** @type {number|string} */
+BiquadFilterNode.prototype.type;
