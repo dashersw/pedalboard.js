@@ -1,7 +1,7 @@
 Pedalboard.js
 ====
 #### Check out [pedals.io](https://pedals.io)! It's pedalboard.js packaged as a product you can really use.
-**Or check out the [demo](https://dashersw.github.com/pedalboard.js/demo). Make sure to try the real-time line-in feature by plugging in a guitar or a microphone.**
+**Or check out the [demo](https://dashersw.github.io/pedalboard.js/demo). Make sure to try the real-time line-in feature by plugging in a guitar or a microphone.**
 
 Introduction
 ------
